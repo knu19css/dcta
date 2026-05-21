@@ -1,0 +1,129 @@
+{
+  "n_cells_after_qc": 29993,
+  "n_genes_after_qc": 21483,
+  "n_dcs": 12,
+  "n_clusters": 24,
+  "n_components": 1,
+  "root_cluster": "HSC MPP",
+  "n_edges_initial": 66,
+  "n_edges_after_fas": 66,
+  "n_edges_removed": 0,
+  "direction": {
+    "method_chosen": "marker",
+    "accuracy": {
+      "dpt": 0.9210526315789473,
+      "marker": 0.9210526315789473
+    },
+    "agreement_rate": 0.7424242424242424,
+    "n_pairs_compared": 66
+  },
+  "backbone": {
+    "backbone_path": [
+      "HSC MPP",
+      "LMPP",
+      "Cycling Progenitor",
+      "Early GMP",
+      "Late GMP",
+      "Pro-Monocyte",
+      "Monocyte",
+      "cDC",
+      "Megakaryocyte Precursor"
+    ],
+    "backbone_length": 8,
+    "seniority_monotonic": false,
+    "seniority_strictly_increasing": false,
+    "kendall_tau": 0.7118321296786989,
+    "n_lineages_reachable_from_root": 5,
+    "n_disconnected_mature": 4,
+    "root_cluster": "HSC MPP",
+    "weight_mode": "sum_weight",
+    "backbone_score": 6.232211164520328,
+    "alt_backbone": {
+      "weight_mode": "edge_count",
+      "path": [
+        "HSC MPP",
+        "LMPP",
+        "Cycling Progenitor",
+        "Early Lymphoid",
+        "Early GMP",
+        "Late GMP",
+        "Pro-Monocyte",
+        "Monocyte",
+        "cDC",
+        "Megakaryocyte Precursor"
+      ],
+      "score": 9.0,
+      "length": 9
+    },
+    "disconnected_mature_clusters": [
+      "CD4 Memory T",
+      "CD8 Memory T",
+      "NK",
+      "Naive T"
+    ],
+    "prior_labels": [
+      "HSC",
+      "MPP",
+      "MPP",
+      "GMP",
+      "GMP",
+      "Monocyte",
+      "Monocyte",
+      "cDC2",
+      "Megakaryocyte"
+    ],
+    "backbone_seniority": [
+      [
+        "HSC MPP",
+        0
+      ],
+      [
+        "LMPP",
+        1
+      ],
+      [
+        "Cycling Progenitor",
+        2
+      ],
+      [
+        "Early GMP",
+        2
+      ],
+      [
+        "Late GMP",
+        2
+      ],
+      [
+        "Pro-Monocyte",
+        3
+      ],
+      [
+        "Monocyte",
+        4
+      ],
+      [
+        "cDC",
+        4
+      ],
+      [
+        "Megakaryocyte Precursor",
+        2
+      ]
+    ]
+  },
+  "prior": {
+    "consistency_rate": 0.6060606060606061,
+    "consistent_count": 40,
+    "scored_count": 66,
+    "unlabeled_count": 0,
+    "penalty": 0.5,
+    "g_prior_path": "data/priors/dag_prior_bm.yaml"
+  },
+  "annotation": {
+    "strict_accuracy": 0.5495282232520922,
+    "lineage_accuracy": 0.8953089054112626,
+    "n_evaluable": 29993,
+    "n_unmapped_gt_labels": 1,
+    "n_unmapped_pred_labels": 0
+  }
+}

@@ -20,4 +20,4 @@ class DCTAGraphError(DCTAError):
 
 
 # Submodule re-exports (added incrementally in T2-T5)
-from dcta import io, preprocessing  # noqa: E402,F401
+from dcta import io, preprocessing, diffusion  # noqa: E402,F401

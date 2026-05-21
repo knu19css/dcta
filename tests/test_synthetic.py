@@ -54,3 +54,22 @@ def test_preprocessing_rejects_negative_X(synthetic_adata):
     a.X[0, 0] = -1.0
     with pytest.raises(dcta.DCTADataError):
         dcta.preprocessing.run(a)
+
+
+def test_diffusion_adds_pca_and_diffmap(synthetic_adata):
+    a = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False)
+    out = dcta.diffusion.run(a, n_comps=10)
+    assert "X_pca" in out.obsm
+    assert "X_diffmap" in out.obsm
+    assert "dcta" in out.uns
+    assert "diffmap_eigvals" in out.uns["dcta"]
+    assert "n_dcs" in out.uns["dcta"]
+    assert 1 <= out.uns["dcta"]["n_dcs"] <= 10
+    eigs = np.asarray(out.uns["dcta"]["diffmap_eigvals"])
+    assert (eigs[:-1] >= eigs[1:] - 1e-9).all()
+
+
+def test_diffusion_n_dcs_auto_gap_selection(synthetic_adata):
+    a = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False)
+    out = dcta.diffusion.run(a, n_comps=15)
+    assert out.uns["dcta"]["n_dcs"] < 15

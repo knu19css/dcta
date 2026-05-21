@@ -59,7 +59,7 @@ def _dpt_from_iroot(adata: ad.AnnData, iroot: int) -> np.ndarray:
     """Run scanpy DPT with given iroot, return per-cell pseudotime array."""
     a = adata
     a.uns["iroot"] = int(iroot)
-    sc.tl.dpt(a, neighbors_key="dcta")
+    sc.tl.dpt(a, neighbors_key="dcta_nbr")
     return a.obs["dpt_pseudotime"].to_numpy().copy()
 
 

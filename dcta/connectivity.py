@@ -22,16 +22,16 @@ def run(
     a = adata.copy() if copy else adata
 
     n_dcs = int(a.uns.get("dcta", {}).get("n_dcs", a.obsm["X_diffmap"].shape[1] - 1))
-    # Build neighbors on diffusion components
+    # Build neighbors under key "dcta_nbr" (distinct from our "dcta" uns
+    # namespace) so scanpy doesn't clobber diffmap_eigvals/n_dcs.
     sc.pp.neighbors(a, n_neighbors=knn_k, use_rep="X_diffmap",
-                    n_pcs=n_dcs, random_state=random_state, key_added="dcta")
-    # Move the resulting connectivities into obsp['dcta_knn'] for clarity
-    a.obsp["dcta_knn"] = a.obsp["dcta_connectivities"]
+                    n_pcs=n_dcs, random_state=random_state, key_added="dcta_nbr")
+    a.obsp["dcta_knn"] = a.obsp["dcta_nbr_connectivities"]
 
-    sc.tl.leiden(a, neighbors_key="dcta", resolution=resolution,
+    sc.tl.leiden(a, neighbors_key="dcta_nbr", resolution=resolution,
                  random_state=random_state, key_added="dcta_leiden")
 
-    sc.tl.paga(a, groups="dcta_leiden", neighbors_key="dcta")
+    sc.tl.paga(a, groups="dcta_leiden", neighbors_key="dcta_nbr")
     paga_conn = a.uns["paga"]["connectivities"]
     # Cluster centroids in diffusion-map space (for downstream viz / metrics)
     dm = a.obsm["X_diffmap"][:, :n_dcs]

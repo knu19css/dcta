@@ -34,7 +34,7 @@ def test_io_load_h5ad_missing_file_raises():
 
 
 def test_preprocessing_run_adds_qc_obs(synthetic_adata):
-    out = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False)
+    out = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False, min_genes=10, n_top_genes=50)
     for col in ["n_counts", "pct_mito"]:
         assert col in out.obs.columns
     assert "highly_variable" in out.var.columns
@@ -43,7 +43,8 @@ def test_preprocessing_run_adds_qc_obs(synthetic_adata):
 
 
 def test_preprocessing_cell_cycle_columns(synthetic_adata):
-    out = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=True)
+    out = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=True,
+                                 min_genes=10, n_top_genes=50)
     assert "S_score" in out.obs.columns
     assert "G2M_score" in out.obs.columns
 
@@ -53,12 +54,18 @@ def test_preprocessing_rejects_negative_X(synthetic_adata):
     a.X = a.X.astype(float)
     a.X[0, 0] = -1.0
     with pytest.raises(dcta.DCTADataError):
-        dcta.preprocessing.run(a)
+        dcta.preprocessing.run(a, min_genes=10, n_top_genes=50)
+
+
+def test_preprocessing_raises_when_min_genes_filters_all(synthetic_adata):
+    # synthetic has ~100 detectable genes per cell; min_genes=999 wipes all
+    with pytest.raises(dcta.DCTADataError, match="filtered out every cell"):
+        dcta.preprocessing.run(synthetic_adata, min_genes=999)
 
 
 def test_diffusion_adds_pca_and_diffmap(synthetic_adata):
-    a = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False)
-    out = dcta.diffusion.run(a, n_comps=10)
+    a = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False, min_genes=10, n_top_genes=50)
+    out = dcta.diffusion.run(a, n_comps=10, n_comps_pca=20)
     assert "X_pca" in out.obsm
     assert "X_diffmap" in out.obsm
     assert "dcta" in out.uns
@@ -70,14 +77,14 @@ def test_diffusion_adds_pca_and_diffmap(synthetic_adata):
 
 
 def test_diffusion_n_dcs_auto_gap_selection(synthetic_adata):
-    a = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False)
-    out = dcta.diffusion.run(a, n_comps=15)
+    a = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False, min_genes=10, n_top_genes=50)
+    out = dcta.diffusion.run(a, n_comps=15, n_comps_pca=20)
     assert out.uns["dcta"]["n_dcs"] < 15
 
 
 def test_connectivity_runs_leiden_and_paga(synthetic_adata):
-    a = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False)
-    a = dcta.diffusion.run(a, n_comps=10)
+    a = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False, min_genes=10, n_top_genes=50)
+    a = dcta.diffusion.run(a, n_comps=10, n_comps_pca=20)
     out = dcta.connectivity.run(a, resolution=1.0)
     assert "dcta_leiden" in out.obs.columns
     assert out.obs["dcta_leiden"].nunique() >= 2
@@ -90,8 +97,8 @@ def test_connectivity_runs_leiden_and_paga(synthetic_adata):
 
 
 def test_connectivity_resolution_affects_cluster_count(synthetic_adata):
-    a = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False)
-    a = dcta.diffusion.run(a, n_comps=10)
+    a = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False, min_genes=10, n_top_genes=50)
+    a = dcta.diffusion.run(a, n_comps=10, n_comps_pca=20)
     low = dcta.connectivity.run(a.copy(), resolution=0.3)
     high = dcta.connectivity.run(a.copy(), resolution=2.0)
     assert low.obs["dcta_leiden"].nunique() <= high.obs["dcta_leiden"].nunique()

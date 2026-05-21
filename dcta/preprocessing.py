@@ -69,15 +69,14 @@ def run(
     a.obs["n_counts"] = a.obs["total_counts"]
     a.obs["pct_mito"] = a.obs["pct_counts_mt"]
 
-    # QC filter — cap min_genes against the data so the filter never wipes
-    # every cell on tiny test data with fewer detected genes than the
-    # production floor.
+    # QC filter
     if min_genes > 0:
-        per_cell_genes = (a.X > 0).sum(axis=1)
-        per_cell_genes = np.asarray(per_cell_genes).ravel()
-        max_obs_genes = int(per_cell_genes.max()) if per_cell_genes.size else 0
-        effective_min_genes = min(min_genes, max(1, max_obs_genes // 2))
-        sc.pp.filter_cells(a, min_genes=effective_min_genes)
+        sc.pp.filter_cells(a, min_genes=min_genes)
+    if a.n_obs == 0:
+        raise DCTADataError(
+            f"min_genes={min_genes} filtered out every cell. "
+            f"Pass a smaller min_genes in tests or check input data."
+        )
     sc.pp.filter_genes(a, min_cells=min_cells)
     a = a[a.obs["pct_mito"] <= pct_mito_max, :].copy()
 

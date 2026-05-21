@@ -152,9 +152,24 @@ def paga_vs_dag_overlay(adata: ad.AnnData, path: str) -> None:
                                edge_color="red", arrows=True, arrowsize=12,
                                width=1.5, style="dotted")
 
+    # Backbone path: highlight in thick navy on top of everything
+    bb = adata.uns["dcta"].get("backbone_validation", {})
+    bb_path = bb.get("backbone_path", []) if bb else []
+    if len(bb_path) >= 2:
+        bb_edges = list(zip(bb_path[:-1], bb_path[1:]))
+        bb_edges = [(u, v) for (u, v) in bb_edges if G_dag.has_edge(u, v)]
+        if bb_edges:
+            nx.draw_networkx_edges(G_dag, pos, ax=ax, edgelist=bb_edges,
+                                   edge_color="navy", arrows=True, arrowsize=18,
+                                   width=4.0, style="solid", alpha=0.7)
+
     chosen = adata.uns["dcta"].get("direction_method_chosen", "?")
-    ax.set_title(f"PAGA (grey) <-> G_data overlay - chosen direction: {chosen}\n"
-                 f"green=methods agree, orange=disagree, red=removed by FAS")
+    mono = bb.get("seniority_monotonic") if bb else None
+    tau = bb.get("kendall_tau") if bb else None
+    title = (f"PAGA (grey) <-> G_data overlay - chosen={chosen}\n"
+             f"green=methods agree, orange=disagree, red=removed by FAS, "
+             f"navy=backbone (monotonic={mono}, tau={tau})")
+    ax.set_title(title, fontsize=9)
     ax.set_axis_off()
     _save(fig, path)
 

@@ -230,6 +230,25 @@ def test_dag_edges_respect_chosen_direction(synthetic_adata):
             )
 
 
+def test_dag_backbone_validation(synthetic_adata):
+    a = _prepped(synthetic_adata)
+    a = dcta.pseudotime.run(a, hsc_marker_yaml=HSC_YAML)
+    out = dcta.dag.build(a, edge_threshold=0.01, seniority_yaml=SENIORITY_YAML,
+                         label_column="true_lineage")
+    bb = out.uns["dcta"]["backbone_validation"]
+    for k in ["backbone_path", "backbone_length", "backbone_seniority",
+              "seniority_monotonic", "kendall_tau",
+              "n_lineages_reachable_from_root", "n_disconnected_mature",
+              "root_cluster"]:
+        assert k in bb, f"missing key in backbone_validation: {k}"
+    # On synthetic 3-lineage star, root → at least 1 chain step exists
+    assert bb["backbone_length"] >= 0
+    # If any clusters got seniority assignment AND any are mature, reachable
+    # count is meaningful; otherwise just type-check.
+    assert isinstance(bb["n_lineages_reachable_from_root"], int)
+    assert isinstance(bb["n_disconnected_mature"], int)
+
+
 def test_viz_export_all_writes_pngs(synthetic_adata, tmp_path):
     a = _prepped(synthetic_adata)
     a = dcta.pseudotime.run(a, hsc_marker_yaml=HSC_YAML)

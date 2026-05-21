@@ -220,4 +220,118 @@ def build(
     }
     uns["direction_method_chosen"] = chosen
     uns["biological_seniority_map"] = cluster_seniority
+
+    # Backbone-vs-hematopoiesis validation (per user feedback 2026-05-21)
+    uns["backbone_validation"] = _validate_backbone(G, cluster_seniority)
     return a
+
+
+def _longest_path_length(G: nx.DiGraph, source: str) -> tuple[list[str], int]:
+    """Return (longest_path_from_source, length) in a DAG. Empty list if no
+    reachable nodes."""
+    if source not in G.nodes:
+        return [], 0
+    # Among descendants of source, find the topological-order path with max length
+    desc = nx.descendants(G, source) | {source}
+    sub = G.subgraph(desc)
+    if sub.number_of_nodes() == 0:
+        return [], 0
+    # Longest path in DAG via DP on topo order
+    topo = list(nx.topological_sort(sub))
+    dist = {n: 0 for n in topo}
+    parent = {n: None for n in topo}
+    for u in topo:
+        for v in sub.successors(u):
+            if dist[u] + 1 > dist[v]:
+                dist[v] = dist[u] + 1
+                parent[v] = u
+    end = max(dist, key=dist.get)
+    path = []
+    cur = end
+    while cur is not None:
+        path.append(cur)
+        cur = parent[cur]
+    path.reverse()
+    return path, dist[end]
+
+
+def _validate_backbone(G: nx.DiGraph,
+                       cluster_seniority: dict[str, int]) -> dict:
+    """Check whether G_data's backbone chain matches expected hematopoietic order.
+
+    The "backbone" is defined as the longest directed path starting from the
+    HSC root cluster (= node whose seniority is the minimum, defaults to the
+    first node if no seniority known).
+
+    Returns a dict suitable for adata.uns['dcta']['backbone_validation'].
+
+    Metrics:
+      - backbone_path: list of cluster ids on the chain
+      - backbone_length: number of edges in the chain
+      - backbone_seniority: list of (cluster, seniority) along the path
+      - seniority_monotonic: True if seniority is non-decreasing along path
+      - seniority_strictly_increasing: True if strictly increasing (no ties)
+      - kendall_tau: Kendall's tau between topological order on path
+        and seniority order (only for clusters with known seniority)
+      - n_lineages_reachable_from_root: count of distinct mature labels reachable
+      - n_disconnected_mature: count of mature clusters NOT reached from root
+      - root_cluster: which node was used as start
+    """
+    out: dict = {
+        "backbone_path": [],
+        "backbone_length": 0,
+        "backbone_seniority": [],
+        "seniority_monotonic": None,
+        "seniority_strictly_increasing": None,
+        "kendall_tau": None,
+        "n_lineages_reachable_from_root": 0,
+        "n_disconnected_mature": 0,
+        "root_cluster": None,
+    }
+    if G.number_of_nodes() == 0:
+        return out
+
+    # Root = node with minimum known seniority. Tie-break: lexicographic.
+    if cluster_seniority:
+        min_sen = min(cluster_seniority.values())
+        roots = sorted(c for c, s in cluster_seniority.items() if s == min_sen)
+        root = roots[0] if roots else None
+    else:
+        root = None
+    if root is None:
+        # Fallback: node with no incoming edges
+        sources = [n for n in G.nodes if G.in_degree(n) == 0]
+        root = sources[0] if sources else next(iter(G.nodes))
+    out["root_cluster"] = root
+
+    path, length = _longest_path_length(G, root)
+    out["backbone_path"] = path
+    out["backbone_length"] = length
+    out["backbone_seniority"] = [(n, cluster_seniority.get(n)) for n in path]
+
+    # Monotonicity over clusters whose seniority is known
+    known = [s for _, s in out["backbone_seniority"] if s is not None]
+    if len(known) >= 2:
+        out["seniority_monotonic"] = all(
+            known[i] <= known[i + 1] for i in range(len(known) - 1)
+        )
+        out["seniority_strictly_increasing"] = all(
+            known[i] < known[i + 1] for i in range(len(known) - 1)
+        )
+        # Kendall's tau between path order index and seniority value
+        try:
+            from scipy.stats import kendalltau
+            tau, _ = kendalltau(list(range(len(known))), known)
+            out["kendall_tau"] = float(tau) if tau == tau else None  # NaN guard
+        except Exception:
+            out["kendall_tau"] = None
+
+    # Mature-cluster reachability (seniority >= 4 = mature)
+    mature = {c for c, s in cluster_seniority.items() if s is not None and s >= 4}
+    if mature:
+        reachable = nx.descendants(G, root) | {root}
+        reachable_mature = mature & reachable
+        out["n_lineages_reachable_from_root"] = len(reachable_mature)
+        out["n_disconnected_mature"] = len(mature - reachable)
+
+    return out

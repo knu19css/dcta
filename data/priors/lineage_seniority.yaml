@@ -2,23 +2,35 @@
 # Higher rank = more mature. Labels not listed are excluded from accuracy
 # scoring (NOT penalized; they simply do not contribute a "scoreable" edge).
 #
-# Source: hand-curated for Phase 1 from standard hematopoietic differentiation
-# hierarchy (Doulatov et al. 2012 Cell Stem Cell; Notta et al. 2016 Science).
-# Phase 1 Hay-dataset coverage is illustrative; T11 STATE.md records
-# which labels matched vs were skipped.
+# Source: hand-curated from standard hematopoietic differentiation hierarchy
+# (Doulatov et al. 2012 Cell Stem Cell; Notta et al. 2016 Science).
+#
+# Label vocabulary: CELLxGENE ontology terms (cl:*) as exposed in Hay BM
+# (hay_hca_balanced_bm.h5ad). Original short canonical names kept as
+# legacy aliases below.
 
 seniority:
-  # Stem
-  HSC: 0
+  # ---- Stem (rank 0) ----
+  "hematopoietic stem cell": 0
+  HSC: 0                                          # legacy / canonical alias
   Hematopoietic_stem_cell: 0
   Stem: 0
 
-  # Multipotent progenitors
+  # ---- Multipotent progenitors (rank 1) ----
+  "hematopoietic multipotent progenitor cell": 1
+  "hematopoietic oligopotent progenitor cell": 1
   MPP: 1
   LMPP: 1
   Multipotent_progenitor: 1
 
-  # Lineage-committed progenitors
+  # ---- Lineage-committed progenitors (rank 2) ----
+  "common myeloid progenitor": 2
+  "common lymphoid progenitor": 2
+  "granulocyte monocyte progenitor cell": 2
+  "megakaryocyte-erythroid progenitor cell": 2
+  "erythroid progenitor cell": 2
+  "megakaryocyte progenitor cell": 2
+  "basophil mast progenitor cell": 2
   CMP: 2
   GMP: 2
   MEP: 2
@@ -28,17 +40,43 @@ seniority:
   Megakaryocyte_erythroid_progenitor: 2
   Common_lymphoid_progenitor: 2
 
-  # Pre-mature stages
-  Pro-B: 3
-  Pre-B: 3
-  Pro-T: 3
+  # ---- Pre-mature / committed precursors (rank 3) ----
+  "pro-B cell": 3
+  "late pro-B cell": 3
+  "large pre-B-II cell": 3
+  "small pre-B-II cell": 3
+  "promonocyte": 3
+  "pre-conventional dendritic cell": 3
+  "basophilic erythroblast": 3
+  "polychromatophilic erythroblast": 3
+  "orthochromatic erythroblast": 3
+  "Pro-B": 3
+  "Pre-B": 3
+  "Pro-T": 3
   Erythroblast: 3
   Proerythroblast: 3
-  Megakaryocyte_progenitor: 3
-  Promonocyte: 3
   Promyelocyte: 3
 
-  # Mature
+  # ---- Mature lineage cells (rank 4) ----
+  "immature B cell": 4
+  "mature B cell": 4
+  "CD14-positive monocyte": 4
+  "CD14-positive, CD16-positive monocyte": 4
+  "megakaryocyte": 4
+  "conventional dendritic cell": 4
+  "dendritic cell": 4
+  "plasmacytoid dendritic cell, human": 4
+  "T cell": 4
+  "natural killer cell": 4
+  "CD16-negative, CD56-bright natural killer cell, human": 4
+  "naive thymus-derived CD4-positive, alpha-beta T cell": 4
+  "naive thymus-derived CD8-positive, alpha-beta T cell": 4
+  "central memory CD4-positive, alpha-beta T cell": 4
+  "central memory CD8-positive, alpha-beta T cell": 4
+  "effector memory CD4-positive, alpha-beta T cell": 4
+  "effector memory CD8-positive, alpha-beta T cell": 4
+  "CD8-positive, alpha-beta memory T cell": 4
+  "CD4-positive, CD25-positive, alpha-beta regulatory T cell": 4
   Granulocyte: 4
   Neutrophil: 4
   Eosinophil: 4
@@ -53,11 +91,15 @@ seniority:
   Mature_B: 4
   Dendritic_cell: 4
 
-  # Terminal / antibody-secreting
+  # ---- Terminal / antibody-secreting (rank 5) ----
+  "plasma cell": 5
   Plasma: 5
   Plasma_cell: 5
 
-  # Synthetic-fixture aliases (tests/conftest.py true_lineage values)
+  # ---- Synthetic-fixture aliases (tests/conftest.py true_lineage values) ----
   Mye: 4
   Ery: 4
   Lym: 4
+
+# Labels intentionally excluded (non-hematopoietic or non-rankable):
+#   - "stromal cell of bone marrow" (BM niche, not hematopoietic)

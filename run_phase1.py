@@ -119,7 +119,17 @@ def main(argv=None):
             "agreement_rate": methods.get("agreement_rate"),
             "n_pairs_compared": methods.get("n_pairs_compared"),
         },
+        "backbone": {
+            k: v for k, v in adata.uns["dcta"].get("backbone_validation", {}).items()
+            if k not in ("backbone_seniority",)  # keep summary JSON-clean
+        },
     }
+    # backbone_seniority contains tuples — JSON-serialize as list of [c, s]
+    bb_full = adata.uns["dcta"].get("backbone_validation", {})
+    if bb_full.get("backbone_seniority"):
+        summary["backbone"]["backbone_seniority"] = [
+            [c, s] for (c, s) in bb_full["backbone_seniority"]
+        ]
     with open(os.path.join(args.outdir, "summary.json"), "w") as f:
         json.dump(summary, f, indent=2)
     print(f"[DCTA] DONE. summary: {summary}", flush=True)

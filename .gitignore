@@ -6,3 +6,4 @@ results/phase1_hay/*.h5ad
 # keep .png and .gml in git as Phase 1 deliverables
 *.egg-info/
 .ipynb_checkpoints/
+data/external/

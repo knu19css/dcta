@@ -210,12 +210,28 @@ def umap_paper_with_g_data(adata: ad.AnnData, path: str) -> None:
         return
 
     um = np.asarray(adata.obsm["X_umap"])
-    ax_raw.scatter(um[:, 0], um[:, 1], s=4, color="#777777",
-                   alpha=0.6, linewidths=0)
+    leiden = adata.obs["dcta_leiden"].astype(str).to_numpy()
+    clusters_l = sorted(np.unique(leiden),
+                        key=lambda x: int(x) if x.isdigit() else x)
+    cmap_l = plt.cm.tab20
+    cc_l = {c: cmap_l(i % 20) for i, c in enumerate(clusters_l)}
+    for c in clusters_l:
+        m = leiden == c
+        ax_raw.scatter(um[m, 0], um[m, 1], s=4, color=cc_l[c],
+                       alpha=0.6, linewidths=0)
+    for c in clusters_l:
+        m = leiden == c
+        if not m.any():
+            continue
+        cx, cy = um[m].mean(axis=0)
+        ax_raw.text(cx, cy, c, fontsize=7, ha="center", va="center",
+                    weight="bold",
+                    bbox=dict(boxstyle="round,pad=0.2",
+                              facecolor="white", alpha=0.85,
+                              edgecolor="grey", linewidth=0.5))
     ax_raw.set_xlabel("UMAP 1 (paper)")
     ax_raw.set_ylabel("UMAP 2 (paper)")
-    ax_raw.set_title("Paper UMAP (raw, unlabeled)", fontsize=10)
-    leiden = adata.obs["dcta_leiden"].astype(str).to_numpy()
+    ax_raw.set_title("Paper UMAP + Leiden clusters", fontsize=10)
     clusters = sorted(np.unique(leiden), key=lambda x: int(x) if x.isdigit() else x)
     cmap = plt.cm.tab20
     color_for = {c: cmap(i % 20) for i, c in enumerate(clusters)}
@@ -281,12 +297,33 @@ def umap_annotation(adata: ad.AnnData, path: str,
         return
     um = np.asarray(adata.obsm["X_umap"])
 
-    # ---- left: raw paper UMAP, single color ----
-    ax_raw.scatter(um[:, 0], um[:, 1], s=4, color="#777777",
-                   alpha=0.6, linewidths=0)
+    # ---- left: paper UMAP colored by leiden cluster + cluster id label ----
+    if "dcta_leiden" in adata.obs.columns:
+        leiden_raw = adata.obs["dcta_leiden"].astype(str).to_numpy()
+        clusters_raw = sorted(np.unique(leiden_raw),
+                              key=lambda x: int(x) if x.isdigit() else x)
+        cmap_raw = plt.cm.tab20
+        cc_for = {c: cmap_raw(i % 20) for i, c in enumerate(clusters_raw)}
+        for c in clusters_raw:
+            m = leiden_raw == c
+            ax_raw.scatter(um[m, 0], um[m, 1], s=4, color=cc_for[c],
+                           alpha=0.6, linewidths=0)
+        for c in clusters_raw:
+            m = leiden_raw == c
+            if not m.any():
+                continue
+            cx, cy = um[m].mean(axis=0)
+            ax_raw.text(cx, cy, c, fontsize=7, ha="center", va="center",
+                        weight="bold",
+                        bbox=dict(boxstyle="round,pad=0.2",
+                                  facecolor="white", alpha=0.85,
+                                  edgecolor="grey", linewidth=0.5))
+    else:
+        ax_raw.scatter(um[:, 0], um[:, 1], s=4, color="#777777",
+                       alpha=0.6, linewidths=0)
     ax_raw.set_xlabel("UMAP 1 (paper)")
     ax_raw.set_ylabel("UMAP 2 (paper)")
-    ax_raw.set_title("Paper UMAP (raw, unlabeled)", fontsize=10)
+    ax_raw.set_title("Paper UMAP + Leiden clusters", fontsize=10)
 
     # ---- right: colored + labeled ----
     labels = adata.obs[col].astype(object).fillna("NA").to_numpy()

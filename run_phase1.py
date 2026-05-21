@@ -40,11 +40,14 @@ def parse_args(argv=None):
                    help="adata.obs column used to look up seniority")
     p.add_argument("--direction-strategy", default="auto_select",
                    choices=["auto_select", "marker", "dpt"])
-    p.add_argument("--dag-prior-yaml", default="data/priors/dag_prior_bm.yaml",
-                   help="Optional prior hematopoietic DAG. When provided "
-                        "together with --lineage-marker-yaml, edges of G_data "
-                        "are scored for prior consistency and backbone "
-                        "penalizes anti-prior edges. Pass '' to disable.")
+    p.add_argument("--dag-prior-yaml",
+                   default="data/priors/dag_prior_bm.yaml,data/priors/dag_prior_t_maturation.yaml",
+                   help="Optional prior hematopoietic DAG (comma-separated "
+                        "list of yamls; merged as union of nodes/edges). "
+                        "When provided together with --lineage-marker-yaml, "
+                        "edges of G_data are scored for prior consistency "
+                        "and backbone penalizes anti-prior edges. Pass '' "
+                        "to disable.")
     p.add_argument("--prior-inconsistent-penalty", type=float, default=0.5,
                    help="Multiplicative penalty (0..1) applied to edge weight "
                         "during backbone calculation when edge is prior-"
@@ -115,7 +118,13 @@ def main(argv=None):
           f"components: {adata.uns['dcta']['component_count']}", flush=True)
 
     print("[DCTA] dag", flush=True)
-    dag_prior_yaml = args.dag_prior_yaml or None
+    raw = (args.dag_prior_yaml or "").strip()
+    if not raw:
+        dag_prior_yaml = None
+    elif "," in raw:
+        dag_prior_yaml = [p.strip() for p in raw.split(",") if p.strip()]
+    else:
+        dag_prior_yaml = raw
     adata = dcta.dag.build(adata, edge_threshold=args.edge_threshold,
                            transitive_reduction=args.transitive_reduction,
                            direction_strategy=args.direction_strategy,

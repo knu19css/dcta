@@ -270,6 +270,147 @@ T_reg:
   lineage: lymphoid_T
   synthetic: false   # xlsx col T
 
+# =============================================================
+# Phase 2.5 — T cell maturation subtree (pptx slide 3)
+# =============================================================
+
+# Thymic precursors (early intra-thymic stages)
+DN:
+  aliases: ["DN (Double Negative)", "double negative thymocyte"]
+  markers: [CD7, CD2, CD5, NOTCH1, IL7R, RAG1, RAG2, TCF7]
+  stage: premature
+  lineage: lymphoid_T
+  synthetic: true
+
+DP:
+  aliases: ["DP (Double Positive)", "double positive thymocyte"]
+  markers: [CD4, CD8A, CD8B, RAG1, RAG2, TCF7, RORC]
+  stage: premature
+  lineage: lymphoid_T
+  synthetic: true
+
+T_gd:
+  aliases: ["gamma-delta T cell", "gamma delta T"]
+  markers: [TRDC, TRGC1, TRGC2, CD3D, CD3G, CD3E]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: true
+
+NKT_cell:
+  aliases: ["NKT cell", "natural killer T cell"]
+  markers: [CD3D, CD3E, NCAM1, KLRB1, ZBTB16, NCR3]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: true
+
+# Peripheral naive T (mature thymic output)
+Naive_T_cell:
+  aliases: ["naive T", "Naive_T_cell"]
+  markers: [CCR7, LEF1, TCF7, SELL, CD27, CD28, IL7R, CD3D, CD3E]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: true
+
+Naive_CD4_T_cell:
+  aliases: ["Naive_CD4_T_cell", "CD4 Naive"]
+  markers: [CD4, CCR7, LEF1, TCF7, SELL, IL7R, CD3D, CD3E]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: true
+
+Naive_CD8_T_cell:
+  aliases: ["Naive_CD8_T_cell", "CD8 Naive"]
+  markers: [CD8A, CD8B, CCR7, LEF1, TCF7, SELL, IL7R, CD3D, CD3E]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: true
+
+CD4_naive:
+  aliases: ["CD4_naive"]
+  markers: [CD4, CCR7, LEF1, TCF7, SELL, IL7R]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: true
+
+CD8_naive:
+  aliases: ["CD8_naive"]
+  markers: [CD8A, CD8B, CCR7, LEF1, TCF7, SELL, IL7R]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: true
+
+# CD4 helper subsets
+Th1:
+  aliases: ["Th1"]
+  markers: [CD4, TBX21, IFNG, IL12RB2, CXCR3, STAT1]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: true
+
+Th2:
+  aliases: ["Th2"]
+  markers: [CD4, GATA3, IL4, IL5, IL13, CCR4, STAT6]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: true
+
+Th17:
+  aliases: ["Th17"]
+  markers: [CD4, RORC, IL17A, IL17F, IL23R, CCR6, STAT3]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: true
+
+Tfh:
+  aliases: ["Tfh", "T follicular helper"]
+  markers: [CD4, BCL6, CXCR5, ICOS, PDCD1, IL21]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: true
+
+# CD8 memory + effector
+CD8_Treg:
+  aliases: ["CD8_Treg", "CD8 regulatory T"]
+  markers: [CD8A, FOXP3, CTLA4, CD25, IL2RA]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: true
+
+CD4_central_memory:
+  aliases: ["CD4_central_memory", "central memory CD4-positive, alpha-beta T cell", "CD4 Central Memory"]
+  markers: [CD4, CCR7, SELL, IL7R, CD27, CD28]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: true
+
+CD8_central_memory:
+  aliases: ["CD8_central_memory", "central memory CD8-positive, alpha-beta T cell", "CD8 Central Memory"]
+  markers: [CD8A, CD8B, CCR7, SELL, IL7R, CD27, CD28]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: true
+
+CD4_effector_memory:
+  aliases: ["CD4_effector_memory", "effector memory CD4-positive, alpha-beta T cell", "CD4 Effector Memory"]
+  markers: [CD4, CCR5, CXCR3, IFNG, GZMA, CD27]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: true
+
+CD8_effector_memory:
+  aliases: ["CD8_effector_memory", "effector memory CD8-positive, alpha-beta T cell", "CD8 Effector Memory", "CD8 Effector Memory 1", "CD8 Effector Memory 2"]
+  markers: [CD8A, CD8B, CCR5, CXCR3, GZMK, GZMA, EOMES]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: true
+
+CD8_effector:
+  aliases: ["CD8_effector", "CD8 effector"]
+  markers: [CD8A, CD8B, GZMB, GNLY, PRF1, NKG7, EOMES, KLRG1]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: true
+
 Megakaryocyte:
   aliases: ["megakaryocyte"]
   markers: [PF4, PPBP, ITGA2B, GP1BA, VWF, TUBB1, GP9, MEIS1]

@@ -20,20 +20,26 @@ import yaml
 import anndata as ad
 
 
-def load_dag_prior(path: str) -> nx.DiGraph:
-    """Load DAG prior YAML -> nx.DiGraph.
+def load_dag_prior(path: str | list[str]) -> nx.DiGraph:
+    """Load DAG prior YAML(s) -> nx.DiGraph.
+
+    Accepts either a single path or a list of paths. Multiple YAMLs are
+    merged: union of nodes and edges. Useful for stitching the broad BM
+    prior with a maturation-subtree prior (Phase 2.5 T cell tree).
 
     YAML schema (see data/priors/dag_prior_bm.yaml):
       nodes: list[str]
       edges: list[[parent, child]]
     """
-    with open(path) as f:
-        cfg = yaml.safe_load(f)
+    paths = [path] if isinstance(path, str) else list(path)
     G = nx.DiGraph()
-    for n in cfg.get("nodes", []):
-        G.add_node(str(n))
-    for src, dst in cfg.get("edges", []):
-        G.add_edge(str(src), str(dst))
+    for p in paths:
+        with open(p) as f:
+            cfg = yaml.safe_load(f) or {}
+        for n in cfg.get("nodes", []) or []:
+            G.add_node(str(n))
+        for src, dst in cfg.get("edges", []) or []:
+            G.add_edge(str(src), str(dst))
     return G
 
 

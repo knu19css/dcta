@@ -125,6 +125,54 @@ Changed `dcta.dag._longest_path_length` to support `weight_mode="sum_weight"`
 (default flipped to weight-aware). Mean backbone edge weight 0.580 → 0.753;
 max-UMAP-jump 11.46 → 6.04. See commit `c23be9d`.
 
+### Phase 2.5 — T cell maturation subtree (2026-05-21)
+
+New file `data/priors/dag_prior_t_maturation.yaml` — 20 nodes / 19 edges:
+- Thymic precursors (DN, DP, T_gd, NKT_cell) glued onto BM prior at
+  T_cell_progenitor
+- Naive_T_cell -> {Naive_CD4_T_cell, Naive_CD8_T_cell, NKT_cell}
+- pptx slide-3 connector-derived edges:
+  CD4 -> {Th1, Th2, Th17, Tfh, Treg, CD4_naive -> CD4_central_memory
+          -> CD4_effector_memory}
+  CD8 -> {CD8_naive -> CD8_central_memory -> CD8_effector_memory
+          -> CD8_effector, CD8_Treg}
+
+`dcta.prior.load_dag_prior` now accepts list of paths (union of nodes
+and edges) so the two priors merge cleanly. CLI:
+`--dag-prior-yaml data/priors/dag_prior_bm.yaml,data/priors/dag_prior_t_maturation.yaml`
+(default).
+
+15 T-subtree markers added to lineage_mature_markers.yaml (all
+`synthetic: true`):
+  DN/DP/T_gd/NKT_cell
+  Naive_T_cell, Naive_CD4_T_cell, Naive_CD8_T_cell, CD4_naive, CD8_naive
+  Th1/Th2/Th17/Tfh, CD8_Treg, CD4_central_memory, CD8_central_memory,
+  CD4_effector_memory, CD8_effector_memory, CD8_effector
+Aliases pull paper labels (CD4 Memory T / CD8 Naive / etc.) onto
+these new entries.
+
+Zeng2025_BMM 30k re-run (paper_AuthorCellType_Broad clusters):
+  lineage_accuracy: 0.895 -> **0.924** (+2.9pp)
+  strict_accuracy:  0.550 -> 0.518 (slight dip — DCTA now predicts
+    specific T terminals like Naive_T_cell/CD8_effector while paper
+    broad column has aggregate CD4 Memory T/CD8 Memory T; matches at
+    lineage_family level)
+  prior_consistency_rate: 0.606 -> 0.636
+  Direction agreement_rate: 0.742 -> 0.758
+  T-class lineage_rate:
+    CD4_T, Cytotoxic_CD8, CD4/CD8 central_memory, CD4/CD8 effector_memory,
+    T_reg, Naive_T  →  ALL 1.000 (was 0.000 strict / 0.4-0.9 lineage)
+  First time DCTA assigns T-cell terminal labels at all (Naive_T_cell
+  6250, CD8_effector 2776 vs 0 before).
+
+Still-zero classes (Phase 2.6+):
+  CMP / NK (paper Broad NK cluster falls into CD8_effector via Cycling
+  Progenitor; needs sharper NK panel + perhaps add NK_progenitor to
+  G_prior between CLP and NK_cell)
+  Pro_B_cell / CLP / T_reg / Naive_T strict=0 (predicted as related but
+  not exact canonical; could be fixed with more aliases but the
+  underlying call is biologically reasonable)
+
 ### Phase 2.3 — Absorbing Markov chain + cell annotation (2026-05-21)
 
 New modules:
@@ -263,6 +311,7 @@ All 21 synthetic tests + 1 Hay smoke still pass.
 - ~~Lineage-specific mature marker YAMLs~~ ✅ Phase 2.1
 - ~~Prior hematopoietic DAG wiring~~ ✅ Phase 2.2
 - ~~Absorbing Markov chain + cell annotation~~ ✅ Phase 2.3
+- ~~T cell maturation subtree~~ ✅ Phase 2.5
 - Terminal / transient annotation per cell
 - AML/MDS deviation detection
 - Virtual HSC for blood/spleen (`virtual_hsc_ref` strategy hook already in place)

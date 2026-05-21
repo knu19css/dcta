@@ -14,7 +14,7 @@
       "dpt": 0.9210526315789473,
       "marker": 0.9210526315789473
     },
-    "agreement_rate": 0.7424242424242424,
+    "agreement_rate": 0.7575757575757576,
     "n_pairs_compared": 66
   },
   "backbone": {
@@ -112,16 +112,19 @@
     ]
   },
   "prior": {
-    "consistency_rate": 0.6060606060606061,
-    "consistent_count": 40,
+    "consistency_rate": 0.6363636363636364,
+    "consistent_count": 42,
     "scored_count": 66,
     "unlabeled_count": 0,
     "penalty": 0.5,
-    "g_prior_path": "data/priors/dag_prior_bm.yaml"
+    "g_prior_path": [
+      "data/priors/dag_prior_bm.yaml",
+      "data/priors/dag_prior_t_maturation.yaml"
+    ]
   },
   "annotation": {
-    "strict_accuracy": 0.5495282232520922,
-    "lineage_accuracy": 0.8953089054112626,
+    "strict_accuracy": 0.5178208248591338,
+    "lineage_accuracy": 0.9244490381088921,
     "n_evaluable": 29993,
     "n_unmapped_gt_labels": 1,
     "n_unmapped_pred_labels": 0

@@ -1,0 +1,60 @@
+# T-cell maturation subtree (broad-level + thymic).
+# Source: data/DAG_editable.pptx slide 3 "T cell maturation"
+# (user-curated). 20 nodes, 13 connector-derived edges, parsed by
+# DCTA phase-2.5 build step. Extra implicit edges (Pro-T -> DN -> DP ->
+# Naive_T -> {Naive_CD4_T, Naive_CD8_T, T_gd, NKT}) added to glue the
+# subtree to the BM broad prior at T_cell_progenitor (= "Pro-T").
+#
+# Merged with dag_prior_bm.yaml via dcta.prior at load time.
+
+nodes:
+  # Thymic precursors (added so the subtree connects to BM prior)
+  - DN              # double negative thymocyte
+  - DP              # double positive thymocyte
+  - T_gd            # gamma-delta T
+  - NKT_cell
+  # Naive T (peripheral / mature output of thymus)
+  - Naive_T_cell
+  - Naive_CD4_T_cell
+  - Naive_CD8_T_cell
+  - CD4_naive
+  - CD8_naive
+  # CD4 helper subsets
+  - Th1
+  - Th2
+  - Th17
+  - Tfh
+  - Treg
+  # CD8 memory / effector
+  - CD8_Treg
+  - CD4_central_memory
+  - CD8_central_memory
+  - CD4_effector_memory
+  - CD8_effector_memory
+  - CD8_effector
+
+edges:
+  # Connection to BM broad prior (Pro-T = T_cell_progenitor in BM yaml)
+  - [T_cell_progenitor, DN]
+  - [DN, DP]
+  - [DN, T_gd]
+  - [DP, Naive_T_cell]
+  # Naive_T_cell splits into CD4/CD8/NKT lineages (per spec)
+  - [Naive_T_cell, Naive_CD4_T_cell]
+  - [Naive_T_cell, Naive_CD8_T_cell]
+  - [Naive_T_cell, NKT_cell]
+  # ---- pptx slide 3 connector-derived edges ----
+  - [Naive_CD4_T_cell, CD4_naive]
+  - [Naive_CD4_T_cell, Th1]
+  - [Naive_CD4_T_cell, Th2]
+  - [Naive_CD4_T_cell, Th17]
+  - [Naive_CD4_T_cell, Tfh]
+  - [Naive_CD4_T_cell, Treg]
+  - [CD4_naive, CD4_central_memory]
+  - [CD4_central_memory, CD4_effector_memory]
+  - [Naive_CD8_T_cell, CD8_naive]
+  - [CD8_naive, CD8_central_memory]
+  - [CD8_central_memory, CD8_effector_memory]
+  - [CD8_effector_memory, CD8_effector]
+  # Slide-3 missing-but-implied: CD8 also gives rise to CD8_Treg
+  - [CD8_naive, CD8_Treg]

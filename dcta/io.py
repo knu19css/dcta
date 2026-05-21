@@ -29,4 +29,13 @@ def load_h5ad(path: str) -> ad.AnnData:
         adata = ad.read_h5ad(path)
     except Exception as e:  # noqa: BLE001
         raise DCTADataError(f"Failed to read h5ad {path}: {e}") from e
+
+    # CELLxGENE-formatted h5ad uses integer var_names with gene symbols in
+    # var['feature_name']. Promote symbols to var_names so marker lookup works.
+    if "feature_name" in adata.var.columns:
+        looks_integer = all(str(s).isdigit() for s in list(adata.var_names[:5]))
+        if looks_integer:
+            adata.var_names = adata.var["feature_name"].astype(str).values
+            adata.var_names_make_unique()
+
     return adata

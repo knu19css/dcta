@@ -87,8 +87,19 @@ def main(argv=None):
 
     out_h5ad = os.path.join(args.outdir, "dcta_phase1.h5ad")
     out_gml = os.path.join(args.outdir, "G_data.gml")
+    # Pop non-h5ad-serializable items before writing; restore after so
+    # downstream viz still works on adata.
+    G_obj = adata.uns["dcta"].pop("G_data", None)
+    bb_obj = adata.uns["dcta"].pop("backbone_validation", None)
+    dm_obj = adata.uns["dcta"].pop("direction_methods", None)
     print(f"[DCTA] writing {out_h5ad}", flush=True)
     adata.write_h5ad(out_h5ad)
+    if G_obj is not None:
+        adata.uns["dcta"]["G_data"] = G_obj
+    if bb_obj is not None:
+        adata.uns["dcta"]["backbone_validation"] = bb_obj
+    if dm_obj is not None:
+        adata.uns["dcta"]["direction_methods"] = dm_obj
     print(f"[DCTA] writing {out_gml}", flush=True)
     # nx.write_gml requires str-keyed attrs and no None values
     G_clean = nx.DiGraph()

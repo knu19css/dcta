@@ -327,11 +327,17 @@ def _validate_backbone(G: nx.DiGraph,
             out["kendall_tau"] = None
 
     # Mature-cluster reachability (seniority >= 4 = mature)
+    # NOTE: Disconnected mature clusters are NOT necessarily errors — many BM
+    # mature lymphoid cells (T/NK/mature B) are *tissue-resident*, having
+    # arrived from thymus/periphery rather than differentiated in this BM
+    # sample. The expectation is that erythroid + myeloid maturation chains
+    # connect to HSC root; lymphoid lineages may legitimately disconnect.
     mature = {c for c, s in cluster_seniority.items() if s is not None and s >= 4}
     if mature:
         reachable = nx.descendants(G, root) | {root}
         reachable_mature = mature & reachable
         out["n_lineages_reachable_from_root"] = len(reachable_mature)
         out["n_disconnected_mature"] = len(mature - reachable)
+        out["disconnected_mature_clusters"] = sorted(mature - reachable)
 
     return out

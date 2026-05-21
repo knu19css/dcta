@@ -174,6 +174,68 @@ def paga_vs_dag_overlay(adata: ad.AnnData, path: str) -> None:
     _save(fig, path)
 
 
+def umap_paper_with_g_data(adata: ad.AnnData, path: str) -> None:
+    """Plot the dataset's ORIGINAL paper UMAP (adata.obsm['X_umap']) colored
+    by leiden cluster, with G_data backbone overlaid as arrows between
+    cluster centroids.
+
+    If no X_umap exists in adata.obsm, draws a notice-only placeholder.
+    Per feedback_use_original_embedding: prefer published embedding over
+    locally-recomputed UMAP.
+    """
+    fig, ax = plt.subplots(figsize=(8, 7))
+    if "X_umap" not in adata.obsm:
+        ax.text(0.5, 0.5, "No X_umap in adata.obsm\n"
+                          "(original paper embedding not available)",
+                ha="center", va="center", fontsize=12, transform=ax.transAxes)
+        ax.set_axis_off()
+        _save(fig, path)
+        return
+
+    um = np.asarray(adata.obsm["X_umap"])
+    leiden = adata.obs["dcta_leiden"].astype(str).to_numpy()
+    clusters = sorted(np.unique(leiden), key=lambda x: int(x) if x.isdigit() else x)
+    cmap = plt.cm.tab20
+    color_for = {c: cmap(i % 20) for i, c in enumerate(clusters)}
+    for c in clusters:
+        m = (leiden == c)
+        ax.scatter(um[m, 0], um[m, 1], s=4, color=color_for[c],
+                   label=c, alpha=0.6, linewidths=0)
+    # Centroids in UMAP
+    centroids = {c: um[(leiden == c)].mean(axis=0) for c in clusters}
+    G: nx.DiGraph = adata.uns["dcta"]["G_data"]
+    for u, v in G.edges:
+        if u not in centroids or v not in centroids:
+            continue
+        x0, y0 = centroids[u]
+        x1, y1 = centroids[v]
+        ax.annotate("", xy=(x1, y1), xytext=(x0, y0),
+                    arrowprops=dict(arrowstyle="->", color="black",
+                                    lw=1.2, alpha=0.7))
+    # Backbone in navy
+    bb = adata.uns["dcta"].get("backbone_validation", {})
+    bb_path = bb.get("backbone_path", []) if bb else []
+    if len(bb_path) >= 2:
+        for u, v in zip(bb_path[:-1], bb_path[1:]):
+            if u not in centroids or v not in centroids:
+                continue
+            x0, y0 = centroids[u]
+            x1, y1 = centroids[v]
+            ax.annotate("", xy=(x1, y1), xytext=(x0, y0),
+                        arrowprops=dict(arrowstyle="->", color="navy",
+                                        lw=3.0, alpha=0.85))
+    # Cluster id labels
+    for c, (cx, cy) in centroids.items():
+        ax.text(cx, cy, c, fontsize=8, ha="center", va="center",
+                bbox=dict(boxstyle="round,pad=0.2", facecolor="white",
+                          alpha=0.7, edgecolor="grey"))
+    ax.set_xlabel("UMAP 1 (paper embedding)")
+    ax.set_ylabel("UMAP 2 (paper embedding)")
+    ax.set_title("Original paper UMAP with G_data overlay\n"
+                 "(black=edges, navy=backbone)", fontsize=10)
+    _save(fig, path)
+
+
 def export_all(adata: ad.AnnData, outdir: str) -> None:
     os.makedirs(outdir, exist_ok=True)
     diffmap_eigvals(adata, os.path.join(outdir, "diffmap_eigvals.png"))
@@ -182,3 +244,4 @@ def export_all(adata: ad.AnnData, outdir: str) -> None:
     dpt_root_std_hist(adata, os.path.join(outdir, "dpt_root_std_hist.png"))
     g_data_diagram(adata, os.path.join(outdir, "G_data_diagram.png"))
     paga_vs_dag_overlay(adata, os.path.join(outdir, "paga_vs_dag_overlay.png"))
+    umap_paper_with_g_data(adata, os.path.join(outdir, "umap_paper_with_g_data.png"))

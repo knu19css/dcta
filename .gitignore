@@ -3,7 +3,6 @@ __pycache__/
 .pytest_cache/
 .DS_Store
 results/phase1_hay/*.h5ad
-results/phase1_hay/*.png
-results/phase1_hay/*.gml
+# keep .png and .gml in git as Phase 1 deliverables
 *.egg-info/
 .ipynb_checkpoints/

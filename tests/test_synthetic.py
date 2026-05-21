@@ -262,6 +262,7 @@ def test_viz_export_all_writes_pngs(synthetic_adata, tmp_path):
         "dpt_root_std_hist.png",
         "G_data_diagram.png",
         "paga_vs_dag_overlay.png",
+        "umap_paper_with_g_data.png",  # original paper UMAP overlay
     ]
     for name in expected:
         assert (tmp_path / name).exists()

@@ -295,6 +295,49 @@ def test_dag_build_with_prior_attaches_consistency(synthetic_adata):
     assert "prior_labels" in uns["backbone_validation"]
 
 
+def test_markov_annotate_clusters_attaches_obs(synthetic_adata):
+    a = _prepped(synthetic_adata)
+    a = dcta.pseudotime.run(a, hsc_marker_yaml=HSC_YAML,
+                            lineage_marker_yaml=LINEAGE_YAML)
+    a = dcta.dag.build(a, edge_threshold=0.01, seniority_yaml=SENIORITY_YAML,
+                       label_column="true_lineage",
+                       dag_prior_yaml=DAG_PRIOR_YAML,
+                       lineage_marker_yaml=LINEAGE_YAML)
+    out = dcta.markov.annotate_clusters(a)
+    for col in ("dcta_annotation", "dcta_annotation_confidence",
+                "dcta_progenitor_state"):
+        assert col in out.obs.columns
+    # confidence in [0,1] or NaN
+    conf = out.obs["dcta_annotation_confidence"].to_numpy()
+    valid = np.isfinite(conf)
+    if valid.any():
+        assert (conf[valid] >= 0.0 - 1e-9).all()
+        assert (conf[valid] <= 1.0 + 1e-9).all()
+    # absorption_matrix present and well-formed
+    am = out.uns["dcta"]["absorption_matrix"]
+    assert "B" in am and "transient_nodes" in am and "absorbing_nodes" in am
+    B = np.asarray(am["B"])
+    assert B.shape == (len(am["transient_nodes"]), len(am["absorbing_nodes"]))
+
+
+def test_annotation_eval_runs_on_synthetic(synthetic_adata):
+    a = _prepped(synthetic_adata)
+    a = dcta.pseudotime.run(a, hsc_marker_yaml=HSC_YAML,
+                            lineage_marker_yaml=LINEAGE_YAML)
+    a = dcta.dag.build(a, edge_threshold=0.01, seniority_yaml=SENIORITY_YAML,
+                       label_column="true_lineage",
+                       dag_prior_yaml=DAG_PRIOR_YAML,
+                       lineage_marker_yaml=LINEAGE_YAML)
+    a = dcta.markov.annotate_clusters(a)
+    out = dcta.annotation_eval.evaluate_annotation(
+        a, gt_column="true_lineage", pred_column="dcta_annotation",
+        lineage_marker_yaml=LINEAGE_YAML,
+    )
+    assert "strict_accuracy" in out
+    assert "lineage_accuracy" in out
+    assert 0 <= out["n_evaluable"] <= a.n_obs
+
+
 def test_viz_export_all_writes_pngs(synthetic_adata, tmp_path):
     a = _prepped(synthetic_adata)
     a = dcta.pseudotime.run(a, hsc_marker_yaml=HSC_YAML)

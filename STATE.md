@@ -125,6 +125,59 @@ Changed `dcta.dag._longest_path_length` to support `weight_mode="sum_weight"`
 (default flipped to weight-aware). Mean backbone edge weight 0.580 → 0.753;
 max-UMAP-jump 11.46 → 6.04. See commit `c23be9d`.
 
+### Phase 2.3 — Absorbing Markov chain + cell annotation (2026-05-21)
+
+New modules:
+- `dcta/markov.py` — `absorption_probabilities()` and `annotate_clusters()`.
+  Builds N×N transition matrix on G_prior nodes from PAGA connectivity
+  aggregated through cluster_prior_label; transient nodes with no observed
+  outflow get uniform fallback over reachable absorbing states (escapes
+  near-singular fundamental matrix). Computes B = (I-Q)⁻¹R.
+- `dcta/annotation_eval.py` — strict + lineage-family accuracy vs GT,
+  per-class breakdown, top confusion list.
+
+Annotation semantics (CLAUDE.md sec 45-46):
+- `dcta_annotation` = prior label itself (HSC, MPP, CMP, Monocyte, ...).
+  Progenitors keep their progenitor identity, mature keep their terminal.
+- `dcta_terminal_prediction` = absorbing argmax for transient clusters
+  (= "what mature lineage would this progenitor become").
+- `dcta_annotation_confidence` = max absorption prob (transient) or 1.0
+  (absorbing) or NaN (unmapped).
+- `dcta_progenitor_state` = same as annotation if transient, else None.
+
+CLI / pipeline:
+- run_phase1.py runs `dcta.markov.annotate_clusters` after `dag.build`,
+  then `dcta.annotation_eval.evaluate_annotation` vs args.label_column
+  (default `cell_type`). Both stored under `uns['dcta']`; summary.json
+  gets `annotation` block.
+- viz adds `umap_annotation.png` and `umap_annotation_confidence.png`
+  (paper UMAP colored by predicted label / by confidence).
+
+Zeng2025_BMM 30k result (after semantics fix + alias expansion):
+  strict_accuracy:  **0.439**
+  lineage_accuracy: **0.784**
+  n_evaluable:      29993
+  Per-class strict highlights:
+    NK_cell 0.999, B_cell 0.996, Plasma_cell 0.996, Erythroblast 0.920,
+    cDC2 0.888, Monocyte 0.835, MPP 0.693, MEP 0.650, Pre_B 0.643,
+    pDC 0.454, HSC 0.412, GMP 0.391
+  Known under-performance (Phase 2.4+ work):
+    CD4_T / Cytotoxic_CD8 strict 0.000 → both fall back to
+    T_cell_progenitor / NK_cell because G_prior has no mature T-cell
+    terminal nodes. Add T-cell maturation subtree (pptx slide 3) in
+    Phase 2.5.
+    Promonocyte strict 0.000 → falls into Monocyte/Macrophage; needs
+    sharper Promonocyte markers.
+
+7 GT cell type aliases added to lineage_mature_markers.yaml:
+  hematopoietic oligopotent progenitor cell → MPP
+  erythroid progenitor cell + megakaryocyte progenitor cell → MEP
+  immature B cell → Pre_B_cell
+  pre-conventional dendritic cell → cDC2
+  naive thymus-derived CD8-positive, alpha-beta T cell → Cytotoxic_CD8
+
+26/26 synthetic tests + 1 Hay smoke pass.
+
 ### Phase 2.2 — G_prior wiring (2026-05-21)
 
 New module `dcta/prior.py`:
@@ -209,7 +262,7 @@ All 21 synthetic tests + 1 Hay smoke still pass.
 
 - ~~Lineage-specific mature marker YAMLs~~ ✅ Phase 2.1
 - ~~Prior hematopoietic DAG wiring~~ ✅ Phase 2.2
-- Absorbing Markov chain on G_prior with PAGA-informed transitions
+- ~~Absorbing Markov chain + cell annotation~~ ✅ Phase 2.3
 - Terminal / transient annotation per cell
 - AML/MDS deviation detection
 - Virtual HSC for blood/spleen (`virtual_hsc_ref` strategy hook already in place)

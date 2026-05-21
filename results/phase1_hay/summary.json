@@ -171,5 +171,12 @@
     "unlabeled_count": 0,
     "penalty": 0.5,
     "g_prior_path": "data/priors/dag_prior_bm.yaml"
+  },
+  "annotation": {
+    "strict_accuracy": 0.4386690227719801,
+    "lineage_accuracy": 0.7844497049311506,
+    "n_evaluable": 29993,
+    "n_unmapped_gt_labels": 1,
+    "n_unmapped_pred_labels": 0
   }
 }

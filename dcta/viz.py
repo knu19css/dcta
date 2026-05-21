@@ -251,6 +251,53 @@ def umap_paper_with_g_data(adata: ad.AnnData, path: str) -> None:
     _save(fig, path)
 
 
+def umap_annotation(adata: ad.AnnData, path: str,
+                    col: str = "dcta_annotation") -> None:
+    """Paper UMAP colored by annotation label (or placeholder if missing)."""
+    fig, ax = plt.subplots(figsize=(8, 7))
+    if "X_umap" not in adata.obsm or col not in adata.obs.columns:
+        ax.text(0.5, 0.5, f"missing {col!r} or X_umap",
+                ha="center", va="center", transform=ax.transAxes)
+        ax.set_axis_off()
+        _save(fig, path)
+        return
+    um = np.asarray(adata.obsm["X_umap"])
+    labels = adata.obs[col].astype(object).fillna("NA").to_numpy()
+    uniq = sorted(set(labels))
+    cmap = plt.cm.tab20
+    color_for = {l: ("#cccccc" if l == "NA" else cmap(i % 20))
+                 for i, l in enumerate(uniq)}
+    for l in uniq:
+        m = labels == l
+        ax.scatter(um[m, 0], um[m, 1], s=4, color=color_for[l],
+                   label=l, alpha=0.7, linewidths=0)
+    ax.legend(markerscale=2, fontsize=6, loc="best", ncol=2,
+              frameon=False, labelspacing=0.2)
+    ax.set_xlabel("UMAP 1 (paper)")
+    ax.set_ylabel("UMAP 2 (paper)")
+    ax.set_title(f"Paper UMAP colored by {col}", fontsize=10)
+    _save(fig, path)
+
+
+def umap_annotation_confidence(adata: ad.AnnData, path: str) -> None:
+    fig, ax = plt.subplots(figsize=(8, 7))
+    if "X_umap" not in adata.obsm or "dcta_annotation_confidence" not in adata.obs.columns:
+        ax.text(0.5, 0.5, "missing X_umap or dcta_annotation_confidence",
+                ha="center", va="center", transform=ax.transAxes)
+        ax.set_axis_off()
+        _save(fig, path)
+        return
+    um = np.asarray(adata.obsm["X_umap"])
+    conf = np.asarray(adata.obs["dcta_annotation_confidence"], dtype=float)
+    sc = ax.scatter(um[:, 0], um[:, 1], s=4, c=conf, cmap="viridis",
+                    vmin=0.0, vmax=1.0, alpha=0.7, linewidths=0)
+    fig.colorbar(sc, ax=ax, label="absorption confidence")
+    ax.set_xlabel("UMAP 1 (paper)")
+    ax.set_ylabel("UMAP 2 (paper)")
+    ax.set_title("Paper UMAP colored by annotation confidence", fontsize=10)
+    _save(fig, path)
+
+
 def export_all(adata: ad.AnnData, outdir: str) -> None:
     os.makedirs(outdir, exist_ok=True)
     diffmap_eigvals(adata, os.path.join(outdir, "diffmap_eigvals.png"))
@@ -260,3 +307,7 @@ def export_all(adata: ad.AnnData, outdir: str) -> None:
     g_data_diagram(adata, os.path.join(outdir, "G_data_diagram.png"))
     paga_vs_dag_overlay(adata, os.path.join(outdir, "paga_vs_dag_overlay.png"))
     umap_paper_with_g_data(adata, os.path.join(outdir, "umap_paper_with_g_data.png"))
+    if "dcta_annotation" in adata.obs.columns:
+        umap_annotation(adata, os.path.join(outdir, "umap_annotation.png"))
+        umap_annotation_confidence(
+            adata, os.path.join(outdir, "umap_annotation_confidence.png"))

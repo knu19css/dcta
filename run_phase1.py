@@ -115,6 +115,26 @@ def main(argv=None):
           f"{len(adata.uns['dcta']['cycle_removal_log'])} edges removed, "
           f"direction chosen={chosen}, accuracy={acc}", flush=True)
 
+    # Phase 2.3: cluster-level annotation via absorbing chain on G_prior
+    if dag_prior_yaml is not None:
+        print("[DCTA] annotation (absorbing markov on G_prior)", flush=True)
+        adata = dcta.markov.annotate_clusters(adata, dag_prior_yaml=dag_prior_yaml)
+        annot_counts = adata.obs["dcta_annotation"].astype(object).value_counts(dropna=False)
+        print(f"[DCTA] annotation distribution: "
+              f"{dict(annot_counts.head(10))} ...", flush=True)
+
+        if args.label_column and args.label_column in adata.obs.columns:
+            eval_out = dcta.annotation_eval.evaluate_annotation(
+                adata, gt_column=args.label_column,
+                pred_column="dcta_annotation",
+                lineage_marker_yaml=lineage_yaml,
+            )
+            print(f"[DCTA] annotation eval: "
+                  f"strict_acc={eval_out['strict_accuracy']:.3f} "
+                  f"lineage_acc={eval_out['lineage_accuracy']:.3f} "
+                  f"(n_evaluable={eval_out['n_evaluable']})", flush=True)
+            adata.uns["dcta"]["annotation_eval"] = eval_out
+
     out_h5ad = os.path.join(args.outdir, "dcta_phase1.h5ad")
     out_gml = os.path.join(args.outdir, "G_data.gml")
     # Pop non-h5ad-serializable items before writing; restore after so
@@ -127,6 +147,10 @@ def main(argv=None):
     cbl_obj = adata.uns["dcta"].pop("cluster_best_lineage", None)
     pc_obj = adata.uns["dcta"].pop("prior_consistency", None)
     cpa_obj = adata.uns["dcta"].pop("cluster_prior_alternatives", None)
+    am_obj = adata.uns["dcta"].pop("absorption_matrix", None)
+    ae_obj_full = adata.uns["dcta"].pop("annotation_eval", None)
+    ae_obj = ae_obj_full  # alias for summary
+    # absorption_matrix has nested lists+strs, JSON-safe but huge; keep popped
     print(f"[DCTA] writing {out_h5ad}", flush=True)
     adata.write_h5ad(out_h5ad)
     if G_obj is not None:
@@ -145,6 +169,10 @@ def main(argv=None):
         adata.uns["dcta"]["prior_consistency"] = pc_obj
     if cpa_obj is not None:
         adata.uns["dcta"]["cluster_prior_alternatives"] = cpa_obj
+    if am_obj is not None:
+        adata.uns["dcta"]["absorption_matrix"] = am_obj
+    if ae_obj is not None:
+        adata.uns["dcta"]["annotation_eval"] = ae_obj
     print(f"[DCTA] writing {out_gml}", flush=True)
     # nx.write_gml requires str-keyed attrs and no None values
     G_clean = nx.DiGraph()
@@ -186,6 +214,13 @@ def main(argv=None):
                 "unlabeled_count", "penalty", "g_prior_path",
             )
         } if pc else None,
+        "annotation": ({
+            "strict_accuracy": ae_obj["strict_accuracy"],
+            "lineage_accuracy": ae_obj["lineage_accuracy"],
+            "n_evaluable": ae_obj["n_evaluable"],
+            "n_unmapped_gt_labels": len(ae_obj.get("unmapped_gt_labels", [])),
+            "n_unmapped_pred_labels": len(ae_obj.get("unmapped_pred_labels", [])),
+        } if ae_obj else None),
     }
     # backbone_seniority contains tuples — JSON-serialize as list of [c, s]
     bb_full = adata.uns["dcta"].get("backbone_validation", {})

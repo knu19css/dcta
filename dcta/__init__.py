@@ -20,4 +20,4 @@ class DCTAGraphError(DCTAError):
 
 
 # Submodule re-exports (added in T2-T5; pseudotime/dag/viz added in T6+)
-from dcta import io, preprocessing, diffusion, connectivity, pseudotime, dag, viz, prior  # noqa: E402,F401
+from dcta import io, preprocessing, diffusion, connectivity, pseudotime, dag, viz, prior, markov, annotation_eval  # noqa: E402,F401

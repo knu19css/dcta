@@ -31,7 +31,7 @@ HSC:
 # Stage 1 — Multipotent progenitor (GAP — literature defaults)
 # =============================================================
 MPP:
-  aliases: ["hematopoietic multipotent progenitor cell", "Multipotent_progenitor"]
+  aliases: ["hematopoietic multipotent progenitor cell", "Multipotent_progenitor", "hematopoietic oligopotent progenitor cell"]
   markers: [CD34, THY1, FLT3, CDK6, HLF, MEIS1]
   stage: progenitor
   lineage: stem
@@ -69,7 +69,7 @@ GMP:
   synthetic: true
 
 MEP:
-  aliases: ["megakaryocyte-erythroid progenitor cell", "Megakaryocyte_erythroid_progenitor"]
+  aliases: ["megakaryocyte-erythroid progenitor cell", "Megakaryocyte_erythroid_progenitor", "erythroid progenitor cell", "megakaryocyte progenitor cell"]
   markers: [CD34, ITGA2B, GATA1, KLF1, GATA2]
   stage: progenitor
   lineage: erythroid
@@ -107,7 +107,7 @@ Pro_B_cell:
   synthetic: true   # invented; xlsx has only immature B / B cell
 
 Pre_B_cell:
-  aliases: ["large pre-B-II cell", "small pre-B-II cell", "Pre-B", "immature B cells"]
+  aliases: ["large pre-B-II cell", "small pre-B-II cell", "Pre-B", "immature B cells", "immature B cell"]
   markers: [VPREB1, VPREB2, IGLL1, CD19, CD20, PAX5, RAG1]
   stage: premature
   lineage: lymphoid_B
@@ -208,7 +208,7 @@ cDC1:
   synthetic: true
 
 cDC2:
-  aliases: ["conventional dendritic cell 2", "conventional dendritic cell"]
+  aliases: ["conventional dendritic cell 2", "conventional dendritic cell", "pre-conventional dendritic cell"]
   markers: [CLEC10A, IRF4, CD1C, SIRPA, FCER1A]
   stage: mature
   lineage: dendritic
@@ -257,7 +257,7 @@ CD4_T:
   synthetic: false   # xlsx col R
 
 Cytotoxic_CD8:
-  aliases: ["Cytotoxic CD8", "CD8-positive, alpha-beta memory T cell", "effector memory CD8-positive, alpha-beta T cell", "central memory CD8-positive, alpha-beta T cell"]
+  aliases: ["Cytotoxic CD8", "CD8-positive, alpha-beta memory T cell", "effector memory CD8-positive, alpha-beta T cell", "central memory CD8-positive, alpha-beta T cell", "naive thymus-derived CD8-positive, alpha-beta T cell"]
   markers: [CD3D, CD3G, CD3E, CD8A, GZMK, GZMB, GZMA, CD27, CD28, PRF1, EOMES, PLZF]
   stage: mature
   lineage: lymphoid_T

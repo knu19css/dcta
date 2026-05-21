@@ -40,6 +40,10 @@ def parse_args(argv=None):
                    help="adata.obs column used to look up seniority")
     p.add_argument("--direction-strategy", default="auto_select",
                    choices=["auto_select", "marker", "dpt"])
+    p.add_argument("--lineage-marker-yaml", default="data/priors/lineage_mature_markers.yaml",
+                   help="Optional cell-type marker panel YAML; when provided, "
+                        "marker direction uses (mature_panel - hsc_score) instead "
+                        "of plain HSC immaturity. Pass '' to disable.")
     p.add_argument("--paper-embedding-h5ad", default=None,
                    help="Optional source h5ad (e.g. cellxgene download) "
                         "to graft paper-original X_umap/X_pca onto adata.obsm. "
@@ -78,7 +82,9 @@ def main(argv=None):
     print(f"[DCTA] leiden clusters: {n_clust}", flush=True)
 
     print("[DCTA] pseudotime", flush=True)
+    lineage_yaml = args.lineage_marker_yaml or None
     adata = dcta.pseudotime.run(adata, hsc_marker_yaml=args.hsc_yaml,
+                                lineage_marker_yaml=lineage_yaml,
                                 robustness_k=args.robustness_k)
     print(f"[DCTA] root cluster: {adata.uns['dcta']['root_cluster']}, "
           f"components: {adata.uns['dcta']['component_count']}", flush=True)
@@ -104,6 +110,8 @@ def main(argv=None):
     bb_obj = adata.uns["dcta"].pop("backbone_validation", None)
     dm_obj = adata.uns["dcta"].pop("direction_methods", None)
     pe_obj = adata.uns["dcta"].pop("paper_embedding_source", None)
+    cls_obj = adata.uns["dcta"].pop("cluster_lineage_scores", None)
+    cbl_obj = adata.uns["dcta"].pop("cluster_best_lineage", None)
     print(f"[DCTA] writing {out_h5ad}", flush=True)
     adata.write_h5ad(out_h5ad)
     if G_obj is not None:
@@ -114,6 +122,10 @@ def main(argv=None):
         adata.uns["dcta"]["direction_methods"] = dm_obj
     if pe_obj is not None:
         adata.uns["dcta"]["paper_embedding_source"] = pe_obj
+    if cls_obj is not None:
+        adata.uns["dcta"]["cluster_lineage_scores"] = cls_obj
+    if cbl_obj is not None:
+        adata.uns["dcta"]["cluster_best_lineage"] = cbl_obj
     print(f"[DCTA] writing {out_gml}", flush=True)
     # nx.write_gml requires str-keyed attrs and no None values
     G_clean = nx.DiGraph()

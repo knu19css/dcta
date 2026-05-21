@@ -137,6 +137,20 @@ def build(
     cluster_mean_dpt = {c: float(np.nanmean(dpt[leiden == c])) for c in labels}
     cluster_hsc_score = dict(a.uns["dcta"]["cluster_hsc_score"])
 
+    # Phase 2.1: when lineage marker YAML was loaded by pseudotime, prefer
+    # cluster_maturation_score (mature_panel_max - hsc_score) over plain
+    # cluster_hsc_score. High maturation = mature = TARGET; low = source.
+    # Equivalently, "immaturity" = -maturation; we feed this into the
+    # marker-direction helper so it stays drop-in compatible.
+    cluster_maturation = dict(a.uns["dcta"].get("cluster_maturation_score", {}))
+    if cluster_maturation:
+        # immaturity = - maturation_score  (high immaturity = source)
+        cluster_immaturity = {c: -v for c, v in cluster_maturation.items()}
+        marker_score_used = "maturation_score"
+    else:
+        cluster_immaturity = cluster_hsc_score
+        marker_score_used = "hsc_score"
+
     # Compute both direction methods per candidate edge
     candidate_pairs: list[tuple[str, str, float]] = []
     n = len(labels)
@@ -151,7 +165,7 @@ def build(
     marker_dirs: dict[tuple[str, str], tuple[str, str]] = {}
     for ci, cj, _w in candidate_pairs:
         d = _direction_dpt(cluster_mean_dpt, ci, cj)
-        m = _direction_marker(cluster_hsc_score, ci, cj)
+        m = _direction_marker(cluster_immaturity, ci, cj)
         if d is not None:
             dpt_dirs[(ci, cj)] = d
         if m is not None:
@@ -217,6 +231,7 @@ def build(
         "agreement_rate": agreement_rate,
         "accuracy": accuracy,
         "n_pairs_compared": len(pairs_in_both),
+        "marker_score_used": marker_score_used,
     }
     uns["direction_method_chosen"] = chosen
     uns["biological_seniority_map"] = cluster_seniority

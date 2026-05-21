@@ -63,12 +63,34 @@ def _dpt_from_iroot(adata: ad.AnnData, iroot: int) -> np.ndarray:
     return a.obs["dpt_pseudotime"].to_numpy().copy()
 
 
+def _load_lineage_markers(path: str | None) -> dict:
+    """Load lineage_mature_markers.yaml -> {cell_type: {markers, stage, lineage, ...}}."""
+    if path is None:
+        return {}
+    with open(path) as f:
+        cfg = yaml.safe_load(f)
+    return dict(cfg or {})
+
+
+def _score_panel(adata: ad.AnnData, panel: list[str]) -> np.ndarray:
+    """Per-cell mean expression of a marker panel; 0.0 if none present."""
+    present = [g for g in panel if g in adata.var_names]
+    if not present:
+        return np.zeros(adata.n_obs, dtype=float)
+    idx = [adata.var_names.get_loc(g) for g in present]
+    X = adata.X[:, idx]
+    if hasattr(X, "toarray"):
+        X = X.toarray()
+    return np.asarray(X).mean(axis=1)
+
+
 def run(
     adata: ad.AnnData,
     *,
     copy: bool = False,
     root_strategy: str = "hsc_marker_medoid",
     hsc_marker_yaml: str | None = None,
+    lineage_marker_yaml: str | None = None,
     robustness_k: int = D.ROBUSTNESS_K,
     ref_adata: ad.AnnData | None = None,
 ) -> ad.AnnData:
@@ -147,6 +169,62 @@ def run(
     uns["component_count"] = int(n_comp)
     uns["dpt_root_std"] = dpt_root_std
     uns["cluster_hsc_score"] = cluster_hsc_score
-    # Phase 1: maturation = inverse of HSC score (no mature-marker YAML yet)
-    uns["cluster_maturation_score"] = {c: -v for c, v in cluster_hsc_score.items()}
+
+    # Phase 2.1: lineage-specific maturation score.
+    # If lineage_marker_yaml is provided, for each cluster compute:
+    #   - per-cell-type score = mean(panel) per cell, mean over cluster
+    #   - cluster_lineage_scores: {cluster: {cell_type: score}}
+    #   - cluster_mature_score = max over `mature`/`terminal`-stage cell types
+    #     (i.e., "how mature this cluster looks regardless of which lineage")
+    #   - cluster_best_lineage = the mature cell type with highest score
+    #   - cluster_maturation_score = mature_score - hsc_score
+    # If no YAML provided, fall back to Phase 1 behavior (- hsc_score).
+    if lineage_marker_yaml is not None:
+        types = _load_lineage_markers(lineage_marker_yaml)
+        # Pre-compute per-cell score for every cell type with a non-empty panel
+        type_cell_scores: dict[str, np.ndarray] = {}
+        for tname, tdata in types.items():
+            panel = list(tdata.get("markers") or [])
+            if not panel:
+                continue
+            type_cell_scores[tname] = _score_panel(a, panel)
+
+        # Aggregate to cluster level
+        cluster_lineage_scores: dict[str, dict[str, float]] = {}
+        cluster_mature_score: dict[str, float] = {}
+        cluster_best_lineage: dict[str, str | None] = {}
+        cluster_maturation: dict[str, float] = {}
+        mature_types = [
+            t for t, td in types.items()
+            if td.get("stage") in ("mature", "terminal")
+        ]
+        for c in np.unique(leiden):
+            mask = leiden == c
+            per_type = {
+                t: float(s[mask].mean()) for t, s in type_cell_scores.items()
+            }
+            cluster_lineage_scores[c] = per_type
+            mature_only = {t: per_type[t] for t in mature_types if t in per_type}
+            if mature_only:
+                best = max(mature_only, key=mature_only.get)
+                cluster_best_lineage[c] = best
+                cluster_mature_score[c] = mature_only[best]
+            else:
+                cluster_best_lineage[c] = None
+                cluster_mature_score[c] = 0.0
+            cluster_maturation[c] = (
+                cluster_mature_score[c] - cluster_hsc_score.get(c, 0.0)
+            )
+
+        uns["cluster_lineage_scores"] = cluster_lineage_scores
+        uns["cluster_mature_score"] = cluster_mature_score
+        uns["cluster_best_lineage"] = cluster_best_lineage
+        uns["cluster_maturation_score"] = cluster_maturation
+        uns["lineage_marker_yaml"] = lineage_marker_yaml
+    else:
+        # Phase 1 fallback
+        uns["cluster_maturation_score"] = {
+            c: -v for c, v in cluster_hsc_score.items()
+        }
+        uns["lineage_marker_yaml"] = None
     return a

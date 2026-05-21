@@ -1,0 +1,312 @@
+# Phase 2.1 lineage-specific marker panel for DCTA dag.build marker-direction.
+#
+# SOURCES:
+#   - sheet `final_unique_gene` of data/priors/final_unique_gene.xlsx
+#     (user-curated, 2026-05-21). 23 cell types with explicit markers.
+#   - Sheet1 of same xlsx has stem/MEP/megakaryocyte columns but mostly
+#     empty cells; we treat those as gaps below.
+#   - Gap markers: literature-grounded defaults invented by DCTA because
+#     the user file did not list them. Each is flagged `synthetic: true`.
+#     Replace with curated set when the user provides one.
+#
+# SCHEMA per cell type:
+#   <CanonicalName>:
+#     aliases: list[str]            # alternate labels (CXG, ontology, fixture)
+#     markers: list[str]            # positive marker gene symbols
+#     stage: stem|progenitor|premature|mature|terminal
+#     lineage: stem|myeloid|erythroid|megakaryocyte|lymphoid_B|lymphoid_T|lymphoid_NK|dendritic
+#     synthetic: bool               # true => invented in this file, not from xlsx
+
+# =============================================================
+# Stage 0 — Stem
+# =============================================================
+HSC:
+  aliases: ["hematopoietic stem cell", "Hematopoietic_stem_cell", "Stem"]
+  markers: [HLF, GATA3, NOTCH1, NOTCH2, MEIS1, MLLT3, CD33, CD44, PTPRS, CD34, CRHBP, AVP, HOPX, HEMGN, PROM1]
+  stage: stem
+  lineage: stem
+  synthetic: false   # from xlsx Sheet1 col A + hsc_markers.yaml
+
+# =============================================================
+# Stage 1 — Multipotent progenitor (GAP — literature defaults)
+# =============================================================
+MPP:
+  aliases: ["hematopoietic multipotent progenitor cell", "Multipotent_progenitor"]
+  markers: [CD34, THY1, FLT3, CDK6, HLF, MEIS1]
+  stage: progenitor
+  lineage: stem
+  synthetic: true
+
+LMPP:
+  aliases: ["lympho-myeloid primed progenitor"]
+  markers: [CD34, FLT3, CDK6, SATB1]
+  stage: progenitor
+  lineage: stem
+  synthetic: true
+
+# =============================================================
+# Stage 2 — Lineage-committed progenitors (mostly GAP)
+# =============================================================
+CMP:
+  aliases: ["common myeloid progenitor", "Common_myeloid_progenitor"]
+  markers: [CD34, IL3RA, FLT3, GATA2, MPO]
+  stage: progenitor
+  lineage: myeloid
+  synthetic: true
+
+CLP:
+  aliases: ["common lymphoid progenitor", "Common_lymphoid_progenitor"]
+  markers: [CD34, MME, IL7R, IKZF1, RAG1]
+  stage: progenitor
+  lineage: lymphoid_B
+  synthetic: true
+
+GMP:
+  aliases: ["granulocyte monocyte progenitor cell", "Granulocyte_monocyte_progenitor"]
+  markers: [CD34, IL3RA, CEBPA, MPO, ELANE]
+  stage: progenitor
+  lineage: myeloid
+  synthetic: true
+
+MEP:
+  aliases: ["megakaryocyte-erythroid progenitor cell", "Megakaryocyte_erythroid_progenitor"]
+  markers: [CD34, ITGA2B, GATA1, KLF1, GATA2]
+  stage: progenitor
+  lineage: erythroid
+  synthetic: true
+
+MDP:
+  aliases: ["monocyte-dendritic cell progenitor"]
+  markers: [CD34, FLT3, CSF1R, IRF8]
+  stage: progenitor
+  lineage: dendritic
+  synthetic: true
+
+BMCP:
+  aliases: ["basophil mast progenitor cell", "basophil mast cell progenitor"]
+  markers: [KIT, GATA2, RUNX1, IL3RA]
+  stage: progenitor
+  lineage: myeloid
+  synthetic: true
+
+CDP:
+  aliases: ["common dendritic progenitor"]
+  markers: [FLT3, IRF8, CSF1R, ZBTB46]
+  stage: progenitor
+  lineage: dendritic
+  synthetic: true
+
+# =============================================================
+# Stage 3 — Pre-mature / committed precursors
+# =============================================================
+Pro_B_cell:
+  aliases: ["pro-B cell", "late pro-B cell", "Pro-B"]
+  markers: [RAG1, RAG2, IL7R, CD19, EBF1, PAX5, CD79A]
+  stage: premature
+  lineage: lymphoid_B
+  synthetic: true   # invented; xlsx has only immature B / B cell
+
+Pre_B_cell:
+  aliases: ["large pre-B-II cell", "small pre-B-II cell", "Pre-B", "immature B cells"]
+  markers: [VPREB1, VPREB2, IGLL1, CD19, CD20, PAX5, RAG1]
+  stage: premature
+  lineage: lymphoid_B
+  synthetic: false   # from xlsx col J (immature B cells)
+
+T_cell_progenitor:
+  aliases: ["T_cell progenitor", "Pro-T", "early thymic progenitor", "Thymocytes"]
+  markers: [NOTCH1, CD7, CD2, TCF7, CD99, TSHR, TOX, BCL6, EZR, AIRE]
+  stage: premature
+  lineage: lymphoid_T
+  synthetic: false   # from xlsx col W (Thymocytes)
+
+Erythroblast:
+  aliases: ["basophilic erythroblast", "polychromatophilic erythroblast", "orthochromatic erythroblast", "Proerythroblast"]
+  markers: [HBB, GYPA, KLF1, ALAS2, GATA1, EPOR, GYPB, HEXA]
+  stage: premature
+  lineage: erythroid
+  synthetic: true   # invented from xlsx Erythroid-like + Reticulocytes overlap
+
+Promyelocyte:
+  aliases: ["promyelocyte"]
+  markers: [MPO, ELANE, AZU1, PRTN3, CTSG]
+  stage: premature
+  lineage: myeloid
+  synthetic: true
+
+Promonocyte:
+  aliases: ["promonocyte"]
+  markers: [CD14, LYZ, MPO, CEBPB, FCN1]
+  stage: premature
+  lineage: myeloid
+  synthetic: true
+
+# =============================================================
+# Stage 4 — Mature cells
+# =============================================================
+Macrophage:
+  aliases: ["Macrophages", "macrophage"]
+  markers: [MMP12, CD163, MRC1, CCR5, VSIG4, GPR132, ADGRE1, CD68]
+  stage: mature
+  lineage: myeloid
+  synthetic: false   # xlsx col A
+
+Monocyte:
+  aliases: ["CD14-positive monocyte", "CD14-positive, CD16-positive monocyte", "Mono"]
+  markers: [CD163, SELE, FCGR2B, IL1RN, CEBPB, CD14, LYZ, VCAN, FCN1, CD68]
+  stage: mature
+  lineage: myeloid
+  synthetic: false   # xlsx col B
+
+Neutrophil:
+  aliases: ["Neutrophils", "neutrophil", "Granulocyte"]
+  markers: [CXCR2, MPO, DEFA3, ELANE, CAMP, FCGR3B, CSF3R, G0S2, CD177]
+  stage: mature
+  lineage: myeloid
+  synthetic: false   # xlsx col C
+
+Eosinophil:
+  aliases: ["eosinophil"]
+  markers: [SIGLEC8, CXCR3, CD244, CCR3, GATA1, CEBPA, EPX]
+  stage: mature
+  lineage: myeloid
+  synthetic: false   # xlsx col L
+
+Basophil:
+  aliases: ["Basophils", "basophil"]
+  markers: [ENPP3, IL5RA, FCERIA]
+  stage: mature
+  lineage: myeloid
+  synthetic: false   # xlsx col K (sparse)
+
+Mast_cell:
+  aliases: ["Mast", "mast cell"]
+  markers: [ENPP3, IL2RA, IL17A, CPA3, T, FCERIA]
+  stage: mature
+  lineage: myeloid
+  synthetic: false   # xlsx col P
+
+DC:
+  aliases: ["dendritic cell", "Dendritic_cell"]
+  markers: [CD1C, CD1B, FCER1A, ITGAX, CD11C, FLT3, ZBTB46, CD141]
+  stage: mature
+  lineage: dendritic
+  synthetic: false   # xlsx col D
+
+pDC:
+  aliases: ["plasmacytoid dendritic cell, human", "plasmacytoid dendritic cell"]
+  markers: [LILRA4, CD11C, NRP1, CLEC4C, CD303, CD4, TCF4, CD304, CD123, CCR9]
+  stage: mature
+  lineage: dendritic
+  synthetic: false   # xlsx col E
+
+cDC1:
+  aliases: ["conventional dendritic cell 1", "type 1 conventional dendritic cell"]
+  markers: [CLEC9A, IRF8, BATF3, XCR1, THBD]
+  stage: mature
+  lineage: dendritic
+  synthetic: true
+
+cDC2:
+  aliases: ["conventional dendritic cell 2", "conventional dendritic cell"]
+  markers: [CLEC10A, IRF4, CD1C, SIRPA, FCER1A]
+  stage: mature
+  lineage: dendritic
+  synthetic: true
+
+B_cell:
+  aliases: ["B cell", "B_cell", "mature B cell", "Mature_B"]
+  markers: [MS4A1, CD79A, IGHM, CD19, FCER2, PAX5, NT5E, CD27, AIM2]
+  stage: mature
+  lineage: lymphoid_B
+  synthetic: false   # xlsx col I
+
+Memory_B:
+  aliases: ["memory B cell", "Memory B"]
+  markers: [IGHD, IGHM, NT5E, MS4A1, CD19, CD27, IGHG1, IGHG2, IGHG3, IGHG4, TNFRSF17, AIM2]
+  stage: mature
+  lineage: lymphoid_B
+  synthetic: false   # xlsx col G
+
+NK_cell:
+  aliases: ["natural killer cell", "NK", "CD16-negative, CD56-bright natural killer cell, human"]
+  markers: [KLRK1, NCAM1, NKG7, GNLY, KLRC1, KLRG1, NCR3, ZBTB16, CD244, CD7]
+  stage: mature
+  lineage: lymphoid_NK
+  synthetic: false   # xlsx col M
+
+NK_T:
+  aliases: ["NK T cell", "NK_T", "natural killer T cell"]
+  markers: [IL12RB2, IL17RA, IL12RB1, KLRB1, NCAM1, PLZF, EOMES]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: false   # xlsx col N
+
+Naive_T:
+  aliases: ["Naive T cells", "naive T cell", "T cell"]
+  markers: [ILR7, CCR7, CD3D, CD3G, CD3E, LEF1, IL7R, TCF7]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: false   # xlsx col Q (typo ILR7 preserved)
+
+CD4_T:
+  aliases: ["CD4 T cell", "naive thymus-derived CD4-positive, alpha-beta T cell", "central memory CD4-positive, alpha-beta T cell", "effector memory CD4-positive, alpha-beta T cell"]
+  markers: [CD3D, CD3G, CD3E, CD4, TBX21, GATA3, IFNG, IL4, IL2]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: false   # xlsx col R
+
+Cytotoxic_CD8:
+  aliases: ["Cytotoxic CD8", "CD8-positive, alpha-beta memory T cell", "effector memory CD8-positive, alpha-beta T cell", "central memory CD8-positive, alpha-beta T cell"]
+  markers: [CD3D, CD3G, CD3E, CD8A, GZMK, GZMB, GZMA, CD27, CD28, PRF1, EOMES, PLZF]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: false   # xlsx col S
+
+T_reg:
+  aliases: ["T reg", "Treg", "regulatory T cell", "CD4-positive, CD25-positive, alpha-beta regulatory T cell"]
+  markers: [FOXP3, IKZF2, CD4, ICOS, CTLA4, LAG3, IZUMO1R]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: false   # xlsx col T
+
+Megakaryocyte:
+  aliases: ["megakaryocyte"]
+  markers: [PF4, PPBP, ITGA2B, GP1BA, VWF, TUBB1, GP9, MEIS1]
+  stage: mature
+  lineage: megakaryocyte
+  synthetic: true
+
+Platelet:
+  aliases: ["Platelates", "platelet"]
+  markers: [CD46, CD109, PPBP, GP1BB]
+  stage: mature
+  lineage: megakaryocyte
+  synthetic: false   # xlsx col U
+
+# =============================================================
+# Stage 4/5 — Erythroid maturation
+# =============================================================
+Reticulocyte:
+  aliases: ["Reticulocytes", "reticulocyte"]
+  markers: [HBB, TFRC, UBE2O, SLC11A2, HBA]
+  stage: mature
+  lineage: erythroid
+  synthetic: false   # xlsx col V
+
+Erythrocyte:
+  aliases: ["Erythroid-like and erythroid precursor cells", "erythrocyte"]
+  markers: [HBB, HBA1, HBA2, HBG1, HBG2, HEXA, GYPA, GYPB, EPOR, GATA1, KLF1]
+  stage: terminal
+  lineage: erythroid
+  synthetic: false   # xlsx col F
+
+# =============================================================
+# Stage 5 — Terminal / antibody-secreting
+# =============================================================
+Plasma_cell:
+  aliases: ["plasma cell", "Plasma B", "Plasma"]
+  markers: [XBP1, PRDM1, JCHAIN, CD9, IGHG1, IGHG2, IGHG3, IGHG4, MZB1, DERL3, SDC1, TNFRSF17]
+  stage: terminal
+  lineage: lymphoid_B
+  synthetic: false   # xlsx col H

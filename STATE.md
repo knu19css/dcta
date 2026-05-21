@@ -118,10 +118,54 @@ python3 run_phase1.py \
 4. **Scanpy leiden FutureWarning**: backend switching from leidenalg to igraph in upcoming scanpy release. Address by passing `flavor="igraph", n_iterations=2, directed=False` when scanpy version is pinned.
 5. **regress_out RuntimeWarning** on full Hay: divide-by-zero in matmul for some genes with zero variance after subset; doesn't affect downstream — but worth filtering pre-regress.
 
-## Phase 2 scope (out of Phase 1)
+## Phase 2 progress
 
-- Prior hematopoietic DAG (G_prior) + YAML lineage marker schema
-- Lineage-specific mature marker YAMLs (Mature_B, Mature_T, Granulocyte, etc.)
+### Phase 2.0 — Backbone = max-weight path (2026-05-21)
+Changed `dcta.dag._longest_path_length` to support `weight_mode="sum_weight"`
+(default flipped to weight-aware). Mean backbone edge weight 0.580 → 0.753;
+max-UMAP-jump 11.46 → 6.04. See commit `c23be9d`.
+
+### Phase 2.1 — Lineage-specific mature marker YAMLs (2026-05-21)
+
+New files:
+- `data/priors/lineage_mature_markers.yaml` — 35 cell types, sources:
+  - `final_unique_gene` sheet of `data/priors/final_unique_gene.xlsx`
+    (user-curated, 22 cell types)
+  - 13 synthetic gaps (MPP, CMP, CLP, GMP, MEP, MDP, BMCP, CDP, Pro_B,
+    T_cell_progenitor, Megakaryocyte, Erythroblast, cDC1, cDC2,
+    Promyelocyte, Promonocyte, LMPP) flagged `synthetic: true` —
+    literature-grounded defaults; replace when user supplies curated set.
+- `data/priors/dag_prior_bm.yaml` — 30 nodes, 31 directed edges parsed
+  from `data/DAG_editable.pptx` slide 2 (broad-level BM hematopoiesis).
+  To be wired into Phase 2.2 backbone-design (currently informational).
+
+API change (backward-compatible):
+- `dcta.pseudotime.run(lineage_marker_yaml=...)` new kwarg — when given,
+  computes per-cluster {cluster_lineage_scores, cluster_mature_score,
+  cluster_best_lineage, cluster_maturation_score}. Old single-value
+  fallback (`-hsc_score`) preserved when YAML absent.
+- `dcta.dag.build` now reads `cluster_maturation_score` if present;
+  marker direction uses `-maturation_score` (high = source = immature)
+  rather than plain hsc_score.
+- `run_phase1.py --lineage-marker-yaml` CLI arg (default points to
+  the new YAML).
+
+Effect on Zeng2025_BMM 30k (2026-05-21 re-run):
+- Marker accuracy: **0.773 → 0.864** (+9.1pp)
+- DPT accuracy: 0.818 (unchanged)
+- Chosen method: dpt → **marker** (marker now wins auto_select)
+- Backbone seniority chain: **0,1,1,2,2,2,2,3,3,4,4,4,4,4** (monotonic ✓)
+- Kendall τ: 0.727 → **0.896**
+- New backbone: `16→3→9→1→0→21→33→5→15→27→11→14→18→45`
+- `seniority_monotonic = True` (was False)
+
+All 21 synthetic tests + 1 Hay smoke still pass.
+
+## Phase 2 remaining
+
+- ~~Lineage-specific mature marker YAMLs~~ ✅ Phase 2.1
+- Prior hematopoietic DAG (G_prior) — partial: `dag_prior_bm.yaml` exists,
+  not yet wired into backbone-design step (Phase 2.2)
 - Absorbing Markov chain on G_prior with PAGA-informed transitions
 - Terminal / transient annotation per cell
 - AML/MDS deviation detection

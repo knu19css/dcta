@@ -1,0 +1,77 @@
+# Prior hematopoietic DAG (broad level) for BM.
+# Source: data/DAG_editable.pptx slide 2 "BM hematopoiesis (broad-level)"
+# (user-curated, 2026-05-21). 30 nodes, 31 directed edges parsed from
+# pptx connector geometry by dcta phase-2.1 build step.
+#
+# Edge semantics: parent -> child = differentiation precedence
+# (parent is more immature). Used by Phase 2.2 backbone-design step to
+# pin G_data backbone to the expected hematopoiesis chain.
+#
+# NOTE: this is the *broad* prior. T cell maturation subtree from
+# pptx slide 3 lives in a separate file (dag_prior_t_maturation.yaml)
+# to be added when T-lineage refinement is needed (Phase 2.3+).
+
+nodes:
+  - HSC
+  - MPP
+  - CMP
+  - CLP
+  - GMP
+  - MEP
+  - MDP
+  - BMCP
+  - CDP
+  - Pro_B_cell
+  - Pre_B_cell
+  - T_cell_progenitor
+  - NK_cell
+  - Neutrophil
+  - Eosinophil
+  - Basophil
+  - Monocyte
+  - Mast_cell
+  - Macrophage
+  - Megakaryocyte
+  - Platelet
+  - Erythroblast
+  - Reticulocyte
+  - Erythrocyte
+  - DC
+  - pDC
+  - cDC1
+  - cDC2
+  - B_cell
+  - Plasma_cell
+
+edges:
+  - [HSC, MPP]
+  - [MPP, CMP]
+  - [MPP, CLP]
+  - [CMP, GMP]
+  - [CMP, MEP]
+  - [CMP, MDP]
+  - [CMP, BMCP]
+  - [CLP, Pro_B_cell]
+  - [CLP, NK_cell]
+  - [CLP, T_cell_progenitor]
+  - [CLP, pDC]
+  - [GMP, Neutrophil]
+  - [GMP, Eosinophil]
+  - [GMP, Monocyte]
+  - [MEP, Megakaryocyte]
+  - [MEP, Erythroblast]
+  - [MDP, CDP]
+  - [MDP, Monocyte]
+  - [BMCP, Basophil]
+  - [BMCP, Mast_cell]
+  - [Pro_B_cell, Pre_B_cell]
+  - [Pre_B_cell, B_cell]
+  - [B_cell, Plasma_cell]
+  - [Monocyte, Macrophage]
+  - [Megakaryocyte, Platelet]
+  - [Erythroblast, Reticulocyte]
+  - [Reticulocyte, Erythrocyte]
+  - [CDP, DC]
+  - [CDP, pDC]
+  - [DC, cDC1]
+  - [DC, cDC2]

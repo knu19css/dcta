@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+results/phase1_hay/*.h5ad
+results/phase1_hay/*.png
+results/phase1_hay/*.gml
+*.egg-info/
+.ipynb_checkpoints/

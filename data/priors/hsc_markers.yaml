@@ -1,0 +1,12 @@
+# HSC positive markers for Phase 1 root identification.
+# Sources: Pellin et al. 2019 Nat Commun; Velten et al. 2017 Nat Cell Biol;
+# Hay et al. 2018 Exp Hematol; Setty et al. 2019 Nat Biotechnol.
+hsc_positive:
+  - CRHBP
+  - AVP
+  - HLF
+  - MEIS1
+  - MLLT3
+  - HOPX
+  - HEMGN
+  - PROM1

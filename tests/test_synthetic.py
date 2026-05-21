@@ -102,3 +102,58 @@ def test_connectivity_resolution_affects_cluster_count(synthetic_adata):
     low = dcta.connectivity.run(a.copy(), resolution=0.3)
     high = dcta.connectivity.run(a.copy(), resolution=2.0)
     assert low.obs["dcta_leiden"].nunique() <= high.obs["dcta_leiden"].nunique()
+
+
+import yaml
+from pathlib import Path
+
+HSC_YAML = str(Path(__file__).resolve().parent.parent / "data" / "priors" / "hsc_markers.yaml")
+
+
+def _prepped(adata):
+    a = dcta.preprocessing.run(adata.copy(), regress_cell_cycle=False,
+                               min_genes=10, n_top_genes=50)
+    a = dcta.diffusion.run(a, n_comps=10, n_comps_pca=20)
+    a = dcta.connectivity.run(a, resolution=1.0)
+    return a
+
+
+def test_pseudotime_run_adds_dpt(synthetic_adata):
+    a = _prepped(synthetic_adata)
+    out = dcta.pseudotime.run(a, hsc_marker_yaml=HSC_YAML)
+    assert "dcta_dpt" in out.obs.columns
+    assert "dcta_component" in out.obs.columns
+    assert np.isfinite(out.obs["dcta_dpt"]).sum() > 0
+    uns = out.uns["dcta"]
+    for k in ["root_strategy", "root_cells", "root_cluster",
+              "component_count", "dpt_root_std",
+              "cluster_hsc_score", "cluster_maturation_score"]:
+        assert k in uns, f"missing key: {k}"
+    assert uns["component_count"] >= 1
+    assert len(uns["root_cells"]) >= 1
+    # cluster_hsc_score keys must match the leiden cluster labels
+    leiden_set = set(out.obs["dcta_leiden"].astype(str).unique())
+    assert set(uns["cluster_hsc_score"].keys()) == leiden_set
+
+
+def test_pseudotime_raises_when_no_hsc_markers_present(synthetic_adata):
+    a = _prepped(synthetic_adata)
+    # Remove every HSC marker gene
+    keep = [g for g in a.var_names if g not in
+            ["CRHBP", "AVP", "HLF", "MEIS1", "MLLT3", "HOPX", "HEMGN", "PROM1", "CD34"]]
+    a2 = a[:, keep].copy()
+    with pytest.raises(dcta.DCTARootError):
+        dcta.pseudotime.run(a2, hsc_marker_yaml=HSC_YAML)
+
+
+def test_pseudotime_virtual_hsc_hook_not_implemented(synthetic_adata):
+    a = _prepped(synthetic_adata)
+    with pytest.raises(NotImplementedError):
+        dcta.pseudotime.run(a, root_strategy="virtual_hsc_ref", ref_adata=a)
+
+
+def test_pseudotime_multi_component(synthetic_adata_disconnected):
+    a = _prepped(synthetic_adata_disconnected)
+    out = dcta.pseudotime.run(a, hsc_marker_yaml=HSC_YAML)
+    # Disconnected manifold should produce at least 1 component
+    assert out.uns["dcta"]["component_count"] >= 1

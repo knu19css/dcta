@@ -1,0 +1,63 @@
+# Lineage seniority map used by dcta.dag for direction-method accuracy scoring.
+# Higher rank = more mature. Labels not listed are excluded from accuracy
+# scoring (NOT penalized; they simply do not contribute a "scoreable" edge).
+#
+# Source: hand-curated for Phase 1 from standard hematopoietic differentiation
+# hierarchy (Doulatov et al. 2012 Cell Stem Cell; Notta et al. 2016 Science).
+# Phase 1 Hay-dataset coverage is illustrative; T11 STATE.md records
+# which labels matched vs were skipped.
+
+seniority:
+  # Stem
+  HSC: 0
+  Hematopoietic_stem_cell: 0
+  Stem: 0
+
+  # Multipotent progenitors
+  MPP: 1
+  LMPP: 1
+  Multipotent_progenitor: 1
+
+  # Lineage-committed progenitors
+  CMP: 2
+  GMP: 2
+  MEP: 2
+  CLP: 2
+  Common_myeloid_progenitor: 2
+  Granulocyte_monocyte_progenitor: 2
+  Megakaryocyte_erythroid_progenitor: 2
+  Common_lymphoid_progenitor: 2
+
+  # Pre-mature stages
+  Pro-B: 3
+  Pre-B: 3
+  Pro-T: 3
+  Erythroblast: 3
+  Proerythroblast: 3
+  Megakaryocyte_progenitor: 3
+  Promonocyte: 3
+  Promyelocyte: 3
+
+  # Mature
+  Granulocyte: 4
+  Neutrophil: 4
+  Eosinophil: 4
+  Basophil: 4
+  Monocyte: 4
+  Macrophage: 4
+  Erythrocyte: 4
+  Megakaryocyte: 4
+  B_cell: 4
+  T_cell: 4
+  NK_cell: 4
+  Mature_B: 4
+  Dendritic_cell: 4
+
+  # Terminal / antibody-secreting
+  Plasma: 5
+  Plasma_cell: 5
+
+  # Synthetic-fixture aliases (tests/conftest.py true_lineage values)
+  Mye: 4
+  Ery: 4
+  Lym: 4

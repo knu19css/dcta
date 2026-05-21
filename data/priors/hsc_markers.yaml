@@ -10,3 +10,4 @@ hsc_positive:
   - HOPX
   - HEMGN
   - PROM1
+  - CD34   # HSPC pan-marker (added 2026-05-21 per user direction-strategy feedback)

@@ -99,8 +99,9 @@ def run(adata: AnnData, *, copy: bool = False, **params) -> AnnData: ...
 | `preprocessing` | `obs['n_counts']`, `obs['pct_mito']`, `obs['S_score']`, `obs['G2M_score']`, `var['highly_variable']`, raw counts preserved in `adata.raw` |
 | `diffusion` | `obsm['X_pca']`, `obsm['X_diffmap']`, `uns['dcta']['diffmap_eigvals']`, `uns['dcta']['n_dcs']` |
 | `connectivity` | `obsp['dcta_knn']`, `obs['dcta_leiden']`, `uns['dcta']['paga']` (dict: connectivities, cluster_sizes, cluster_centroids) |
-| `pseudotime` | `obs['dcta_dpt']`, `obs['dcta_component']`, `uns['dcta']['root_strategy']`, `uns['dcta']['root_cells']`, `uns['dcta']['root_cluster']`, `uns['dcta']['component_count']`, `uns['dcta']['dpt_root_std']` |
-| `dag` | `uns['dcta']['G_data']` (edge list with weight, direction, retained flag), `uns['dcta']['cycle_removal_log']` (list of edges removed and why) |
+| `pseudotime` | `obs['dcta_dpt']`, `obs['dcta_component']`, `uns['dcta']['root_strategy']`, `uns['dcta']['root_cells']`, `uns['dcta']['root_cluster']`, `uns['dcta']['component_count']`, `uns['dcta']['dpt_root_std']`, **`uns['dcta']['cluster_hsc_score']`**, **`uns['dcta']['cluster_maturation_score']`** (per-cluster mean marker scores) |
+| `dag` | `uns['dcta']['G_data']` (edge list with weight, direction, retained flag), `uns['dcta']['cycle_removal_log']`, **`uns['dcta']['direction_methods']`** (dict: per-method direction map + accuracy), **`uns['dcta']['direction_method_chosen']`** (string: "marker" \| "dpt" \| "marker (no GT)"), **`uns['dcta']['biological_seniority_map']`** (label→rank, if cell_type column present) |
+| `viz` (Sec 8) | writes `paga_vs_dag_overlay.png` comparing PAGA layout with G_data directed edges |
 
 ---
 
@@ -117,7 +118,9 @@ adata = dcta.pseudotime.run(adata, root_strategy="hsc_marker_medoid",
                             hsc_marker_yaml="data/priors/hsc_markers.yaml",
                             robustness_k=5)
 adata = dcta.dag.build(adata, edge_threshold=0.05, fas_method="greedy",
-                       transitive_reduction=False)
+                       transitive_reduction=False,
+                       direction_strategy="auto_select",
+                       seniority_yaml="data/priors/lineage_seniority.yaml")
 
 adata.write_h5ad("results/phase1_hay/dcta_phase1.h5ad")
 dcta.viz.export_all(adata, outdir="results/phase1_hay/")
@@ -125,6 +128,25 @@ dcta.viz.export_all(adata, outdir="results/phase1_hay/")
 
 All knobs above are CLI flags on `run_phase1.py` with defaults pulled from
 `dcta/defaults.py`.
+
+### Why `direction_strategy="auto_select"`?
+
+DPT is a manifold-distance pseudotime, not a biological clock — it can flip
+direction on "branch ends" or in datasets where the manifold is not strictly
+monotone with maturation. To avoid trusting DPT blindly, the DAG stage
+computes **two** candidate directions per edge:
+
+1. **DPT direction**: low cluster-mean DPT → high cluster-mean DPT.
+2. **Marker direction**: high cluster-mean HSC-marker score → low HSC-marker
+   score (i.e., immature → mature).
+
+When a biological seniority label is available (`adata.obs['cell_type']` mapped
+through `lineage_seniority.yaml`), the stage measures each method's per-edge
+agreement with the seniority-derived expected direction, and selects the
+method with higher agreement to build `G_data`. Both methods' per-edge
+decisions are stored for inspection. If no ground-truth column is available,
+the marker method is the default (it's grounded in cell biology, not in the
+embedding's idiosyncrasies).
 
 ---
 
@@ -257,7 +279,122 @@ These are NOT to be fixed in Phase 1, only acknowledged:
 
 ---
 
-## 11. Notes for spec reviewer
+## 11. Addendum (2026-05-21): Edge direction strategy + PAGA↔G_data validation
+
+This addendum revises Sections 4 and 7 in response to the design feedback:
+*"DPT 는 biological time point 가 아니므로 CD34/HLF 같은 marker 를 direction
+결정에 써야 함; PAGA+DPT tree 와 G_data DAG 의 일치를 검증해야 함."*
+
+### 11.1 Two direction methods computed in parallel (T7 / `dcta.dag`)
+
+For every PAGA edge `(c_i, c_j)` above `edge_threshold`, compute:
+
+- **DPT direction** — original method. Compute cluster-mean DPT `μ_dpt(c)`.
+  Orient low→high. (`obs['dcta_dpt']` from T6.)
+- **Marker direction** — new. Compute cluster-mean HSC-marker score
+  `μ_hsc(c)` (and optionally a maturation score = `μ_mature − μ_hsc` if a
+  mature-marker YAML is provided). Orient high→low immaturity (= immature→
+  mature). For Phase 1, HSC markers only (CRHBP, AVP, HLF, MEIS1, HOPX, ...
+  plus CD34 added per user request). Mature markers are Phase 2 — direction
+  is just inverse-immaturity.
+
+Both decisions are stored per edge in `uns['dcta']['direction_methods']`:
+
+```python
+{
+  "dpt":    {(c_i, c_j): "ci_to_cj" | "cj_to_ci", ...},
+  "marker": {(c_i, c_j): "ci_to_cj" | "cj_to_ci", ...},
+  "agreement_rate": float,   # fraction of edges where both methods agree
+}
+```
+
+### 11.2 Accuracy-based selection (when ground-truth labels exist)
+
+If `adata.obs` has a `cell_type` column (Hay dataset) or `true_lineage`
+(synthetic fixture), DCTA can score each method against biological seniority:
+
+1. Load `data/priors/lineage_seniority.yaml` — a label→rank dict
+   (HSC=0, MPP=1, lineage progenitor=2, mature subset=3, …).
+2. For each cluster, take its dominant label (mode of `cell_type` over cells
+   in that cluster) and look up seniority. If the label is not in the YAML,
+   the cluster contributes NaN and is excluded from accuracy scoring.
+3. For each PAGA edge, the **expected** direction = lower-seniority cluster
+   → higher-seniority cluster. Ties skipped.
+4. **Accuracy** of a method = (# edges where method's direction == expected) /
+   (# scoreable edges). Stored as `uns['dcta']['direction_methods']['accuracy']
+   = {"dpt": 0.78, "marker": 0.85}`.
+5. **Chosen method** = `argmax(accuracy)`. Stored as
+   `uns['dcta']['direction_method_chosen']` ∈ {"dpt", "marker"}.
+   The chosen method's directions are what build `G_data`.
+
+If no ground-truth column is present, `direction_method_chosen = "marker"` by
+default (biology-grounded, embedding-agnostic) and accuracy is not computed.
+
+### 11.3 `data/priors/lineage_seniority.yaml` (new file, Phase 1)
+
+Minimal Phase 1 schema:
+```yaml
+# Higher rank = more mature.
+# Labels not listed are excluded from accuracy scoring (not penalized).
+seniority:
+  HSC: 0
+  MPP: 1
+  LMPP: 1
+  CMP: 2
+  GMP: 2
+  MEP: 2
+  CLP: 2
+  Pro-B: 3
+  Pre-B: 3
+  Erythroblast: 3
+  Granulocyte: 4
+  Monocyte: 4
+  Mature_B: 4
+  Plasma: 5
+  # synthetic-fixture aliases:
+  Mye: 4
+  Ery: 4
+  Lym: 4
+```
+
+The Phase 1 file is illustrative; T11 STATE.md will record which Hay
+`cell_type` labels mapped and which were skipped.
+
+### 11.4 PAGA ↔ G_data validation overlay (merged into T8 `dcta.viz`)
+
+New figure: `paga_vs_dag_overlay.png`. Layout:
+
+- Compute scanpy's PAGA force-directed positions for the cluster nodes
+  (`scanpy.tl.paga` already produces a `pos` array when followed by
+  `sc.pl.paga(plot=False, layout='fa')`).
+- Plot all PAGA edges in light grey (undirected).
+- Overlay `G_data` directed edges:
+  - Solid green: both `marker` and `dpt` methods agree on direction.
+  - Dashed orange: methods disagree (chosen method's direction is drawn).
+  - Red ×: edge removed by FAS cycle removal.
+
+New summary fields written to `results/phase1_hay/summary.json`:
+
+```json
+"direction": {
+  "method_chosen": "marker",
+  "accuracy": {"dpt": 0.78, "marker": 0.85},
+  "agreement_rate": 0.83,
+  "n_edges_scored": 17
+}
+```
+
+### 11.5 Out-of-scope additions deferred
+
+- A full mature-marker YAML per lineage (Phase 2). Phase 1 uses HSC markers
+  only (immaturity → maturity by inverse-score).
+- Per-edge confidence scoring beyond agreement_rate (Phase 2).
+- Automatic seniority learning from data (e.g., HVG monotonicity); Phase 1
+  uses a hand-curated YAML.
+
+---
+
+## 12. Notes for spec reviewer
 
 - The CLAUDE.md reference to "Hay et al. 2018 GSE117498 (BM reference)" is
   inconsistent — GSE117498 is Pellin et al. 2019 (FACS-sorted HSPCs). APF

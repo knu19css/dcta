@@ -68,7 +68,7 @@
       "HSC",
       "MPP",
       "MPP",
-      "Pre_B_cell",
+      "Pro_B_cell",
       "CMP",
       "GMP",
       "Monocyte",
@@ -120,8 +120,8 @@
     ]
   },
   "prior": {
-    "consistency_rate": 0.5897435897435898,
-    "consistent_count": 46,
+    "consistency_rate": 0.6025641025641025,
+    "consistent_count": 47,
     "scored_count": 78,
     "unlabeled_count": 0,
     "penalty": 0.5,
@@ -131,16 +131,16 @@
     ]
   },
   "annotation": {
-    "strict_accuracy": 0.5220218050878538,
-    "lineage_accuracy": 0.9244490381088921,
+    "strict_accuracy": 0.5743006701563699,
+    "lineage_accuracy": 0.9561564365018504,
     "n_evaluable": 29993,
     "n_unmapped_gt_labels": 1,
     "n_unmapped_pred_labels": 0
   },
   "marker_only_baseline": {
-    "strict_accuracy": 0.5178208248591338,
-    "lineage_accuracy": 0.9244490381088921,
-    "n_clusters_changed_by_dcta": 4,
+    "strict_accuracy": 0.552662287867169,
+    "lineage_accuracy": 0.9561564365018504,
+    "n_clusters_changed_by_dcta": 3,
     "fusion_weight": 0.0,
     "fusion_hops": 1
   }

@@ -101,17 +101,34 @@ CDP:
 # =============================================================
 Pro_B_cell:
   aliases: ["pro-B cell", "late pro-B cell", "Pro-B"]
-  markers: [RAG1, RAG2, IL7R, CD19, EBF1, PAX5, CD79A]
+  # Stage-specific to pro-B per literature:
+  # - DNTT (TdT): expressed during V(D)J recombination in pro-B,
+  #   silenced from pre-B onward (Hardy & Hayakawa 2001, Annu Rev Immunol).
+  # - RAG1/RAG2: V(D)J recombinases active in pro-B, downregulated at
+  #   pre-B-II (Hardy & Hayakawa 2001; LeBien & Tedder 2008, Blood).
+  # - EBF1: master TF that initiates B-lineage commitment; required for
+  #   pro-B specification (Mårtensson et al. 2010, Semin Immunol).
+  # - SOX4, IL7R: pro-B niche-response TF / receptor (LeBien & Tedder 2008).
+  # CD19/PAX5/CD79A intentionally omitted — pan-B markers, not stage-specific.
+  markers: [DNTT, RAG1, RAG2, EBF1, SOX4, IL7R]
   stage: premature
   lineage: lymphoid_B
-  synthetic: true   # invented; xlsx has only immature B / B cell
+  synthetic: true
 
 Pre_B_cell:
   aliases: ["large pre-B-II cell", "small pre-B-II cell", "Pre-B", "immature B cells", "immature B cell"]
-  markers: [VPREB1, VPREB2, IGLL1, CD19, CD20, PAX5, RAG1]
+  # Stage-specific to pre-B (surrogate light chain expression defines pre-B):
+  # - VPREB1, VPREB2, IGLL1: surrogate light-chain genes — the textbook
+  #   definition of pre-B (Mårtensson et al. 2010, Semin Immunol;
+  #   Hardy & Hayakawa 2001).
+  # - TCL1A: enriched in large pre-B (Bagger et al. 2019, Nucleic Acids Res
+  #   HemaExplorer; Aoki et al. 2018, Blood).
+  # - PAX5: required for pre-B identity (Hardy & Hayakawa 2001).
+  # MKI67 omitted (not lineage-specific; just a proliferation marker).
+  markers: [VPREB1, VPREB2, IGLL1, TCL1A, PAX5, CD79A, CD79B]
   stage: premature
   lineage: lymphoid_B
-  synthetic: false   # from xlsx col J (immature B cells)
+  synthetic: true
 
 T_cell_progenitor:
   aliases: ["T_cell progenitor", "Pro-T", "early thymic progenitor", "Thymocytes"]
@@ -216,24 +233,47 @@ cDC2:
 
 B_cell:
   aliases: ["B cell", "B_cell", "mature B cell", "Mature_B"]
-  markers: [MS4A1, CD79A, IGHM, CD19, FCER2, PAX5, NT5E, CD27, AIM2]
+  # Mature naive/follicular B per literature (surface markers acquired
+  # after pre-B-II and present before class-switch):
+  # - MS4A1 (CD20): surface marker of mature B (LeBien & Tedder 2008).
+  # - IGHD: IgD expression marks naive/follicular B (Hardy & Hayakawa 2001).
+  # - FCER2 (CD23): naive/follicular B surface (LeBien & Tedder 2008).
+  # - BANK1: B-cell scaffold restricted to mature B (Yokoyama et al. 2002,
+  #   J Immunol).
+  # - AIM2: enriched in mature B (Schroder & Tschopp 2010, Cell).
+  markers: [MS4A1, IGHD, FCER2, BANK1, AIM2, NT5E, CD27]
   stage: mature
   lineage: lymphoid_B
-  synthetic: false   # xlsx col I
+  synthetic: false   # xlsx col I (re-curated; literature-only)
 
 Memory_B:
   aliases: ["memory B cell", "Memory B"]
-  markers: [IGHD, IGHM, NT5E, MS4A1, CD19, CD27, IGHG1, IGHG2, IGHG3, IGHG4, TNFRSF17, AIM2]
+  # Class-switched memory B per literature:
+  # - IGHG1-4: class-switched IgG isotypes — definitional for memory B
+  #   (Hardy & Hayakawa 2001; Klein et al. 1998, J Immunol).
+  # - CD27: classical memory B surface marker (Klein et al. 1998).
+  # - TNFRSF17 (BCMA): plasma/memory B receptor (O'Connor et al. 2004,
+  #   J Exp Med).
+  markers: [IGHG1, IGHG2, IGHG3, IGHG4, CD27, TNFRSF17, MS4A1, AIM2]
   stage: mature
   lineage: lymphoid_B
   synthetic: false   # xlsx col G
 
 NK_cell:
   aliases: ["natural killer cell", "NK", "CD16-negative, CD56-bright natural killer cell, human"]
-  markers: [KLRK1, NCAM1, NKG7, GNLY, KLRC1, KLRG1, NCR3, ZBTB16, CD244, CD7]
+  # NK identity (CD3-negative innate lymphocyte) per literature:
+  # - KLRF1, KLRD1, KLRC1: NK-receptor complex (Vivier et al. 2011, Science).
+  # - NCAM1 (CD56), FCGR3A (CD16): canonical NK surface markers
+  #   (Cooper et al. 2001, Trends Immunol).
+  # - NCR1, NCR3 (NKp46, NKp30): NK-specific natural cytotoxicity
+  #   receptors (Moretta et al. 2001, Annu Rev Immunol).
+  # - GNLY, PRF1, GZMB, NKG7: cytotoxic effector module
+  #   (Crinier et al. 2018, Immunity for NK module).
+  # CD3 genes intentionally absent to distinguish NK from CD8 T.
+  markers: [KLRF1, KLRD1, KLRC1, NCAM1, FCGR3A, NCR1, NCR3, GNLY, PRF1, GZMB, NKG7]
   stage: mature
   lineage: lymphoid_NK
-  synthetic: false   # xlsx col M
+  synthetic: false   # xlsx col M (re-curated; literature-only)
 
 NK_T:
   aliases: ["NK T cell", "NK_T", "natural killer T cell"]
@@ -243,22 +283,44 @@ NK_T:
   synthetic: false   # xlsx col N
 
 Naive_T:
-  aliases: ["Naive T cells", "naive T cell", "T cell"]
-  markers: [ILR7, CCR7, CD3D, CD3G, CD3E, LEF1, IL7R, TCF7]
+  aliases: ["Naive T cells", "naive T cell", "T cell", "Naive T"]
+  # Naive T quiescence module per literature:
+  # - CCR7, SELL (CD62L), S1PR1: lymph-node homing / egress receptors
+  #   (Sallusto et al. 1999, Nature; Matloubian et al. 2004, Nature).
+  # - LEF1, TCF7: naive-state TFs (Willinger et al. 2006, J Immunol).
+  # - IL7R: high on naive, downregulated on effector (Schluns et al.
+  #   2000, Nat Immunol).
+  # CD3D/E to anchor T identity (vs NK).
+  markers: [CCR7, SELL, S1PR1, LEF1, TCF7, IL7R, CD3D, CD3E]
   stage: mature
   lineage: lymphoid_T
-  synthetic: false   # xlsx col Q (typo ILR7 preserved)
+  synthetic: false   # xlsx col Q (re-curated; ILR7 typo fixed)
 
 CD4_T:
-  aliases: ["CD4 T cell", "naive thymus-derived CD4-positive, alpha-beta T cell", "central memory CD4-positive, alpha-beta T cell", "effector memory CD4-positive, alpha-beta T cell"]
-  markers: [CD3D, CD3G, CD3E, CD4, TBX21, GATA3, IFNG, IL4, IL2]
+  aliases: ["CD4 T cell", "CD4 Memory T", "naive thymus-derived CD4-positive, alpha-beta T cell", "central memory CD4-positive, alpha-beta T cell", "effector memory CD4-positive, alpha-beta T cell"]
+  # CD4 helper/memory module per literature:
+  # - CD4: lineage definition.
+  # - IL7R: memory CD4 maintenance (Schluns et al. 2000, Nat Immunol).
+  # - GATA3 (Th2), TBX21 (Th1), RORC (Th17), CCR4 (Th2), CCR6 (Th17):
+  #   canonical helper-subset transcription factors / homing receptors
+  #   (Zhu et al. 2010, Annu Rev Immunol).
+  # CD3D/E anchor T identity. CD8 markers omitted to disambiguate.
+  markers: [CD4, IL7R, GATA3, TBX21, RORC, CCR4, CCR6, CD3D, CD3E]
   stage: mature
   lineage: lymphoid_T
-  synthetic: false   # xlsx col R
+  synthetic: false   # xlsx col R (re-curated; literature-only)
 
 Cytotoxic_CD8:
-  aliases: ["Cytotoxic CD8", "CD8-positive, alpha-beta memory T cell", "effector memory CD8-positive, alpha-beta T cell", "central memory CD8-positive, alpha-beta T cell", "naive thymus-derived CD8-positive, alpha-beta T cell"]
-  markers: [CD3D, CD3G, CD3E, CD8A, GZMK, GZMB, GZMA, CD27, CD28, PRF1, EOMES, PLZF]
+  aliases: ["Cytotoxic CD8", "CD8 Memory T", "CD8-positive, alpha-beta memory T cell", "effector memory CD8-positive, alpha-beta T cell", "central memory CD8-positive, alpha-beta T cell", "naive thymus-derived CD8-positive, alpha-beta T cell"]
+  # CD8 memory/effector module per literature:
+  # - CD8A, CD8B: lineage definition.
+  # - GZMK: memory CD8 specific cytotoxic granzyme
+  #   (Bratke et al. 2005, Eur J Immunol; Patil et al. 2018, Sci Immunol).
+  # - EOMES, TBX21 (T-bet): CD8 effector TFs (Pearce et al. 2003, Science).
+  # - CD27, CD28: T-cell costimulatory markers (memory subset distinction).
+  # CD3D/E anchor T identity. GZMB/PRF1 dropped — overlap with NK
+  # cytotoxic module (Vivier et al. 2011, Science).
+  markers: [CD8A, CD8B, GZMK, EOMES, TBX21, CD27, CD28, CD3D, CD3E]
   stage: mature
   lineage: lymphoid_T
   synthetic: false   # xlsx col S

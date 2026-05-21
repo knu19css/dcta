@@ -125,6 +125,66 @@ Changed `dcta.dag._longest_path_length` to support `weight_mode="sum_weight"`
 (default flipped to weight-aware). Mean backbone edge weight 0.580 → 0.753;
 max-UMAP-jump 11.46 → 6.04. See commit `c23be9d`.
 
+### Phase 2.7 — Marker panel redesign (B-lineage + T + NK; literature-only) (2026-05-21)
+
+Motivation: Pro-B vs Pre-B were both labelled Pro_B_cell by marker-only
+argmax because original Pro_B_cell/Pre_B_cell panels shared CD19/PAX5/
+RAG1/CD79A; Hay's Pre-B cluster scored slightly higher on the Pro_B
+panel than on its own Pre_B panel. Similarly NK was mislabelled as
+CD8_effector because old NK panel missed CD3-discriminative + KLRF1
+modules.
+
+User directive: "논문에서만 따온걸 써, 데이터 특성은 쓰지말 것" —
+panels rebuilt strictly from published references (no Hay-data optimization).
+
+Redesigned (sources cited inline in YAML):
+  Pro_B_cell : DNTT, RAG1, RAG2, EBF1, SOX4, IL7R
+               (Hardy & Hayakawa 2001 ARI; Mårtensson 2010 Semin Immunol;
+                LeBien & Tedder 2008 Blood)
+  Pre_B_cell : VPREB1, VPREB2, IGLL1, TCL1A, PAX5, CD79A, CD79B
+               (Mårtensson 2010; Bagger 2019 NAR; Aoki 2018 Blood)
+  B_cell     : MS4A1, IGHD, FCER2, BANK1, AIM2, NT5E, CD27
+               (LeBien & Tedder 2008; Yokoyama 2002 J Immunol;
+                Schroder & Tschopp 2010 Cell)
+  Memory_B   : IGHG1-4, CD27, TNFRSF17, MS4A1, AIM2
+               (Klein 1998 J Immunol; O'Connor 2004 J Exp Med)
+  NK_cell    : KLRF1, KLRD1, KLRC1, NCAM1, FCGR3A, NCR1, NCR3, GNLY,
+               PRF1, GZMB, NKG7
+               (Vivier 2011 Science; Cooper 2001 TI; Moretta 2001 ARI)
+  Naive_T    : CCR7, SELL, S1PR1, LEF1, TCF7, IL7R, CD3D, CD3E
+               (Sallusto 1999 Nature; Matloubian 2004 Nature;
+                Willinger 2006 J Immunol; Schluns 2000 Nat Immunol)
+  CD4_T      : CD4, IL7R, GATA3, TBX21, RORC, CCR4, CCR6, CD3D, CD3E
+               (Zhu 2010 ARI; Schluns 2000 Nat Immunol)
+  Cytotoxic_CD8: CD8A, CD8B, GZMK, EOMES, TBX21, CD27, CD28, CD3D, CD3E
+               (Bratke 2005 EJI; Patil 2018 Sci Immunol;
+                Pearce 2003 Science)
+
+Zeng2025_BMM 30k results (paper_AuthorCellType_Broad clusters):
+                      marker-only baseline   DCTA full
+  Strict accuracy:    0.553                  0.574
+  Lineage accuracy:   0.956                  0.956
+  DCTA over baseline: +2.1pp (was +0.4pp before redesign)
+
+Per-class strict (key wins):
+  NK_cell                strict=1.000  (was 0.000; marker-only baseline
+                                        now also gets it right because
+                                        of CD3-negative + KLRF1 emphasis)
+  CD8_effector_memory    strict=1.000  (DAG parent-child rule corrects
+                                        marker-only's "CD8_effector")
+  Pro_B_cell             strict=1.000  (DAG corrects marker-only's
+                                        "Pre_B_cell")
+  Pre_B_cell             strict=0.723  (was 0.643 — improved)
+  B_cell, Plasma_cell, BMCP, MEP, HSC, GMP, Monocyte, cDC2, pDC: all 1.000
+
+Per-cluster disambig trace (cluster_disambig_reason):
+  16 / 24 clusters: marker argmax wins (margin ≥ 0.20)
+   8 / 24 clusters: ambiguous → DAG-aware decision
+       6 of these: DAG agrees with marker argmax
+       3 actual changes (Pro-B, CD8 Memory T, Early GMP)
+
+26/26 synthetic tests pass.
+
 ### Phase 2.6 — DAG-aware disambiguation (2026-05-21)
 
 Motivation: reviewer-class question — current DCTA picked

@@ -40,6 +40,10 @@ def parse_args(argv=None):
                    help="adata.obs column used to look up seniority")
     p.add_argument("--direction-strategy", default="auto_select",
                    choices=["auto_select", "marker", "dpt"])
+    p.add_argument("--paper-embedding-h5ad", default=None,
+                   help="Optional source h5ad (e.g. cellxgene download) "
+                        "to graft paper-original X_umap/X_pca onto adata.obsm. "
+                        "Matched on observation_joinid.")
     return p.parse_args(argv)
 
 
@@ -50,6 +54,13 @@ def main(argv=None):
     print(f"[DCTA] loading {args.h5ad}", flush=True)
     adata = dcta.io.load_h5ad(args.h5ad)
     print(f"[DCTA] adata: {adata.n_obs} cells x {adata.n_vars} genes", flush=True)
+
+    if args.paper_embedding_h5ad:
+        print(f"[DCTA] attaching paper embedding from {args.paper_embedding_h5ad}", flush=True)
+        adata = dcta.io.attach_paper_embedding(adata, args.paper_embedding_h5ad)
+        meta = adata.uns["dcta"]["paper_embedding_source"]
+        print(f"[DCTA] paper embedding: matched {meta['n_matched']}/{meta['n_target']} "
+              f"cells; attached {meta['embeddings_attached']}", flush=True)
 
     print("[DCTA] preprocessing", flush=True)
     adata = dcta.preprocessing.run(adata, regress_cell_cycle=args.regress_cell_cycle)
@@ -92,6 +103,7 @@ def main(argv=None):
     G_obj = adata.uns["dcta"].pop("G_data", None)
     bb_obj = adata.uns["dcta"].pop("backbone_validation", None)
     dm_obj = adata.uns["dcta"].pop("direction_methods", None)
+    pe_obj = adata.uns["dcta"].pop("paper_embedding_source", None)
     print(f"[DCTA] writing {out_h5ad}", flush=True)
     adata.write_h5ad(out_h5ad)
     if G_obj is not None:
@@ -100,6 +112,8 @@ def main(argv=None):
         adata.uns["dcta"]["backbone_validation"] = bb_obj
     if dm_obj is not None:
         adata.uns["dcta"]["direction_methods"] = dm_obj
+    if pe_obj is not None:
+        adata.uns["dcta"]["paper_embedding_source"] = pe_obj
     print(f"[DCTA] writing {out_gml}", flush=True)
     # nx.write_gml requires str-keyed attrs and no None values
     G_clean = nx.DiGraph()

@@ -228,3 +228,21 @@ def test_dag_edges_respect_chosen_direction(synthetic_adata):
                 f"Edge {u}->{v} violates marker direction "
                 f"({hsc[u]} < {hsc[v]})"
             )
+
+
+def test_viz_export_all_writes_pngs(synthetic_adata, tmp_path):
+    a = _prepped(synthetic_adata)
+    a = dcta.pseudotime.run(a, hsc_marker_yaml=HSC_YAML)
+    a = dcta.dag.build(a, edge_threshold=0.01, seniority_yaml=SENIORITY_YAML,
+                       label_column="true_lineage")
+    dcta.viz.export_all(a, outdir=str(tmp_path))
+    expected = [
+        "diffmap_eigvals.png",
+        "paga_connectivities.png",
+        "dpt_distribution.png",
+        "dpt_root_std_hist.png",
+        "G_data_diagram.png",
+        "paga_vs_dag_overlay.png",
+    ]
+    for name in expected:
+        assert (tmp_path / name).exists()

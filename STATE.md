@@ -40,7 +40,24 @@ See `dcta/defaults.py`. Justifications:
 
 ## Run logs
 
-### 2026-05-21 — Full Hay BM (30k cells, hay_hca_balanced_bm.h5ad)
+### 2026-05-21 — Full BMM BCD reference BM (30k cells, file misnamed `hay_hca_balanced_bm.h5ad`)
+
+**Dataset citation correction (2026-05-21)**: The file `hay_hca_balanced_bm.h5ad`
+in APF's `test_datasets/cxg/` is NOT Hay et al. 2018 GSE117498. It is the
+*Zeng et al. 2025 Blood Cancer Discovery* "Balanced Bone Marrow Reference Map
+of Hematopoietic Development" (BMM), DOI
+[10.1158/2643-3230.BCD-24-0342](https://doi.org/10.1158/2643-3230.BCD-24-0342),
+CZ CELLxGENE Collection `f6c50495-3361-40ed-a819-fb9644396ed9`, dataset_id
+`cd2f23c1-aef1-48ae-8eb4-0bcf124e567d`, 263,159 cells meta-merged from 8
+studies (HCA_BM, Setty2019, Granja2019, Ainciburu2022, Oetjen2018, Mende2022,
+etc.). APF's "hay" key is a misnomer. The 30k subset in the local file is
+APF's balanced down-sample. **Implication**: this overlaps with APF's
+`project_novelty_preservation.md` P1 (BMM-AML angle competitor) — Phase 2 must
+verify DCTA's novelty isn't redundant with BMM's pre-existing reference.
+
+(Section title kept as "Full Hay BM" for back-compat with the file name; all
+forthcoming references should use **Zeng2025_BMM** instead.)
+
 
 Command:
 ```bash

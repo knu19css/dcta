@@ -396,11 +396,26 @@ New summary fields written to `results/phase1_hay/summary.json`:
 
 ## 12. Notes for spec reviewer
 
-- The CLAUDE.md reference to "Hay et al. 2018 GSE117498 (BM reference)" is
-  inconsistent — GSE117498 is Pellin et al. 2019 (FACS-sorted HSPCs). APF
-  stores it under the dataset key `hay_hca_balanced_bm`. The plan uses the
-  APF naming for the file but should clarify the citation in Phase 1
-  README. (Resolve before Phase 2 paper writing.)
+- **Dataset citation correction (2026-05-21, looked up via cellxgene_census)**:
+  the file `hay_hca_balanced_bm.h5ad` in APF's `test_datasets/cxg/` is NOT
+  Hay et al. 2018 GSE117498 and NOT Pellin et al. 2019. It is:
+    - **Title**: A (Balanced) Bone Marrow Reference Map of Hematopoietic Development
+    - **Citation**: Zeng et al. 2025 *Blood Cancer Discovery*
+    - **DOI**: 10.1158/2643-3230.BCD-24-0342
+    - **CZ Collection**: f6c50495-3361-40ed-a819-fb9644396ed9
+    - **dataset_id**: cd2f23c1-aef1-48ae-8eb4-0bcf124e567d
+    - **Cell count**: 263,159 (multi-study meta-merge incl. HCA_BM, Setty2019,
+      Granja2019, Ainciburu2022, Oetjen2018, Mende2022, ...)
+    - **30k local subset**: APF's stratified down-sample.
+  Hereafter use the key **Zeng2025_BMM** in code/docs. APF's "hay" key is a
+  historical misnomer kept only for file-path back-compat.
+- **Phase 2 novelty check (per APF feedback_novelty_preservation)**: Zeng 2025
+  BMM is the very paper APF avoids competing with on AML angle. DCTA must
+  verify its trajectory-DAG contribution is orthogonal to BMM's reference
+  map before publication.
+- ~~The CLAUDE.md reference to "Hay et al. 2018 GSE117498 (BM reference)" is
+  inconsistent — GSE117498 is Pellin et al. 2019.~~ (Superseded by the
+  correction above — neither Hay nor Pellin; the actual source is Zeng 2025.)
 - This is a fresh project. APF (`v8_apf_dcbmi/`) is NOT a dependency — DCTA
   may borrow data and may eventually be benchmarked against APF, but the two
   share no code in Phase 1.

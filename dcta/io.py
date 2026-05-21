@@ -48,6 +48,9 @@ def attach_paper_embedding(
     *,
     match_column: str = "observation_joinid",
     embeddings: tuple[str, ...] = ("X_umap", "X_pca", "X_harmony"),
+    obs_columns: tuple[str, ...] = (
+        "AuthorCellType", "AuthorCellType_Broad", "Study",
+    ),
 ) -> ad.AnnData:
     """Attach paper-original embeddings from a source h5ad onto adata.
 
@@ -129,11 +132,32 @@ def attach_paper_embedding(
         out[valid] = unsorted_rows
         adata.obsm[key] = out
 
+    # Pull selected obs columns (paper cluster labels etc.). Stored under
+    # paper_<col> so they don't collide with adata's own metadata.
+    attached_obs = []
+    if obs_columns:
+        valid = target_pos >= 0
+        idx = target_pos[valid]
+        order = np.argsort(idx)
+        sorted_idx = idx[order]
+        for col in obs_columns:
+            if col not in src.obs.columns:
+                continue
+            src_col_full = src.obs[col].astype(object).to_numpy()
+            sorted_vals = src_col_full[sorted_idx]
+            unsorted_vals = np.empty_like(sorted_vals)
+            unsorted_vals[order] = sorted_vals
+            out_col = np.array([None] * adata.n_obs, dtype=object)
+            out_col[valid] = unsorted_vals
+            adata.obs[f"paper_{col}"] = out_col
+            attached_obs.append(f"paper_{col}")
+
     adata.uns.setdefault("dcta", {})["paper_embedding_source"] = {
         "path": source_h5ad,
         "match_column": match_column,
         "n_matched": n_matched,
         "n_target": int(adata.n_obs),
         "embeddings_attached": [k for k in embeddings if k in src.obsm],
+        "obs_attached": attached_obs,
     }
     return adata

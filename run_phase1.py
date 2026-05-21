@@ -56,7 +56,14 @@ def parse_args(argv=None):
     p.add_argument("--paper-embedding-h5ad", default=None,
                    help="Optional source h5ad (e.g. cellxgene download) "
                         "to graft paper-original X_umap/X_pca onto adata.obsm. "
-                        "Matched on observation_joinid.")
+                        "Matched on observation_joinid. Also pulls "
+                        "AuthorCellType/AuthorCellType_Broad/Study into obs "
+                        "as paper_<col>.")
+    p.add_argument("--cluster-from-obs", default=None,
+                   help="If set, SKIP Leiden and use this obs column as "
+                        "the cluster assignment for PAGA + downstream "
+                        "(e.g. 'paper_AuthorCellType_Broad'). Requires "
+                        "the column to exist in adata.obs after preprocessing.")
     return p.parse_args(argv)
 
 
@@ -85,10 +92,19 @@ def main(argv=None):
     print(f"[DCTA] n_dcs selected: {adata.uns['dcta']['n_dcs']}", flush=True)
 
     print("[DCTA] connectivity", flush=True)
+    cluster_from_obs = args.cluster_from_obs or None
+    if cluster_from_obs and cluster_from_obs not in adata.obs.columns:
+        raise SystemExit(
+            f"--cluster-from-obs={cluster_from_obs!r} not found in adata.obs "
+            f"(available: {list(adata.obs.columns)[:20]} ...). "
+            f"Did you pass --paper-embedding-h5ad to pull paper_* columns?"
+        )
     adata = dcta.connectivity.run(adata, knn_k=args.knn_diffmap_k,
-                                  resolution=args.resolution)
+                                  resolution=args.resolution,
+                                  cluster_from_obs=cluster_from_obs)
     n_clust = adata.obs["dcta_leiden"].nunique()
-    print(f"[DCTA] leiden clusters: {n_clust}", flush=True)
+    src = adata.uns["dcta"].get("cluster_source", "?")
+    print(f"[DCTA] clusters: {n_clust} (source: {src})", flush=True)
 
     print("[DCTA] pseudotime", flush=True)
     lineage_yaml = args.lineage_marker_yaml or None

@@ -63,21 +63,39 @@ def dpt_root_std_hist(adata: ad.AnnData, path: str) -> None:
 
 def g_data_diagram(adata: ad.AnnData, path: str) -> None:
     G: nx.DiGraph = adata.uns["dcta"]["G_data"]
-    # Layout by mean_dpt on x-axis
+    # Layout by mean_dpt on x-axis; deterministic y-jitter via stable hash
+    # of the string, then nudge any overlapping pairs apart so nx.draw
+    # doesn't emit zero-length arrows (matplotlib bezier crashes on those).
+    import hashlib
     pos = {}
+    used = set()
     nodes = list(G.nodes)
     for n in nodes:
-        x = G.nodes[n].get("mean_dpt", 0.0)
-        # spread y by node index hash for stability
-        y = (hash(n) % 1000) / 1000.0
+        x = float(G.nodes[n].get("mean_dpt", 0.0) or 0.0)
+        h = int(hashlib.md5(str(n).encode()).hexdigest(), 16) % 10000
+        y = h / 10000.0
+        # Nudge if collision (same x and y as another node)
+        k = 0
+        while (round(x, 6), round(y, 6)) in used:
+            y = (y + 0.013) % 1.0
+            k += 1
+            if k > 50:
+                break
+        used.add((round(x, 6), round(y, 6)))
         pos[n] = (x, y)
     fig, ax = plt.subplots(figsize=(7, 5))
     nx.draw_networkx_nodes(G, pos, ax=ax, node_color="lightblue",
                            node_size=600, edgecolors="black")
     nx.draw_networkx_labels(G, pos, ax=ax, font_size=9)
-    weights = [G[u][v]["weight"] * 4 for u, v in G.edges]
-    nx.draw_networkx_edges(G, pos, ax=ax, width=weights, arrows=True,
-                           arrowsize=15, edge_color="gray")
+    weights = [max(0.2, G[u][v].get("weight", 0.1) * 4) for u, v in G.edges]
+    try:
+        nx.draw_networkx_edges(G, pos, ax=ax, width=weights, arrows=True,
+                               arrowsize=15, edge_color="gray")
+    except (StopIteration, ValueError):
+        # Fallback: draw without arrowheads (matplotlib bezier corner case
+        # when two nodes overlap in display coords)
+        nx.draw_networkx_edges(G, pos, ax=ax, width=weights, arrows=False,
+                               edge_color="gray")
     ax.set_xlabel("cluster mean DPT")
     ax.set_title("G_data (DPT-directed DAG)")
     ax.set_yticks([])

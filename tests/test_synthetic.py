@@ -157,3 +157,74 @@ def test_pseudotime_multi_component(synthetic_adata_disconnected):
     out = dcta.pseudotime.run(a, hsc_marker_yaml=HSC_YAML)
     # Disconnected manifold should produce at least 1 component
     assert out.uns["dcta"]["component_count"] >= 1
+
+
+import networkx as nx
+
+SENIORITY_YAML = str(Path(__file__).resolve().parent.parent / "data" / "priors" / "lineage_seniority.yaml")
+
+
+def test_dag_build_returns_dag(synthetic_adata):
+    a = _prepped(synthetic_adata)
+    a = dcta.pseudotime.run(a, hsc_marker_yaml=HSC_YAML)
+    out = dcta.dag.build(a, edge_threshold=0.01, seniority_yaml=SENIORITY_YAML,
+                         label_column="true_lineage")
+    G = out.uns["dcta"]["G_data"]
+    assert isinstance(G, nx.DiGraph)
+    assert nx.is_directed_acyclic_graph(G)
+    assert G.number_of_nodes() >= 2
+    assert "cycle_removal_log" in out.uns["dcta"]
+    assert "direction_methods" in out.uns["dcta"]
+    assert "direction_method_chosen" in out.uns["dcta"]
+    methods = out.uns["dcta"]["direction_methods"]
+    assert "dpt" in methods and "marker" in methods
+    assert "agreement_rate" in methods
+    assert "accuracy" in methods  # true_lineage maps via seniority yaml
+
+
+def test_dag_chosen_method_is_marker_or_dpt(synthetic_adata):
+    a = _prepped(synthetic_adata)
+    a = dcta.pseudotime.run(a, hsc_marker_yaml=HSC_YAML)
+    out = dcta.dag.build(a, edge_threshold=0.01, seniority_yaml=SENIORITY_YAML,
+                         label_column="true_lineage")
+    chosen = out.uns["dcta"]["direction_method_chosen"]
+    assert chosen in ("marker", "dpt")
+    acc = out.uns["dcta"]["direction_methods"]["accuracy"]
+    # accuracy values are floats in [0,1] or None for empty case
+    for k in ("dpt", "marker"):
+        v = acc.get(k)
+        assert v is None or (0.0 <= v <= 1.0)
+
+
+def test_dag_falls_back_to_marker_without_labels(synthetic_adata):
+    a = _prepped(synthetic_adata)
+    a.obs = a.obs.drop(columns=[c for c in a.obs.columns if c == "true_lineage"])
+    a = dcta.pseudotime.run(a, hsc_marker_yaml=HSC_YAML)
+    out = dcta.dag.build(a, edge_threshold=0.01, seniority_yaml=SENIORITY_YAML,
+                         label_column="true_lineage")
+    assert out.uns["dcta"]["direction_method_chosen"] == "marker"
+    methods = out.uns["dcta"]["direction_methods"]
+    # Accuracy field empty / Nones when no labels
+    assert methods.get("accuracy") in (None, {}, {"dpt": None, "marker": None})
+
+
+def test_dag_edges_respect_chosen_direction(synthetic_adata):
+    a = _prepped(synthetic_adata)
+    a = dcta.pseudotime.run(a, hsc_marker_yaml=HSC_YAML)
+    out = dcta.dag.build(a, edge_threshold=0.01, seniority_yaml=SENIORITY_YAML,
+                         label_column="true_lineage")
+    G = out.uns["dcta"]["G_data"]
+    chosen = out.uns["dcta"]["direction_method_chosen"]
+    leiden = a.obs["dcta_leiden"].astype(str).to_numpy()
+    if chosen == "dpt":
+        dpt = a.obs["dcta_dpt"].to_numpy()
+        score = {c: float(np.nanmean(dpt[leiden == c])) for c in G.nodes}
+        for u, v in G.edges:
+            assert score[u] <= score[v] + 1e-9
+    else:  # marker: edge u->v means u has higher HSC score
+        hsc = a.uns["dcta"]["cluster_hsc_score"]
+        for u, v in G.edges:
+            assert hsc[u] >= hsc[v] - 1e-9, (
+                f"Edge {u}->{v} violates marker direction "
+                f"({hsc[u]} < {hsc[v]})"
+            )

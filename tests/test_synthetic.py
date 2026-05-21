@@ -73,3 +73,25 @@ def test_diffusion_n_dcs_auto_gap_selection(synthetic_adata):
     a = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False)
     out = dcta.diffusion.run(a, n_comps=15)
     assert out.uns["dcta"]["n_dcs"] < 15
+
+
+def test_connectivity_runs_leiden_and_paga(synthetic_adata):
+    a = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False)
+    a = dcta.diffusion.run(a, n_comps=10)
+    out = dcta.connectivity.run(a, resolution=1.0)
+    assert "dcta_leiden" in out.obs.columns
+    assert out.obs["dcta_leiden"].nunique() >= 2
+    paga = out.uns["dcta"]["paga"]
+    assert "connectivities" in paga
+    assert "cluster_sizes" in paga
+    conn = np.asarray(paga["connectivities"])
+    k = out.obs["dcta_leiden"].nunique()
+    assert conn.shape == (k, k)
+
+
+def test_connectivity_resolution_affects_cluster_count(synthetic_adata):
+    a = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False)
+    a = dcta.diffusion.run(a, n_comps=10)
+    low = dcta.connectivity.run(a.copy(), resolution=0.3)
+    high = dcta.connectivity.run(a.copy(), resolution=2.0)
+    assert low.obs["dcta_leiden"].nunique() <= high.obs["dcta_leiden"].nunique()

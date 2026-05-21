@@ -19,5 +19,5 @@ class DCTAGraphError(DCTAError):
     """G_data construction failed (e.g., cycle removal did not converge)."""
 
 
-# Submodule re-exports (added incrementally in T2-T5)
-from dcta import io, preprocessing, diffusion  # noqa: E402,F401
+# Submodule re-exports (added in T2-T5; pseudotime/dag/viz added in T6+)
+from dcta import io, preprocessing, diffusion, connectivity  # noqa: E402,F401

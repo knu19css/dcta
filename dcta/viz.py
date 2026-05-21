@@ -198,16 +198,23 @@ def umap_paper_with_g_data(adata: ad.AnnData, path: str) -> None:
     Per feedback_use_original_embedding: prefer published embedding over
     locally-recomputed UMAP.
     """
-    fig, ax = plt.subplots(figsize=(8, 7))
+    fig, axes = plt.subplots(1, 2, figsize=(15, 7))
+    ax_raw, ax = axes
     if "X_umap" not in adata.obsm:
-        ax.text(0.5, 0.5, "No X_umap in adata.obsm\n"
-                          "(original paper embedding not available)",
-                ha="center", va="center", fontsize=12, transform=ax.transAxes)
-        ax.set_axis_off()
+        for a_ in axes:
+            a_.text(0.5, 0.5, "No X_umap in adata.obsm\n"
+                              "(original paper embedding not available)",
+                    ha="center", va="center", fontsize=12, transform=a_.transAxes)
+            a_.set_axis_off()
         _save(fig, path)
         return
 
     um = np.asarray(adata.obsm["X_umap"])
+    ax_raw.scatter(um[:, 0], um[:, 1], s=4, color="#777777",
+                   alpha=0.6, linewidths=0)
+    ax_raw.set_xlabel("UMAP 1 (paper)")
+    ax_raw.set_ylabel("UMAP 2 (paper)")
+    ax_raw.set_title("Paper UMAP (raw, unlabeled)", fontsize=10)
     leiden = adata.obs["dcta_leiden"].astype(str).to_numpy()
     clusters = sorted(np.unique(leiden), key=lambda x: int(x) if x.isdigit() else x)
     cmap = plt.cm.tab20
@@ -239,43 +246,75 @@ def umap_paper_with_g_data(adata: ad.AnnData, path: str) -> None:
             ax.annotate("", xy=(x1, y1), xytext=(x0, y0),
                         arrowprops=dict(arrowstyle="->", color="navy",
                                         lw=3.0, alpha=0.85))
-    # Cluster id labels
+    # Cluster id labels (+ annotation if available)
+    cluster_annot = adata.uns.get("dcta", {}).get("cluster_annotation", {}) or {}
     for c, (cx, cy) in centroids.items():
-        ax.text(cx, cy, c, fontsize=8, ha="center", va="center",
+        ann = cluster_annot.get(c)
+        label = f"{c}\n{ann}" if ann else c
+        ax.text(cx, cy, label, fontsize=6, ha="center", va="center",
                 bbox=dict(boxstyle="round,pad=0.2", facecolor="white",
-                          alpha=0.7, edgecolor="grey"))
+                          alpha=0.8, edgecolor="grey"))
     ax.set_xlabel("UMAP 1 (paper embedding)")
     ax.set_ylabel("UMAP 2 (paper embedding)")
-    ax.set_title("Original paper UMAP with G_data overlay\n"
-                 "(black=edges, navy=backbone)", fontsize=10)
+    ax.set_title("Paper UMAP with G_data overlay\n"
+                 "(black=edges, navy=backbone, cluster id + annotation)",
+                 fontsize=10)
+    ax_raw.set_xlim(ax.get_xlim())
+    ax_raw.set_ylim(ax.get_ylim())
     _save(fig, path)
 
 
 def umap_annotation(adata: ad.AnnData, path: str,
                     col: str = "dcta_annotation") -> None:
-    """Paper UMAP colored by annotation label (or placeholder if missing)."""
-    fig, ax = plt.subplots(figsize=(8, 7))
+    """Two-panel figure: left = raw paper UMAP (unlabeled), right = same
+    UMAP colored + text-labeled by `col`. If X_umap or `col` missing,
+    draws a placeholder.
+    """
+    fig, axes = plt.subplots(1, 2, figsize=(15, 7))
+    ax_raw, ax = axes
     if "X_umap" not in adata.obsm or col not in adata.obs.columns:
-        ax.text(0.5, 0.5, f"missing {col!r} or X_umap",
-                ha="center", va="center", transform=ax.transAxes)
-        ax.set_axis_off()
+        for a_ in axes:
+            a_.text(0.5, 0.5, f"missing {col!r} or X_umap",
+                    ha="center", va="center", transform=a_.transAxes)
+            a_.set_axis_off()
         _save(fig, path)
         return
     um = np.asarray(adata.obsm["X_umap"])
+
+    # ---- left: raw paper UMAP, single color ----
+    ax_raw.scatter(um[:, 0], um[:, 1], s=4, color="#777777",
+                   alpha=0.6, linewidths=0)
+    ax_raw.set_xlabel("UMAP 1 (paper)")
+    ax_raw.set_ylabel("UMAP 2 (paper)")
+    ax_raw.set_title("Paper UMAP (raw, unlabeled)", fontsize=10)
+
+    # ---- right: colored + labeled ----
     labels = adata.obs[col].astype(object).fillna("NA").to_numpy()
     uniq = sorted(set(labels))
     cmap = plt.cm.tab20
     color_for = {l: ("#cccccc" if l == "NA" else cmap(i % 20))
                  for i, l in enumerate(uniq)}
+    centroids: dict = {}
     for l in uniq:
         m = labels == l
         ax.scatter(um[m, 0], um[m, 1], s=4, color=color_for[l],
-                   label=l, alpha=0.7, linewidths=0)
+                   label=l, alpha=0.6, linewidths=0)
+        if m.any() and l != "NA":
+            centroids[l] = um[m].mean(axis=0)
+    for l, (cx, cy) in centroids.items():
+        ax.text(cx, cy, l, fontsize=7, ha="center", va="center",
+                weight="bold",
+                bbox=dict(boxstyle="round,pad=0.2", facecolor="white",
+                          alpha=0.85, edgecolor="grey", linewidth=0.5))
     ax.legend(markerscale=2, fontsize=6, loc="best", ncol=2,
               frameon=False, labelspacing=0.2)
     ax.set_xlabel("UMAP 1 (paper)")
     ax.set_ylabel("UMAP 2 (paper)")
-    ax.set_title(f"Paper UMAP colored by {col}", fontsize=10)
+    ax.set_title(f"Paper UMAP colored + labeled by {col}", fontsize=10)
+
+    # Share axes (same UMAP coords)
+    ax_raw.set_xlim(ax.get_xlim())
+    ax_raw.set_ylim(ax.get_ylim())
     _save(fig, path)
 
 

@@ -125,6 +125,34 @@ Changed `dcta.dag._longest_path_length` to support `weight_mode="sum_weight"`
 (default flipped to weight-aware). Mean backbone edge weight 0.580 → 0.753;
 max-UMAP-jump 11.46 → 6.04. See commit `c23be9d`.
 
+### Phase 2.7.1 — Marker vs DAG attribution analysis (2026-05-21)
+
+Cross factorial of (marker panel) × (DAG on/off) on Zeng2025_BMM 30k
+clusters = paper_AuthorCellType_Broad:
+
+|                       | DAG OFF | DAG ON  |
+|-----------------------|---------|---------|
+| Marker original       | 0.518   | 0.522   |
+| Marker literature-only| 0.553   | 0.574   |
+
+Effect decomposition (strict accuracy):
+  Marker redesign alone (DAG OFF):   +3.5 pp  (0.518 -> 0.553)
+  DAG alone (Phase 2.7 panels, on):  +2.1 pp  (0.553 -> 0.574)
+  Combined:                          +5.6 pp  (0.518 -> 0.574)
+
+Cluster-by-cluster attribution of correct calls vs paper Broad label:
+  NK cluster → NK_cell        : MARKER (KLRF1+CD3-neg panel)
+  CD8 Memory T → CD8_eff_memory: DAG (parent-child rule)
+  Pro-B → Pro_B_cell           : DAG (parent-child rule)
+  Pre-B → Pre_B_cell           : MARKER (margin grew 0.05 → 0.614)
+  Early GMP → CMP              : DAG (LCA upshift; debatable vs paper)
+
+Conclusion: both ingredients are necessary and they fix DIFFERENT
+clusters. Marker quality is the larger lever (+3.5pp) but DAG-aware
+disambiguation contributes +2.1pp on top by correcting cases where
+even good markers can't decide (parent-child confusions and ambiguous
+top-2 mature subsets).
+
 ### Phase 2.7 — Marker panel redesign (B-lineage + T + NK; literature-only) (2026-05-21)
 
 Motivation: Pro-B vs Pre-B were both labelled Pro_B_cell by marker-only

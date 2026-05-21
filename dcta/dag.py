@@ -226,37 +226,50 @@ def build(
     return a
 
 
-def _longest_path_length(G: nx.DiGraph, source: str) -> tuple[list[str], int]:
-    """Return (longest_path_from_source, length) in a DAG. Empty list if no
-    reachable nodes."""
+def _longest_path_length(G: nx.DiGraph, source: str,
+                         weight_mode: str = "edge_count") -> tuple[list[str], float]:
+    """Return (best_path_from_source, score) in a DAG.
+
+    weight_mode:
+      - "edge_count" (default, legacy): maximize number of edges.
+      - "sum_weight":  maximize sum of edge 'weight' attribute.
+        Backbone follows the strongest manifold-connectivity path rather
+        than the longest hop-count chain. Prefers heavy edges, avoids
+        forcing weak threshold-near edges into the spine.
+
+    Returns (path nodes, score). Empty list / 0.0 if source unreachable.
+    """
     if source not in G.nodes:
-        return [], 0
-    # Among descendants of source, find the topological-order path with max length
+        return [], 0.0
     desc = nx.descendants(G, source) | {source}
     sub = G.subgraph(desc)
     if sub.number_of_nodes() == 0:
-        return [], 0
-    # Longest path in DAG via DP on topo order
+        return [], 0.0
     topo = list(nx.topological_sort(sub))
-    dist = {n: 0 for n in topo}
-    parent = {n: None for n in topo}
+    score: dict[str, float] = {n: 0.0 for n in topo}
+    parent: dict[str, str | None] = {n: None for n in topo}
     for u in topo:
         for v in sub.successors(u):
-            if dist[u] + 1 > dist[v]:
-                dist[v] = dist[u] + 1
+            if weight_mode == "sum_weight":
+                inc = float(sub[u][v].get("weight", 0.0))
+            else:
+                inc = 1.0
+            if score[u] + inc > score[v]:
+                score[v] = score[u] + inc
                 parent[v] = u
-    end = max(dist, key=dist.get)
-    path = []
-    cur = end
+    end = max(score, key=score.get)
+    path: list[str] = []
+    cur: str | None = end
     while cur is not None:
         path.append(cur)
         cur = parent[cur]
     path.reverse()
-    return path, dist[end]
+    return path, score[end]
 
 
 def _validate_backbone(G: nx.DiGraph,
-                       cluster_seniority: dict[str, int]) -> dict:
+                       cluster_seniority: dict[str, int],
+                       weight_mode: str = "sum_weight") -> dict:
     """Check whether G_data's backbone chain matches expected hematopoietic order.
 
     The "backbone" is defined as the longest directed path starting from the
@@ -303,11 +316,23 @@ def _validate_backbone(G: nx.DiGraph,
         sources = [n for n in G.nodes if G.in_degree(n) == 0]
         root = sources[0] if sources else next(iter(G.nodes))
     out["root_cluster"] = root
+    out["weight_mode"] = weight_mode
 
-    path, length = _longest_path_length(G, root)
+    path, score = _longest_path_length(G, root, weight_mode=weight_mode)
     out["backbone_path"] = path
-    out["backbone_length"] = length
+    out["backbone_length"] = len(path) - 1 if len(path) >= 1 else 0
+    out["backbone_score"] = float(score)  # edge count OR sum of weights
     out["backbone_seniority"] = [(n, cluster_seniority.get(n)) for n in path]
+
+    # Also compute the alternative for comparison/inspection
+    alt_mode = "edge_count" if weight_mode == "sum_weight" else "sum_weight"
+    alt_path, alt_score = _longest_path_length(G, root, weight_mode=alt_mode)
+    out["alt_backbone"] = {
+        "weight_mode": alt_mode,
+        "path": alt_path,
+        "score": float(alt_score),
+        "length": (len(alt_path) - 1) if len(alt_path) >= 1 else 0,
+    }
 
     # Monotonicity over clusters whose seniority is known
     known = [s for _, s in out["backbone_seniority"] if s is not None]

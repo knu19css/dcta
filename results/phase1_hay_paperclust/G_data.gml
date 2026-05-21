@@ -3,169 +3,169 @@ graph [
   node [
     id 0
     label "B"
-    mean_dpt 0.381520002487794
-    hsc_score -0.3021180331707001
+    mean_dpt +INF
+    hsc_score -0.31452107429504395
     seniority 4.0
   ]
   node [
     id 1
     label "CD4 Memory T"
-    mean_dpt 0.11229905631238288
-    hsc_score -0.25555935502052307
+    mean_dpt +INF
+    hsc_score -0.2604305148124695
     seniority 4.0
   ]
   node [
     id 2
     label "CD8 Memory T"
     mean_dpt +INF
-    hsc_score -0.1667831987142563
+    hsc_score -0.17512576282024384
     seniority 4.0
   ]
   node [
     id 3
     label "Cycling Progenitor"
-    mean_dpt 0.013494621006775053
-    hsc_score 0.526944100856781
+    mean_dpt 0.06058981250307284
+    hsc_score 0.5902643799781799
     seniority 2.0
   ]
   node [
     id 4
     label "Early Erythroid"
-    mean_dpt 0.11157359695146096
-    hsc_score -0.08086336404085159
+    mean_dpt 0.14383701559926118
+    hsc_score -0.0903528705239296
     seniority 2.0
   ]
   node [
     id 5
     label "Early GMP"
-    mean_dpt 0.0156839118565099
-    hsc_score 0.15940649807453156
+    mean_dpt 0.07327799562442255
+    hsc_score 0.20595480501651764
     seniority 2.0
   ]
   node [
     id 6
     label "Early Lymphoid"
-    mean_dpt 0.033489984402368805
-    hsc_score 0.11331252008676529
+    mean_dpt 0.09564737007128953
+    hsc_score 0.08041822910308838
     seniority 2.0
   ]
   node [
     id 7
     label "EoBasoMast Precursor"
-    mean_dpt 0.01883701144726257
-    hsc_score -0.11193337291479111
+    mean_dpt 0.05844265682174376
+    hsc_score -0.10912108421325684
     seniority 2.0
   ]
   node [
     id 8
     label "HSC MPP"
-    mean_dpt 0.006436332606011283
-    hsc_score 1.1325284242630005
+    mean_dpt 0.04380235420170524
+    hsc_score 1.1563791036605835
     seniority 0.0
   ]
   node [
     id 9
     label "LMPP"
-    mean_dpt 0.008425963373523738
-    hsc_score 0.6938865780830383
+    mean_dpt 0.059666501295681094
+    hsc_score 0.7634585499763489
     seniority 1.0
   ]
   node [
     id 10
     label "Late Erythroid"
-    mean_dpt +INF
-    hsc_score 0.1714198887348175
+    mean_dpt 0.47779031709900927
+    hsc_score 0.15733705461025238
     seniority 3.0
   ]
   node [
     id 11
     label "Late GMP"
-    mean_dpt 0.042098057048152324
-    hsc_score -0.1917639672756195
+    mean_dpt 0.11693943280726671
+    hsc_score -0.1890820562839508
     seniority 2.0
   ]
   node [
     id 12
     label "MEP"
-    mean_dpt 0.024011465732437613
-    hsc_score 0.17123010754585266
+    mean_dpt +INF
+    hsc_score 0.2049996703863144
     seniority 2.0
   ]
   node [
     id 13
     label "Megakaryocyte Precursor"
-    mean_dpt 0.02617432352527976
-    hsc_score 0.2086464911699295
+    mean_dpt 0.06337810889445246
+    hsc_score 0.21570663154125214
     seniority 2.0
   ]
   node [
     id 14
     label "Monocyte"
-    mean_dpt 0.16046304009348356
-    hsc_score -0.31928637623786926
+    mean_dpt 0.3405472681962013
+    hsc_score -0.33408674597740173
     seniority 4.0
   ]
   node [
     id 15
     label "NK"
-    mean_dpt 0.060888525345348034
-    hsc_score -0.03455314412713051
+    mean_dpt +INF
+    hsc_score -0.07955998927354813
     seniority 4.0
   ]
   node [
     id 16
     label "Naive T"
-    mean_dpt 0.13319594916593103
-    hsc_score -0.2747408449649811
+    mean_dpt +INF
+    hsc_score -0.2827760577201843
     seniority 4.0
   ]
   node [
     id 17
     label "Plasma_Cell"
     mean_dpt +INF
-    hsc_score -0.2988312244415283
+    hsc_score -0.2704589366912842
     seniority 5.0
   ]
   node [
     id 18
     label "Pre-B"
-    mean_dpt 0.1690773478518623
-    hsc_score -0.312143474817276
+    mean_dpt +INF
+    hsc_score -0.3431693911552429
     seniority 3.0
   ]
   node [
     id 19
     label "Pro-B"
-    mean_dpt 0.12019579068271569
-    hsc_score -0.20353418588638306
+    mean_dpt +INF
+    hsc_score -0.23911651968955994
     seniority 3.0
   ]
   node [
     id 20
     label "Pro-Monocyte"
-    mean_dpt 0.11123456769030975
-    hsc_score -0.313426673412323
+    mean_dpt 0.26877045575614195
+    hsc_score -0.3308113217353821
     seniority 3.0
   ]
   node [
     id 21
     label "Stromal"
-    mean_dpt 0.05019137356430292
-    hsc_score -0.23781757056713104
+    mean_dpt +INF
+    hsc_score -0.2633466422557831
     seniority 0.0
   ]
   node [
     id 22
     label "cDC"
-    mean_dpt 0.09827688425395857
-    hsc_score -0.3107537627220154
+    mean_dpt 0.21666274192946486
+    hsc_score -0.3261593282222748
     seniority 4.0
   ]
   node [
     id 23
     label "pDC"
-    mean_dpt 0.04432248508781031
-    hsc_score -0.22405751049518585
+    mean_dpt 0.10421915404187111
+    hsc_score -0.23756273090839386
     seniority 4.0
   ]
   edge [
@@ -180,18 +180,8 @@ graph [
   ]
   edge [
     source 2
-    target 13
-    weight 0.0551333274414494
-  ]
-  edge [
-    source 2
     target 15
     weight 1.0
-  ]
-  edge [
-    source 2
-    target 17
-    weight 0.11559185192322388
   ]
   edge [
     source 3
@@ -201,52 +191,57 @@ graph [
   edge [
     source 3
     target 6
-    weight 0.8118715889181312
+    weight 1.0
   ]
   edge [
     source 3
     target 7
-    weight 0.7206992403453623
+    weight 1.0
   ]
   edge [
     source 3
     target 11
-    weight 0.46994267298813175
+    weight 0.6768305909330359
   ]
   edge [
     source 3
     target 12
-    weight 0.6724247564265671
+    weight 0.8551882128288363
   ]
   edge [
     source 3
     target 13
-    weight 0.09293793188931239
+    weight 0.3847630380217533
   ]
   edge [
     source 3
     target 18
-    weight 0.11106349413158746
+    weight 0.19102920990633043
+  ]
+  edge [
+    source 3
+    target 19
+    weight 0.11109198855573785
   ]
   edge [
     source 3
     target 20
-    weight 0.05504296649480916
+    weight 0.07621333822358191
   ]
   edge [
     source 3
-    target 21
-    weight 0.06195862125954159
+    target 22
+    weight 0.05222877474872072
   ]
   edge [
     source 3
     target 23
-    weight 0.6170301638635867
+    weight 1.0
   ]
   edge [
     source 4
     target 7
-    weight 0.11925380312185949
+    weight 1.0
   ]
   edge [
     source 4
@@ -256,12 +251,17 @@ graph [
   edge [
     source 4
     target 13
-    weight 0.060249446838243854
+    weight 0.9133466868522184
+  ]
+  edge [
+    source 4
+    target 21
+    weight 0.17463607779201118
   ]
   edge [
     source 5
     target 7
-    weight 0.3065162292535361
+    weight 0.8981255104471891
   ]
   edge [
     source 5
@@ -270,28 +270,53 @@ graph [
   ]
   edge [
     source 5
+    target 13
+    weight 0.06549559685727172
+  ]
+  edge [
+    source 5
+    target 18
+    weight 0.076907914673619
+  ]
+  edge [
+    source 5
+    target 19
+    weight 0.08457806984198955
+  ]
+  edge [
+    source 5
     target 20
-    weight 0.10865120801815402
+    weight 0.1828421448365204
+  ]
+  edge [
+    source 5
+    target 22
+    weight 0.0919797955499226
   ]
   edge [
     source 5
     target 23
-    weight 0.3207113277018794
-  ]
-  edge [
-    source 6
-    target 0
-    weight 0.08900910201172904
+    weight 0.9566517381876573
   ]
   edge [
     source 6
     target 5
-    weight 0.3559543307460419
+    weight 1.0
   ]
   edge [
     source 6
     target 7
-    weight 0.31405127782584213
+    weight 0.8340378197997775
+  ]
+  edge [
+    source 6
+    target 11
+    weight 0.3152421208750463
+  ]
+  edge [
+    source 6
+    target 13
+    weight 0.20906548016314422
   ]
   edge [
     source 6
@@ -305,13 +330,28 @@ graph [
   ]
   edge [
     source 6
+    target 22
+    weight 0.0595741299856984
+  ]
+  edge [
+    source 6
     target 23
     weight 1.0
   ]
   edge [
     source 7
+    target 10
+    weight 0.2393759339686469
+  ]
+  edge [
+    source 7
     target 13
     weight 1.0
+  ]
+  edge [
+    source 7
+    target 23
+    weight 0.2784034078437712
   ]
   edge [
     source 8
@@ -321,17 +361,17 @@ graph [
   edge [
     source 8
     target 5
-    weight 0.580590723932905
+    weight 0.9201303124840495
   ]
   edge [
     source 8
     target 6
-    weight 0.09004620373534272
+    weight 0.26287030776550724
   ]
   edge [
     source 8
     target 7
-    weight 0.07644056781967622
+    weight 0.25371762935892533
   ]
   edge [
     source 8
@@ -341,12 +381,12 @@ graph [
   edge [
     source 8
     target 12
-    weight 0.6142301343394543
+    weight 0.9730554444446634
   ]
   edge [
     source 8
     target 13
-    weight 0.057613418605195955
+    weight 0.16932724248600275
   ]
   edge [
     source 9
@@ -366,22 +406,37 @@ graph [
   edge [
     source 9
     target 7
-    weight 0.15552402761184123
+    weight 0.3987070526049021
   ]
   edge [
     source 9
     target 12
-    weight 0.18409182265829838
+    weight 0.5161230686931622
+  ]
+  edge [
+    source 9
+    target 13
+    weight 0.05863538611925709
+  ]
+  edge [
+    source 9
+    target 19
+    weight 0.059653955144409396
   ]
   edge [
     source 9
     target 23
-    weight 0.08130365007826948
+    weight 0.11355633771262431
   ]
   edge [
     source 10
-    target 17
-    weight 0.05607128586310121
+    target 13
+    weight 0.18295686768557504
+  ]
+  edge [
+    source 11
+    target 7
+    weight 0.18305854241338113
   ]
   edge [
     source 11
@@ -391,12 +446,12 @@ graph [
   edge [
     source 11
     target 22
-    weight 0.7776633233938738
+    weight 1.0
   ]
   edge [
     source 11
     target 23
-    weight 0.24896270272188512
+    weight 1.0
   ]
   edge [
     source 12
@@ -406,7 +461,12 @@ graph [
   edge [
     source 12
     target 5
-    weight 0.12364145756443512
+    weight 0.39171609762006016
+  ]
+  edge [
+    source 12
+    target 6
+    weight 0.0770813769077676
   ]
   edge [
     source 12
@@ -416,7 +476,7 @@ graph [
   edge [
     source 12
     target 10
-    weight 0.3275715961964913
+    weight 0.3012419643509104
   ]
   edge [
     source 12
@@ -426,32 +486,32 @@ graph [
   edge [
     source 12
     target 21
-    weight 0.42697886309583627
+    weight 0.2386058352594379
   ]
   edge [
     source 14
     target 22
-    weight 0.30385252692626347
+    weight 0.47748254231269976
   ]
   edge [
     source 16
     target 2
-    weight 0.1322861520778319
+    weight 0.2197509738180872
   ]
   edge [
     source 18
     target 0
-    weight 0.37109925484765216
+    weight 0.7665636122863119
   ]
   edge [
     source 18
     target 23
-    weight 0.1302441229134941
+    weight 0.12312139744166238
   ]
   edge [
     source 19
     target 0
-    weight 0.12288557797021012
+    weight 0.10788210624128912
   ]
   edge [
     source 19
@@ -471,12 +531,7 @@ graph [
   edge [
     source 20
     target 23
-    weight 0.09879681479794684
-  ]
-  edge [
-    source 21
-    target 7
-    weight 0.6718637992831541
+    weight 0.44064591630740707
   ]
   edge [
     source 21
@@ -484,14 +539,19 @@ graph [
     weight 1.0
   ]
   edge [
+    source 21
+    target 14
+    weight 0.26660608814175374
+  ]
+  edge [
     source 22
     target 13
-    weight 0.16056980211439414
+    weight 0.10569151531580373
   ]
   edge [
     source 23
     target 13
-    weight 0.08727577273856418
+    weight 0.3533604457219916
   ]
   edge [
     source 23

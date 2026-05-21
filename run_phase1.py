@@ -52,6 +52,23 @@ def parse_args(argv=None):
                    help="Multiplicative penalty (0..1) applied to edge weight "
                         "during backbone calculation when edge is prior-"
                         "inconsistent. 0=no penalty, 1=drop entirely.")
+    p.add_argument("--prior-fusion-weight", type=float, default=0.0,
+                   help="Phase 2.6: per-cluster label fusion weight alpha (0..1). "
+                        "0 = marker argmax only (no DAG influence on label). "
+                        ">0 = each cluster's label score blends its own marker "
+                        "score with the mean marker scores of G_prior neighbors "
+                        "evaluated on PAGA-adjacent clusters. Use to demonstrate "
+                        "that DAG topology changes cell-type calls.")
+    p.add_argument("--prior-fusion-hops", type=int, default=1,
+                   help="K-hop neighborhood in G_prior used for fusion (default 1).")
+    p.add_argument("--ambiguity-margin", type=float, default=0.20,
+                   help="Phase 2.6 disambiguation. When the cluster's top-1 "
+                        "marker score - top-2 score is below this fraction of "
+                        "top-1, treat as ambiguous and apply DAG-aware rules: "
+                        "(A) if top-2 share an LCA progenitor in G_prior, "
+                        "use the LCA label; (B) if top-2 are both terminals, "
+                        "tie-break by PAGA-neighbor marker support of each "
+                        "candidate's G_prior neighborhood.")
     p.add_argument("--lineage-marker-yaml", default="data/priors/lineage_mature_markers.yaml",
                    help="Optional cell-type marker panel YAML; when provided, "
                         "marker direction uses (mature_panel - hsc_score) instead "
@@ -132,7 +149,10 @@ def main(argv=None):
                            label_column=args.label_column,
                            dag_prior_yaml=dag_prior_yaml,
                            lineage_marker_yaml=lineage_yaml,
-                           prior_inconsistent_penalty=args.prior_inconsistent_penalty)
+                           prior_inconsistent_penalty=args.prior_inconsistent_penalty,
+                           prior_fusion_weight=args.prior_fusion_weight,
+                           prior_fusion_hops=args.prior_fusion_hops,
+                           ambiguity_margin=args.ambiguity_margin)
     G = adata.uns["dcta"]["G_data"]
     chosen = adata.uns["dcta"]["direction_method_chosen"]
     acc = adata.uns["dcta"]["direction_methods"].get("accuracy", {})
@@ -154,11 +174,42 @@ def main(argv=None):
                 pred_column="dcta_annotation",
                 lineage_marker_yaml=lineage_yaml,
             )
-            print(f"[DCTA] annotation eval: "
+            print(f"[DCTA] annotation eval (DCTA full): "
                   f"strict_acc={eval_out['strict_accuracy']:.3f} "
                   f"lineage_acc={eval_out['lineage_accuracy']:.3f} "
                   f"(n_evaluable={eval_out['n_evaluable']})", flush=True)
             adata.uns["dcta"]["annotation_eval"] = eval_out
+
+            # ---- Marker-only baseline (control): broadcast cluster_marker_only_label ----
+            mol = adata.uns["dcta"].get("cluster_marker_only_label", {})
+            if mol:
+                leiden_str = adata.obs["dcta_leiden"].astype(str).to_numpy()
+                adata.obs["dcta_marker_only_annotation"] = [
+                    mol.get(c) for c in leiden_str
+                ]
+                eval_mo = dcta.annotation_eval.evaluate_annotation(
+                    adata, gt_column=args.label_column,
+                    pred_column="dcta_marker_only_annotation",
+                    lineage_marker_yaml=lineage_yaml,
+                )
+                print(f"[DCTA] annotation eval (marker-only baseline): "
+                      f"strict_acc={eval_mo['strict_accuracy']:.3f} "
+                      f"lineage_acc={eval_mo['lineage_accuracy']:.3f}",
+                      flush=True)
+                adata.uns["dcta"]["annotation_eval_marker_only"] = eval_mo
+                cl_annot = adata.uns["dcta"]["cluster_annotation"]
+                diffs = [
+                    (c, mol.get(c), cl_annot.get(c))
+                    for c in mol if mol.get(c) != cl_annot.get(c)
+                ]
+                print(f"[DCTA] clusters changed by DCTA vs marker-only: "
+                      f"{len(diffs)}/{len(mol)}", flush=True)
+                for c, b, d in diffs[:10]:
+                    print(f"         {c} : {b} -> {d}", flush=True)
+                adata.uns["dcta"]["cluster_label_diff_vs_marker_only"] = [
+                    {"cluster": c, "marker_only": b, "dcta": d}
+                    for c, b, d in diffs
+                ]
 
     out_h5ad = os.path.join(args.outdir, "dcta_phase1.h5ad")
     out_gml = os.path.join(args.outdir, "G_data.gml")
@@ -175,6 +226,11 @@ def main(argv=None):
     am_obj = adata.uns["dcta"].pop("absorption_matrix", None)
     ae_obj_full = adata.uns["dcta"].pop("annotation_eval", None)
     ae_obj = ae_obj_full  # alias for summary
+    mol_obj = adata.uns["dcta"].pop("cluster_marker_only_label", None)
+    moa_obj = adata.uns["dcta"].pop("cluster_marker_only_alternatives", None)
+    emo_obj = adata.uns["dcta"].pop("annotation_eval_marker_only", None)
+    cld_obj = adata.uns["dcta"].pop("cluster_label_diff_vs_marker_only", None)
+    dr_obj = adata.uns["dcta"].pop("cluster_disambig_reason", None)
     # absorption_matrix has nested lists+strs, JSON-safe but huge; keep popped
     print(f"[DCTA] writing {out_h5ad}", flush=True)
     adata.write_h5ad(out_h5ad)
@@ -198,6 +254,16 @@ def main(argv=None):
         adata.uns["dcta"]["absorption_matrix"] = am_obj
     if ae_obj is not None:
         adata.uns["dcta"]["annotation_eval"] = ae_obj
+    if mol_obj is not None:
+        adata.uns["dcta"]["cluster_marker_only_label"] = mol_obj
+    if moa_obj is not None:
+        adata.uns["dcta"]["cluster_marker_only_alternatives"] = moa_obj
+    if emo_obj is not None:
+        adata.uns["dcta"]["annotation_eval_marker_only"] = emo_obj
+    if cld_obj is not None:
+        adata.uns["dcta"]["cluster_label_diff_vs_marker_only"] = cld_obj
+    if dr_obj is not None:
+        adata.uns["dcta"]["cluster_disambig_reason"] = dr_obj
     print(f"[DCTA] writing {out_gml}", flush=True)
     # nx.write_gml requires str-keyed attrs and no None values
     G_clean = nx.DiGraph()
@@ -246,6 +312,13 @@ def main(argv=None):
             "n_unmapped_gt_labels": len(ae_obj.get("unmapped_gt_labels", [])),
             "n_unmapped_pred_labels": len(ae_obj.get("unmapped_pred_labels", [])),
         } if ae_obj else None),
+        "marker_only_baseline": ({
+            "strict_accuracy": emo_obj["strict_accuracy"],
+            "lineage_accuracy": emo_obj["lineage_accuracy"],
+            "n_clusters_changed_by_dcta": len(cld_obj) if cld_obj else 0,
+            "fusion_weight": args.prior_fusion_weight,
+            "fusion_hops": args.prior_fusion_hops,
+        } if emo_obj else None),
     }
     # backbone_seniority contains tuples — JSON-serialize as list of [c, s]
     bb_full = adata.uns["dcta"].get("backbone_validation", {})

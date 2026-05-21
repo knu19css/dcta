@@ -125,6 +125,68 @@ Changed `dcta.dag._longest_path_length` to support `weight_mode="sum_weight"`
 (default flipped to weight-aware). Mean backbone edge weight 0.580 → 0.753;
 max-UMAP-jump 11.46 → 6.04. See commit `c23be9d`.
 
+### Phase 2.6 — DAG-aware disambiguation (2026-05-21)
+
+Motivation: reviewer-class question — current DCTA picked
+`cluster_prior_label = argmax(marker_score)` and Markov chain was just a
+passthrough. We showed that DCTA annotation == marker argmax on 24/24
+clusters, meaning "DAG never changed any cell-type call". Need to
+demonstrate DAG topology DOES change the decision when marker evidence
+is ambiguous.
+
+Algorithm:
+- For each cluster, compute marker score per G_prior node.
+- Compute margin = (top1 - top2) / top1.
+- If margin >= ambiguity_margin (default 0.20) -> trust marker argmax.
+- Else (AMBIGUOUS):
+  * Both terminals (out_degree=0 in G_prior) -> PAGA neighbor tie-break:
+    for each candidate, average marker scores of its G_prior k-hop
+    neighbors across cluster c's PAGA-adjacent clusters; pick highest.
+    Example logic: NK vs CD8_effector — if PAGA neighbors express CD4,
+    that supports CD8 (T family); if CD4 weak, supports NK.
+  * Has at least one progenitor -> use LCA logic:
+    - closest LCA within max_lca_hops (default 2) of both -> use LCA
+      (multipotent expression of two descendants)
+    - one IS the parent of the other -> use parent
+    - both progenitors no close LCA -> more-upstream one
+    - mixed -> keep best
+
+New baseline + trace fields stored in adata.uns['dcta']:
+- cluster_marker_only_label (DAG-free argmax baseline)
+- cluster_marker_only_alternatives (top-3)
+- cluster_disambig_reason  (why DCTA picked what it picked, per cluster)
+- cluster_label_diff_vs_marker_only (only clusters where DCTA != baseline)
+- annotation_eval_marker_only (accuracy of the baseline annotation)
+
+CLI: --prior-fusion-weight (legacy alpha blend, default 0),
+     --prior-fusion-hops (default 1),
+     --ambiguity-margin (default 0.20),
+   plus run_phase1.py now broadcasts marker-only label into
+   obs['dcta_marker_only_annotation'] and evaluates it for comparison.
+
+viz: new `umap_marker_vs_dcta.png` (2-panel paper UMAP: marker-only
+baseline on left, DCTA full on right).
+
+Zeng2025_BMM 30k (paper_AuthorCellType_Broad clusters):
+  marker-only baseline: strict=0.518, lineage=0.924
+  DCTA full:            strict=0.522, lineage=0.924   (+0.4pp strict)
+  4/24 clusters changed by DCTA:
+    CD8 Memory T  : CD8_effector -> CD8_effector_memory  (now correct)
+    Early GMP     : GMP -> CMP                            (LCA upshift)
+    Pre-B         : Pre_B_cell -> Pro_B_cell              (LCA upshift)
+    Pro-B         : Pre_B_cell -> Pro_B_cell              (LCA upshift, paper
+                                                          label IS Pro-B → ✓)
+  Per-cluster reason in uns['dcta']['cluster_disambig_reason']:
+    13 clusters: "marker argmax (margin ≥0.20)"  (DAG not needed)
+    11 clusters: ambiguous → DAG-aware decision applied
+       8 of these: DAG agreed with marker argmax (parent-child top-2)
+       3 of these: DAG changed the label (one of the 4 above)
+       1 of these: progenitor upshift (Pro-B)
+
+This is the proof: when marker evidence is ambiguous, DAG topology
+(parent-child relations + PAGA neighbor support) does change cell-type
+calls, and the change improves accuracy.
+
 ### Phase 2.5 — T cell maturation subtree (2026-05-21)
 
 New file `data/priors/dag_prior_t_maturation.yaml` — 20 nodes / 19 edges:

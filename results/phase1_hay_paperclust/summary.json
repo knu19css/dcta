@@ -1,27 +1,28 @@
 {
   "n_cells_after_qc": 29993,
   "n_genes_after_qc": 21483,
-  "n_dcs": 12,
+  "n_dcs": 10,
   "n_clusters": 24,
   "n_components": 1,
   "root_cluster": "HSC MPP",
-  "n_edges_initial": 66,
-  "n_edges_after_fas": 66,
+  "n_edges_initial": 78,
+  "n_edges_after_fas": 78,
   "n_edges_removed": 0,
   "direction": {
     "method_chosen": "marker",
     "accuracy": {
-      "dpt": 0.9210526315789473,
-      "marker": 0.9210526315789473
+      "dpt": 0.8222222222222222,
+      "marker": 0.9333333333333333
     },
-    "agreement_rate": 0.7575757575757576,
-    "n_pairs_compared": 66
+    "agreement_rate": 0.6153846153846154,
+    "n_pairs_compared": 78
   },
   "backbone": {
     "backbone_path": [
       "HSC MPP",
       "LMPP",
       "Cycling Progenitor",
+      "Early Lymphoid",
       "Early GMP",
       "Late GMP",
       "Pro-Monocyte",
@@ -29,21 +30,22 @@
       "cDC",
       "Megakaryocyte Precursor"
     ],
-    "backbone_length": 8,
+    "backbone_length": 9,
     "seniority_monotonic": false,
     "seniority_strictly_increasing": false,
-    "kendall_tau": 0.7118321296786989,
-    "n_lineages_reachable_from_root": 5,
-    "n_disconnected_mature": 4,
+    "kendall_tau": 0.715833989590879,
+    "n_lineages_reachable_from_root": 4,
+    "n_disconnected_mature": 5,
     "root_cluster": "HSC MPP",
     "weight_mode": "sum_weight",
-    "backbone_score": 6.232211164520328,
+    "backbone_score": 6.791587028814252,
     "alt_backbone": {
       "weight_mode": "edge_count",
       "path": [
         "HSC MPP",
         "LMPP",
         "Cycling Progenitor",
+        "MEP",
         "Early Lymphoid",
         "Early GMP",
         "Late GMP",
@@ -52,20 +54,22 @@
         "cDC",
         "Megakaryocyte Precursor"
       ],
-      "score": 9.0,
-      "length": 9
+      "score": 10.0,
+      "length": 10
     },
     "disconnected_mature_clusters": [
       "CD4 Memory T",
       "CD8 Memory T",
       "NK",
-      "Naive T"
+      "Naive T",
+      "Plasma_Cell"
     ],
     "prior_labels": [
       "HSC",
       "MPP",
       "MPP",
-      "GMP",
+      "Pre_B_cell",
+      "CMP",
       "GMP",
       "Monocyte",
       "Monocyte",
@@ -83,6 +87,10 @@
       ],
       [
         "Cycling Progenitor",
+        2
+      ],
+      [
+        "Early Lymphoid",
         2
       ],
       [
@@ -112,9 +120,9 @@
     ]
   },
   "prior": {
-    "consistency_rate": 0.6363636363636364,
-    "consistent_count": 42,
-    "scored_count": 66,
+    "consistency_rate": 0.5897435897435898,
+    "consistent_count": 46,
+    "scored_count": 78,
     "unlabeled_count": 0,
     "penalty": 0.5,
     "g_prior_path": [
@@ -123,10 +131,17 @@
     ]
   },
   "annotation": {
-    "strict_accuracy": 0.5178208248591338,
+    "strict_accuracy": 0.5220218050878538,
     "lineage_accuracy": 0.9244490381088921,
     "n_evaluable": 29993,
     "n_unmapped_gt_labels": 1,
     "n_unmapped_pred_labels": 0
+  },
+  "marker_only_baseline": {
+    "strict_accuracy": 0.5178208248591338,
+    "lineage_accuracy": 0.9244490381088921,
+    "n_clusters_changed_by_dcta": 4,
+    "fusion_weight": 0.0,
+    "fusion_hops": 1
   }
 }

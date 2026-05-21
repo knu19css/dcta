@@ -413,6 +413,45 @@ def umap_annotation_confidence(adata: ad.AnnData, path: str) -> None:
     _save(fig, path)
 
 
+def umap_marker_vs_dcta(adata: ad.AnnData, path: str,
+                        cluster_col: str = "dcta_leiden") -> None:
+    """Three-panel UMAP demonstrating DAG impact on annotation:
+      1) cluster id (`cluster_col`)
+      2) marker-only baseline (no DAG) — `dcta_marker_only_annotation`
+      3) DCTA full (DAG-aware disambiguation) — `dcta_annotation`
+
+    Each cell's color/label differs between panels 2 and 3 only when
+    the DAG-aware logic changed the call.
+    """
+    fig, axes = plt.subplots(1, 3, figsize=(22, 7))
+    ax_clu, ax_mo, ax_full = axes
+    if ("X_umap" not in adata.obsm
+        or "dcta_marker_only_annotation" not in adata.obs.columns
+        or "dcta_annotation" not in adata.obs.columns):
+        for a_ in axes:
+            a_.text(0.5, 0.5,
+                    "marker-only baseline or DCTA annotation missing",
+                    ha="center", va="center", transform=a_.transAxes)
+            a_.set_axis_off()
+        _save(fig, path)
+        return
+    um = np.asarray(adata.obsm["X_umap"])
+    clu = adata.obs[cluster_col].astype(object).to_numpy() if cluster_col in adata.obs.columns else None
+    mo = adata.obs["dcta_marker_only_annotation"].astype(object).to_numpy()
+    full = adata.obs["dcta_annotation"].astype(object).to_numpy()
+    _draw_umap_panel(ax_clu, um, clu,
+                     title=(f"1) Paper UMAP + cluster id ({cluster_col})"
+                            if clu is not None else "1) cluster missing"))
+    _draw_umap_panel(ax_mo, um, mo,
+                     title="2) Marker-only baseline (no DAG)")
+    _draw_umap_panel(ax_full, um, full,
+                     title="3) DCTA full (DAG-aware disambiguation)")
+    xlim = ax_full.get_xlim(); ylim = ax_full.get_ylim()
+    for ax in axes:
+        ax.set_xlim(xlim); ax.set_ylim(ylim)
+    _save(fig, path)
+
+
 def export_all(adata: ad.AnnData, outdir: str) -> None:
     os.makedirs(outdir, exist_ok=True)
     diffmap_eigvals(adata, os.path.join(outdir, "diffmap_eigvals.png"))
@@ -426,3 +465,6 @@ def export_all(adata: ad.AnnData, outdir: str) -> None:
         umap_annotation(adata, os.path.join(outdir, "umap_annotation.png"))
         umap_annotation_confidence(
             adata, os.path.join(outdir, "umap_annotation_confidence.png"))
+    if "dcta_marker_only_annotation" in adata.obs.columns:
+        umap_marker_vs_dcta(
+            adata, os.path.join(outdir, "umap_marker_vs_dcta.png"))

@@ -116,6 +116,9 @@ def build(
     lineage_marker_yaml: str | None = None,
     prior_inconsistent_penalty: float = 0.5,
     prior_max_hops: int | None = None,
+    prior_fusion_weight: float = 0.0,
+    prior_fusion_hops: int = 1,
+    ambiguity_margin: float = 0.15,
 ) -> ad.AnnData:
     """Build G_data from PAGA connectivities with dual-direction selection.
 
@@ -253,6 +256,9 @@ def build(
         # computed by pseudotime; otherwise computes fresh from marker yaml)
         dcta_prior.map_clusters_to_prior(
             a, lineage_marker_yaml=lineage_marker_yaml, g_prior=g_prior,
+            prior_fusion_weight=prior_fusion_weight,
+            prior_fusion_hops=prior_fusion_hops,
+            ambiguity_margin=ambiguity_margin,
         )
         cluster_prior_label = a.uns["dcta"]["cluster_prior_label"]
         prior_consistency = dcta_prior.edge_prior_consistency(

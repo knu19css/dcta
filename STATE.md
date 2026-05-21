@@ -125,6 +125,50 @@ Changed `dcta.dag._longest_path_length` to support `weight_mode="sum_weight"`
 (default flipped to weight-aware). Mean backbone edge weight 0.580 → 0.753;
 max-UMAP-jump 11.46 → 6.04. See commit `c23be9d`.
 
+### Phase 2.2 — G_prior wiring (2026-05-21)
+
+New module `dcta/prior.py`:
+- `load_dag_prior(path)` -> nx.DiGraph (30 nodes, 31 edges from
+  data/priors/dag_prior_bm.yaml)
+- `map_clusters_to_prior(adata, ...)` -> per-cluster argmax over all
+  cell-type panels matching a g_prior node; attaches obs['dcta_prior_label']
+  + uns['dcta']['cluster_prior_label'] (+ score, alternatives, unmatched)
+- `prior_path_reachable(G, u, v)` and `edge_prior_consistency(...)` ->
+  per-edge {consistent, reason} based on directed path in G_prior
+
+`dcta.dag.build` integration:
+- new kwargs: `dag_prior_yaml`, `lineage_marker_yaml`,
+  `prior_inconsistent_penalty=0.5`, `prior_max_hops`
+- After G_data built, anti-prior edges have their weight multiplied by
+  (1 - penalty) on a backbone-computation copy of G (G_data itself is
+  not mutated; original weights kept in `uns['dcta']['G_data']`)
+- Stores `uns['dcta']['prior_consistency']` with per_edge dict +
+  aggregate consistency_rate
+- `backbone_validation` gains `prior_labels` list (one per backbone node)
+
+CLI:
+- `run_phase1.py --dag-prior-yaml`, `--prior-inconsistent-penalty`
+  (defaults to bm yaml + 0.5)
+- `summary.json` now has a `prior` block
+
+Viz:
+- `paga_vs_dag_overlay.png` gains purple edges for prior-inconsistent
+  G_data edges; title shows prior_consistency_rate
+
+Zeng2025_BMM 30k results:
+- prior_consistency_rate: **0.674** (62/92 G_data edges agree with
+  G_prior direction; 30 anti-prior, mostly inter-lineage PAGA artifacts
+  in the resident-lymphoid blob)
+- backbone path label sequence (biological readout):
+  **MPP → MPP → MPP → CMP → MPP → MPP → MDP → cDC2 → cDC2 →
+   Monocyte → Monocyte → Monocyte → Monocyte → Monocyte**
+  (i.e., HSC → MPP plateau → CMP → MDP → cDC2 → Monocyte myeloid trajectory)
+- Backbone path (cluster IDs) and Kendall tau unchanged from Phase 2.1
+  (0.896, monotonic=True) — prior wiring did not need to override the
+  marker-driven backbone, just labeled it
+
+24/24 synthetic tests pass (3 new prior tests added).
+
 ### Phase 2.1 — Lineage-specific mature marker YAMLs (2026-05-21)
 
 New files:
@@ -164,8 +208,7 @@ All 21 synthetic tests + 1 Hay smoke still pass.
 ## Phase 2 remaining
 
 - ~~Lineage-specific mature marker YAMLs~~ ✅ Phase 2.1
-- Prior hematopoietic DAG (G_prior) — partial: `dag_prior_bm.yaml` exists,
-  not yet wired into backbone-design step (Phase 2.2)
+- ~~Prior hematopoietic DAG wiring~~ ✅ Phase 2.2
 - Absorbing Markov chain on G_prior with PAGA-informed transitions
 - Terminal / transient annotation per cell
 - AML/MDS deviation detection

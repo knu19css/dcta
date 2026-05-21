@@ -249,6 +249,52 @@ def test_dag_backbone_validation(synthetic_adata):
     assert isinstance(bb["n_disconnected_mature"], int)
 
 
+DAG_PRIOR_YAML = str(Path(__file__).resolve().parent.parent / "data" / "priors" / "dag_prior_bm.yaml")
+LINEAGE_YAML = str(Path(__file__).resolve().parent.parent / "data" / "priors" / "lineage_mature_markers.yaml")
+
+
+def test_prior_load_dag_returns_digraph():
+    G = dcta.prior.load_dag_prior(DAG_PRIOR_YAML)
+    import networkx as nx
+    assert isinstance(G, nx.DiGraph)
+    assert "HSC" in G.nodes
+    assert "MPP" in G.nodes
+    assert G.has_edge("HSC", "MPP")
+    # Sanity: a stem-to-mature path must exist
+    assert nx.has_path(G, "HSC", "Erythrocyte")
+
+
+def test_prior_path_reachable():
+    G = dcta.prior.load_dag_prior(DAG_PRIOR_YAML)
+    assert dcta.prior.prior_path_reachable(G, "HSC", "Plasma_cell") is True
+    # Reverse direction (mature -> stem) must be False
+    assert dcta.prior.prior_path_reachable(G, "Plasma_cell", "HSC") is False
+    # Both labels must exist
+    assert dcta.prior.prior_path_reachable(G, "HSC", "NOT_A_NODE") is False
+    assert dcta.prior.prior_path_reachable(G, None, "HSC") is False
+
+
+def test_dag_build_with_prior_attaches_consistency(synthetic_adata):
+    a = _prepped(synthetic_adata)
+    a = dcta.pseudotime.run(a, hsc_marker_yaml=HSC_YAML,
+                            lineage_marker_yaml=LINEAGE_YAML)
+    out = dcta.dag.build(a, edge_threshold=0.01, seniority_yaml=SENIORITY_YAML,
+                        label_column="true_lineage",
+                        dag_prior_yaml=DAG_PRIOR_YAML,
+                        lineage_marker_yaml=LINEAGE_YAML)
+    uns = out.uns["dcta"]
+    assert "prior_consistency" in uns
+    pc = uns["prior_consistency"]
+    for k in ("consistency_rate", "consistent_count", "scored_count", "per_edge"):
+        assert k in pc
+    # Synthetic data may or may not map well to the BM prior — just type-check
+    assert pc["scored_count"] >= 0
+    if pc["consistency_rate"] is not None:
+        assert 0.0 <= pc["consistency_rate"] <= 1.0
+    # backbone_validation has prior_labels list now
+    assert "prior_labels" in uns["backbone_validation"]
+
+
 def test_viz_export_all_writes_pngs(synthetic_adata, tmp_path):
     a = _prepped(synthetic_adata)
     a = dcta.pseudotime.run(a, hsc_marker_yaml=HSC_YAML)

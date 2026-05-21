@@ -42,7 +42,7 @@
     "n_disconnected_mature": 23,
     "root_cluster": "16",
     "weight_mode": "sum_weight",
-    "backbone_score": 9.14709540111625,
+    "backbone_score": 8.373820600338979,
     "alt_backbone": {
       "weight_mode": "edge_count",
       "path": [
@@ -88,6 +88,22 @@
       "6",
       "60",
       "7"
+    ],
+    "prior_labels": [
+      "MPP",
+      "MPP",
+      "MPP",
+      "CMP",
+      "MPP",
+      "MPP",
+      "MDP",
+      "cDC2",
+      "cDC2",
+      "Monocyte",
+      "Monocyte",
+      "Monocyte",
+      "Monocyte",
+      "Monocyte"
     ],
     "backbone_seniority": [
       [
@@ -147,5 +163,13 @@
         4
       ]
     ]
+  },
+  "prior": {
+    "consistency_rate": 0.6739130434782609,
+    "consistent_count": 62,
+    "scored_count": 92,
+    "unlabeled_count": 0,
+    "penalty": 0.5,
+    "g_prior_path": "data/priors/dag_prior_bm.yaml"
   }
 }

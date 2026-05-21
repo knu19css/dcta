@@ -112,6 +112,10 @@ def build(
     direction_strategy: str = "auto_select",
     seniority_yaml: str | None = None,
     label_column: str | None = "cell_type",
+    dag_prior_yaml: str | None = None,
+    lineage_marker_yaml: str | None = None,
+    prior_inconsistent_penalty: float = 0.5,
+    prior_max_hops: int | None = None,
 ) -> ad.AnnData:
     """Build G_data from PAGA connectivities with dual-direction selection.
 
@@ -236,8 +240,54 @@ def build(
     uns["direction_method_chosen"] = chosen
     uns["biological_seniority_map"] = cluster_seniority
 
+    # Phase 2.2: prior-DAG consistency. If dag_prior_yaml supplied AND
+    # lineage_marker_yaml supplied, map clusters to prior nodes, score
+    # each G_data edge against the prior, then penalize prior-inconsistent
+    # edge weights when computing backbone.
+    prior_consistency = None
+    G_for_backbone = G
+    if dag_prior_yaml is not None and lineage_marker_yaml is not None:
+        from dcta import prior as dcta_prior
+        g_prior = dcta_prior.load_dag_prior(dag_prior_yaml)
+        # Map clusters to prior labels (uses cluster_lineage_scores if already
+        # computed by pseudotime; otherwise computes fresh from marker yaml)
+        dcta_prior.map_clusters_to_prior(
+            a, lineage_marker_yaml=lineage_marker_yaml, g_prior=g_prior,
+        )
+        cluster_prior_label = a.uns["dcta"]["cluster_prior_label"]
+        prior_consistency = dcta_prior.edge_prior_consistency(
+            G, cluster_prior_label, g_prior, max_hops=prior_max_hops,
+        )
+        # Build a copy with penalized weights for backbone calculation
+        G_for_backbone = G.copy()
+        for u, v in G_for_backbone.edges:
+            info = prior_consistency["per_edge"].get(f"{u}|{v}", {})
+            cons = info.get("consistent")
+            if cons is False:
+                G_for_backbone[u][v]["weight"] = (
+                    G_for_backbone[u][v].get("weight", 0.0)
+                    * (1.0 - prior_inconsistent_penalty)
+                )
+        uns["prior_consistency"] = {
+            "consistency_rate": prior_consistency["consistency_rate"],
+            "consistent_count": prior_consistency["consistent_count"],
+            "scored_count": prior_consistency["scored_count"],
+            "unlabeled_count": prior_consistency["unlabeled_count"],
+            "per_edge": prior_consistency["per_edge"],
+            "penalty": prior_inconsistent_penalty,
+            "g_prior_path": dag_prior_yaml,
+        }
+
     # Backbone-vs-hematopoiesis validation (per user feedback 2026-05-21)
-    uns["backbone_validation"] = _validate_backbone(G, cluster_seniority)
+    uns["backbone_validation"] = _validate_backbone(
+        G_for_backbone, cluster_seniority
+    )
+    # Annotate backbone with prior info
+    if prior_consistency is not None:
+        bb_path = uns["backbone_validation"].get("backbone_path", [])
+        uns["backbone_validation"]["prior_labels"] = [
+            cluster_prior_label.get(c) for c in bb_path
+        ]
     return a
 
 

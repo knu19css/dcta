@@ -152,6 +152,19 @@ def paga_vs_dag_overlay(adata: ad.AnnData, path: str) -> None:
                                edge_color="red", arrows=True, arrowsize=12,
                                width=1.5, style="dotted")
 
+    # Phase 2.2 — prior-inconsistent edges drawn purple (on top of green/orange)
+    pc = adata.uns["dcta"].get("prior_consistency", {}) or {}
+    pe = (pc or {}).get("per_edge", {}) or {}
+    purple_edges = []
+    for u, v in G_dag.edges:
+        info = pe.get(f"{u}|{v}", {})
+        if info.get("consistent") is False:
+            purple_edges.append((u, v))
+    if purple_edges:
+        nx.draw_networkx_edges(G_dag, pos, ax=ax, edgelist=purple_edges,
+                               edge_color="purple", arrows=True, arrowsize=15,
+                               width=2.2, style="solid")
+
     # Backbone path: highlight in thick navy on top of everything
     bb = adata.uns["dcta"].get("backbone_validation", {})
     bb_path = bb.get("backbone_path", []) if bb else []
@@ -166,9 +179,11 @@ def paga_vs_dag_overlay(adata: ad.AnnData, path: str) -> None:
     chosen = adata.uns["dcta"].get("direction_method_chosen", "?")
     mono = bb.get("seniority_monotonic") if bb else None
     tau = bb.get("kendall_tau") if bb else None
+    pcr = pc.get("consistency_rate") if pc else None
     title = (f"PAGA (grey) <-> G_data overlay - chosen={chosen}\n"
-             f"green=methods agree, orange=disagree, red=removed by FAS, "
-             f"navy=backbone (monotonic={mono}, tau={tau})")
+             f"green=agree, orange=disagree, red=FAS-removed, "
+             f"purple=anti-prior, navy=backbone "
+             f"(monotonic={mono}, tau={tau}, prior_consistency={pcr})")
     ax.set_title(title, fontsize=9)
     ax.set_axis_off()
     _save(fig, path)

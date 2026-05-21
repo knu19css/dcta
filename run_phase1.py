@@ -40,6 +40,15 @@ def parse_args(argv=None):
                    help="adata.obs column used to look up seniority")
     p.add_argument("--direction-strategy", default="auto_select",
                    choices=["auto_select", "marker", "dpt"])
+    p.add_argument("--dag-prior-yaml", default="data/priors/dag_prior_bm.yaml",
+                   help="Optional prior hematopoietic DAG. When provided "
+                        "together with --lineage-marker-yaml, edges of G_data "
+                        "are scored for prior consistency and backbone "
+                        "penalizes anti-prior edges. Pass '' to disable.")
+    p.add_argument("--prior-inconsistent-penalty", type=float, default=0.5,
+                   help="Multiplicative penalty (0..1) applied to edge weight "
+                        "during backbone calculation when edge is prior-"
+                        "inconsistent. 0=no penalty, 1=drop entirely.")
     p.add_argument("--lineage-marker-yaml", default="data/priors/lineage_mature_markers.yaml",
                    help="Optional cell-type marker panel YAML; when provided, "
                         "marker direction uses (mature_panel - hsc_score) instead "
@@ -90,11 +99,15 @@ def main(argv=None):
           f"components: {adata.uns['dcta']['component_count']}", flush=True)
 
     print("[DCTA] dag", flush=True)
+    dag_prior_yaml = args.dag_prior_yaml or None
     adata = dcta.dag.build(adata, edge_threshold=args.edge_threshold,
                            transitive_reduction=args.transitive_reduction,
                            direction_strategy=args.direction_strategy,
                            seniority_yaml=args.seniority_yaml,
-                           label_column=args.label_column)
+                           label_column=args.label_column,
+                           dag_prior_yaml=dag_prior_yaml,
+                           lineage_marker_yaml=lineage_yaml,
+                           prior_inconsistent_penalty=args.prior_inconsistent_penalty)
     G = adata.uns["dcta"]["G_data"]
     chosen = adata.uns["dcta"]["direction_method_chosen"]
     acc = adata.uns["dcta"]["direction_methods"].get("accuracy", {})
@@ -112,6 +125,8 @@ def main(argv=None):
     pe_obj = adata.uns["dcta"].pop("paper_embedding_source", None)
     cls_obj = adata.uns["dcta"].pop("cluster_lineage_scores", None)
     cbl_obj = adata.uns["dcta"].pop("cluster_best_lineage", None)
+    pc_obj = adata.uns["dcta"].pop("prior_consistency", None)
+    cpa_obj = adata.uns["dcta"].pop("cluster_prior_alternatives", None)
     print(f"[DCTA] writing {out_h5ad}", flush=True)
     adata.write_h5ad(out_h5ad)
     if G_obj is not None:
@@ -126,6 +141,10 @@ def main(argv=None):
         adata.uns["dcta"]["cluster_lineage_scores"] = cls_obj
     if cbl_obj is not None:
         adata.uns["dcta"]["cluster_best_lineage"] = cbl_obj
+    if pc_obj is not None:
+        adata.uns["dcta"]["prior_consistency"] = pc_obj
+    if cpa_obj is not None:
+        adata.uns["dcta"]["cluster_prior_alternatives"] = cpa_obj
     print(f"[DCTA] writing {out_gml}", flush=True)
     # nx.write_gml requires str-keyed attrs and no None values
     G_clean = nx.DiGraph()
@@ -140,6 +159,7 @@ def main(argv=None):
     dcta.viz.export_all(adata, outdir=args.outdir)
 
     methods = adata.uns["dcta"].get("direction_methods", {})
+    pc = pc_obj or adata.uns["dcta"].get("prior_consistency", {})
     summary = {
         "n_cells_after_qc": int(adata.n_obs),
         "n_genes_after_qc": int(adata.n_vars),
@@ -160,6 +180,12 @@ def main(argv=None):
             k: v for k, v in adata.uns["dcta"].get("backbone_validation", {}).items()
             if k not in ("backbone_seniority",)  # keep summary JSON-clean
         },
+        "prior": {
+            k: pc.get(k) for k in (
+                "consistency_rate", "consistent_count", "scored_count",
+                "unlabeled_count", "penalty", "g_prior_path",
+            )
+        } if pc else None,
     }
     # backbone_seniority contains tuples — JSON-serialize as list of [c, s]
     bb_full = adata.uns["dcta"].get("backbone_validation", {})

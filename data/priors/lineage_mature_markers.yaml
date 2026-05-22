@@ -365,6 +365,54 @@ NKT_cell:
   lineage: lymphoid_T
   synthetic: true
 
+# Phase 2.9 Option B — thymic single-positive (SP) stages
+CD4_SP:
+  aliases: ["CD4 single positive thymocyte", "CD4SP", "SP4"]
+  # CD4-SP per literature:
+  # - CD4 + CD3 (lineage definition); CD8 absent
+  # - ZBTB7B (ThPOK) is the master TF for CD4-lineage commitment
+  #   (He et al. 2005 Immunity; Ellmeier et al. 2013 Nat Rev Immunol).
+  # - GATA3 is expressed throughout CD4 lineage from DP onward
+  #   (Hosoya et al. 2009 J Exp Med).
+  # - TCF7, LEF1 maintain stemness at SP stage (Willinger 2006 J Immunol).
+  # - CCR7 acquired before thymic egress (Ueno et al. 2004 Immunity).
+  markers: [CD4, CD3D, CD3E, ZBTB7B, GATA3, TCF7, LEF1, CCR7]
+  stage: premature
+  lineage: lymphoid_T
+  synthetic: true
+
+CD8_SP:
+  aliases: ["CD8 single positive thymocyte", "CD8SP", "SP8"]
+  # CD8-SP per literature:
+  # - CD8A/B + CD3 (lineage definition); CD4 absent
+  # - RUNX3 is the master TF for CD8-lineage commitment, antagonizes
+  #   ThPOK (Egawa & Littman 2008 Nat Immunol; Setoguchi et al. 2008
+  #   Science).
+  # - EOMES is induced at CD8-SP and required for memory programming
+  #   (Pearce et al. 2003 Science).
+  # - TCF7, LEF1 stemness markers retained.
+  # - CCR7 for thymic egress.
+  markers: [CD8A, CD8B, CD3D, CD3E, RUNX3, EOMES, TCF7, LEF1, CCR7]
+  stage: premature
+  lineage: lymphoid_T
+  synthetic: true
+
+Treg_thymic:
+  aliases: ["natural Treg", "nTreg", "thymic Treg", "tTreg"]
+  # Thymic-derived natural Treg (nTreg) per literature:
+  # - FOXP3 is the lineage-defining TF (Sakaguchi et al. 2008 Cell).
+  # - IL2RA (CD25), CTLA4: hallmark surface markers (Sakaguchi 2008).
+  # - IKZF2 (Helios) discriminates thymic-derived from peripheral iTreg
+  #   (Thornton et al. 2010 J Immunol).
+  # - TNFRSF18 (GITR), TNFRSF4 (OX40), TNFRSF9 (4-1BB): Treg activation
+  #   markers enriched in nTreg (Mahmud et al. 2014 J Immunol).
+  # - CD4 + CD3 anchor T identity. Distinguished from peripheral iTreg
+  #   (Treg entry, xlsx-derived) by Helios/IKZF2 positivity.
+  markers: [FOXP3, IL2RA, CTLA4, IKZF2, TNFRSF18, CD4, CD3D, CD3E]
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: true
+
 # Peripheral naive T (mature thymic output).
 # Per 2026-05-21 spec update, CD4/CD8 split happens at DP (thymic stage),
 # so the intermediate "Naive_T_cell" node was REMOVED from the prior DAG.

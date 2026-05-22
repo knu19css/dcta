@@ -8,12 +8,19 @@
 # Merged with dag_prior_bm.yaml via dcta.prior at load time.
 
 nodes:
-  # Thymic precursors (added so the subtree connects to BM prior)
-  - DN              # double negative thymocyte
-  - DP              # double positive thymocyte (CD4/CD8 split point)
-  - T_gd            # gamma-delta T
+  # Thymic precursors
+  - DN                # double negative thymocyte (CD4-CD8-)
+  - DP                # double positive thymocyte (CD4+CD8+)
+  - T_gd              # gamma-delta T (diverges at DN)
+  # Phase 2.9 Option B: Single-Positive (SP) thymic stage added between
+  # DP and peripheral Naive T. Treg also gets two-source path: thymic
+  # nTreg (Treg_thymic) directly from DP, and peripheral iTreg from
+  # Naive_CD4_T_cell.
+  - CD4_SP            # CD4+CD8- single positive thymocyte
+  - CD8_SP            # CD4-CD8+ single positive thymocyte
+  - Treg_thymic       # natural Treg (nTreg), thymic origin
   - NKT_cell
-  # Naive T (peripheral output of thymus — split at DP per user directive)
+  # Peripheral mature T
   - Naive_CD4_T_cell
   - Naive_CD8_T_cell
   - CD4_naive
@@ -23,7 +30,7 @@ nodes:
   - Th2
   - Th17
   - Tfh
-  - Treg
+  - Treg               # peripheral induced Treg (iTreg)
   # CD8 memory / effector
   - CD8_Treg
   - CD4_central_memory
@@ -37,13 +44,21 @@ edges:
   - [T_cell_progenitor, DN]
   - [DN, DP]
   - [DN, T_gd]
-  # CD4/CD8 split happens at DP (per spec 2026-05-21):
-  # DP thymocytes are committed to TCR αβ T cells; here we directly
-  # branch into Naive_CD4 / Naive_CD8 / NKT — Naive_T_cell intermediate
-  # is no longer used (alias-only, see lineage_mature_markers.yaml).
-  - [DP, Naive_CD4_T_cell]
-  - [DP, Naive_CD8_T_cell]
+  # DP -> SP / NKT / nTreg branching at single-positive stage.
+  # CD4/CD8 lineage commitment happens at DP via ThPOK (CD4) vs RUNX3
+  # (CD8) bistable switch (Ellmeier 2013 Nat Rev Immunol; Egawa &
+  # Littman 2008 Nat Immunol). nTreg branches at the same stage by
+  # high-affinity self-pMHC selection + FOXP3 induction (Sakaguchi 2008
+  # Cell; Thornton et al. 2010 J Immunol — Helios discriminates nTreg).
+  # iNKT branches via CD1d-lipid selection at DP (Bendelac et al. 2007
+  # Annu Rev Immunol).
+  - [DP, CD4_SP]
+  - [DP, CD8_SP]
+  - [DP, Treg_thymic]
   - [DP, NKT_cell]
+  # Thymic SP -> peripheral naive T (thymic export)
+  - [CD4_SP, Naive_CD4_T_cell]
+  - [CD8_SP, Naive_CD8_T_cell]
   # ---- pptx slide 3 connector-derived edges ----
   - [Naive_CD4_T_cell, CD4_naive]
   - [Naive_CD4_T_cell, Th1]

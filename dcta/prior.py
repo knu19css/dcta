@@ -307,7 +307,13 @@ def map_clusters_to_prior(
                 lca = _lca_in_dag(g_prior, best_label, runner_label,
                                   max_lca_hops=max_lca_hops)
                 if lca is not None and lca not in (best_label, runner_label):
-                    if _is_progenitor(g_prior, lca):
+                    lca_stage = node_stage.get(lca, "")
+                    if (best_stage in ("mature", "terminal")
+                            and lca_stage == "premature"):
+                        chosen = best_label
+                        reason = (f"LCA ({lca}) is premature but best is "
+                                  f"mature/terminal; keep best")
+                    elif _is_progenitor(g_prior, lca):
                         chosen = lca
                         reason = (f"LCA-progenitor ({lca}) of "
                                   f"({best_label}, {runner_label}) within "
@@ -316,9 +322,20 @@ def map_clusters_to_prior(
                         chosen = best_label
                         reason = (f"LCA ({lca}) is not progenitor; keep best")
                 elif lca in (best_label, runner_label):
-                    # One IS the parent of the other -> use the parent
-                    chosen = lca
-                    reason = (f"parent-child top-2; use parent ({lca})")
+                    # One IS the parent of the other -> use the parent,
+                    # but NOT if the parent is a premature/thymic node
+                    # while the marker-best is mature (we don't want to
+                    # drag mature peripheral cells back to SP/DP).
+                    lca_stage = node_stage.get(lca, "")
+                    if (best_stage in ("mature", "terminal")
+                            and lca_stage == "premature"
+                            and lca != best_label):
+                        chosen = best_label
+                        reason = (f"parent ({lca}) is premature; keep "
+                                  f"mature best ({best_label})")
+                    else:
+                        chosen = lca
+                        reason = (f"parent-child top-2; use parent ({lca})")
                 elif both_progenitor:
                     # Both progenitors but no close LCA -> prefer the one
                     # higher up (more in-degree-0 or fewer ancestors)

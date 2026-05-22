@@ -1,0 +1,25 @@
+cluster	paper_label	DCTA_orig	self_lineage	dom_lineage	dom_share	self_share	DCTA_smoothed	new_score	reassigned
+C00	B	B_cell	lymphoid_B	lymphoid_B	0.796	0.796	B_cell		
+C01	CD4 Memory T	Naive_T	lymphoid_T	lymphoid_T	0.991	0.991	Naive_T		
+C02	CD8 Memory T	Cytotoxic_CD8	lymphoid_T	lymphoid_NK	0.542	0.445	Cytotoxic_CD8		
+C03	Cycling Progenitor	MPP	stem	myeloid	0.461	0.377	GMP	+0.200 (P_marker[stem]=0.41 vs P_graph[myeloid]=0.46, src=neighbor-vote)	*
+C04	Early Erythroid	MEP	erythroid	erythroid	0.538	0.538	MEP		
+C05	Early GMP	GMP	myeloid	stem	0.511	0.392	GMP		
+C06	Early Lymphoid	CLP	lymphoid	lymphoid_B	0.391	0.000	CLP		
+C07	EoBasoMast Precursor	Basophil	myeloid	myeloid	0.810	0.810	Basophil		
+C08	HSC MPP	HSC	stem	stem	0.734	0.734	HSC		
+C09	LMPP	MPP	stem	stem	0.489	0.489	MPP		
+C10	Late Erythroid	Erythroid_precursor	erythroid	erythroid	0.959	0.959	Erythroid_precursor		
+C11	Late GMP	GMP	myeloid	myeloid	0.810	0.810	GMP		
+C12	MEP	Basophil	myeloid	myeloid	0.289	0.289	Basophil		
+C13	Megakaryocyte Precursor	Platelet	megakaryocyte	myeloid	0.951	0.000	Platelet		
+C14	Monocyte	Monocyte	myeloid	myeloid	0.898	0.898	Monocyte		
+C15	NK	NK_cell	lymphoid_NK	lymphoid_T	0.978	0.000	Cytotoxic_CD8	+0.990 (P_marker[lymphoid_NK]=0.64 vs P_graph[lymphoid_T]=0.98, src=neighbor-vote)	*
+C16	Naive T	Naive_T	lymphoid_T	lymphoid_T	0.984	0.984	Naive_T		
+C17	Plasma_Cell	Plasma_cell	lymphoid_B	lymphoid_B	0.625	0.625	Plasma_cell		
+C18	Pre-B	Pre_B_cell	lymphoid_B	lymphoid_B	0.643	0.643	Pre_B_cell		
+C19	Pro-B	Pre_B_cell	lymphoid_B	lymphoid_B	0.494	0.494	Pre_B_cell		
+C20	Pro-Monocyte	Monocyte	myeloid	myeloid	0.986	0.986	Monocyte		
+C21	Stromal	pDC	dendritic	myeloid	0.666	0.000	GMP	-0.025 (P_marker[dendritic]=0.32 vs P_graph[myeloid]=0.67, src=neighbor-vote)	*
+C22	cDC	CMP	myeloid	myeloid	0.681	0.681	CMP		
+C23	pDC	pDC	dendritic	myeloid	0.407	0.000	pDC		

@@ -1,0 +1,25 @@
+cluster	paper_label	DCTA_decision	top1	top1_score	top2	top2_score	top3	top3_score	DCTA_vs_top1	margin
+C00	B	B_cell	B_cell	+1.988	Memory_B	+1.179	Pro_B_cell	+1.039	SAME	+0.41
+C01	CD4 Memory T	Naive_T	Naive_T	+0.964	CD4_T	+0.601	Cytotoxic_CD8	+0.380	SAME	+0.38
+C02	CD8 Memory T	Cytotoxic_CD8	Cytotoxic_CD8	+1.096	NK_cell	+0.745	Naive_T	+0.696	SAME	+0.32
+C03	Cycling Progenitor	MPP	MPP	+0.277	HSC	+0.201	GMP	+0.200	SAME	+0.27
+C04	Early Erythroid	MEP	Erythroblast	+1.328	MEP	+1.102	Erythroid_precursor	+1.001	MOVED	+0.17
+C05	Early GMP	GMP	GMP	+0.523	MPP	+0.315	Neutrophil	+0.279	SAME	+0.40
+C06	Early Lymphoid	CLP	Pre_B_cell	+0.622	CLP	+0.521	MPP	+0.392	MOVED	+0.16
+C07	EoBasoMast Precursor	Basophil	Basophil	+1.972	Mast_cell	+1.254	BMCP	+0.853	SAME	+0.36
+C08	HSC MPP	HSC	HSC	+0.383	MPP	+0.093	Platelet	+0.061	SAME	+0.76
+C09	LMPP	MPP	MPP	+0.427	CLP	+0.246	HSC	+0.228	SAME	+0.42
+C10	Late Erythroid	Erythroid_precursor	Erythroblast	+2.624	Erythroid_precursor	+2.131	MEP	+2.046	MOVED	+0.19
+C11	Late GMP	GMP	GMP	+1.127	Neutrophil	+0.811	MDP	+0.238	SAME	+0.28
+C12	MEP	Basophil	Basophil	+0.634	Mast_cell	+0.560	BMCP	+0.495	SAME	+0.12
+C13	Megakaryocyte Precursor	Platelet	Platelet	+1.333	MEP	+1.064	Basophil	+0.430	SAME	+0.20
+C14	Monocyte	Monocyte	Monocyte	+1.292	Macrophage	+0.464	Neutrophil	+0.247	SAME	+0.64
+C15	NK	NK_cell	NK_cell	+1.776	Cytotoxic_CD8	+0.990	NKT_cell	+0.870	SAME	+0.44
+C16	Naive T	Naive_T	Naive_T	+1.187	CD4_T	+0.549	Cytotoxic_CD8	+0.373	SAME	+0.54
+C17	Plasma_Cell	Plasma_cell	Plasma_cell	+3.533	Memory_B	+2.593	Basophil	+0.360	SAME	+0.27
+C18	Pre-B	Pre_B_cell	Pre_B_cell	+2.036	Pro_B_cell	+1.531	B_cell	+1.389	SAME	+0.25
+C19	Pro-B	Pre_B_cell	Pre_B_cell	+1.805	Pro_B_cell	+1.422	CLP	+0.981	SAME	+0.21
+C20	Pro-Monocyte	Monocyte	Monocyte	+0.797	GMP	+0.434	Neutrophil	+0.287	SAME	+0.46
+C21	Stromal	pDC	pDC	+0.964	Monocyte	+0.577	BMCP	+0.361	SAME	+0.40
+C22	cDC	CMP	BMCP	+1.103	DC	+0.965	Basophil	+0.753	MOVED	+0.13
+C23	pDC	pDC	pDC	+1.564	MDP	+1.090	BMCP	+0.308	SAME	+0.30

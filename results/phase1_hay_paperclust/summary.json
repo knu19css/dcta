@@ -10,124 +10,108 @@
   "n_edges_after_fas": 47,
   "n_edges_removed": 0,
   "direction": {
-    "method_chosen": "dpt",
+    "method_chosen": "marker",
     "accuracy": {
-      "dpt": 1.0,
-      "marker": 0.9583333333333334
+      "dpt": null,
+      "marker": null
     },
-    "agreement_rate": 0.7446808510638298,
+    "agreement_rate": 0.7659574468085106,
     "n_pairs_compared": 47
   },
   "backbone": {
     "backbone_path": [
-      "C08",
       "C09",
       "C03",
       "C05",
-      "C07",
-      "C12",
-      "C04",
-      "C10"
+      "C11",
+      "C20",
+      "C22",
+      "C23"
     ],
-    "backbone_length": 7,
-    "seniority_monotonic": true,
-    "seniority_strictly_increasing": false,
-    "kendall_tau": 0.8017837257372732,
-    "n_lineages_reachable_from_root": 5,
-    "n_disconnected_mature": 4,
-    "root_cluster": "C08",
+    "backbone_length": 6,
+    "seniority_monotonic": null,
+    "seniority_strictly_increasing": null,
+    "kendall_tau": null,
+    "n_lineages_reachable_from_root": 1,
+    "n_disconnected_mature": 0,
+    "root_cluster": "C09",
     "weight_mode": "sum_weight",
-    "backbone_score": 5.8918764768926675,
+    "backbone_score": 5.211608799806519,
     "alt_backbone": {
       "weight_mode": "edge_count",
       "path": [
-        "C08",
         "C09",
         "C03",
         "C05",
-        "C07",
-        "C11",
-        "C20",
-        "C22",
-        "C14",
-        "C21"
+        "C06",
+        "C19",
+        "C18",
+        "C00",
+        "C17"
       ],
-      "score": 9.0,
-      "length": 9
+      "score": 7.0,
+      "length": 7
     },
-    "disconnected_mature_clusters": [
-      "C01",
-      "C02",
-      "C15",
-      "C16"
-    ],
+    "disconnected_mature_clusters": [],
     "prior_labels": [
-      "HSC",
       "MPP",
       "MPP",
+      "GMP",
+      "GMP",
+      "Monocyte",
       "CMP",
-      "Basophil",
-      "MEP",
-      "CFU_E",
-      "Erythroblast"
+      "pDC"
     ],
     "backbone_seniority": [
-      [
-        "C08",
-        0
-      ],
       [
         "C09",
         1
       ],
       [
         "C03",
-        2
+        null
       ],
       [
         "C05",
-        2
+        null
       ],
       [
-        "C07",
-        2
+        "C11",
+        null
       ],
       [
-        "C12",
-        2
+        "C20",
+        null
       ],
       [
-        "C04",
-        2
+        "C22",
+        null
       ],
       [
-        "C10",
-        3
+        "C23",
+        null
       ]
     ]
   },
   "prior": {
-    "consistency_rate": 0.5957446808510638,
-    "consistent_count": 28,
+    "consistency_rate": 0.6170212765957447,
+    "consistent_count": 29,
     "scored_count": 47,
     "unlabeled_count": 0,
     "penalty": 0.5,
-    "g_prior_path": [
-      "data/priors/dag_prior_bm.yaml",
-      "data/priors/dag_prior_t_maturation.yaml"
-    ]
+    "g_prior_path": "data/priors/dag_prior_bm.yaml"
   },
   "annotation": {
-    "strict_accuracy": 0.6200446770913213,
-    "lineage_accuracy": 0.9561564365018504,
+    "strict_accuracy": 0.16560530790517788,
+    "lineage_accuracy": 0.16560530790517788,
     "n_evaluable": 29993,
-    "n_unmapped_gt_labels": 1,
+    "n_unmapped_gt_labels": 20,
     "n_unmapped_pred_labels": 0
   },
   "marker_only_baseline": {
-    "strict_accuracy": 0.5984062948021205,
-    "lineage_accuracy": 0.9561564365018504,
-    "n_clusters_changed_by_dcta": 3,
+    "strict_accuracy": 0.16560530790517788,
+    "lineage_accuracy": 0.16560530790517788,
+    "n_clusters_changed_by_dcta": 4,
     "fusion_weight": 0.0,
     "fusion_hops": 1
   }

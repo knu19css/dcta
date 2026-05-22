@@ -1,0 +1,27 @@
+cluster	paper_label	DCTA_decision	top1	top1_score	top2	top2_score	top3	top3_score	DCTA_vs_top1	margin
+C00	C00:CD8 T	NK_cell	NK_cell	+0.493	Cytotoxic_CD8	+0.487	Naive_T	+0.304	SAME	+0.01
+C01	C01:CD8 T	Cytotoxic_CD8	Cytotoxic_CD8	+0.571	Naive_T	+0.301	CD4_T	+0.288	SAME	+0.47
+C02	C02:CD8 T	Cytotoxic_CD8	NK_cell	+0.464	Cytotoxic_CD8	+0.441	CD4_T	+0.316	MOVED	+0.05
+C03	C03:CD8 T	Reticulocyte	Reticulocyte	+0.380	Treg	+0.187	Erythroblast	+0.170	SAME	+0.51
+C04	C04:CD8 T	CD4_T	CD4_T	+0.356	NK_cell	+0.307	Cytotoxic_CD8	+0.289	SAME	+0.14
+C05	C05:CD8 T	Naive_T	Naive_T	+0.931	CD4_T	+0.285	Cytotoxic_CD8	+0.213	SAME	+0.69
+C06	C06:MAIT	Cytotoxic_CD8	Cytotoxic_CD8	+0.706	NK_cell	+0.618	NKT_cell	+0.610	SAME	+0.12
+C07	C07:CD4 T	Naive_T	Naive_T	+0.820	CD4_T	+0.407	Treg	+0.171	SAME	+0.50
+C08	C08:Treg	Treg	Treg	+1.909	Naive_T	+0.613	Mast_cell	+0.521	SAME	+0.68
+C09	C09:CD16 NK	NK_cell	NK_cell	+1.049	NKT_cell	+0.548	Cytotoxic_CD8	+0.345	SAME	+0.48
+C10	C10:NK	NK_cell	NK_cell	+1.264	NKT_cell	+0.829	Cytotoxic_CD8	+0.219	SAME	+0.34
+C11	C11:Naive B	B_cell	B_cell	+2.320	Pre_B_cell	+1.061	Memory_B	+0.974	SAME	+0.54
+C12	C12:Memory B	B_cell	B_cell	+1.505	Pre_B_cell	+1.007	Memory_B	+0.920	SAME	+0.33
+C13	C13:Plasma	Plasma_cell	Plasma_cell	+2.537	Memory_B	+1.833	B_cell	+0.140	SAME	+0.28
+C14	C14:Small pre-B	Pro_B_cell	Pro_B_cell	+2.251	Pre_B_cell	+2.235	B_cell	+1.586	SAME	+0.01
+C15	C15:pro-B/large pre-B	Pre_B_cell	Pre_B_cell	+2.440	Pro_B_cell	+1.926	CLP	+1.632	SAME	+0.21
+C16	C16:CD14 Mono	Monocyte	Monocyte	+1.329	Macrophage	+0.450	Neutrophil	+0.308	SAME	+0.66
+C17	C17:CD16 Mono	CMP	MDP	+1.027	CMP	+0.857	Macrophage	+0.546	MOVED	+0.17
+C18	C18:DC	CMP	DC	+2.146	BMCP	+1.900	Basophil	+1.575	MOVED	+0.11
+C19	C19:pDC	pDC	pDC	+2.717	MDP	+1.356	DC	+0.811	SAME	+0.50
+C20	C20:Macrophage	Macrophage	Macrophage	+0.851	Monocyte	+0.280	CMP	+0.263	SAME	+0.67
+C21	C21:Megakaryocyte	Platelet	Platelet	+4.794	MEP	+2.569	Monocyte	+0.473	SAME	+0.46
+C22	C22:Cycling lymphocyte	GMP	GMP	+0.750	Neutrophil	+0.469	Monocyte	+0.332	SAME	+0.37
+C23	C23:Myeloid progenitor	GMP	GMP	+1.461	Neutrophil	+1.045	CMP	+0.380	SAME	+0.28
+C24	C24:Erythroid progenitor	MEP	Erythroblast	+2.577	MEP	+2.111	Erythroid_precursor	+1.740	MOVED	+0.18
+C25	C25:HSC	MPP	MPP	+1.408	HSC	+1.078	CLP	+1.002	SAME	+0.23

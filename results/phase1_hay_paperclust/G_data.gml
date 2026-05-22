@@ -5,56 +5,56 @@ graph [
     label "C00"
     mean_dpt 0.4444052486132223
     hsc_score -0.30455482899877073
-    seniority 4.0
+    seniority 0.0
   ]
   node [
     id 1
     label "C01"
     mean_dpt 0.11985079373534187
     hsc_score -0.25860180575072295
-    seniority 4.0
+    seniority 0.0
   ]
   node [
     id 2
     label "C02"
     mean_dpt 0.1193195797074331
     hsc_score -0.17027193659624754
-    seniority 4.0
+    seniority 0.0
   ]
   node [
     id 3
     label "C03"
     mean_dpt 0.04456861604897057
     hsc_score 0.5433427964304438
-    seniority 2.0
+    seniority 0.0
   ]
   node [
     id 4
     label "C04"
     mean_dpt 0.27821767621334065
     hsc_score -0.06481087105520296
-    seniority 2.0
+    seniority 0.0
   ]
   node [
     id 5
     label "C05"
     mean_dpt 0.05857217875449775
     hsc_score 0.18024705448528655
-    seniority 2.0
+    seniority 0.0
   ]
   node [
     id 6
     label "C06"
     mean_dpt 0.13097726294192774
     hsc_score 0.12485746070622172
-    seniority 2.0
+    seniority 0.0
   ]
   node [
     id 7
     label "C07"
     mean_dpt 0.07291300731055715
     hsc_score -0.10317401050146521
-    seniority 2.0
+    seniority 0.0
   ]
   node [
     id 8
@@ -75,14 +75,14 @@ graph [
     label "C10"
     mean_dpt 0.32417414249337345
     hsc_score 0.1458539414387508
-    seniority 3.0
+    seniority 0.0
   ]
   node [
     id 11
     label "C11"
     mean_dpt 0.1431868376356104
     hsc_score -0.17931877573770688
-    seniority 2.0
+    seniority 0.0
   ]
   node [
     id 12
@@ -96,7 +96,7 @@ graph [
     label "C13"
     mean_dpt 0.09437172627449035
     hsc_score 0.21865412053673483
-    seniority 2.0
+    seniority 0.0
   ]
   node [
     id 14
@@ -110,21 +110,21 @@ graph [
     label "C15"
     mean_dpt 0.11889694049782056
     hsc_score -0.037389109457457145
-    seniority 4.0
+    seniority 0.0
   ]
   node [
     id 16
     label "C16"
     mean_dpt 0.11992381353167239
     hsc_score -0.27720146124615386
-    seniority 4.0
+    seniority 0.0
   ]
   node [
     id 17
     label "C17"
     mean_dpt 0.7213381246516579
     hsc_score -0.3001478314981207
-    seniority 5.0
+    seniority 0.0
   ]
   node [
     id 18
@@ -145,7 +145,7 @@ graph [
     label "C20"
     mean_dpt 0.25529810219392146
     hsc_score -0.3165059238155508
-    seniority 3.0
+    seniority 0.0
   ]
   node [
     id 21
@@ -159,14 +159,14 @@ graph [
     label "C22"
     mean_dpt 0.2557100824416936
     hsc_score -0.30895125354850067
-    seniority 4.0
+    seniority 0.0
   ]
   node [
     id 23
     label "C23"
     mean_dpt 0.2540842523702038
     hsc_score -0.22175705408227311
-    seniority 4.0
+    seniority 0.0
   ]
   edge [
     source 0
@@ -175,13 +175,18 @@ graph [
   ]
   edge [
     source 1
+    target 2
+    weight 0.6648538931122581
+  ]
+  edge [
+    source 1
     target 16
     weight 0.8714964814102556
   ]
   edge [
     source 2
-    target 1
-    weight 0.6648538931122581
+    target 15
+    weight 1.0
   ]
   edge [
     source 2
@@ -225,8 +230,8 @@ graph [
   ]
   edge [
     source 4
-    target 10
-    weight 1.0
+    target 12
+    weight 0.8546491073407713
   ]
   edge [
     source 5
@@ -274,21 +279,6 @@ graph [
     weight 1.0
   ]
   edge [
-    source 7
-    target 11
-    weight 0.09542413381123058
-  ]
-  edge [
-    source 7
-    target 12
-    weight 1.0
-  ]
-  edge [
-    source 7
-    target 18
-    weight 0.09420652380005985
-  ]
-  edge [
     source 8
     target 3
     weight 0.6518141446775849
@@ -329,6 +319,16 @@ graph [
     weight 1.0
   ]
   edge [
+    source 10
+    target 4
+    weight 1.0
+  ]
+  edge [
+    source 11
+    target 7
+    weight 0.09542413381123058
+  ]
+  edge [
     source 11
     target 20
     weight 1.0
@@ -350,23 +350,13 @@ graph [
   ]
   edge [
     source 12
-    target 4
-    weight 0.8546491073407713
-  ]
-  edge [
-    source 13
-    target 12
-    weight 0.8740508491608884
-  ]
-  edge [
-    source 14
-    target 21
-    weight 0.059245797364834166
-  ]
-  edge [
-    source 15
-    target 2
+    target 7
     weight 1.0
+  ]
+  edge [
+    source 12
+    target 13
+    weight 0.8740508491608884
   ]
   edge [
     source 18
@@ -375,13 +365,18 @@ graph [
   ]
   edge [
     source 18
-    target 19
-    weight 1.0
+    target 7
+    weight 0.09420652380005985
   ]
   edge [
     source 18
     target 23
     weight 0.0671571258772704
+  ]
+  edge [
+    source 19
+    target 18
+    weight 1.0
   ]
   edge [
     source 20
@@ -394,13 +389,18 @@ graph [
     weight 1.0
   ]
   edge [
+    source 21
+    target 14
+    weight 0.059245797364834166
+  ]
+  edge [
     source 22
     target 14
     weight 0.27149137710513555
   ]
   edge [
-    source 23
-    target 22
+    source 22
+    target 23
     weight 0.711608799806519
   ]
 ]

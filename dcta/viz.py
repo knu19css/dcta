@@ -14,6 +14,21 @@ def _save(fig, path):
     plt.close(fig)
 
 
+def _pick_umap_key(adata: ad.AnnData) -> str | None:
+    """Pick the UMAP-like obsm key to plot on.
+
+    Prefers adata.uns['default_embedding'] (e.g. Triana CXG sets this to
+    'X_mofaumap' — MOFA-latent UMAP), falling back to plain 'X_umap'.
+    Returns None when neither is available.
+    """
+    default_emb = adata.uns.get("default_embedding")
+    if default_emb and default_emb in adata.obsm:
+        return default_emb
+    if "X_umap" in adata.obsm:
+        return "X_umap"
+    return None
+
+
 def diffmap_eigvals(adata: ad.AnnData, path: str) -> None:
     eigs = np.asarray(adata.uns["dcta"]["diffmap_eigvals"])
     n_dcs = int(adata.uns["dcta"]["n_dcs"])
@@ -218,16 +233,17 @@ def umap_paper_with_g_data(adata: ad.AnnData, path: str) -> None:
     """
     fig, axes = plt.subplots(1, 2, figsize=(15, 7))
     ax_raw, ax = axes
-    if "X_umap" not in adata.obsm:
+    emb_key = _pick_umap_key(adata)
+    if emb_key is None:
         for a_ in axes:
-            a_.text(0.5, 0.5, "No X_umap in adata.obsm\n"
+            a_.text(0.5, 0.5, "No UMAP in adata.obsm\n"
                               "(original paper embedding not available)",
                     ha="center", va="center", fontsize=12, transform=a_.transAxes)
             a_.set_axis_off()
         _save(fig, path)
         return
 
-    um = np.asarray(adata.obsm["X_umap"])
+    um = np.asarray(adata.obsm[emb_key])
     leiden = adata.obs["dcta_leiden"].astype(str).to_numpy()
     clusters_l = sorted(np.unique(leiden),
                         key=lambda x: int(x) if x.isdigit() else x)
@@ -352,14 +368,15 @@ def umap_annotation(adata: ad.AnnData, path: str,
     """
     fig, axes = plt.subplots(1, 3, figsize=(22, 7))
     ax_clu, ax_paper, ax_pred = axes
-    if "X_umap" not in adata.obsm:
+    emb_key = _pick_umap_key(adata)
+    if emb_key is None:
         for a_ in axes:
-            a_.text(0.5, 0.5, "missing X_umap",
+            a_.text(0.5, 0.5, "missing UMAP embedding",
                     ha="center", va="center", transform=a_.transAxes)
             a_.set_axis_off()
         _save(fig, path)
         return
-    um = np.asarray(adata.obsm["X_umap"])
+    um = np.asarray(adata.obsm[emb_key])
 
     # ---- Panel 1: cluster id ----
     clu = adata.obs[cluster_col].astype(object).to_numpy() if cluster_col in adata.obs.columns else None
@@ -396,13 +413,14 @@ def umap_annotation(adata: ad.AnnData, path: str,
 
 def umap_annotation_confidence(adata: ad.AnnData, path: str) -> None:
     fig, ax = plt.subplots(figsize=(8, 7))
-    if "X_umap" not in adata.obsm or "dcta_annotation_confidence" not in adata.obs.columns:
-        ax.text(0.5, 0.5, "missing X_umap or dcta_annotation_confidence",
+    emb_key = _pick_umap_key(adata)
+    if emb_key is None or "dcta_annotation_confidence" not in adata.obs.columns:
+        ax.text(0.5, 0.5, "missing UMAP or dcta_annotation_confidence",
                 ha="center", va="center", transform=ax.transAxes)
         ax.set_axis_off()
         _save(fig, path)
         return
-    um = np.asarray(adata.obsm["X_umap"])
+    um = np.asarray(adata.obsm[emb_key])
     conf = np.asarray(adata.obs["dcta_annotation_confidence"], dtype=float)
     sc = ax.scatter(um[:, 0], um[:, 1], s=4, c=conf, cmap="viridis",
                     vmin=0.0, vmax=1.0, alpha=0.7, linewidths=0)
@@ -425,7 +443,8 @@ def umap_marker_vs_dcta(adata: ad.AnnData, path: str,
     """
     fig, axes = plt.subplots(1, 3, figsize=(22, 7))
     ax_clu, ax_mo, ax_full = axes
-    if ("X_umap" not in adata.obsm
+    emb_key = _pick_umap_key(adata)
+    if (emb_key is None
         or "dcta_marker_only_annotation" not in adata.obs.columns
         or "dcta_annotation" not in adata.obs.columns):
         for a_ in axes:
@@ -435,7 +454,7 @@ def umap_marker_vs_dcta(adata: ad.AnnData, path: str,
             a_.set_axis_off()
         _save(fig, path)
         return
-    um = np.asarray(adata.obsm["X_umap"])
+    um = np.asarray(adata.obsm[emb_key])
     clu = adata.obs[cluster_col].astype(object).to_numpy() if cluster_col in adata.obs.columns else None
     mo = adata.obs["dcta_marker_only_annotation"].astype(object).to_numpy()
     full = adata.obs["dcta_annotation"].astype(object).to_numpy()

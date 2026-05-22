@@ -1,0 +1,27 @@
+cluster	paper_label	DCTA_orig	self_lineage	dom_lineage	dom_share	self_share	DCTA_smoothed	new_score	reassigned
+C00	C00:CD8 T	NK_cell	lymphoid_NK	lymphoid_T	0.697	0.123	NK_cell		
+C01	C01:CD8 T	Cytotoxic_CD8	lymphoid_T	lymphoid_T	0.515	0.515	Cytotoxic_CD8		
+C02	C02:CD8 T	Cytotoxic_CD8	lymphoid_T	lymphoid_NK	0.464	0.302	Cytotoxic_CD8		
+C03	C03:CD8 T	Reticulocyte	erythroid	lymphoid_T	0.675	0.000	Cytotoxic_CD8	+0.067 (P_marker[erythroid]=0.46 vs P_graph[lymphoid_T]=0.68, src=neighbor-vote)	*
+C04	C04:CD8 T	CD4_T	lymphoid_T	lymphoid_NK	0.355	0.328	CD4_T		
+C05	C05:CD8 T	Naive_T	lymphoid_T	lymphoid_T	0.561	0.561	Naive_T		
+C06	C06:MAIT	Cytotoxic_CD8	lymphoid_T	lymphoid_NK	0.481	0.425	Cytotoxic_CD8		
+C07	C07:CD4 T	Naive_T	lymphoid_T	lymphoid_T	0.775	0.775	Naive_T		
+C08	C08:Treg	Treg	lymphoid_T	lymphoid_T	0.609	0.609	Treg		
+C09	C09:CD16 NK	NK_cell	lymphoid_NK	lymphoid_NK	0.542	0.542	NK_cell		
+C10	C10:NK	NK_cell	lymphoid_NK	lymphoid_NK	0.400	0.400	NK_cell		
+C11	C11:Naive B	B_cell	lymphoid_B	lymphoid_B	0.897	0.897	B_cell		
+C12	C12:Memory B	B_cell	lymphoid_B	lymphoid_B	0.974	0.974	B_cell		
+C13	C13:Plasma	Plasma_cell	lymphoid_B	erythroid	0.565	0.000	Plasma_cell		
+C14	C14:Small pre-B	Pro_B_cell	lymphoid_B	lymphoid_B	0.960	0.960	Pro_B_cell		
+C15	C15:pro-B/large pre-B	Pre_B_cell	lymphoid_B	lymphoid_B	0.297	0.297	Pre_B_cell		
+C16	C16:CD14 Mono	Monocyte	myeloid	myeloid	0.624	0.624	Monocyte		
+C17	C17:CD16 Mono	CMP	myeloid	myeloid	0.876	0.876	CMP		
+C18	C18:DC	CMP	myeloid	myeloid	0.640	0.640	CMP		
+C19	C19:pDC	pDC	dendritic	megakaryocyte	0.661	0.000	pDC		
+C20	C20:Macrophage	Macrophage	myeloid	myeloid	0.850	0.850	Macrophage		
+C21	C21:Megakaryocyte	Platelet	megakaryocyte	myeloid	0.569	0.000	CMP	+0.227 (P_marker[megakaryocyte]=0.48 vs P_graph[myeloid]=0.57, src=neighbor-vote)	*
+C22	C22:Cycling lymphocyte	GMP	myeloid	myeloid	0.277	0.277	GMP		
+C23	C23:Myeloid progenitor	GMP	myeloid	myeloid	0.655	0.655	GMP		
+C24	C24:Erythroid progenitor	MEP	erythroid	myeloid	0.440	0.000	MEP		
+C25	C25:HSC	MPP	stem	erythroid	0.423	0.000	MEP	+0.251 (P_marker[myeloid]=0.41 vs P_graph[erythroid]=0.42, src=neighbor-vote)	*

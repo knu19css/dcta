@@ -1,0 +1,44 @@
+cluster	paper_label	DCTA_orig	self_lineage	dom_lineage	dom_share	self_share	DCTA_smoothed	new_score	reassigned
+C00	Aberrant erythroid	Erythroid_precursor	erythroid	erythroid	0.858	0.858	Erythroid_precursor		
+C01	CD11c+ memory B cells	Pre_B_cell	lymphoid_B	lymphoid_B	0.754	0.754	Pre_B_cell		
+C02	CD4+ cytotoxic T cells	Thymocytes	lymphoid_T	lymphoid_T	0.589	0.589	Thymocytes		
+C03	CD4+ memory T cells	Naive_T	lymphoid_T	lymphoid_T	0.890	0.890	Naive_T		
+C04	CD4+ naive T cells	Naive_T	lymphoid_T	lymphoid_T	0.921	0.921	Naive_T		
+C05	CD56brightCD16- NK cells	NK_cell	lymphoid_NK	lymphoid_NK	0.676	0.676	NK_cell		
+C06	CD56dimCD16+ NK cells	NK_cell	lymphoid_NK	lymphoid_NK	0.555	0.555	NK_cell		
+C07	CD69+PD-1+ memory CD4+ T cells	Treg	lymphoid_T	lymphoid_T	0.633	0.633	Treg		
+C08	CD8+ central memory T cells	Cytotoxic_CD8	lymphoid_T	lymphoid_T	0.431	0.431	Cytotoxic_CD8		
+C09	CD8+ effector memory T cells	CLP	lymphoid	lymphoid_T	0.653	0.097	CLP		
+C10	CD8+ naive T cells	Naive_T	lymphoid_T	lymphoid_T	0.872	0.872	Naive_T		
+C11	CD8+CD103+ tissue resident memory T cells	Cytotoxic_CD8	lymphoid_T	lymphoid_T	0.610	0.610	Cytotoxic_CD8		
+C12	Class switched memory B cells	Pro_B_cell	lymphoid_B	lymphoid_B	0.933	0.933	Pro_B_cell		
+C13	Classical Monocytes	Monocyte	myeloid	myeloid	0.770	0.770	Monocyte		
+C14	Conventional dendritic cell 1	Basophil	myeloid	myeloid	0.791	0.791	Basophil		
+C15	Conventional dendritic cell 2	Basophil	myeloid	myeloid	0.785	0.785	Basophil		
+C16	Early erythroid progenitor	Basophil	myeloid	myeloid	0.550	0.550	Basophil	+1.220 (P_marker[erythroid]=0.43 vs P_graph[myeloid]=0.55, src=neighbor-vote)	*
+C17	Early promyelocytes	Neutrophil	myeloid	myeloid	0.546	0.546	Neutrophil		
+C18	Eosinophil-basophil-mast cell progenitors	Basophil	myeloid	myeloid	0.851	0.851	Basophil		
+C19	Erythro-myeloid progenitors	Basophil	myeloid	myeloid	0.529	0.529	Basophil		
+C20	GammaDelta T cells	NKT_cell	lymphoid_NK	lymphoid_T	0.533	0.188	NKT_cell		
+C21	HSCs & MPPs	MPP	stem	myeloid	0.499	0.329	MPP		
+C22	Immature B cells	Pre_B_cell	lymphoid_B	lymphoid_B	0.986	0.986	Pre_B_cell		
+C23	Late erythroid progenitor	Erythroid_precursor	erythroid	myeloid	0.491	0.418	Erythroid_precursor		
+C24	Late promyelocytes	Neutrophil	myeloid	myeloid	0.915	0.915	Neutrophil		
+C25	Lymphomyeloid prog	MPP	stem	myeloid	0.540	0.256	MPP		
+C26	Mature naive B cells	B_cell	lymphoid_B	lymphoid_B	0.967	0.967	B_cell		
+C27	Megakaryocyte progenitors	Basophil	myeloid	myeloid	0.657	0.657	Basophil		
+C28	Mesenchymal cells_1	Macrophage	myeloid	myeloid	0.542	0.542	Macrophage		
+C29	Mesenchymal cells_2	Erythroblast	erythroid	myeloid	0.735	0.000	Erythroblast		
+C30	Monocyte-like blasts	Monocyte	myeloid	myeloid	1.000	1.000	Monocyte		
+C31	Myelocytes	Monocyte	myeloid	myeloid	0.934	0.934	Monocyte		
+C32	NK T cells	CLP	lymphoid	lymphoid_T	0.526	0.087	CLP		
+C33	NK cell progenitors	MPP	stem	myeloid	0.486	0.304	MPP		
+C34	Non-classical monocytes	pDC	dendritic	myeloid	0.563	0.000	pDC		
+C35	Nonswitched memory B cells	B_cell	lymphoid_B	lymphoid_B	0.965	0.965	B_cell		
+C36	Plasma cells	Plasma_cell	lymphoid_B	lymphoid_B	0.474	0.474	Plasma_cell		
+C37	Plasmacytoid dendritic cell progenitors	MDP	myeloid	myeloid	0.445	0.445	MDP		
+C38	Plasmacytoid dendritic cells	CMP	myeloid	myeloid	0.612	0.612	CMP		
+C39	Pre-B cells	Pre_B_cell	lymphoid_B	lymphoid_B	0.934	0.934	Pre_B_cell		
+C40	Pre-pro-B cells	Pre_B_cell	lymphoid_B	myeloid	0.438	0.285	Basophil	-0.217 (P_marker[lymphoid_B]=0.40 vs P_graph[myeloid]=0.44, src=neighbor-vote)	*
+C41	Pro-B cells	Pre_B_cell	lymphoid_B	lymphoid_B	0.719	0.719	Pre_B_cell		
+C42	Small pre-B cell	Pre_B_cell	lymphoid_B	lymphoid_B	1.000	1.000	Pre_B_cell		

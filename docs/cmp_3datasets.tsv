@@ -1,0 +1,24 @@
+metric	Zeng 2025 BMM 30k	Triana 2021	Strati 2023 Healthy
+dataset	Zeng 2025 BMM 30k	Triana 2021	Strati 2023 Healthy
+n_cells	29993	49057	32930
+n_genes	27571	461	26338
+n_clusters	24	43	26
+n_components	1	1	1
+use_rep	X_harmony	X_pca	X_pca
+n_edges (init)	47	154	101
+n_edges (after FAS)	47	154	101
+edges removed	0	0	0
+direction method	dpt	marker	dpt
+direction agreement	0.7447	0.5974	0.6931
+prior consistency	0.5957	0.4805	0.2178
+backbone len	7	10	10
+backbone kendall_tau	0.8018	0.7877	0.9129
+backbone monotonic	True	False	True
+DCTA strict_acc	0.6200	0.5485	0.6897
+DCTA lineage_acc	0.9562	0.9409	0.9632
+DCTA n_evaluable	29993	44012	32459
+DCTA n_unmapped_gt	1	0	0
+marker-only strict_acc	0.5984	0.5043	0.6819
+marker-only lineage_acc	0.9562	0.9096	0.9632
+DCTA - marker-only (strict, pp)	+2.16	+4.42	+0.78
+clusters changed by DCTA	3	5	3

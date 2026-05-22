@@ -1,0 +1,443 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d8" for="edge" attr.name="relation" attr.type="string"/>
+<key id="d7" for="node" attr.name="has_marker_panel" attr.type="string"/>
+<key id="d6" for="node" attr.name="markers_display" attr.type="string"/>
+<key id="d5" for="node" attr.name="markers" attr.type="string"/>
+<key id="d4" for="node" attr.name="n_markers" attr.type="long"/>
+<key id="d3" for="node" attr.name="csv_column" attr.type="string"/>
+<key id="d2" for="node" attr.name="lineage" attr.type="string"/>
+<key id="d1" for="node" attr.name="stage" attr.type="string"/>
+<key id="d0" for="node" attr.name="name" attr.type="string"/>
+<graph edgedefault="directed"><node id="HSC">
+  <data key="d0">HSC</data>
+  <data key="d1">stem</data>
+  <data key="d2">stem</data>
+  <data key="d3">HSC</data>
+  <data key="d4">10</data>
+  <data key="d5">HLF|CD33|GATA3|CD44|PTPRS|CD34|NOTCH1|NOTCH2|MEIS1|MLLT3</data>
+  <data key="d6">HLF, CD33, GATA3, CD44, PTPRS, CD34, NOTCH1, NOTCH2, MEIS1, MLLT3</data>
+  <data key="d7">True</data>
+</node>
+<node id="MPP">
+  <data key="d0">MPP</data>
+  <data key="d1">stem</data>
+  <data key="d2">stem</data>
+  <data key="d3">MPP</data>
+  <data key="d4">4</data>
+  <data key="d5">CD34|CD150|CD48|FLT3</data>
+  <data key="d6">CD34, CD150, CD48, FLT3</data>
+  <data key="d7">True</data>
+</node>
+<node id="CMP">
+  <data key="d0">CMP</data>
+  <data key="d1">progenitor</data>
+  <data key="d2">progenitor</data>
+  <data key="d3">CMP</data>
+  <data key="d4">8</data>
+  <data key="d5">SPI1|CEBPA|CMYB|CD34|GATA1|KLF1|CD38|CSF1R</data>
+  <data key="d6">SPI1, CEBPA, CMYB, CD34, GATA1, KLF1, CD38, CSF1R</data>
+  <data key="d7">True</data>
+</node>
+<node id="CLP">
+  <data key="d0">CLP</data>
+  <data key="d1">progenitor</data>
+  <data key="d2">progenitor</data>
+  <data key="d3">CLP</data>
+  <data key="d4">6</data>
+  <data key="d5">IL7RA|EBF1|PAX5|CD34|FLT3|TCF3</data>
+  <data key="d6">IL7RA, EBF1, PAX5, CD34, FLT3, TCF3</data>
+  <data key="d7">True</data>
+</node>
+<node id="GMP">
+  <data key="d0">GMP</data>
+  <data key="d1">progenitor</data>
+  <data key="d2">progenitor</data>
+  <data key="d3">GMP</data>
+  <data key="d4">9</data>
+  <data key="d5">CEBPA|CEBPE|GFI1|SPI1|CTGS|MPO|ELANE|CD34|IL3RA</data>
+  <data key="d6">CEBPA, CEBPE, GFI1, SPI1, CTGS, MPO, ELANE, CD34, IL3RA</data>
+  <data key="d7">True</data>
+</node>
+<node id="MEP">
+  <data key="d0">MEP</data>
+  <data key="d1">progenitor</data>
+  <data key="d2">progenitor</data>
+  <data key="d3">MEP</data>
+  <data key="d4">7</data>
+  <data key="d5">GATA1|KLF1|HBBA|HBA|GYPA|ITGB3|ITGA2B</data>
+  <data key="d6">GATA1, KLF1, HBBA, HBA, GYPA, ITGB3, ITGA2B</data>
+  <data key="d7">True</data>
+</node>
+<node id="MDP">
+  <data key="d0">MDP</data>
+  <data key="d1">progenitor</data>
+  <data key="d2">progenitor</data>
+  <data key="d3">MDP</data>
+  <data key="d4">5</data>
+  <data key="d5">CD115|FLT3|CXCR1|IRF8|CSF1R</data>
+  <data key="d6">CD115, FLT3, CXCR1, IRF8, CSF1R</data>
+  <data key="d7">True</data>
+</node>
+<node id="BMCP">
+  <data key="d0">BMCP</data>
+  <data key="d1">progenitor</data>
+  <data key="d2">progenitor</data>
+  <data key="d3">BMCP</data>
+  <data key="d4">4</data>
+  <data key="d5">CEBPA|FCERIA|ITGB7|erythroblast</data>
+  <data key="d6">CEBPA, FCERIA, ITGB7, erythroblast</data>
+  <data key="d7">True</data>
+</node>
+<node id="CDP">
+  <data key="d0">CDP</data>
+  <data key="d1">progenitor</data>
+  <data key="d2">progenitor</data>
+  <data key="d3"></data>
+  <data key="d4">0</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+  <data key="d7">False</data>
+</node>
+<node id="BFU">
+  <data key="d0">BFU</data>
+  <data key="d1">progenitor</data>
+  <data key="d2">progenitor</data>
+  <data key="d3"></data>
+  <data key="d4">0</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+  <data key="d7">False</data>
+</node>
+<node id="Neutrophil">
+  <data key="d0">Neutrophil</data>
+  <data key="d1">mature</data>
+  <data key="d2">myeloid</data>
+  <data key="d3">Neutrophils</data>
+  <data key="d4">9</data>
+  <data key="d5">CXCR2|MPO|DEFA3|ELANE|CAMP|FCGR3B|CSF3R|G0S2|CD177</data>
+  <data key="d6">CXCR2, MPO, DEFA3, ELANE, CAMP, FCGR3B, CSF3R, G0S2, CD177</data>
+  <data key="d7">True</data>
+</node>
+<node id="Eosinophil">
+  <data key="d0">Eosinophil</data>
+  <data key="d1">mature</data>
+  <data key="d2">myeloid</data>
+  <data key="d3">Eosinophil</data>
+  <data key="d4">7</data>
+  <data key="d5">SIGLEC8|CXCR3|CD244|CCR3|GATA1|CEBPA|EPX</data>
+  <data key="d6">SIGLEC8, CXCR3, CD244, CCR3, GATA1, CEBPA, EPX</data>
+  <data key="d7">True</data>
+</node>
+<node id="Basophil">
+  <data key="d0">Basophil</data>
+  <data key="d1">mature</data>
+  <data key="d2">myeloid</data>
+  <data key="d3">Basophils</data>
+  <data key="d4">3</data>
+  <data key="d5">ENPP3|IL5RA|FCERIA</data>
+  <data key="d6">ENPP3, IL5RA, FCERIA</data>
+  <data key="d7">True</data>
+</node>
+<node id="Monocyte">
+  <data key="d0">Monocyte</data>
+  <data key="d1">mature</data>
+  <data key="d2">myeloid</data>
+  <data key="d3">Mono</data>
+  <data key="d4">10</data>
+  <data key="d5">CD163|SELE|FCGR2B|IL1RN|CEBPB|CD14|LYZ|VCAN|FCN1|CD68</data>
+  <data key="d6">CD163, SELE, FCGR2B, IL1RN, CEBPB, CD14, LYZ, VCAN, FCN1, CD68</data>
+  <data key="d7">True</data>
+</node>
+<node id="Mast_cell">
+  <data key="d0">Mast_cell</data>
+  <data key="d1">mature</data>
+  <data key="d2">myeloid</data>
+  <data key="d3">Mast</data>
+  <data key="d4">6</data>
+  <data key="d5">ENPP3|IL2RA|IL17A|CPA3|T|FCERIA</data>
+  <data key="d6">ENPP3, IL2RA, IL17A, CPA3, T, FCERIA</data>
+  <data key="d7">True</data>
+</node>
+<node id="Megakaryocyte">
+  <data key="d0">Megakaryocyte</data>
+  <data key="d1">mature</data>
+  <data key="d2">erythroid_meg</data>
+  <data key="d3"></data>
+  <data key="d4">0</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+  <data key="d7">False</data>
+</node>
+<node id="Erythroblast">
+  <data key="d0">Erythroblast</data>
+  <data key="d1">mature</data>
+  <data key="d2">erythroid_meg</data>
+  <data key="d3">Erythroblast</data>
+  <data key="d4">6</data>
+  <data key="d5">GATA1|KLF1|ALAS2|HBA|HBB|EPOR</data>
+  <data key="d6">GATA1, KLF1, ALAS2, HBA, HBB, EPOR</data>
+  <data key="d7">True</data>
+</node>
+<node id="CFU">
+  <data key="d0">CFU</data>
+  <data key="d1">progenitor</data>
+  <data key="d2">progenitor</data>
+  <data key="d3"></data>
+  <data key="d4">0</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+  <data key="d7">False</data>
+</node>
+<node id="DC">
+  <data key="d0">DC</data>
+  <data key="d1">mature</data>
+  <data key="d2">myeloid</data>
+  <data key="d3">DC</data>
+  <data key="d4">8</data>
+  <data key="d5">CD1C|CD1B|FCER1A|ITGAX|FLT3|CD11C|ZBTB46|CD141</data>
+  <data key="d6">CD1C, CD1B, FCER1A, ITGAX, FLT3, CD11C, ZBTB46, CD141</data>
+  <data key="d7">True</data>
+</node>
+<node id="pDC">
+  <data key="d0">pDC</data>
+  <data key="d1">mature</data>
+  <data key="d2">myeloid</data>
+  <data key="d3">pDC</data>
+  <data key="d4">10</data>
+  <data key="d5">LILRA4|CD11C|NRP1|CLEC4C|CD4|TCF4|CD303|CD304|CD123|CCR9</data>
+  <data key="d6">LILRA4, CD11C, NRP1, CLEC4C, CD4, TCF4, CD303, CD304, CD123, CCR9</data>
+  <data key="d7">True</data>
+</node>
+<node id="Pro_B_cell">
+  <data key="d0">Pro_B_cell</data>
+  <data key="d1">mature</data>
+  <data key="d2">lymphoid_B</data>
+  <data key="d3">Pro B cell</data>
+  <data key="d4">11</data>
+  <data key="d5">CD19|CD20|RAG1|RAG2|CD79A|CD79B|IL7RA|PAX5|CEBPA|IRX1|CD10</data>
+  <data key="d6">CD19, CD20, RAG1, RAG2, CD79A, CD79B, IL7RA, PAX5, CEBPA, IRX1, CD10</data>
+  <data key="d7">True</data>
+</node>
+<node id="Pre_B_cell">
+  <data key="d0">Pre_B_cell</data>
+  <data key="d1">mature</data>
+  <data key="d2">lymphoid_B</data>
+  <data key="d3">Pre B cell</data>
+  <data key="d4">10</data>
+  <data key="d5">VREB1|VREB2|CD19|CD20|TCF3|PAX5|EBF1|BLNK|IKZF3|CD10</data>
+  <data key="d6">VREB1, VREB2, CD19, CD20, TCF3, PAX5, EBF1, BLNK, IKZF3, CD10</data>
+  <data key="d7">True</data>
+</node>
+<node id="NK_cell">
+  <data key="d0">NK_cell</data>
+  <data key="d1">mature</data>
+  <data key="d2">lymphoid_T_NK</data>
+  <data key="d3">NK</data>
+  <data key="d4">10</data>
+  <data key="d5">KLRK1|NCAM1|NKG7|GNLY|KLRC1|KLRG1|NCR3|ZBTB16|CD244|CD7</data>
+  <data key="d6">KLRK1, NCAM1, NKG7, GNLY, KLRC1, KLRG1, NCR3, ZBTB16, CD244, CD7</data>
+  <data key="d7">True</data>
+</node>
+<node id="T_cell_progenitor">
+  <data key="d0">T_cell_progenitor</data>
+  <data key="d1">mature</data>
+  <data key="d2">lymphoid_T_NK</data>
+  <data key="d3"></data>
+  <data key="d4">0</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+  <data key="d7">False</data>
+</node>
+<node id="Macrophage">
+  <data key="d0">Macrophage</data>
+  <data key="d1">mature</data>
+  <data key="d2">myeloid</data>
+  <data key="d3">Macrophages</data>
+  <data key="d4">8</data>
+  <data key="d5">MMP12|CD163|MRC1|CCR5|VSIG4|GPR132|ADGRE1|CD68</data>
+  <data key="d6">MMP12, CD163, MRC1, CCR5, VSIG4, GPR132, ADGRE1, CD68</data>
+  <data key="d7">True</data>
+</node>
+<node id="Platelet">
+  <data key="d0">Platelet</data>
+  <data key="d1">mature</data>
+  <data key="d2">erythroid_meg</data>
+  <data key="d3">Platelates</data>
+  <data key="d4">4</data>
+  <data key="d5">CD46|CD109|PPBP|GP1BB</data>
+  <data key="d6">CD46, CD109, PPBP, GP1BB</data>
+  <data key="d7">True</data>
+</node>
+<node id="Erythrocyte">
+  <data key="d0">Erythrocyte</data>
+  <data key="d1">mature</data>
+  <data key="d2">erythroid_meg</data>
+  <data key="d3">Reticulocytes</data>
+  <data key="d4">5</data>
+  <data key="d5">HBB|TFRC|UBE2O|SLC11A2|HBA</data>
+  <data key="d6">HBB, TFRC, UBE2O, SLC11A2, HBA</data>
+  <data key="d7">True</data>
+</node>
+<node id="cDC1">
+  <data key="d0">cDC1</data>
+  <data key="d1">mature</data>
+  <data key="d2">myeloid</data>
+  <data key="d3"></data>
+  <data key="d4">0</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+  <data key="d7">False</data>
+</node>
+<node id="cDC2">
+  <data key="d0">cDC2</data>
+  <data key="d1">mature</data>
+  <data key="d2">myeloid</data>
+  <data key="d3"></data>
+  <data key="d4">0</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+  <data key="d7">False</data>
+</node>
+<node id="CD14_Monocyte">
+  <data key="d0">CD14_Monocyte</data>
+  <data key="d1">mature</data>
+  <data key="d2">myeloid</data>
+  <data key="d3"></data>
+  <data key="d4">0</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+  <data key="d7">False</data>
+</node>
+<node id="CD16_Monocyte">
+  <data key="d0">CD16_Monocyte</data>
+  <data key="d1">mature</data>
+  <data key="d2">myeloid</data>
+  <data key="d3"></data>
+  <data key="d4">0</data>
+  <data key="d5"></data>
+  <data key="d6"></data>
+  <data key="d7">False</data>
+</node>
+<node id="B_cell">
+  <data key="d0">B_cell</data>
+  <data key="d1">mature</data>
+  <data key="d2">lymphoid_B</data>
+  <data key="d3">Na_ve B cell</data>
+  <data key="d4">10</data>
+  <data key="d5">MS4A1|CD79A|IGHM|CD19|FCER2|PAX5|CD21|CD23|IGHD|BCL2</data>
+  <data key="d6">MS4A1, CD79A, IGHM, CD19, FCER2, PAX5, CD21, CD23, IGHD, BCL2</data>
+  <data key="d7">True</data>
+</node>
+<node id="Plasma_cell">
+  <data key="d0">Plasma_cell</data>
+  <data key="d1">mature</data>
+  <data key="d2">lymphoid_B</data>
+  <data key="d3">Plasma B</data>
+  <data key="d4">8</data>
+  <data key="d5">XBP1|PRDM1|JCHAIN|CD9|IGHG1|IGHG2|IGHG3|IGHG4</data>
+  <data key="d6">XBP1, PRDM1, JCHAIN, CD9, IGHG1, IGHG2, IGHG3, IGHG4</data>
+  <data key="d7">True</data>
+</node>
+<edge source="HSC" target="MPP">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="MPP" target="CMP">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="MPP" target="CLP">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="CMP" target="GMP">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="CMP" target="MEP">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="CMP" target="MDP">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="CMP" target="BMCP">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="CLP" target="pDC">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="CLP" target="Pro_B_cell">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="CLP" target="NK_cell">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="CLP" target="T_cell_progenitor">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="GMP" target="Neutrophil">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="GMP" target="Eosinophil">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="GMP" target="Monocyte">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="MEP" target="Megakaryocyte">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="MEP" target="BFU">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="MDP" target="Monocyte">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="MDP" target="CDP">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="BMCP" target="Basophil">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="BMCP" target="Mast_cell">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="CDP" target="DC">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="BFU" target="CFU">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="Monocyte" target="CD14_Monocyte">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="Monocyte" target="CD16_Monocyte">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="Monocyte" target="Macrophage">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="Megakaryocyte" target="Platelet">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="Erythroblast" target="Erythrocyte">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="CFU" target="Erythroblast">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="DC" target="pDC">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="DC" target="cDC1">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="DC" target="cDC2">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="Pro_B_cell" target="Pre_B_cell">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="Pre_B_cell" target="B_cell">
+  <data key="d8">differentiates_to</data>
+</edge>
+<edge source="B_cell" target="Plasma_cell">
+  <data key="d8">differentiates_to</data>
+</edge>
+</graph></graphml>

@@ -1,0 +1,184 @@
+{
+  "n_cells_after_qc": 49057,
+  "n_genes_after_qc": 461,
+  "n_rep_dims": 30,
+  "use_rep": "X_pca",
+  "n_clusters": 43,
+  "n_components": 1,
+  "root_cluster": "C21",
+  "n_edges_initial": 154,
+  "n_edges_after_fas": 154,
+  "n_edges_removed": 0,
+  "direction": {
+    "method_chosen": "dpt",
+    "accuracy": {
+      "dpt": 0.9473684210526315,
+      "marker": 0.8421052631578947
+    },
+    "agreement_rate": 0.5974025974025974,
+    "n_pairs_compared": 154
+  },
+  "backbone": {
+    "backbone_path": [
+      "C21",
+      "C19",
+      "C25",
+      "C17",
+      "C27",
+      "C18",
+      "C24",
+      "C37",
+      "C14",
+      "C40",
+      "C41",
+      "C39",
+      "C42",
+      "C22",
+      "C35",
+      "C26"
+    ],
+    "backbone_length": 15,
+    "seniority_monotonic": false,
+    "seniority_strictly_increasing": false,
+    "kendall_tau": 0.7666666666666667,
+    "n_lineages_reachable_from_root": 8,
+    "n_disconnected_mature": 0,
+    "root_cluster": "C21",
+    "weight_mode": "sum_weight",
+    "backbone_score": 9.478862572936059,
+    "alt_backbone": {
+      "weight_mode": "edge_count",
+      "path": [
+        "C21",
+        "C19",
+        "C25",
+        "C17",
+        "C27",
+        "C18",
+        "C24",
+        "C37",
+        "C14",
+        "C28",
+        "C09",
+        "C02",
+        "C20",
+        "C03",
+        "C11",
+        "C07",
+        "C08",
+        "C32",
+        "C05",
+        "C06"
+      ],
+      "score": 19.0,
+      "length": 19
+    },
+    "disconnected_mature_clusters": [],
+    "prior_labels": [
+      "MPP",
+      "Basophil",
+      "MPP",
+      "Neutrophil",
+      "Basophil",
+      "Basophil",
+      "Neutrophil",
+      "MDP",
+      "Basophil",
+      "Pre_B_cell",
+      "Pre_B_cell",
+      "Pre_B_cell",
+      "Pre_B_cell",
+      "Pre_B_cell",
+      "B_cell",
+      "B_cell"
+    ],
+    "backbone_seniority": [
+      [
+        "C21",
+        0
+      ],
+      [
+        "C19",
+        2
+      ],
+      [
+        "C25",
+        1
+      ],
+      [
+        "C17",
+        2
+      ],
+      [
+        "C27",
+        2
+      ],
+      [
+        "C18",
+        null
+      ],
+      [
+        "C24",
+        2
+      ],
+      [
+        "C37",
+        null
+      ],
+      [
+        "C14",
+        null
+      ],
+      [
+        "C40",
+        2
+      ],
+      [
+        "C41",
+        null
+      ],
+      [
+        "C39",
+        null
+      ],
+      [
+        "C42",
+        null
+      ],
+      [
+        "C22",
+        4
+      ],
+      [
+        "C35",
+        null
+      ],
+      [
+        "C26",
+        4
+      ]
+    ]
+  },
+  "prior": {
+    "consistency_rate": 0.487012987012987,
+    "consistent_count": 75,
+    "scored_count": 154,
+    "unlabeled_count": 0,
+    "penalty": 0.5,
+    "g_prior_path": "data/priors/dag_prior_bm.yaml"
+  },
+  "annotation": {
+    "strict_accuracy": 0.4474988274160328,
+    "lineage_accuracy": 0.7772294389950446,
+    "n_evaluable": 49037,
+    "n_unmapped_gt_labels": 0,
+    "n_unmapped_pred_labels": 0
+  },
+  "marker_only_baseline": {
+    "strict_accuracy": 0.5010298346146788,
+    "lineage_accuracy": 0.8571894691763362,
+    "n_clusters_changed_by_dcta": 11,
+    "fusion_weight": 0.0,
+    "fusion_hops": 1
+  }
+}

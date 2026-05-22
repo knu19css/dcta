@@ -1,579 +1,582 @@
-# Phase 2.1 lineage-specific marker panel for DCTA dag.build marker-direction.
-#
-# SOURCES:
-#   - sheet `final_unique_gene` of data/priors/final_unique_gene.xlsx
-#     (user-curated, 2026-05-21). 23 cell types with explicit markers.
-#   - Sheet1 of same xlsx has stem/MEP/megakaryocyte columns but mostly
-#     empty cells; we treat those as gaps below.
-#   - Gap markers: literature-grounded defaults invented by DCTA because
-#     the user file did not list them. Each is flagged `synthetic: true`.
-#     Replace with curated set when the user provides one.
-#
-# SCHEMA per cell type:
-#   <CanonicalName>:
-#     aliases: list[str]            # alternate labels (CXG, ontology, fixture)
-#     markers: list[str]            # positive marker gene symbols
-#     stage: stem|progenitor|premature|mature|terminal
-#     lineage: stem|myeloid|erythroid|megakaryocyte|lymphoid_B|lymphoid_T|lymphoid_NK|dendritic
-#     synthetic: bool               # true => invented in this file, not from xlsx
-
-# =============================================================
-# Stage 0 — Stem
-# =============================================================
-HSC:
-  aliases: ["hematopoietic stem cell", "Hematopoietic_stem_cell", "Stem"]
-  markers: [HLF, GATA3, NOTCH1, NOTCH2, MEIS1, MLLT3, CD33, CD44, PTPRS, CD34, CRHBP, AVP, HOPX, HEMGN, PROM1]
-  stage: stem
-  lineage: stem
-  synthetic: false   # from xlsx Sheet1 col A + hsc_markers.yaml
-
-# =============================================================
-# Stage 1 — Multipotent progenitor (GAP — literature defaults)
-# =============================================================
-MPP:
-  aliases: ["hematopoietic multipotent progenitor cell", "Multipotent_progenitor", "hematopoietic oligopotent progenitor cell"]
-  markers: [CD34, THY1, FLT3, CDK6, HLF, MEIS1]
-  stage: progenitor
-  lineage: stem
-  synthetic: true
-
-LMPP:
-  aliases: ["lympho-myeloid primed progenitor"]
-  markers: [CD34, FLT3, CDK6, SATB1]
-  stage: progenitor
-  lineage: stem
-  synthetic: true
-
-# =============================================================
-# Stage 2 — Lineage-committed progenitors (mostly GAP)
-# =============================================================
-CMP:
-  aliases: ["common myeloid progenitor", "Common_myeloid_progenitor"]
-  markers: [CD34, IL3RA, FLT3, GATA2, MPO]
-  stage: progenitor
-  lineage: myeloid
-  synthetic: true
-
-CLP:
-  aliases: ["common lymphoid progenitor", "Common_lymphoid_progenitor"]
-  markers: [CD34, MME, IL7R, IKZF1, RAG1]
-  stage: progenitor
-  lineage: lymphoid_B
-  synthetic: true
-
-GMP:
-  aliases: ["granulocyte monocyte progenitor cell", "Granulocyte_monocyte_progenitor"]
-  markers: [CD34, IL3RA, CEBPA, MPO, ELANE]
-  stage: progenitor
-  lineage: myeloid
-  synthetic: true
-
-MEP:
-  aliases: ["megakaryocyte-erythroid progenitor cell", "Megakaryocyte_erythroid_progenitor", "erythroid progenitor cell", "megakaryocyte progenitor cell"]
-  markers: [CD34, ITGA2B, GATA1, KLF1, GATA2]
-  stage: progenitor
-  lineage: erythroid
-  synthetic: true
-
-MDP:
-  aliases: ["monocyte-dendritic cell progenitor"]
-  markers: [CD34, FLT3, CSF1R, IRF8]
-  stage: progenitor
-  lineage: dendritic
-  synthetic: true
-
-BMCP:
-  aliases: ["basophil mast progenitor cell", "basophil mast cell progenitor"]
-  markers: [KIT, GATA2, RUNX1, IL3RA]
-  stage: progenitor
-  lineage: myeloid
-  synthetic: true
-
-CDP:
-  aliases: ["common dendritic progenitor"]
-  markers: [FLT3, IRF8, CSF1R, ZBTB46]
-  stage: progenitor
-  lineage: dendritic
-  synthetic: true
-
-# =============================================================
-# Stage 3 — Pre-mature / committed precursors
-# =============================================================
-Pro_B_cell:
-  aliases: ["pro-B cell", "late pro-B cell", "Pro-B"]
-  # Stage-specific to pro-B per literature:
-  # - DNTT (TdT): expressed during V(D)J recombination in pro-B,
-  #   silenced from pre-B onward (Hardy & Hayakawa 2001, Annu Rev Immunol).
-  # - RAG1/RAG2: V(D)J recombinases active in pro-B, downregulated at
-  #   pre-B-II (Hardy & Hayakawa 2001; LeBien & Tedder 2008, Blood).
-  # - EBF1: master TF that initiates B-lineage commitment; required for
-  #   pro-B specification (Mårtensson et al. 2010, Semin Immunol).
-  # - SOX4, IL7R: pro-B niche-response TF / receptor (LeBien & Tedder 2008).
-  # CD19/PAX5/CD79A intentionally omitted — pan-B markers, not stage-specific.
-  markers: [DNTT, RAG1, RAG2, EBF1, SOX4, IL7R]
-  stage: premature
-  lineage: lymphoid_B
-  synthetic: true
-
-Pre_B_cell:
-  aliases: ["large pre-B-II cell", "small pre-B-II cell", "Pre-B", "immature B cells", "immature B cell"]
-  # Stage-specific to pre-B (surrogate light chain expression defines pre-B):
-  # - VPREB1, VPREB2, IGLL1: surrogate light-chain genes — the textbook
-  #   definition of pre-B (Mårtensson et al. 2010, Semin Immunol;
-  #   Hardy & Hayakawa 2001).
-  # - TCL1A: enriched in large pre-B (Bagger et al. 2019, Nucleic Acids Res
-  #   HemaExplorer; Aoki et al. 2018, Blood).
-  # - PAX5: required for pre-B identity (Hardy & Hayakawa 2001).
-  # MKI67 omitted (not lineage-specific; just a proliferation marker).
-  markers: [VPREB1, VPREB2, IGLL1, TCL1A, PAX5, CD79A, CD79B]
-  stage: premature
-  lineage: lymphoid_B
-  synthetic: true
-
-T_cell_progenitor:
-  aliases: ["T_cell progenitor", "Pro-T", "early thymic progenitor", "Thymocytes"]
-  markers: [NOTCH1, CD7, CD2, TCF7, CD99, TSHR, TOX, BCL6, EZR, AIRE]
-  stage: premature
-  lineage: lymphoid_T
-  synthetic: false   # from xlsx col W (Thymocytes)
-
-BFU_E:
-  aliases: ["BFU-E", "BFU_E", "Burst Forming Unit-Erythroid", "burst-forming unit erythroid"]
-  # Earliest committed erythroid progenitor per literature:
-  # - CD34 retained; KIT (CD117) high (Doré & Crispino 2011 Blood).
-  # - GATA1, TAL1, KLF1 erythroid TFs initiated (Tsiftsoglou et al. 2009).
-  # - EPOR begins (Wojchowski et al. 2006).
-  # - Hemoglobin genes NOT yet expressed.
-  markers: [CD34, KIT, GATA1, TAL1, KLF1, EPOR, GATA2]
-  stage: progenitor
-  lineage: erythroid
-  synthetic: true
-
-CFU_E:
-  aliases: ["CFU-E", "CFU_E", "Colony Forming Unit-Erythroid", "colony-forming unit erythroid"]
-  # Later erythroid progenitor (more committed) per literature:
-  # - CD34 lost; TFRC (CD71) high; EPOR responsive.
-  # - GATA1/KLF1/TAL1 sustained at high level (Tsiftsoglou 2009).
-  # - First hemoglobin (HBB, HBA1) onset (Pellin et al. 2019 Nat Commun).
-  # - GYPA emerging.
-  markers: [TFRC, GATA1, KLF1, TAL1, EPOR, GYPA, HBB, HBA1]
-  stage: progenitor
-  lineage: erythroid
-  synthetic: true
-
-Erythroblast:
-  aliases: ["basophilic erythroblast", "polychromatophilic erythroblast", "orthochromatic erythroblast", "Proerythroblast", "Pro-Erythroblast"]
-  # Erythroblast stages (Pro/Baso/Poly/Ortho) per literature:
-  # - Hemoglobin synthesis dominant (HBB, HBA1, HBA2, ALAS2).
-  # - GYPA/GYPB surface fully on; KLF1/GATA1 still active.
-  # - Nucleus condensing (later orthochromatic), no longer dividing.
-  markers: [HBB, HBA1, HBA2, ALAS2, GYPA, GYPB, KLF1, GATA1, EPOR]
-  stage: premature
-  lineage: erythroid
-  synthetic: true
-
-Promyelocyte:
-  aliases: ["promyelocyte"]
-  markers: [MPO, ELANE, AZU1, PRTN3, CTSG]
-  stage: premature
-  lineage: myeloid
-  synthetic: true
-
-Promonocyte:
-  aliases: ["promonocyte"]
-  markers: [CD14, LYZ, MPO, CEBPB, FCN1]
-  stage: premature
-  lineage: myeloid
-  synthetic: true
-
-# =============================================================
-# Stage 4 — Mature cells
-# =============================================================
-Macrophage:
-  aliases: ["Macrophages", "macrophage"]
-  markers: [MMP12, CD163, MRC1, CCR5, VSIG4, GPR132, ADGRE1, CD68]
-  stage: mature
-  lineage: myeloid
-  synthetic: false   # xlsx col A
-
-Monocyte:
-  aliases: ["CD14-positive monocyte", "CD14-positive, CD16-positive monocyte", "Mono"]
-  markers: [CD163, SELE, FCGR2B, IL1RN, CEBPB, CD14, LYZ, VCAN, FCN1, CD68]
-  stage: mature
-  lineage: myeloid
-  synthetic: false   # xlsx col B
-
-Neutrophil:
-  aliases: ["Neutrophils", "neutrophil", "Granulocyte"]
-  markers: [CXCR2, MPO, DEFA3, ELANE, CAMP, FCGR3B, CSF3R, G0S2, CD177]
-  stage: mature
-  lineage: myeloid
-  synthetic: false   # xlsx col C
-
-Eosinophil:
-  aliases: ["eosinophil"]
-  markers: [SIGLEC8, CXCR3, CD244, CCR3, GATA1, CEBPA, EPX]
-  stage: mature
-  lineage: myeloid
-  synthetic: false   # xlsx col L
-
-Basophil:
-  aliases: ["Basophils", "basophil"]
-  markers: [ENPP3, IL5RA, FCERIA]
-  stage: mature
-  lineage: myeloid
-  synthetic: false   # xlsx col K (sparse)
-
-Mast_cell:
-  aliases: ["Mast", "mast cell"]
-  markers: [ENPP3, IL2RA, IL17A, CPA3, T, FCERIA]
-  stage: mature
-  lineage: myeloid
-  synthetic: false   # xlsx col P
-
-DC:
-  aliases: ["dendritic cell", "Dendritic_cell"]
-  markers: [CD1C, CD1B, FCER1A, ITGAX, CD11C, FLT3, ZBTB46, CD141]
-  stage: mature
-  lineage: dendritic
-  synthetic: false   # xlsx col D
-
-pDC:
-  aliases: ["plasmacytoid dendritic cell, human", "plasmacytoid dendritic cell"]
-  markers: [LILRA4, CD11C, NRP1, CLEC4C, CD303, CD4, TCF4, CD304, CD123, CCR9]
-  stage: mature
-  lineage: dendritic
-  synthetic: false   # xlsx col E
-
-cDC1:
-  aliases: ["conventional dendritic cell 1", "type 1 conventional dendritic cell"]
-  markers: [CLEC9A, IRF8, BATF3, XCR1, THBD]
-  stage: mature
-  lineage: dendritic
-  synthetic: true
-
-cDC2:
-  aliases: ["conventional dendritic cell 2", "conventional dendritic cell", "pre-conventional dendritic cell"]
-  markers: [CLEC10A, IRF4, CD1C, SIRPA, FCER1A]
-  stage: mature
-  lineage: dendritic
-  synthetic: true
+# Rebuilt from data/priors/final_unique_gene.csv.
+# `markers` are taken verbatim from the CSV (column = cell type,
+# rows = genes), with light symbol normalization (VREB→VPREB,
+# CD20→MS4A1, CD11C→ITGAX, etc.). Aliases are kept for paper-label
+# canonicalization across Zeng/Triana/Strati datasets.
 
 B_cell:
-  aliases: ["B cell", "B_cell", "mature B cell", "Mature_B"]
-  # Mature naive/follicular B per literature (surface markers acquired
-  # after pre-B-II and present before class-switch):
-  # - MS4A1 (CD20): surface marker of mature B (LeBien & Tedder 2008).
-  # - IGHD: IgD expression marks naive/follicular B (Hardy & Hayakawa 2001).
-  # - FCER2 (CD23): naive/follicular B surface (LeBien & Tedder 2008).
-  # - BANK1: B-cell scaffold restricted to mature B (Yokoyama et al. 2002,
-  #   J Immunol).
-  # - AIM2: enriched in mature B (Schroder & Tschopp 2010, Cell).
-  markers: [MS4A1, IGHD, FCER2, BANK1, AIM2, NT5E, CD27]
+  markers:
+  - MS4A1
+  - CD79A
+  - IGHM
+  - CD19
+  - FCER2
+  - PAX5
+  - CR2
+  - IGHD
+  - BCL2
+  aliases:
+  - naive B cell
+  - Mature naive B cells
+  - Naive_B
+  - Immature B cells
+  - immature B cell
+  - B
   stage: mature
   lineage: lymphoid_B
-  synthetic: false   # xlsx col I (re-curated; literature-only)
-
+  synthetic: false
+CD4_T:
+  markers:
+  - CD3D
+  - CD3G
+  - CD3E
+  - CD4
+  - TBX21
+  - GATA3
+  - IFNG
+  - IL4
+  - IL2
+  - IL7R
+  - CCR7
+  aliases:
+  - CD4+ memory T cells
+  - CD4+ cytotoxic T cells
+  - CD69+PD-1+ memory CD4+ T cells
+  - CD4 Memory T
+  - CD4-positive, alpha-beta memory T cell
+  - Th1
+  - Th2
+  - Th17
+  - Tfh
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: false
+Cytotoxic_CD8:
+  markers:
+  - CD3D
+  - CD3G
+  - CD3E
+  - CD8A
+  - GZMK
+  - GZMB
+  - GZMA
+  - CD27
+  - CD28
+  - PRF1
+  - EOMES
+  - ZBTB16
+  aliases:
+  - CD8+ effector memory T cells
+  - CD8+ central memory T cells
+  - CD8+CD103+ tissue resident memory T cells
+  - effector memory CD8-positive, alpha-beta T cell
+  - central memory CD8-positive, alpha-beta T cell
+  - CD8_effector
+  - CD8_effector_memory
+  - CD8_central_memory
+  - CD8_Treg
+  - CD8 Memory T
+  - GammaDelta T cells
+  - T_gd
+  - gamma-delta T cell
+  stage: mature
+  lineage: lymphoid_T
+  synthetic: false
+DC:
+  markers:
+  - CD1C
+  - CD1B
+  - FCER1A
+  - ITGAX
+  - FLT3
+  - ZBTB46
+  - THBD
+  aliases:
+  - dendritic cell
+  - Conventional dendritic cell 1
+  - Conventional dendritic cell 2
+  - cDC1
+  - cDC2
+  - cDC
+  - conventional dendritic cell
+  stage: mature
+  lineage: dendritic
+  synthetic: false
 Memory_B:
-  aliases: ["memory B cell", "Memory B"]
-  # Class-switched memory B per literature:
-  # - IGHG1-4: class-switched IgG isotypes — definitional for memory B
-  #   (Hardy & Hayakawa 2001; Klein et al. 1998, J Immunol).
-  # - CD27: classical memory B surface marker (Klein et al. 1998).
-  # - TNFRSF17 (BCMA): plasma/memory B receptor (O'Connor et al. 2004,
-  #   J Exp Med).
-  markers: [IGHG1, IGHG2, IGHG3, IGHG4, CD27, TNFRSF17, MS4A1, AIM2]
+  markers:
+  - IGHD
+  - IGHM
+  - NT5E
+  - TNFRSF17
+  - MS4A1
+  - CD19
+  - CD27
+  - AIM2
+  - IGHG1
+  - IGHG2
+  - IGHG3
+  - IGHG4
+  aliases:
+  - memory B cell
+  - Nonswitched memory B cells
+  - Class switched memory B cells
+  - CD11c+ memory B cells
+  - unswitched memory B cell
+  - class switched memory B cell
   stage: mature
   lineage: lymphoid_B
-  synthetic: false   # xlsx col G
-
-NK_cell:
-  aliases: ["natural killer cell", "NK", "CD16-negative, CD56-bright natural killer cell, human"]
-  # NK identity (CD3-negative innate lymphocyte) per literature:
-  # - KLRF1, KLRD1, KLRC1: NK-receptor complex (Vivier et al. 2011, Science).
-  # - NCAM1 (CD56), FCGR3A (CD16): canonical NK surface markers
-  #   (Cooper et al. 2001, Trends Immunol).
-  # - NCR1, NCR3 (NKp46, NKp30): NK-specific natural cytotoxicity
-  #   receptors (Moretta et al. 2001, Annu Rev Immunol).
-  # - GNLY, PRF1, GZMB, NKG7: cytotoxic effector module
-  #   (Crinier et al. 2018, Immunity for NK module).
-  # CD3 genes intentionally absent to distinguish NK from CD8 T.
-  markers: [KLRF1, KLRD1, KLRC1, NCAM1, FCGR3A, NCR1, NCR3, GNLY, PRF1, GZMB, NKG7]
+  synthetic: false
+Monocyte:
+  markers:
+  - CD163
+  - SELE
+  - FCGR2B
+  - IL1RN
+  - CEBPB
+  - CD14
+  - LYZ
+  - VCAN
+  - FCN1
+  - CD68
+  aliases:
+  - Classical Monocytes
+  - Non-classical monocytes
+  - classical monocyte
+  - non-classical monocyte
+  stage: mature
+  lineage: myeloid
+  synthetic: false
+NKT_cell:
+  markers:
+  - IL12RB2
+  - IL17RA
+  - IL12RB1
+  - KLRB1
+  - NCAM1
+  - ZBTB16
+  - EOMES
+  aliases:
+  - NK T cells
+  - natural killer T cell
+  - iNKT
   stage: mature
   lineage: lymphoid_NK
-  synthetic: false   # xlsx col M (re-curated; literature-only)
-
-NK_T:
-  aliases: ["NK T cell", "NK_T", "natural killer T cell"]
-  markers: [IL12RB2, IL17RA, IL12RB1, KLRB1, NCAM1, PLZF, EOMES]
+  synthetic: false
+NK_cell:
+  markers:
+  - KLRK1
+  - NCAM1
+  - NKG7
+  - GNLY
+  - KLRC1
+  - KLRG1
+  - NCR3
+  - ZBTB16
+  - CD244
+  - CD7
+  aliases:
+  - natural killer cell
+  - NK
+  - CD56dimCD16+ NK cells
+  - CD56brightCD16- NK cells
+  - CD16-positive, CD56-dim natural killer cell, human
+  - CD16-negative, CD56-bright natural killer cell, human
   stage: mature
-  lineage: lymphoid_T
-  synthetic: false   # xlsx col N
-
+  lineage: lymphoid_NK
+  synthetic: false
 Naive_T:
-  aliases: ["Naive T cells", "naive T cell", "T cell", "Naive T"]
-  # Naive T quiescence module per literature:
-  # - CCR7, SELL (CD62L), S1PR1: lymph-node homing / egress receptors
-  #   (Sallusto et al. 1999, Nature; Matloubian et al. 2004, Nature).
-  # - LEF1, TCF7: naive-state TFs (Willinger et al. 2006, J Immunol).
-  # - IL7R: high on naive, downregulated on effector (Schluns et al.
-  #   2000, Nat Immunol).
-  # CD3D/E to anchor T identity (vs NK).
-  markers: [CCR7, SELL, S1PR1, LEF1, TCF7, IL7R, CD3D, CD3E]
+  markers:
+  - IL7R
+  - CCR7
+  - CD3D
+  - CD3G
+  - CD3E
+  - LEF1
+  aliases:
+  - CD4+ naive T cells
+  - CD8+ naive T cells
+  - Naive_CD4_T_cell
+  - Naive_CD8_T_cell
+  - Naive T
+  - naive thymus-derived CD4-positive, alpha-beta T cell
+  - naive thymus-derived CD8-positive, alpha-beta T cell
   stage: mature
   lineage: lymphoid_T
-  synthetic: false   # xlsx col Q (re-curated; ILR7 typo fixed)
-
-CD4_T:
-  aliases: ["CD4 T cell", "CD4 Memory T", "naive thymus-derived CD4-positive, alpha-beta T cell", "central memory CD4-positive, alpha-beta T cell", "effector memory CD4-positive, alpha-beta T cell"]
-  # CD4 helper/memory module per literature:
-  # - CD4: lineage definition.
-  # - IL7R: memory CD4 maintenance (Schluns et al. 2000, Nat Immunol).
-  # - GATA3 (Th2), TBX21 (Th1), RORC (Th17), CCR4 (Th2), CCR6 (Th17):
-  #   canonical helper-subset transcription factors / homing receptors
-  #   (Zhu et al. 2010, Annu Rev Immunol).
-  # CD3D/E anchor T identity. CD8 markers omitted to disambiguate.
-  markers: [CD4, IL7R, GATA3, TBX21, RORC, CCR4, CCR6, CD3D, CD3E]
+  synthetic: false
+Treg:
+  markers:
+  - FOXP3
+  - IKZF2
+  - CD4
+  - ICOS
+  - CTLA4
+  - LAG3
+  - IZUMO1R
+  aliases:
+  - regulatory T cell
+  - T_reg
   stage: mature
   lineage: lymphoid_T
-  synthetic: false   # xlsx col R (re-curated; literature-only)
-
-Cytotoxic_CD8:
-  aliases: ["Cytotoxic CD8", "CD8 Memory T", "CD8-positive, alpha-beta memory T cell", "effector memory CD8-positive, alpha-beta T cell", "central memory CD8-positive, alpha-beta T cell", "naive thymus-derived CD8-positive, alpha-beta T cell"]
-  # CD8 memory/effector module per literature:
-  # - CD8A, CD8B: lineage definition.
-  # - GZMK: memory CD8 specific cytotoxic granzyme
-  #   (Bratke et al. 2005, Eur J Immunol; Patil et al. 2018, Sci Immunol).
-  # - EOMES, TBX21 (T-bet): CD8 effector TFs (Pearce et al. 2003, Science).
-  # - CD27, CD28: T-cell costimulatory markers (memory subset distinction).
-  # CD3D/E anchor T identity. GZMB/PRF1 dropped — overlap with NK
-  # cytotoxic module (Vivier et al. 2011, Science).
-  markers: [CD8A, CD8B, GZMK, EOMES, TBX21, CD27, CD28, CD3D, CD3E]
+  synthetic: false
+pDC:
+  markers:
+  - LILRA4
+  - ITGAX
+  - NRP1
+  - CLEC4C
+  - CD4
+  - TCF4
+  - IL3RA
+  - CCR9
+  aliases:
+  - plasmacytoid dendritic cell
+  - Plasmacytoid dendritic cells
+  - Plasmacytoid dendritic cell progenitors
+  - common dendritic progenitor
+  - CDP
   stage: mature
-  lineage: lymphoid_T
-  synthetic: false   # xlsx col S
-
-T_reg:
-  aliases: ["T reg", "Treg", "regulatory T cell", "CD4-positive, CD25-positive, alpha-beta regulatory T cell"]
-  markers: [FOXP3, IKZF2, CD4, ICOS, CTLA4, LAG3, IZUMO1R]
-  stage: mature
-  lineage: lymphoid_T
-  synthetic: false   # xlsx col T
-
-# =============================================================
-# Phase 2.5 — T cell maturation subtree (pptx slide 3)
-# =============================================================
-
-# Thymic precursors (early intra-thymic stages)
-DN:
-  aliases: ["DN (Double Negative)", "double negative thymocyte"]
-  markers: [CD7, CD2, CD5, NOTCH1, IL7R, RAG1, RAG2, TCF7]
-  stage: premature
-  lineage: lymphoid_T
-  synthetic: true
-
-DP:
-  aliases: ["DP (Double Positive)", "double positive thymocyte"]
-  markers: [CD4, CD8A, CD8B, RAG1, RAG2, TCF7, RORC]
-  stage: premature
-  lineage: lymphoid_T
-  synthetic: true
-
-T_gd:
-  aliases: ["gamma-delta T cell", "gamma delta T"]
-  markers: [TRDC, TRGC1, TRGC2, CD3D, CD3G, CD3E]
-  stage: mature
-  lineage: lymphoid_T
-  synthetic: true
-
-NKT_cell:
-  aliases: ["NKT cell", "natural killer T cell"]
-  markers: [CD3D, CD3E, NCAM1, KLRB1, ZBTB16, NCR3]
-  stage: mature
-  lineage: lymphoid_T
-  synthetic: true
-
-# Phase 2.9 Option B — thymic single-positive (SP) stages
-CD4_SP:
-  aliases: ["CD4 single positive thymocyte", "CD4SP", "SP4"]
-  # CD4-SP per literature:
-  # - CD4 + CD3 (lineage definition); CD8 absent
-  # - ZBTB7B (ThPOK) is the master TF for CD4-lineage commitment
-  #   (He et al. 2005 Immunity; Ellmeier et al. 2013 Nat Rev Immunol).
-  # - GATA3 is expressed throughout CD4 lineage from DP onward
-  #   (Hosoya et al. 2009 J Exp Med).
-  # - TCF7, LEF1 maintain stemness at SP stage (Willinger 2006 J Immunol).
-  # - CCR7 acquired before thymic egress (Ueno et al. 2004 Immunity).
-  markers: [CD4, CD3D, CD3E, ZBTB7B, GATA3, TCF7, LEF1, CCR7]
-  stage: premature
-  lineage: lymphoid_T
-  synthetic: true
-
-CD8_SP:
-  aliases: ["CD8 single positive thymocyte", "CD8SP", "SP8"]
-  # CD8-SP per literature:
-  # - CD8A/B + CD3 (lineage definition); CD4 absent
-  # - RUNX3 is the master TF for CD8-lineage commitment, antagonizes
-  #   ThPOK (Egawa & Littman 2008 Nat Immunol; Setoguchi et al. 2008
-  #   Science).
-  # - EOMES is induced at CD8-SP and required for memory programming
-  #   (Pearce et al. 2003 Science).
-  # - TCF7, LEF1 stemness markers retained.
-  # - CCR7 for thymic egress.
-  markers: [CD8A, CD8B, CD3D, CD3E, RUNX3, EOMES, TCF7, LEF1, CCR7]
-  stage: premature
-  lineage: lymphoid_T
-  synthetic: true
-
-Treg_thymic:
-  aliases: ["natural Treg", "nTreg", "thymic Treg", "tTreg"]
-  # Thymic-derived natural Treg (nTreg) per literature:
-  # - FOXP3 is the lineage-defining TF (Sakaguchi et al. 2008 Cell).
-  # - IL2RA (CD25), CTLA4: hallmark surface markers (Sakaguchi 2008).
-  # - IKZF2 (Helios) discriminates thymic-derived from peripheral iTreg
-  #   (Thornton et al. 2010 J Immunol).
-  # - TNFRSF18 (GITR), TNFRSF4 (OX40), TNFRSF9 (4-1BB): Treg activation
-  #   markers enriched in nTreg (Mahmud et al. 2014 J Immunol).
-  # - CD4 + CD3 anchor T identity. Distinguished from peripheral iTreg
-  #   (Treg entry, xlsx-derived) by Helios/IKZF2 positivity.
-  markers: [FOXP3, IL2RA, CTLA4, IKZF2, TNFRSF18, CD4, CD3D, CD3E]
-  stage: mature
-  lineage: lymphoid_T
-  synthetic: true
-
-# Peripheral naive T (mature thymic output).
-# Per 2026-05-21 spec update, CD4/CD8 split happens at DP (thymic stage),
-# so the intermediate "Naive_T_cell" node was REMOVED from the prior DAG.
-# The Naive_T_cell entry below now serves only as an alias collector for
-# legacy paths (panels for naive CD4 and naive CD8 are the real targets).
-Naive_CD4_T_cell:
-  # 2026-05-21: CD4_naive node merged here; CD4 memory subsets (central
-  # memory + effector memory) also collapse into this peripheral-CD4
-  # canonical per user directive.
-  aliases: ["Naive_CD4_T_cell", "CD4 Naive", "CD4_naive",
-            # Peripheral CD4 naive in Hay paper categories
-            "naive thymus-derived CD4-positive, alpha-beta T cell",
-            # CD4 memory subsets (collapsed here after node removal)
-            "CD4 Memory T", "CD4_central_memory", "CD4_effector_memory",
-            "CD4 Central Memory", "CD4 Effector Memory",
-            "central memory CD4-positive, alpha-beta T cell",
-            "effector memory CD4-positive, alpha-beta T cell"]
-  # CD4-specific naïveté: CD4 lineage + lymph-node-homing/quiescence
-  markers: [CD4, CCR7, SELL, LEF1, TCF7, IL7R, CD3D, CD3E]
-  stage: mature
-  lineage: lymphoid_T
-  synthetic: true
-
-Naive_CD8_T_cell:
-  # 2026-05-21: CD8_naive node merged into this entry; its alias kept.
-  aliases: ["Naive_CD8_T_cell", "CD8 Naive", "CD8_naive",
-            "naive thymus-derived CD8-positive, alpha-beta T cell"]
-  # CD8-specific naïveté
-  markers: [CD8A, CD8B, CCR7, SELL, LEF1, TCF7, IL7R, CD3D, CD3E]
-  stage: mature
-  lineage: lymphoid_T
-  synthetic: true
-
-# CD4 helper subsets
-Th1:
-  aliases: ["Th1"]
-  markers: [CD4, TBX21, IFNG, IL12RB2, CXCR3, STAT1]
-  stage: mature
-  lineage: lymphoid_T
-  synthetic: true
-
-Th2:
-  aliases: ["Th2"]
-  markers: [CD4, GATA3, IL4, IL5, IL13, CCR4, STAT6]
-  stage: mature
-  lineage: lymphoid_T
-  synthetic: true
-
-Th17:
-  aliases: ["Th17"]
-  markers: [CD4, RORC, IL17A, IL17F, IL23R, CCR6, STAT3]
-  stage: mature
-  lineage: lymphoid_T
-  synthetic: true
-
-Tfh:
-  aliases: ["Tfh", "T follicular helper"]
-  markers: [CD4, BCL6, CXCR5, ICOS, PDCD1, IL21]
-  stage: mature
-  lineage: lymphoid_T
-  synthetic: true
-
-# CD8 memory + effector
-CD8_Treg:
-  aliases: ["CD8_Treg", "CD8 regulatory T"]
-  markers: [CD8A, FOXP3, CTLA4, CD25, IL2RA]
-  stage: mature
-  lineage: lymphoid_T
-  synthetic: true
-
-# CD4 memory subsets removed 2026-05-21 (user directive: "CD4_central_memory와
-# 그 밑 노드 삭제"). Their aliases moved to Naive_CD4_T_cell so paper
-# 'CD4 Memory T' / fine 'CD4 Central Memory' / 'CD4 Effector Memory' labels
-# still resolve to a single peripheral-CD4 canonical.
-
-CD8_central_memory:
-  aliases: ["CD8_central_memory", "central memory CD8-positive, alpha-beta T cell", "CD8 Central Memory"]
-  markers: [CD8A, CD8B, CCR7, SELL, IL7R, CD27, CD28]
-  stage: mature
-  lineage: lymphoid_T
-  synthetic: true
-
-CD8_effector_memory:
-  aliases: ["CD8_effector_memory", "effector memory CD8-positive, alpha-beta T cell", "CD8 Effector Memory", "CD8 Effector Memory 1", "CD8 Effector Memory 2"]
-  markers: [CD8A, CD8B, CCR5, CXCR3, GZMK, GZMA, EOMES]
-  stage: mature
-  lineage: lymphoid_T
-  synthetic: true
-
-CD8_effector:
-  aliases: ["CD8_effector", "CD8 effector"]
-  markers: [CD8A, CD8B, GZMB, GNLY, PRF1, NKG7, EOMES, KLRG1]
-  stage: mature
-  lineage: lymphoid_T
-  synthetic: true
-
-Megakaryocyte:
-  aliases: ["megakaryocyte"]
-  markers: [PF4, PPBP, ITGA2B, GP1BA, VWF, TUBB1, GP9, MEIS1]
-  stage: mature
-  lineage: megakaryocyte
-  synthetic: true
-
-Platelet:
-  aliases: ["Platelates", "platelet"]
-  markers: [CD46, CD109, PPBP, GP1BB]
-  stage: mature
-  lineage: megakaryocyte
-  synthetic: false   # xlsx col U
-
-# =============================================================
-# Stage 4/5 — Erythroid maturation
-# =============================================================
+  lineage: dendritic
+  synthetic: false
+BMCP:
+  markers:
+  - CEBPA
+  - FCER1A
+  - ITGB7
+  aliases:
+  - Basophil-mast progenitor
+  - Eosinophil-basophil-mast cell progenitors
+  - EoBasoMast Precursor
+  stage: progenitor
+  lineage: myeloid
+  synthetic: false
+CLP:
+  markers:
+  - IL7R
+  - EBF1
+  - PAX5
+  - CD34
+  - FLT3
+  - TCF3
+  aliases:
+  - Common_lymphoid_progenitor
+  - Pre-pro-B cells
+  - Lymphoid progenitor
+  - NK cell progenitors
+  stage: progenitor
+  lineage: lymphoid
+  synthetic: false
+CMP:
+  markers:
+  - SPI1
+  - CEBPA
+  - CMYB
+  - CD34
+  - GATA1
+  - KLF1
+  - CD38
+  - CSF1R
+  aliases:
+  - Common_myeloid_progenitor
+  - Erythro-myeloid progenitors
+  - Myeloid progenitor
+  - common myeloid progenitor
+  stage: progenitor
+  lineage: myeloid
+  synthetic: false
+Erythroblast:
+  markers:
+  - GATA1
+  - KLF1
+  - ALAS2
+  - HBA1
+  - HBA2
+  - HBB
+  - EPOR
+  aliases:
+  - Aberrant erythroid
+  - erythroid lineage cell
+  stage: progenitor
+  lineage: erythroid
+  synthetic: false
+Erythroid_precursor:
+  markers:
+  - HBB
+  - HBA1
+  - HBA2
+  - HBG1
+  - HBG2
+  - HEXA
+  - GYPA
+  - GYPB
+  - EPOR
+  - GATA1
+  - KLF1
+  aliases:
+  - BFU_E
+  - CFU_E
+  - BFU-E
+  - CFU-E
+  - Early erythroid progenitor
+  - Late erythroid progenitor
+  - Early Erythroid
+  - Late Erythroid
+  - erythroid progenitor cell
+  stage: progenitor
+  lineage: erythroid
+  synthetic: false
+GMP:
+  markers:
+  - CEBPA
+  - CEBPE
+  - GFI1
+  - SPI1
+  - CTGS
+  - MPO
+  - ELANE
+  - CD34
+  - IL3RA
+  aliases:
+  - Granulocyte-monocyte progenitor
+  - Early promyelocytes
+  - Late promyelocytes
+  - Promyelocyte
+  - Early GMP
+  - Late GMP
+  - Pro-Monocyte
+  stage: progenitor
+  lineage: myeloid
+  synthetic: false
+MDP:
+  markers:
+  - CSF1R
+  - FLT3
+  - CXCR1
+  - IRF8
+  aliases:
+  - Monocyte-DC progenitor
+  stage: progenitor
+  lineage: myeloid
+  synthetic: false
+MEP:
+  markers:
+  - GATA1
+  - KLF1
+  - HBB
+  - HBA1
+  - HBA2
+  - GYPA
+  - ITGB3
+  - ITGA2B
+  aliases:
+  - Megakaryocyte-erythroid progenitor
+  - Megakaryocyte progenitors
+  - Megakaryocyte Precursor
+  stage: progenitor
+  lineage: erythroid
+  synthetic: false
+MPP:
+  markers:
+  - CD34
+  - SLAMF1
+  - CD48
+  - FLT3
+  aliases:
+  - Multipotent_progenitor
+  - Lymphomyeloid prog
+  - LMPP
+  - Cycling Progenitor
+  - Early Lymphoid
+  stage: progenitor
+  lineage: stem
+  synthetic: false
+Pre_B_cell:
+  markers:
+  - VPREB1
+  - VPREB2
+  - CD19
+  - MS4A1
+  - TCF3
+  - PAX5
+  - EBF1
+  - BLNK
+  - IKZF3
+  - MME
+  aliases:
+  - precursor B cell
+  - Pre-B cells
+  - Small pre-B cell
+  - Pre-B
+  stage: progenitor
+  lineage: lymphoid_B
+  synthetic: false
+Pro_B_cell:
+  markers:
+  - CD19
+  - MS4A1
+  - RAG1
+  - RAG2
+  - CD79A
+  - CD79B
+  - IL7R
+  - PAX5
+  - CEBPA
+  - IRX1
+  - MME
+  aliases:
+  - pro-B cell
+  - Pro-B cells
+  - Pro-B
+  stage: progenitor
+  lineage: lymphoid_B
+  synthetic: false
 Reticulocyte:
-  aliases: ["Reticulocytes", "reticulocyte"]
-  markers: [HBB, TFRC, UBE2O, SLC11A2, HBA]
-  stage: mature
+  markers:
+  - HBB
+  - TFRC
+  - UBE2O
+  - SLC11A2
+  - HBA1
+  - HBA2
+  aliases: []
+  stage: progenitor
   lineage: erythroid
-  synthetic: false   # xlsx col V
-
-Erythrocyte:
-  aliases: ["Erythroid-like and erythroid precursor cells", "erythrocyte"]
-  markers: [HBB, HBA1, HBA2, HBG1, HBG2, HEXA, GYPA, GYPB, EPOR, GATA1, KLF1]
+  synthetic: false
+Thymocytes:
+  markers:
+  - NOTCH1
+  - CD99
+  - TSHR
+  - BCL6
+  - EZR
+  - TOX
+  - AIRE
+  aliases:
+  - T_cell_progenitor
+  - Pro-T
+  - DN
+  - DP
+  - CD4_SP
+  - CD8_SP
+  - Treg_thymic
+  - thymocyte
+  stage: progenitor
+  lineage: lymphoid_T
+  synthetic: false
+HSC:
+  markers:
+  - HLF
+  - CD33
+  - GATA3
+  - CD44
+  - PTPRS
+  - CD34
+  - NOTCH1
+  - NOTCH2
+  - MEIS1
+  - MLLT3
+  aliases:
+  - hematopoietic stem cell
+  - Stem
+  - HSCs & MPPs
+  - HSC MPP
+  stage: stem
+  lineage: stem
+  synthetic: false
+Basophil:
+  markers:
+  - ENPP3
+  - IL5RA
+  - FCER1A
+  aliases:
+  - basophil
   stage: terminal
-  lineage: erythroid
-  synthetic: false   # xlsx col F
-
-# =============================================================
-# Stage 5 — Terminal / antibody-secreting
-# =============================================================
+  lineage: myeloid
+  synthetic: false
+Eosinophil:
+  markers:
+  - SIGLEC8
+  - CXCR3
+  - CD244
+  - CCR3
+  - GATA1
+  - CEBPA
+  - EPX
+  aliases:
+  - eosinophil
+  stage: terminal
+  lineage: myeloid
+  synthetic: false
+Macrophage:
+  markers:
+  - MMP12
+  - CD163
+  - MRC1
+  - CCR5
+  - VSIG4
+  - GPR132
+  - ADGRE1
+  - CD68
+  aliases:
+  - macrophage
+  stage: terminal
+  lineage: myeloid
+  synthetic: false
+Mast_cell:
+  markers:
+  - ENPP3
+  - IL2RA
+  - IL17A
+  - CPA3
+  - FCER1A
+  aliases:
+  - mast cell
+  stage: terminal
+  lineage: myeloid
+  synthetic: false
+Neutrophil:
+  markers:
+  - CXCR2
+  - MPO
+  - DEFA3
+  - ELANE
+  - CAMP
+  - FCGR3B
+  - CSF3R
+  - G0S2
+  - CD177
+  aliases:
+  - neutrophil
+  - Myelocytes
+  - myelocyte
+  stage: terminal
+  lineage: myeloid
+  synthetic: false
 Plasma_cell:
-  aliases: ["plasma cell", "Plasma B", "Plasma"]
-  markers: [XBP1, PRDM1, JCHAIN, CD9, IGHG1, IGHG2, IGHG3, IGHG4, MZB1, DERL3, SDC1, TNFRSF17]
+  markers:
+  - XBP1
+  - PRDM1
+  - JCHAIN
+  - CD9
+  - IGHG1
+  - IGHG2
+  - IGHG3
+  - IGHG4
+  aliases:
+  - Plasma cells
+  - plasma cell
+  - Plasma_Cell
   stage: terminal
   lineage: lymphoid_B
-  synthetic: false   # xlsx col H
+  synthetic: false
+Platelet:
+  markers:
+  - CD46
+  - CD109
+  - PPBP
+  - GP1BB
+  aliases:
+  - Platelets
+  - platelet
+  stage: terminal
+  lineage: megakaryocyte
+  synthetic: false

@@ -1,0 +1,117 @@
+{
+  "n_cells_after_qc": 32930,
+  "n_genes_after_qc": 26338,
+  "n_rep_dims": 2,
+  "use_rep": "X_umap",
+  "n_clusters": 26,
+  "n_components": 1,
+  "root_cluster": "C25",
+  "n_edges_initial": 75,
+  "n_edges_after_fas": 75,
+  "n_edges_removed": 0,
+  "direction": {
+    "method_chosen": "marker",
+    "accuracy": {
+      "dpt": 0.14285714285714285,
+      "marker": 0.5714285714285714
+    },
+    "agreement_rate": 0.6,
+    "n_pairs_compared": 75
+  },
+  "backbone": {
+    "backbone_path": [
+      "C25",
+      "C15",
+      "C22",
+      "C23",
+      "C18",
+      "C21"
+    ],
+    "backbone_length": 5,
+    "seniority_monotonic": true,
+    "seniority_strictly_increasing": false,
+    "kendall_tau": 0.816496580927726,
+    "n_lineages_reachable_from_root": 4,
+    "n_disconnected_mature": 3,
+    "root_cluster": "C25",
+    "weight_mode": "sum_weight",
+    "backbone_score": 3.6063568960708627,
+    "alt_backbone": {
+      "weight_mode": "edge_count",
+      "path": [
+        "C25",
+        "C15",
+        "C22",
+        "C24",
+        "C23",
+        "C16",
+        "C18",
+        "C19",
+        "C21"
+      ],
+      "score": 8.0,
+      "length": 8
+    },
+    "disconnected_mature_clusters": [
+      "C09",
+      "C17",
+      "C20"
+    ],
+    "prior_labels": [
+      "MPP",
+      "Pre_B_cell",
+      "GMP",
+      "GMP",
+      "CMP",
+      "Platelet"
+    ],
+    "backbone_seniority": [
+      [
+        "C25",
+        0
+      ],
+      [
+        "C15",
+        null
+      ],
+      [
+        "C22",
+        null
+      ],
+      [
+        "C23",
+        2
+      ],
+      [
+        "C18",
+        null
+      ],
+      [
+        "C21",
+        2
+      ]
+    ]
+  },
+  "prior": {
+    "consistency_rate": 0.25333333333333335,
+    "consistent_count": 19,
+    "scored_count": 75,
+    "unlabeled_count": 0,
+    "penalty": 0.5,
+    "g_prior_path": "data/priors/dag_prior_bm.yaml"
+  },
+  "annotation": {
+    "strict_accuracy": 0.49009519701777626,
+    "lineage_accuracy": 0.9172186450599218,
+    "n_evaluable": 32459,
+    "n_unmapped_gt_labels": 0,
+    "n_unmapped_pred_labels": 0
+  },
+  "marker_only_baseline": {
+    "strict_accuracy": 0.4709941772697865,
+    "lineage_accuracy": 0.898117625311932,
+    "n_clusters_changed_by_dcta": 4,
+    "fusion_weight": 0.0,
+    "fusion_hops": 1
+  }
+}

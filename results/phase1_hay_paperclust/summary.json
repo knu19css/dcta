@@ -1,80 +1,75 @@
 {
   "n_cells_after_qc": 29993,
-  "n_genes_after_qc": 21483,
-  "n_dcs": 10,
+  "n_genes_after_qc": 27571,
+  "n_rep_dims": 50,
+  "use_rep": "X_harmony",
   "n_clusters": 24,
   "n_components": 1,
   "root_cluster": "HSC MPP",
-  "n_edges_initial": 78,
-  "n_edges_after_fas": 78,
+  "n_edges_initial": 47,
+  "n_edges_after_fas": 47,
   "n_edges_removed": 0,
   "direction": {
-    "method_chosen": "marker",
+    "method_chosen": "dpt",
     "accuracy": {
-      "dpt": 0.8222222222222222,
-      "marker": 0.9333333333333333
+      "dpt": 1.0,
+      "marker": 0.9583333333333334
     },
-    "agreement_rate": 0.6153846153846154,
-    "n_pairs_compared": 78
+    "agreement_rate": 0.7446808510638298,
+    "n_pairs_compared": 47
   },
   "backbone": {
     "backbone_path": [
       "HSC MPP",
       "LMPP",
       "Cycling Progenitor",
-      "Early Lymphoid",
       "Early GMP",
-      "Late GMP",
-      "Pro-Monocyte",
-      "Monocyte",
-      "cDC",
-      "Megakaryocyte Precursor"
+      "EoBasoMast Precursor",
+      "MEP",
+      "Early Erythroid",
+      "Late Erythroid"
     ],
-    "backbone_length": 9,
-    "seniority_monotonic": false,
+    "backbone_length": 7,
+    "seniority_monotonic": true,
     "seniority_strictly_increasing": false,
-    "kendall_tau": 0.715833989590879,
-    "n_lineages_reachable_from_root": 4,
-    "n_disconnected_mature": 5,
+    "kendall_tau": 0.8017837257372732,
+    "n_lineages_reachable_from_root": 5,
+    "n_disconnected_mature": 4,
     "root_cluster": "HSC MPP",
     "weight_mode": "sum_weight",
-    "backbone_score": 6.791587028814252,
+    "backbone_score": 5.8918764768926675,
     "alt_backbone": {
       "weight_mode": "edge_count",
       "path": [
         "HSC MPP",
         "LMPP",
         "Cycling Progenitor",
-        "MEP",
-        "Early Lymphoid",
         "Early GMP",
+        "EoBasoMast Precursor",
         "Late GMP",
         "Pro-Monocyte",
-        "Monocyte",
         "cDC",
-        "Megakaryocyte Precursor"
+        "Monocyte",
+        "Stromal"
       ],
-      "score": 10.0,
-      "length": 10
+      "score": 9.0,
+      "length": 9
     },
     "disconnected_mature_clusters": [
       "CD4 Memory T",
       "CD8 Memory T",
       "NK",
-      "Naive T",
-      "Plasma_Cell"
+      "Naive T"
     ],
     "prior_labels": [
       "HSC",
       "MPP",
       "MPP",
-      "Pro_B_cell",
       "CMP",
-      "GMP",
-      "Monocyte",
-      "Monocyte",
-      "cDC2",
-      "Megakaryocyte"
+      "Basophil",
+      "MEP",
+      "CFU_E",
+      "Erythroblast"
     ],
     "backbone_seniority": [
       [
@@ -90,39 +85,31 @@
         2
       ],
       [
-        "Early Lymphoid",
-        2
-      ],
-      [
         "Early GMP",
         2
       ],
       [
-        "Late GMP",
+        "EoBasoMast Precursor",
         2
       ],
       [
-        "Pro-Monocyte",
+        "MEP",
+        2
+      ],
+      [
+        "Early Erythroid",
+        2
+      ],
+      [
+        "Late Erythroid",
         3
-      ],
-      [
-        "Monocyte",
-        4
-      ],
-      [
-        "cDC",
-        4
-      ],
-      [
-        "Megakaryocyte Precursor",
-        2
       ]
     ]
   },
   "prior": {
-    "consistency_rate": 0.6025641025641025,
-    "consistent_count": 47,
-    "scored_count": 78,
+    "consistency_rate": 0.5957446808510638,
+    "consistent_count": 28,
+    "scored_count": 47,
     "unlabeled_count": 0,
     "penalty": 0.5,
     "g_prior_path": [
@@ -131,14 +118,14 @@
     ]
   },
   "annotation": {
-    "strict_accuracy": 0.5743006701563699,
+    "strict_accuracy": 0.6200446770913213,
     "lineage_accuracy": 0.9561564365018504,
     "n_evaluable": 29993,
     "n_unmapped_gt_labels": 1,
     "n_unmapped_pred_labels": 0
   },
   "marker_only_baseline": {
-    "strict_accuracy": 0.552662287867169,
+    "strict_accuracy": 0.5984062948021205,
     "lineage_accuracy": 0.9561564365018504,
     "n_clusters_changed_by_dcta": 3,
     "fusion_weight": 0.0,

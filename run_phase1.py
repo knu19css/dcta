@@ -286,7 +286,8 @@ def main(argv=None):
     summary = {
         "n_cells_after_qc": int(adata.n_obs),
         "n_genes_after_qc": int(adata.n_vars),
-        "n_dcs": int(adata.uns["dcta"]["n_dcs"]),
+        "n_rep_dims": int(adata.uns["dcta"].get("n_rep_dims", 0)),
+        "use_rep": adata.uns["dcta"].get("use_rep", ""),
         "n_clusters": int(n_clust),
         "n_components": int(adata.uns["dcta"]["component_count"]),
         "root_cluster": adata.uns["dcta"]["root_cluster"],

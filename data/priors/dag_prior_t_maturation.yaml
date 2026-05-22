@@ -23,8 +23,9 @@ nodes:
   # Peripheral mature T
   - Naive_CD4_T_cell
   - Naive_CD8_T_cell
-  - CD4_naive
-  - CD8_naive
+  # NOTE: CD4_naive/CD8_naive intermediate nodes were merged into
+  # Naive_CD4_T_cell / Naive_CD8_T_cell respectively (2026-05-21).
+  # Their aliases are kept on the parent entries in lineage_mature_markers.yaml.
   # CD4 helper subsets
   - Th1
   - Th2
@@ -59,18 +60,18 @@ edges:
   # Thymic SP -> peripheral naive T (thymic export)
   - [CD4_SP, Naive_CD4_T_cell]
   - [CD8_SP, Naive_CD8_T_cell]
-  # ---- pptx slide 3 connector-derived edges ----
-  - [Naive_CD4_T_cell, CD4_naive]
+  # ---- pptx slide 3 connector-derived edges (CD4_naive/CD8_naive
+  # merged into Naive_CD4_T_cell/Naive_CD8_T_cell, so edges that used
+  # to pass through them are rewired to skip the intermediate node) ----
   - [Naive_CD4_T_cell, Th1]
   - [Naive_CD4_T_cell, Th2]
   - [Naive_CD4_T_cell, Th17]
   - [Naive_CD4_T_cell, Tfh]
   - [Naive_CD4_T_cell, Treg]
-  - [CD4_naive, CD4_central_memory]
+  - [Naive_CD4_T_cell, CD4_central_memory]
   - [CD4_central_memory, CD4_effector_memory]
-  - [Naive_CD8_T_cell, CD8_naive]
-  - [CD8_naive, CD8_central_memory]
+  - [Naive_CD8_T_cell, CD8_central_memory]
   - [CD8_central_memory, CD8_effector_memory]
   - [CD8_effector_memory, CD8_effector]
-  # Slide-3 missing-but-implied: CD8 also gives rise to CD8_Treg
-  - [CD8_naive, CD8_Treg]
+  # CD8 -> CD8_Treg (slide-3 missing-but-implied; was via CD8_naive)
+  - [Naive_CD8_T_cell, CD8_Treg]

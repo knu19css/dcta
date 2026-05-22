@@ -419,7 +419,8 @@ Treg_thymic:
 # The Naive_T_cell entry below now serves only as an alias collector for
 # legacy paths (panels for naive CD4 and naive CD8 are the real targets).
 Naive_CD4_T_cell:
-  aliases: ["Naive_CD4_T_cell", "CD4 Naive",
+  # 2026-05-21: CD4_naive node merged into this entry; its alias kept.
+  aliases: ["Naive_CD4_T_cell", "CD4 Naive", "CD4_naive",
             # Peripheral CD4 naive in Hay paper categories
             "naive thymus-derived CD4-positive, alpha-beta T cell"]
   # CD4-specific naïveté: CD4 lineage + lymph-node-homing/quiescence
@@ -429,24 +430,11 @@ Naive_CD4_T_cell:
   synthetic: true
 
 Naive_CD8_T_cell:
-  aliases: ["Naive_CD8_T_cell", "CD8 Naive",
+  # 2026-05-21: CD8_naive node merged into this entry; its alias kept.
+  aliases: ["Naive_CD8_T_cell", "CD8 Naive", "CD8_naive",
             "naive thymus-derived CD8-positive, alpha-beta T cell"]
   # CD8-specific naïveté
   markers: [CD8A, CD8B, CCR7, SELL, LEF1, TCF7, IL7R, CD3D, CD3E]
-  stage: mature
-  lineage: lymphoid_T
-  synthetic: true
-
-CD4_naive:
-  aliases: ["CD4_naive"]
-  markers: [CD4, CCR7, LEF1, TCF7, SELL, IL7R]
-  stage: mature
-  lineage: lymphoid_T
-  synthetic: true
-
-CD8_naive:
-  aliases: ["CD8_naive"]
-  markers: [CD8A, CD8B, CCR7, LEF1, TCF7, SELL, IL7R]
   stage: mature
   lineage: lymphoid_T
   synthetic: true

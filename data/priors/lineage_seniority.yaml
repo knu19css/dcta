@@ -31,6 +31,10 @@ seniority:
   "erythroid progenitor cell": 2
   "megakaryocyte progenitor cell": 2
   "basophil mast progenitor cell": 2
+  BFU_E: 2
+  CFU_E: 2
+  "BFU-E": 2
+  "CFU-E": 2
   CMP: 2
   GMP: 2
   MEP: 2

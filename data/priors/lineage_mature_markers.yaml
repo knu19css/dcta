@@ -137,12 +137,40 @@ T_cell_progenitor:
   lineage: lymphoid_T
   synthetic: false   # from xlsx col W (Thymocytes)
 
+BFU_E:
+  aliases: ["BFU-E", "BFU_E", "Burst Forming Unit-Erythroid", "burst-forming unit erythroid"]
+  # Earliest committed erythroid progenitor per literature:
+  # - CD34 retained; KIT (CD117) high (Doré & Crispino 2011 Blood).
+  # - GATA1, TAL1, KLF1 erythroid TFs initiated (Tsiftsoglou et al. 2009).
+  # - EPOR begins (Wojchowski et al. 2006).
+  # - Hemoglobin genes NOT yet expressed.
+  markers: [CD34, KIT, GATA1, TAL1, KLF1, EPOR, GATA2]
+  stage: progenitor
+  lineage: erythroid
+  synthetic: true
+
+CFU_E:
+  aliases: ["CFU-E", "CFU_E", "Colony Forming Unit-Erythroid", "colony-forming unit erythroid"]
+  # Later erythroid progenitor (more committed) per literature:
+  # - CD34 lost; TFRC (CD71) high; EPOR responsive.
+  # - GATA1/KLF1/TAL1 sustained at high level (Tsiftsoglou 2009).
+  # - First hemoglobin (HBB, HBA1) onset (Pellin et al. 2019 Nat Commun).
+  # - GYPA emerging.
+  markers: [TFRC, GATA1, KLF1, TAL1, EPOR, GYPA, HBB, HBA1]
+  stage: progenitor
+  lineage: erythroid
+  synthetic: true
+
 Erythroblast:
-  aliases: ["basophilic erythroblast", "polychromatophilic erythroblast", "orthochromatic erythroblast", "Proerythroblast"]
-  markers: [HBB, GYPA, KLF1, ALAS2, GATA1, EPOR, GYPB, HEXA]
+  aliases: ["basophilic erythroblast", "polychromatophilic erythroblast", "orthochromatic erythroblast", "Proerythroblast", "Pro-Erythroblast"]
+  # Erythroblast stages (Pro/Baso/Poly/Ortho) per literature:
+  # - Hemoglobin synthesis dominant (HBB, HBA1, HBA2, ALAS2).
+  # - GYPA/GYPB surface fully on; KLF1/GATA1 still active.
+  # - Nucleus condensing (later orthochromatic), no longer dividing.
+  markers: [HBB, HBA1, HBA2, ALAS2, GYPA, GYPB, KLF1, GATA1, EPOR]
   stage: premature
   lineage: erythroid
-  synthetic: true   # invented from xlsx Erythroid-like + Reticulocytes overlap
+  synthetic: true
 
 Promyelocyte:
   aliases: ["promyelocyte"]
@@ -419,10 +447,17 @@ Treg_thymic:
 # The Naive_T_cell entry below now serves only as an alias collector for
 # legacy paths (panels for naive CD4 and naive CD8 are the real targets).
 Naive_CD4_T_cell:
-  # 2026-05-21: CD4_naive node merged into this entry; its alias kept.
+  # 2026-05-21: CD4_naive node merged here; CD4 memory subsets (central
+  # memory + effector memory) also collapse into this peripheral-CD4
+  # canonical per user directive.
   aliases: ["Naive_CD4_T_cell", "CD4 Naive", "CD4_naive",
             # Peripheral CD4 naive in Hay paper categories
-            "naive thymus-derived CD4-positive, alpha-beta T cell"]
+            "naive thymus-derived CD4-positive, alpha-beta T cell",
+            # CD4 memory subsets (collapsed here after node removal)
+            "CD4 Memory T", "CD4_central_memory", "CD4_effector_memory",
+            "CD4 Central Memory", "CD4 Effector Memory",
+            "central memory CD4-positive, alpha-beta T cell",
+            "effector memory CD4-positive, alpha-beta T cell"]
   # CD4-specific naïveté: CD4 lineage + lymph-node-homing/quiescence
   markers: [CD4, CCR7, SELL, LEF1, TCF7, IL7R, CD3D, CD3E]
   stage: mature
@@ -476,23 +511,14 @@ CD8_Treg:
   lineage: lymphoid_T
   synthetic: true
 
-CD4_central_memory:
-  aliases: ["CD4_central_memory", "central memory CD4-positive, alpha-beta T cell", "CD4 Central Memory"]
-  markers: [CD4, CCR7, SELL, IL7R, CD27, CD28]
-  stage: mature
-  lineage: lymphoid_T
-  synthetic: true
+# CD4 memory subsets removed 2026-05-21 (user directive: "CD4_central_memory와
+# 그 밑 노드 삭제"). Their aliases moved to Naive_CD4_T_cell so paper
+# 'CD4 Memory T' / fine 'CD4 Central Memory' / 'CD4 Effector Memory' labels
+# still resolve to a single peripheral-CD4 canonical.
 
 CD8_central_memory:
   aliases: ["CD8_central_memory", "central memory CD8-positive, alpha-beta T cell", "CD8 Central Memory"]
   markers: [CD8A, CD8B, CCR7, SELL, IL7R, CD27, CD28]
-  stage: mature
-  lineage: lymphoid_T
-  synthetic: true
-
-CD4_effector_memory:
-  aliases: ["CD4_effector_memory", "effector memory CD4-positive, alpha-beta T cell", "CD4 Effector Memory"]
-  markers: [CD4, CCR5, CXCR3, IFNG, GZMA, CD27]
   stage: mature
   lineage: lymphoid_T
   synthetic: true

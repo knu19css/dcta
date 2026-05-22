@@ -33,6 +33,11 @@ nodes:
   - Macrophage
   - Megakaryocyte
   - Platelet
+  # Erythroid chain (Phase 2.10): BFU-E -> CFU-E -> Erythroblast ->
+  # Reticulocyte -> Erythrocyte (Doré & Crispino 2011 Blood;
+  # Pellin et al. 2019 Nat Commun)
+  - BFU_E
+  - CFU_E
   - Erythroblast
   - Reticulocyte
   - Erythrocyte
@@ -59,7 +64,11 @@ edges:
   - [GMP, Eosinophil]
   - [GMP, Monocyte]
   - [MEP, Megakaryocyte]
-  - [MEP, Erythroblast]
+  # Erythroid chain (Phase 2.10): MEP -> BFU-E -> CFU-E -> Erythroblast ->
+  # Reticulocyte -> Erythrocyte
+  - [MEP, BFU_E]
+  - [BFU_E, CFU_E]
+  - [CFU_E, Erythroblast]
   - [MDP, CDP]
   - [MDP, Monocyte]
   - [BMCP, Basophil]

@@ -33,10 +33,13 @@ nodes:
   - Tfh
   - Treg               # peripheral induced Treg (iTreg)
   # CD8 memory / effector
+  # NOTE: CD4_central_memory and CD4_effector_memory removed
+  # (2026-05-21 user directive) — peripheral CD4 memory states absorbed
+  # into Naive_CD4_T_cell terminal categorization for this BM prior.
+  # CD8 memory chain retained because BM has distinct CD8 effector
+  # memory populations.
   - CD8_Treg
-  - CD4_central_memory
   - CD8_central_memory
-  - CD4_effector_memory
   - CD8_effector_memory
   - CD8_effector
 
@@ -68,8 +71,7 @@ edges:
   - [Naive_CD4_T_cell, Th17]
   - [Naive_CD4_T_cell, Tfh]
   - [Naive_CD4_T_cell, Treg]
-  - [Naive_CD4_T_cell, CD4_central_memory]
-  - [CD4_central_memory, CD4_effector_memory]
+  # (CD4 memory chain removed — see node list comment)
   - [Naive_CD8_T_cell, CD8_central_memory]
   - [CD8_central_memory, CD8_effector_memory]
   - [CD8_effector_memory, CD8_effector]

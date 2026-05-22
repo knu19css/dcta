@@ -5,7 +5,7 @@
   "use_rep": "X_harmony",
   "n_clusters": 24,
   "n_components": 1,
-  "root_cluster": "HSC MPP",
+  "root_cluster": "C08",
   "n_edges_initial": 47,
   "n_edges_after_fas": 47,
   "n_edges_removed": 0,
@@ -20,14 +20,14 @@
   },
   "backbone": {
     "backbone_path": [
-      "HSC MPP",
-      "LMPP",
-      "Cycling Progenitor",
-      "Early GMP",
-      "EoBasoMast Precursor",
-      "MEP",
-      "Early Erythroid",
-      "Late Erythroid"
+      "C08",
+      "C09",
+      "C03",
+      "C05",
+      "C07",
+      "C12",
+      "C04",
+      "C10"
     ],
     "backbone_length": 7,
     "seniority_monotonic": true,
@@ -35,31 +35,31 @@
     "kendall_tau": 0.8017837257372732,
     "n_lineages_reachable_from_root": 5,
     "n_disconnected_mature": 4,
-    "root_cluster": "HSC MPP",
+    "root_cluster": "C08",
     "weight_mode": "sum_weight",
     "backbone_score": 5.8918764768926675,
     "alt_backbone": {
       "weight_mode": "edge_count",
       "path": [
-        "HSC MPP",
-        "LMPP",
-        "Cycling Progenitor",
-        "Early GMP",
-        "EoBasoMast Precursor",
-        "Late GMP",
-        "Pro-Monocyte",
-        "cDC",
-        "Monocyte",
-        "Stromal"
+        "C08",
+        "C09",
+        "C03",
+        "C05",
+        "C07",
+        "C11",
+        "C20",
+        "C22",
+        "C14",
+        "C21"
       ],
       "score": 9.0,
       "length": 9
     },
     "disconnected_mature_clusters": [
-      "CD4 Memory T",
-      "CD8 Memory T",
-      "NK",
-      "Naive T"
+      "C01",
+      "C02",
+      "C15",
+      "C16"
     ],
     "prior_labels": [
       "HSC",
@@ -73,35 +73,35 @@
     ],
     "backbone_seniority": [
       [
-        "HSC MPP",
+        "C08",
         0
       ],
       [
-        "LMPP",
+        "C09",
         1
       ],
       [
-        "Cycling Progenitor",
+        "C03",
         2
       ],
       [
-        "Early GMP",
+        "C05",
         2
       ],
       [
-        "EoBasoMast Precursor",
+        "C07",
         2
       ],
       [
-        "MEP",
+        "C12",
         2
       ],
       [
-        "Early Erythroid",
+        "C04",
         2
       ],
       [
-        "Late Erythroid",
+        "C10",
         3
       ]
     ]

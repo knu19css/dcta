@@ -84,6 +84,11 @@ def parse_args(argv=None):
                         "the cluster assignment for PAGA + downstream "
                         "(e.g. 'paper_AuthorCellType_Broad'). Requires "
                         "the column to exist in adata.obs after preprocessing.")
+    p.add_argument("--keep-cluster-labels", action="store_true", default=False,
+                   help="Preserve the original cluster labels from "
+                        "--cluster-from-obs (default anonymizes them to "
+                        "C00, C01, ... to prevent label leakage when the "
+                        "source column is a paper-curated cell-type label).")
     return p.parse_args(argv)
 
 
@@ -125,7 +130,8 @@ def main(argv=None):
     adata = dcta.connectivity.run(adata, knn_k=args.knn_diffmap_k,
                                   resolution=args.resolution,
                                   cluster_from_obs=cluster_from_obs,
-                                  use_rep=args.use_rep)
+                                  use_rep=args.use_rep,
+                                  anonymize_cluster_labels=not args.keep_cluster_labels)
     n_clust = adata.obs["dcta_leiden"].nunique()
     src = adata.uns["dcta"].get("cluster_source", "?")
     print(f"[DCTA] clusters: {n_clust} (source: {src})", flush=True)

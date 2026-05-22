@@ -22,6 +22,7 @@ def run(
     random_state: int = D.RANDOM_STATE,
     cluster_from_obs: str | None = None,
     use_rep: str = "X_harmony",
+    anonymize_cluster_labels: bool = True,
 ) -> ad.AnnData:
     """Build KNN on `use_rep`, cluster, and PAGA.
 
@@ -53,15 +54,29 @@ def run(
                 f"cluster_from_obs={cluster_from_obs!r} not in adata.obs"
             )
         raw = a.obs[cluster_from_obs].astype(object).to_numpy()
-        labels_str = np.array([
+        raw_str = np.array([
             "__NA__" if (v is None or (isinstance(v, float) and np.isnan(v))
                          or str(v).lower() in ("nan", "none", ""))
             else str(v)
             for v in raw
         ])
+        if anonymize_cluster_labels:
+            # Anonymize: preserve cluster membership but strip semantic
+            # labels (avoid label leakage when the source column is a
+            # paper-curated cell-type annotation).
+            uniq_raw = sorted(set(raw_str) - {"__NA__"})
+            mapping = {lbl: f"C{i:02d}" for i, lbl in enumerate(uniq_raw)}
+            mapping["__NA__"] = "__NA__"
+            labels_str = np.array([mapping[s] for s in raw_str])
+            cluster_label_map = {v: k for k, v in mapping.items() if k != "__NA__"}
+            cluster_source = (f"obs:{cluster_from_obs}(anonymized -> "
+                              f"C00..C{len(uniq_raw)-1:02d})")
+        else:
+            labels_str = raw_str
+            cluster_label_map = None
+            cluster_source = f"obs:{cluster_from_obs}"
         a.obs["dcta_leiden"] = labels_str
         a.obs["dcta_leiden"] = a.obs["dcta_leiden"].astype("category")
-        cluster_source = f"obs:{cluster_from_obs}"
     else:
         sc.tl.leiden(a, neighbors_key="dcta_nbr", resolution=resolution,
                      random_state=random_state, key_added="dcta_leiden")
@@ -89,4 +104,8 @@ def run(
     uns["cluster_source"] = cluster_source
     uns["use_rep"] = use_rep
     uns["n_rep_dims"] = n_pcs
+    if cluster_from_obs is not None and anonymize_cluster_labels:
+        # Persist the C## -> original-label mapping so downstream
+        # debugging/viz can still see what each anonymized cluster maps to.
+        uns["cluster_label_map"] = cluster_label_map
     return a

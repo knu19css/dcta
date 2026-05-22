@@ -2,168 +2,168 @@ graph [
   directed 1
   node [
     id 0
-    label "B"
+    label "C00"
     mean_dpt 0.4444052486132223
     hsc_score -0.30455482899877073
     seniority 4.0
   ]
   node [
     id 1
-    label "CD4 Memory T"
+    label "C01"
     mean_dpt 0.11985079373534187
     hsc_score -0.25860180575072295
     seniority 4.0
   ]
   node [
     id 2
-    label "CD8 Memory T"
+    label "C02"
     mean_dpt 0.1193195797074331
     hsc_score -0.17027193659624754
     seniority 4.0
   ]
   node [
     id 3
-    label "Cycling Progenitor"
+    label "C03"
     mean_dpt 0.04456861604897057
     hsc_score 0.5433427964304438
     seniority 2.0
   ]
   node [
     id 4
-    label "Early Erythroid"
+    label "C04"
     mean_dpt 0.27821767621334065
     hsc_score -0.06481087105520296
     seniority 2.0
   ]
   node [
     id 5
-    label "Early GMP"
+    label "C05"
     mean_dpt 0.05857217875449775
     hsc_score 0.18024705448528655
     seniority 2.0
   ]
   node [
     id 6
-    label "Early Lymphoid"
+    label "C06"
     mean_dpt 0.13097726294192774
     hsc_score 0.12485746070622172
     seniority 2.0
   ]
   node [
     id 7
-    label "EoBasoMast Precursor"
+    label "C07"
     mean_dpt 0.07291300731055715
     hsc_score -0.10317401050146521
     seniority 2.0
   ]
   node [
     id 8
-    label "HSC MPP"
+    label "C08"
     mean_dpt 0.009661156425522925
     hsc_score 1.1231476181947675
     seniority 0.0
   ]
   node [
     id 9
-    label "LMPP"
+    label "C09"
     mean_dpt 0.026084417133589718
     hsc_score 0.6945706259052116
     seniority 1.0
   ]
   node [
     id 10
-    label "Late Erythroid"
+    label "C10"
     mean_dpt 0.32417414249337345
     hsc_score 0.1458539414387508
     seniority 3.0
   ]
   node [
     id 11
-    label "Late GMP"
+    label "C11"
     mean_dpt 0.1431868376356104
     hsc_score -0.17931877573770688
     seniority 2.0
   ]
   node [
     id 12
-    label "MEP"
+    label "C12"
     mean_dpt 0.11807791983949549
     hsc_score 0.17426284074856468
     seniority 2.0
   ]
   node [
     id 13
-    label "Megakaryocyte Precursor"
+    label "C13"
     mean_dpt 0.09437172627449035
     hsc_score 0.21865412053673483
     seniority 2.0
   ]
   node [
     id 14
-    label "Monocyte"
+    label "C14"
     mean_dpt 0.37891334257403986
     hsc_score -0.3274608190775626
     seniority 4.0
   ]
   node [
     id 15
-    label "NK"
+    label "C15"
     mean_dpt 0.11889694049782056
     hsc_score -0.037389109457457145
     seniority 4.0
   ]
   node [
     id 16
-    label "Naive T"
+    label "C16"
     mean_dpt 0.11992381353167239
     hsc_score -0.27720146124615386
     seniority 4.0
   ]
   node [
     id 17
-    label "Plasma_Cell"
+    label "C17"
     mean_dpt 0.7213381246516579
     hsc_score -0.3001478314981207
     seniority 5.0
   ]
   node [
     id 18
-    label "Pre-B"
+    label "C18"
     mean_dpt 0.2261499076454863
     hsc_score -0.30055203532796754
     seniority 3.0
   ]
   node [
     id 19
-    label "Pro-B"
+    label "C19"
     mean_dpt 0.25136424996414963
     hsc_score -0.19763168402672066
     seniority 3.0
   ]
   node [
     id 20
-    label "Pro-Monocyte"
+    label "C20"
     mean_dpt 0.25529810219392146
     hsc_score -0.3165059238155508
     seniority 3.0
   ]
   node [
     id 21
-    label "Stromal"
+    label "C21"
     mean_dpt 0.8682861308256785
     hsc_score -0.24429364761360045
     seniority 0.0
   ]
   node [
     id 22
-    label "cDC"
+    label "C22"
     mean_dpt 0.2557100824416936
     hsc_score -0.30895125354850067
     seniority 4.0
   ]
   node [
     id 23
-    label "pDC"
+    label "C23"
     mean_dpt 0.2540842523702038
     hsc_score -0.22175705408227311
     seniority 4.0

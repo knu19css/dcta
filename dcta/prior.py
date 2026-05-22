@@ -135,6 +135,7 @@ def map_clusters_to_prior(
     # A panel "matches" a prior node if its canonical name == node OR any
     # alias == node.
     panel_for_node: dict[str, list[str]] = {}
+    node_stage: dict[str, str] = {}
     unmatched: list[str] = []
     for tname, tdata in types.items():
         markers = list((tdata or {}).get("markers") or [])
@@ -146,10 +147,11 @@ def map_clusters_to_prior(
         if hit is None:
             unmatched.append(tname)
             continue
-        # If multiple yaml panels map to the same prior node, keep the
-        # longest panel (most evidence).
         if hit not in panel_for_node or len(markers) > len(panel_for_node[hit]):
             panel_for_node[hit] = markers
+        st = (tdata or {}).get("stage")
+        if st and hit not in node_stage:
+            node_stage[hit] = str(st)
 
     # Score every panel once per cell
     panel_cell_scores: dict[str, np.ndarray] = {
@@ -259,8 +261,16 @@ def map_clusters_to_prior(
             runner_is_prog = _is_progenitor(g_prior, runner_label)
             both_terminal = (not best_is_prog) and (not runner_is_prog)
             both_progenitor = best_is_prog and runner_is_prog
+            # Phase 2.8.1: if BOTH candidates are mature/terminal (per
+            # yaml `stage`), skip LCA-upshift even when both have
+            # out-degree>0 in G_prior. Picking a thymic LCA (e.g. DP) as
+            # the label for a mature peripheral cluster is wrong.
+            best_stage = node_stage.get(best_label, "")
+            runner_stage = node_stage.get(runner_label, "")
+            both_mature = (best_stage in ("mature", "terminal")
+                           and runner_stage in ("mature", "terminal"))
 
-            if both_terminal:
+            if both_terminal or both_mature:
                 # === Case B: both terminals -> PAGA neighbor tie-break ===
                 # Which candidate's G_prior neighborhood is more enriched
                 # in cluster c's PAGA-adjacent clusters' marker scores?

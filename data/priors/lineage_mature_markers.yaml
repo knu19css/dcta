@@ -365,24 +365,26 @@ NKT_cell:
   lineage: lymphoid_T
   synthetic: true
 
-# Peripheral naive T (mature thymic output)
-Naive_T_cell:
-  aliases: ["naive T", "Naive_T_cell"]
-  markers: [CCR7, LEF1, TCF7, SELL, CD27, CD28, IL7R, CD3D, CD3E]
-  stage: mature
-  lineage: lymphoid_T
-  synthetic: true
-
+# Peripheral naive T (mature thymic output).
+# Per 2026-05-21 spec update, CD4/CD8 split happens at DP (thymic stage),
+# so the intermediate "Naive_T_cell" node was REMOVED from the prior DAG.
+# The Naive_T_cell entry below now serves only as an alias collector for
+# legacy paths (panels for naive CD4 and naive CD8 are the real targets).
 Naive_CD4_T_cell:
-  aliases: ["Naive_CD4_T_cell", "CD4 Naive"]
-  markers: [CD4, CCR7, LEF1, TCF7, SELL, IL7R, CD3D, CD3E]
+  aliases: ["Naive_CD4_T_cell", "CD4 Naive",
+            # Peripheral CD4 naive in Hay paper categories
+            "naive thymus-derived CD4-positive, alpha-beta T cell"]
+  # CD4-specific naïveté: CD4 lineage + lymph-node-homing/quiescence
+  markers: [CD4, CCR7, SELL, LEF1, TCF7, IL7R, CD3D, CD3E]
   stage: mature
   lineage: lymphoid_T
   synthetic: true
 
 Naive_CD8_T_cell:
-  aliases: ["Naive_CD8_T_cell", "CD8 Naive"]
-  markers: [CD8A, CD8B, CCR7, LEF1, TCF7, SELL, IL7R, CD3D, CD3E]
+  aliases: ["Naive_CD8_T_cell", "CD8 Naive",
+            "naive thymus-derived CD8-positive, alpha-beta T cell"]
+  # CD8-specific naïveté
+  markers: [CD8A, CD8B, CCR7, SELL, LEF1, TCF7, IL7R, CD3D, CD3E]
   stage: mature
   lineage: lymphoid_T
   synthetic: true

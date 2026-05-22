@@ -60,6 +60,29 @@ def synthetic_adata():
     var = pd.DataFrame(index=pd.Index(var_names, name="gene"))
 
     adata = ad.AnnData(X=X, obs=obs, var=var)
+    # Phase 2.8: fixture provides a publisher-style 50d embedding directly
+    # (DCTA no longer recomputes PCA/diffusion). Build a structured embedding:
+    # HSC near origin (root) and Mye/Ery/Lym lineages radiate out as
+    # continuous arms, with noise so KNN connects everything (otherwise
+    # igraph/scipy errors on empty inter-cluster edges).
+    rng2 = np.random.default_rng(seed=1)
+    angles = {"HSC": 0.0, "Mye": 2.094, "Ery": -2.094, "Lym": 3.1415}
+    # Each cell's progress along the lineage arm (0 = at HSC, 1 = tip)
+    progress = np.where(np.array(lineages) == "HSC",
+                        rng2.uniform(0.0, 0.3, n_obs),
+                        rng2.uniform(0.4, 1.0, n_obs))
+    base_2d = np.array([
+        [np.cos(angles[l]) * p * 3.0, np.sin(angles[l]) * p * 3.0]
+        for l, p in zip(lineages, progress)
+    ])
+    base_2d += rng2.normal(0, 0.4, base_2d.shape)
+    # Lift to 50d: first 2 dims = the structured 2d embedding, rest = noise.
+    rep50 = np.zeros((n_obs, 50), dtype=np.float32)
+    rep50[:, :2] = base_2d
+    rep50[:, 2:] = rng2.normal(0, 0.3, (n_obs, 48)).astype(np.float32)
+    adata.obsm["X_pca"] = rep50
+    adata.obsm["X_harmony"] = rep50.copy()
+    adata.obsm["X_umap"] = base_2d.astype(np.float32)
     return adata
 
 

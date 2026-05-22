@@ -44,6 +44,7 @@ def load_dag_prior(path: str | list[str]) -> nx.DiGraph:
 
 
 def _score_panel(adata: ad.AnnData, panel: list[str]) -> np.ndarray:
+    """Per-cell z-scored mean of a marker panel (same as pseudotime._score_panel)."""
     present = [g for g in panel if g in adata.var_names]
     if not present:
         return np.zeros(adata.n_obs, dtype=float)
@@ -51,7 +52,12 @@ def _score_panel(adata: ad.AnnData, panel: list[str]) -> np.ndarray:
     X = adata.X[:, idx]
     if hasattr(X, "toarray"):
         X = X.toarray()
-    return np.asarray(X).mean(axis=1)
+    X = np.asarray(X, dtype=np.float64)
+    mu = X.mean(axis=0, keepdims=True)
+    sd = X.std(axis=0, keepdims=True)
+    sd[sd == 0] = 1.0
+    Xz = (X - mu) / sd
+    return Xz.mean(axis=1)
 
 
 def _is_progenitor(g_prior: nx.DiGraph, node: str) -> bool:

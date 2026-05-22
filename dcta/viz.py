@@ -454,7 +454,11 @@ def umap_marker_vs_dcta(adata: ad.AnnData, path: str,
 
 def export_all(adata: ad.AnnData, outdir: str) -> None:
     os.makedirs(outdir, exist_ok=True)
-    diffmap_eigvals(adata, os.path.join(outdir, "diffmap_eigvals.png"))
+    # diffmap_eigvals is only meaningful when a local diffusion map was
+    # computed. In Phase 2.8 pipeline the publisher embedding is used and
+    # no diffmap_eigvals are stored — skip the figure in that case.
+    if "diffmap_eigvals" in adata.uns.get("dcta", {}):
+        diffmap_eigvals(adata, os.path.join(outdir, "diffmap_eigvals.png"))
     paga_connectivities(adata, os.path.join(outdir, "paga_connectivities.png"))
     dpt_distribution(adata, os.path.join(outdir, "dpt_distribution.png"))
     dpt_root_std_hist(adata, os.path.join(outdir, "dpt_root_std_hist.png"))

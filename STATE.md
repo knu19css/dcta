@@ -125,6 +125,59 @@ Changed `dcta.dag._longest_path_length` to support `weight_mode="sum_weight"`
 (default flipped to weight-aware). Mean backbone edge weight 0.580 → 0.753;
 max-UMAP-jump 11.46 → 6.04. See commit `c23be9d`.
 
+### Phase 2.8 — Drop local preprocessing/diffusion; use paper embedding (2026-05-21)
+
+User directive: "UMAP 만드는 부분까지는 삭제, 이미 있는 UMAP에서만 작동
+하게 수정". DCTA no longer recomputes its own embedding — it reads the
+publisher-provided log-normalized X plus obsm['X_pca'|'X_harmony'|
+'X_umap'] and runs PAGA/DPT/DAG/Markov on top.
+
+Pipeline simplification:
+  REMOVED: dcta.preprocessing.run() — paper X is already log-norm
+  REMOVED: dcta.diffusion.run()    — paper X_pca/X_harmony already exists
+  REMOVED: diffmap_eigvals.png      — no local diffmap → no eigvals
+  REMOVED: CLI flags --n-comps-pca, --n-comps-diffmap, --regress-cell-cycle
+
+API change:
+  dcta.connectivity.run(use_rep="X_harmony") — required kwarg
+    (replaces the implicit "X_diffmap" assumption)
+  dcta.pseudotime.run() medoid computed on adata.obsm[uns['use_rep']]
+    instead of X_diffmap.
+  CLI flag: --use-rep (default X_harmony)
+
+Marker scoring: per-gene z-score before averaging (replaces the role
+sc.pp.scale(max_value=10) played when preprocessing was in the pipeline).
+Without it the high-magnitude markers like IGHG3 dominated panel scores
+on log-norm X. _score_panel in both pseudotime.py and prior.py updated
+to z-score columns. _score_hsc now reuses _score_panel.
+
+Test fixture (tests/conftest.py): synthetic AnnData now ships with
+structured X_pca/X_harmony (50d, lineages radiating from HSC) and
+X_umap (2d). Tests no longer rely on preprocessing/diffusion stages.
+Removed 5 legacy tests for those stages.
+
+Zeng2025_BMM 30k results (paper_AuthorCellType_Broad clusters):
+                       Phase 2.7    Phase 2.8 (no local PCA/diffmap)
+  Marker-only strict:  0.553        0.510    (-4.3 pp)
+  DCTA full strict:    0.574        0.567    (-0.7 pp)
+  Lineage acc:         0.956        0.956    (unchanged)
+  Clusters changed:    3 / 24       4 / 24
+  DAG over baseline:   +2.1 pp      +5.7 pp  (DAG contribution larger
+                                              because marker baseline
+                                              dropped more than DCTA)
+
+Backward incompatibility note: callers that previously chained
+  preprocessing.run → diffusion.run → connectivity.run
+must now provide an embedding upstream (e.g. via
+io.attach_paper_embedding) and call
+  connectivity.run(use_rep="X_harmony", ...)
+directly. preprocessing.py and diffusion.py modules remain in the repo
+but are no longer imported by the default pipeline; they may be
+removed in a later cleanup.
+
+21/21 synthetic tests pass (was 26 — removed 5 obsolete tests for
+preprocessing/diffusion stages).
+
 ### Phase 2.7.1 — Marker vs DAG attribution analysis (2026-05-21)
 
 Cross factorial of (marker panel) × (DAG on/off) on Zeng2025_BMM 30k

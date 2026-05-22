@@ -21,17 +21,13 @@ def _load_hsc_markers(path: str) -> list[str]:
 
 
 def _score_hsc(adata: ad.AnnData, markers: list[str]) -> np.ndarray:
-    """Per-cell mean expression of HSC markers (from log-normalized X)."""
+    """Per-cell z-scored mean expression of HSC markers."""
     present = [g for g in markers if g in adata.var_names]
     if not present:
         raise DCTARootError(
             f"None of the HSC marker genes are present in adata.var_names: {markers}"
         )
-    idx = [adata.var_names.get_loc(g) for g in present]
-    X = adata.X[:, idx]
-    if hasattr(X, "toarray"):
-        X = X.toarray()
-    return np.asarray(X).mean(axis=1)
+    return _score_panel(adata, present)
 
 
 def _medoid_cell(coords: np.ndarray) -> int:
@@ -73,7 +69,13 @@ def _load_lineage_markers(path: str | None) -> dict:
 
 
 def _score_panel(adata: ad.AnnData, panel: list[str]) -> np.ndarray:
-    """Per-cell mean expression of a marker panel; 0.0 if none present."""
+    """Per-cell z-scored mean expression of a marker panel; 0.0 if none present.
+
+    Z-scoring per gene before averaging makes the score robust to differences
+    in absolute expression magnitude between markers (e.g. IGHG3 ~10 vs CCR7
+    ~1 in log-norm). This is the same effect that sc.pp.scale(max_value=10)
+    provided when preprocessing was part of the pipeline.
+    """
     present = [g for g in panel if g in adata.var_names]
     if not present:
         return np.zeros(adata.n_obs, dtype=float)
@@ -81,7 +83,12 @@ def _score_panel(adata: ad.AnnData, panel: list[str]) -> np.ndarray:
     X = adata.X[:, idx]
     if hasattr(X, "toarray"):
         X = X.toarray()
-    return np.asarray(X).mean(axis=1)
+    X = np.asarray(X, dtype=np.float64)
+    mu = X.mean(axis=0, keepdims=True)
+    sd = X.std(axis=0, keepdims=True)
+    sd[sd == 0] = 1.0
+    Xz = (X - mu) / sd
+    return Xz.mean(axis=1)
 
 
 def run(
@@ -125,8 +132,15 @@ def run(
     root_cells: list[int] = []
     root_clusters: list[str] = []
 
-    n_dcs = int(a.uns.get("dcta", {}).get("n_dcs", a.obsm["X_diffmap"].shape[1] - 1))
-    dm = a.obsm["X_diffmap"][:, :n_dcs]
+    # Phase 2.8: medoid computed on whichever embedding the connectivity
+    # stage used (paper X_harmony / X_pca / X_umap), not a local diffusion map.
+    use_rep = a.uns.get("dcta", {}).get("use_rep", "X_harmony")
+    if use_rep not in a.obsm:
+        raise KeyError(
+            f"pseudotime: embedding {use_rep!r} not in adata.obsm "
+            f"(have {list(a.obsm.keys())})"
+        )
+    dm = a.obsm[use_rep]
     leiden = a.obs["dcta_leiden"].astype(str).to_numpy()
 
     for comp_id in range(n_comp):

@@ -24,15 +24,15 @@ def parse_args(argv=None):
     p.add_argument("--outdir", default="results/phase1_hay", help="output directory")
     p.add_argument("--hsc-yaml", default="data/priors/hsc_markers.yaml",
                    help="YAML file with HSC marker genes")
-    p.add_argument("--n-comps-pca", type=int, default=D.N_COMPS_PCA)
-    p.add_argument("--n-comps-diffmap", type=int, default=D.N_COMPS_DIFFMAP)
+    p.add_argument("--use-rep", default="X_harmony",
+                   help="adata.obsm key for the publisher-provided embedding "
+                        "to build KNN on (e.g. X_harmony, X_pca, X_umap). "
+                        "DCTA no longer recomputes PCA or diffusion map; the "
+                        "embedding must already be attached.")
     p.add_argument("--knn-diffmap-k", type=int, default=D.KNN_DIFFMAP_K)
     p.add_argument("--resolution", type=float, default=D.LEIDEN_RESOLUTION)
     p.add_argument("--edge-threshold", type=float, default=D.EDGE_THRESHOLD)
     p.add_argument("--robustness-k", type=int, default=D.ROBUSTNESS_K)
-    p.add_argument("--regress-cell-cycle", action="store_true", default=True)
-    p.add_argument("--no-regress-cell-cycle", action="store_false",
-                   dest="regress_cell_cycle")
     p.add_argument("--transitive-reduction", action="store_true", default=False)
     p.add_argument("--seniority-yaml", default="data/priors/lineage_seniority.yaml",
                    help="YAML mapping cell-type labels to seniority rank (for direction-accuracy)")
@@ -102,14 +102,17 @@ def main(argv=None):
         print(f"[DCTA] paper embedding: matched {meta['n_matched']}/{meta['n_target']} "
               f"cells; attached {meta['embeddings_attached']}", flush=True)
 
-    print("[DCTA] preprocessing", flush=True)
-    adata = dcta.preprocessing.run(adata, regress_cell_cycle=args.regress_cell_cycle)
-    print(f"[DCTA] after QC: {adata.n_obs} cells x {adata.n_vars} genes", flush=True)
-
-    print("[DCTA] diffusion", flush=True)
-    adata = dcta.diffusion.run(adata, n_comps_pca=args.n_comps_pca,
-                               n_comps=args.n_comps_diffmap)
-    print(f"[DCTA] n_dcs selected: {adata.uns['dcta']['n_dcs']}", flush=True)
+    # Phase 2.8: skip local preprocessing + diffusion. Use the publisher's
+    # log-normalized X and obsm[use_rep] (X_harmony / X_pca / X_umap) as-is.
+    # If the input dataset comes with raw counts, the user must normalize
+    # upstream — DCTA no longer rebuilds embeddings.
+    print(f"[DCTA] using paper embedding: {args.use_rep}", flush=True)
+    if args.use_rep not in adata.obsm:
+        raise SystemExit(
+            f"--use-rep={args.use_rep!r} not in adata.obsm "
+            f"(available: {list(adata.obsm.keys())}). "
+            f"Pass --paper-embedding-h5ad or change --use-rep."
+        )
 
     print("[DCTA] connectivity", flush=True)
     cluster_from_obs = args.cluster_from_obs or None
@@ -121,7 +124,8 @@ def main(argv=None):
         )
     adata = dcta.connectivity.run(adata, knn_k=args.knn_diffmap_k,
                                   resolution=args.resolution,
-                                  cluster_from_obs=cluster_from_obs)
+                                  cluster_from_obs=cluster_from_obs,
+                                  use_rep=args.use_rep)
     n_clust = adata.obs["dcta_leiden"].nunique()
     src = adata.uns["dcta"].get("cluster_source", "?")
     print(f"[DCTA] clusters: {n_clust} (source: {src})", flush=True)

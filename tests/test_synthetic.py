@@ -33,75 +33,35 @@ def test_io_load_h5ad_missing_file_raises():
         dcta.io.load_h5ad("/nonexistent/path/no.h5ad")
 
 
-def test_preprocessing_run_adds_qc_obs(synthetic_adata):
-    out = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False, min_genes=10, n_top_genes=50)
-    for col in ["n_counts", "pct_mito"]:
-        assert col in out.obs.columns
-    assert "highly_variable" in out.var.columns
-    assert out.var["highly_variable"].sum() > 0
-    assert out.raw is not None
+# Phase 2.8: preprocessing + diffusion stages are no longer part of the
+# DCTA pipeline (publisher embeddings used directly). Legacy tests for
+# those stages removed. Connectivity is tested directly on the fixture's
+# pre-attached X_harmony.
 
-
-def test_preprocessing_cell_cycle_columns(synthetic_adata):
-    out = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=True,
-                                 min_genes=10, n_top_genes=50)
-    assert "S_score" in out.obs.columns
-    assert "G2M_score" in out.obs.columns
-
-
-def test_preprocessing_rejects_negative_X(synthetic_adata):
-    a = synthetic_adata.copy()
-    a.X = a.X.astype(float)
-    a.X[0, 0] = -1.0
-    with pytest.raises(dcta.DCTADataError):
-        dcta.preprocessing.run(a, min_genes=10, n_top_genes=50)
-
-
-def test_preprocessing_raises_when_min_genes_filters_all(synthetic_adata):
-    # synthetic has ~100 detectable genes per cell; min_genes=999 wipes all
-    with pytest.raises(dcta.DCTADataError, match="filtered out every cell"):
-        dcta.preprocessing.run(synthetic_adata, min_genes=999)
-
-
-def test_diffusion_adds_pca_and_diffmap(synthetic_adata):
-    a = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False, min_genes=10, n_top_genes=50)
-    out = dcta.diffusion.run(a, n_comps=10, n_comps_pca=20)
-    assert "X_pca" in out.obsm
-    assert "X_diffmap" in out.obsm
-    assert "dcta" in out.uns
-    assert "diffmap_eigvals" in out.uns["dcta"]
-    assert "n_dcs" in out.uns["dcta"]
-    assert 1 <= out.uns["dcta"]["n_dcs"] <= 10
-    eigs = np.asarray(out.uns["dcta"]["diffmap_eigvals"])
-    assert (eigs[:-1] >= eigs[1:] - 1e-9).all()
-
-
-def test_diffusion_n_dcs_auto_gap_selection(synthetic_adata):
-    a = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False, min_genes=10, n_top_genes=50)
-    out = dcta.diffusion.run(a, n_comps=15, n_comps_pca=20)
-    assert out.uns["dcta"]["n_dcs"] < 15
-
-
-def test_connectivity_runs_leiden_and_paga(synthetic_adata):
-    a = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False, min_genes=10, n_top_genes=50)
-    a = dcta.diffusion.run(a, n_comps=10, n_comps_pca=20)
-    out = dcta.connectivity.run(a, resolution=1.0)
+def test_connectivity_runs_with_paper_embedding(synthetic_adata):
+    out = dcta.connectivity.run(synthetic_adata, resolution=1.0,
+                                use_rep="X_harmony")
     assert "dcta_leiden" in out.obs.columns
     assert out.obs["dcta_leiden"].nunique() >= 2
     paga = out.uns["dcta"]["paga"]
     assert "connectivities" in paga
-    assert "cluster_sizes" in paga
     conn = np.asarray(paga["connectivities"])
     k = out.obs["dcta_leiden"].nunique()
     assert conn.shape == (k, k)
+    assert out.uns["dcta"]["use_rep"] == "X_harmony"
 
 
 def test_connectivity_resolution_affects_cluster_count(synthetic_adata):
-    a = dcta.preprocessing.run(synthetic_adata, regress_cell_cycle=False, min_genes=10, n_top_genes=50)
-    a = dcta.diffusion.run(a, n_comps=10, n_comps_pca=20)
-    low = dcta.connectivity.run(a.copy(), resolution=0.3)
-    high = dcta.connectivity.run(a.copy(), resolution=2.0)
+    low = dcta.connectivity.run(synthetic_adata.copy(), resolution=0.3,
+                                use_rep="X_harmony")
+    high = dcta.connectivity.run(synthetic_adata.copy(), resolution=2.0,
+                                 use_rep="X_harmony")
     assert low.obs["dcta_leiden"].nunique() <= high.obs["dcta_leiden"].nunique()
+
+
+def test_connectivity_raises_when_use_rep_missing(synthetic_adata):
+    with pytest.raises(KeyError):
+        dcta.connectivity.run(synthetic_adata, use_rep="X_does_not_exist")
 
 
 import yaml
@@ -111,10 +71,11 @@ HSC_YAML = str(Path(__file__).resolve().parent.parent / "data" / "priors" / "hsc
 
 
 def _prepped(adata):
-    a = dcta.preprocessing.run(adata.copy(), regress_cell_cycle=False,
-                               min_genes=10, n_top_genes=50)
-    a = dcta.diffusion.run(a, n_comps=10, n_comps_pca=20)
-    a = dcta.connectivity.run(a, resolution=1.0)
+    # Phase 2.8: no local preprocessing/diffusion. Fixture's X is treated
+    # as already log-normalized; obsm['X_pca'/'X_harmony'/'X_umap'] are
+    # provided by the conftest fixture. Use them directly.
+    a = adata.copy()
+    a = dcta.connectivity.run(a, resolution=1.0, use_rep="X_harmony")
     return a
 
 
@@ -344,14 +305,14 @@ def test_viz_export_all_writes_pngs(synthetic_adata, tmp_path):
     a = dcta.dag.build(a, edge_threshold=0.01, seniority_yaml=SENIORITY_YAML,
                        label_column="true_lineage")
     dcta.viz.export_all(a, outdir=str(tmp_path))
+    # Phase 2.8: no diffmap_eigvals.png (no local diffusion map computed)
     expected = [
-        "diffmap_eigvals.png",
         "paga_connectivities.png",
         "dpt_distribution.png",
         "dpt_root_std_hist.png",
         "G_data_diagram.png",
         "paga_vs_dag_overlay.png",
-        "umap_paper_with_g_data.png",  # original paper UMAP overlay
+        "umap_paper_with_g_data.png",
     ]
     for name in expected:
         assert (tmp_path / name).exists()

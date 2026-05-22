@@ -1,4 +1,11 @@
-"""DCTA connectivity stage: diffusion-based KNN -> Leiden -> PAGA."""
+"""DCTA connectivity stage: KNN on a chosen embedding -> cluster -> PAGA.
+
+Phase 2.8: rebuilds KNN on a publisher-provided embedding (X_pca, X_harmony,
+or X_umap) rather than a locally-computed diffusion map. Preprocessing /
+diffusion stages are no longer required upstream; the input AnnData only
+needs the chosen `obsm[use_rep]` already attached (e.g. via
+`dcta.io.attach_paper_embedding`).
+"""
 from __future__ import annotations
 import numpy as np
 import scanpy as sc
@@ -14,23 +21,30 @@ def run(
     resolution: float = D.LEIDEN_RESOLUTION,
     random_state: int = D.RANDOM_STATE,
     cluster_from_obs: str | None = None,
+    use_rep: str = "X_harmony",
 ) -> ad.AnnData:
-    """Build diffusion-based KNN, cluster, and PAGA.
+    """Build KNN on `use_rep`, cluster, and PAGA.
 
-    cluster_from_obs: if given, SKIP Leiden and use that obs column as
-      the cluster assignment (copied into 'dcta_leiden'). Useful when the
-      input dataset already carries publisher-provided cluster labels
-      (e.g. paper_AuthorCellType_Broad attached via io.attach_paper_embedding).
-      Cells with NaN/None in that column are assigned cluster '__NA__'.
+    use_rep: name of an `obsm` key (e.g. 'X_harmony', 'X_pca', 'X_umap').
+      Must already exist in adata.obsm. No PCA/diffusion is recomputed.
+    cluster_from_obs: if given, SKIP Leiden and use that obs column as the
+      cluster assignment (copied into 'dcta_leiden').
 
     Stores connectivities into obsp['dcta_knn'], cluster labels into
     obs['dcta_leiden'], and PAGA outputs into uns['dcta']['paga'].
     """
     a = adata.copy() if copy else adata
+    if use_rep not in a.obsm:
+        raise KeyError(
+            f"use_rep={use_rep!r} not in adata.obsm "
+            f"(have: {list(a.obsm.keys())}). Pass an embedding name that "
+            f"exists (e.g. X_harmony/X_pca/X_umap from paper)."
+        )
+    rep_shape = a.obsm[use_rep].shape
+    n_pcs = int(rep_shape[1])
 
-    n_dcs = int(a.uns.get("dcta", {}).get("n_dcs", a.obsm["X_diffmap"].shape[1] - 1))
-    sc.pp.neighbors(a, n_neighbors=knn_k, use_rep="X_diffmap",
-                    n_pcs=n_dcs, random_state=random_state, key_added="dcta_nbr")
+    sc.pp.neighbors(a, n_neighbors=knn_k, use_rep=use_rep,
+                    n_pcs=n_pcs, random_state=random_state, key_added="dcta_nbr")
     a.obsp["dcta_knn"] = a.obsp["dcta_nbr_connectivities"]
 
     if cluster_from_obs is not None:
@@ -55,17 +69,14 @@ def run(
 
     sc.tl.paga(a, groups="dcta_leiden", neighbors_key="dcta_nbr")
     paga_conn = a.uns["paga"]["connectivities"]
-    # Cluster centroids in diffusion-map space (for downstream viz / metrics)
-    dm = a.obsm["X_diffmap"][:, :n_dcs]
+
+    # Cluster centroids on the embedding (used by downstream viz / pseudotime)
+    rep = a.obsm[use_rep]
     labels = a.obs["dcta_leiden"].astype(str).values
-    # When labels are strings (paper categories), sort lexicographically;
-    # when leiden ids (all digits), sort numerically.
     uniq_raw = list(np.unique(labels))
-    if all(str(u).isdigit() for u in uniq_raw):
-        uniq = sorted(uniq_raw, key=int)
-    else:
-        uniq = sorted(uniq_raw)
-    centroids = np.vstack([dm[labels == k].mean(axis=0) for k in uniq])
+    uniq = (sorted(uniq_raw, key=int) if all(str(u).isdigit() for u in uniq_raw)
+            else sorted(uniq_raw))
+    centroids = np.vstack([rep[labels == k].mean(axis=0) for k in uniq])
     cluster_sizes = np.array([int((labels == k).sum()) for k in uniq])
 
     uns = a.uns.setdefault("dcta", {})
@@ -76,4 +87,6 @@ def run(
         "cluster_labels": uniq,
     }
     uns["cluster_source"] = cluster_source
+    uns["use_rep"] = use_rep
+    uns["n_rep_dims"] = n_pcs
     return a

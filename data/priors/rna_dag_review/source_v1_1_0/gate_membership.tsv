@@ -1,0 +1,2 @@
+membership_id	subset_node	gate_node	relation	evidence_id	figure_ref	note_ko
+G01	cMoP	GMP_gate	defined_within	KAWAMURA2017	not_verified	cMoP(CLEC12Ahi CD64hi)는 cGMP gate 내부 부분집단으로 정의됨. gate 포함 관계이며 발달 조상 관계가 아니므로 분화 DAG traversal에서 제외 (R2-1)

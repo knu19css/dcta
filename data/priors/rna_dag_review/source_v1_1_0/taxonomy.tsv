@@ -1,0 +1,12 @@
+child	parent	relation	legacy_source	note_ko
+Mono_classical	Monocyte_group	is_a	Monocyte->CD14_Monocyte subtype_of	원본은 parent->child로 저장; 여기서는 child->parent로 명시. 분화 traversal 제외
+Mono_intermediate	Monocyte_group	is_a	Monocyte->CD16_Monocyte subtype_of	원본 CD16_Monocyte는 intermediate+nonclassical을 포함할 수 있음
+Mono_nonclassical	Monocyte_group	is_a	Monocyte->CD16_Monocyte subtype_of	위와 같음
+Mac_mono_derived	Macrophage_group	is_a	Macrophage node	embryo 유래 resident macrophage도 Macrophage_group에 속하지만 이 DAG에서는 노드로 만들지 않음 (omitted_relations O07)
+ProE	Erythroblast_group	is_a	Erythroblast node	원본 Erythroblast는 단계 묶음
+BasoE	Erythroblast_group	is_a	Erythroblast node	위와 같음
+PolyE	Erythroblast_group	is_a	Erythroblast node	위와 같음
+OrthoE	Erythroblast_group	is_a	Erythroblast node	위와 같음
+cDC1	DC_group	is_a	DC node	원본 DC marker(CD1C, CD141)는 cDC1/cDC2/DC3를 섞음
+cDC2	DC_group	is_a	DC node	위와 같음
+DC3	DC_group	is_a	DC node	DC3는 CD1c+ 집단 일부; monocyte의 자손으로 분류하지 않음

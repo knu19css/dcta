@@ -1,0 +1,142 @@
+edge_id	evidence_id	evidence_kind	figure_ref	what_it_supports_ko
+E002	PSAILA2016	functional_potential	Fig6	MEP 부분집단의 MK potential (HSPC 하류)
+E002	PELLIN2019	state_order	not_verified	초기 Meg 편향 routing
+E002	NOTTA2016	functional_potential	not_verified	multipotent→unipotent 구도
+E003	PELLIN2019	state_order	not_verified	초기 Ery 편향 routing
+E003	NOTTA2016	functional_potential	not_verified	multipotent→unipotent 구도
+E003	VELTEN2017	state_order	not_verified	연속적 erythroid priming
+E004	MORI2009	culture_output	Fig4	hCMP 배양에서 hEoP 생성
+E004	DRISSEN2019	functional_potential	not_verified	Eo potential이 MK/Ery 쪽과 연관
+E005	PELLIN2019	state_order	not_verified	초기 Baso 편향 routing
+E005	DRISSEN2019	functional_potential	not_verified	Baso potential이 MK/Ery 쪽과 연관
+E006	WU2022	state_order	Fig1;Fig2	혈중 CD34+cKit+ MCp state
+E006	DRISSEN2019	functional_potential	not_verified	Mast potential이 MK/Ery 쪽과 연관
+E007	DINH2020	gate_definition	Fig4	eNeP가 BM progenitor 영역에 위치
+E007	NOTTA2016	functional_potential	not_verified	myeloid unipotent 출력 구도
+E008	KAWAMURA2017	functional_potential	not_verified	cMoP가 HSPC 하류 cGMP에서 분리
+E008	DOULATOV2010	functional_potential	not_verified	MLP도 monocyte 생성 (myeloid-lymphoid 엄격 분리 부정) (in vitro clonal 부분)
+E009	LEE2015	culture_output	not_verified	HSPC 하류 MDP/CDP의 DC 출력
+E009	BRETON2016	culture_output	not_verified	committed pre-cDC 존재
+E010	LEE2015	culture_output	not_verified	HSPC 하류 MDP/CDP의 DC 출력
+E010	BRETON2016	culture_output	not_verified	committed pre-cDC 존재
+E011	CYTLAK2020	culture_output	Fig3	sorted progenitor 배양에서 DC3 발달 arm
+E012	DOULATOV2010	functional_potential	not_verified	MLP의 DC potential (in vitro clonal 부분)
+E013	DOULATOV2010	functional_potential	not_verified	MLP의 B potential (in vitro clonal 부분)
+E013	GALY1995	culture_output	not_verified	CD10+ lymphoid gate의 B 출력
+E014	PARK2020	state_order	Fig2	흉선 정착 ETP 및 seeding
+E014	DOULATOV2010	functional_potential	not_verified	MLP의 T potential (in vitro clonal 부분)
+E015	FREUD2006	state_order	not_verified	CD34+ NK progenitor에서 시작하는 NK 발달 중간체
+E015	GALY1995	culture_output	not_verified	CD10+ lymphoid gate의 NK 출력
+E020	PSAILA2016	culture_output	Fig6;Fig7	MkMEP 단일세포 colony 및 sequential culture에서 MK
+E020	CHOI1995	culture_output	not_verified	CD34+ 배양에서 MK 생성
+E021	CHOI1995	culture_output	not_verified	MK 성숙 및 proplatelet 형성
+E022	CHOI1995	product_formation	not_verified	MK→proplatelet→기능적 혈소판
+E030	LI2014	functional_potential	not_verified	BFU-E/CFU-E 표현형 분리와 colony
+E031	HU2013	state_order	not_verified	5개 형태 단계 순차 분리 및 BM 1:2:4:8:16 비율
+E032	HU2013	state_order	not_verified	위와 같음
+E033	HU2013	state_order	not_verified	위와 같음
+E034	GIARRATANA2005	culture_output	not_verified	CD34+ 배양 탈핵 및 완전 성숙 RBC (배양 부분)
+E034	GRIFFITHS2012	culture_output	not_verified	배양 reticulocyte 생성
+E034	HU2013	caveat_only	not_verified	HU2013 초록은 탈핵 단계를 다루지 않음
+E035	GRIFFITHS2012	culture_output	Fig4A;Fig5	reticulocyte 막 remodeling 및 산소 기능
+E035	GIARRATANA2005	culture_output	not_verified	CD34+ 배양 탈핵 및 완전 성숙 RBC (배양 부분)
+E040	DINH2020	culture_output	Fig5F	methylcellulose granulocyte-containing colony (하류 neutrophil 출력의 직접 관찰 아님)
+E041	GRASSI2018	state_order	not_verified	BM 단계→혈중 성숙 neutrophil 분자 순서
+E041	DINH2020	caveat_only	Fig4	eNeP/hNeP/preNeu gate 겹침 (세부 gate 직렬화 금지)
+E045	MORI2009	culture_output	Fig3	hEoP의 순수 eosinophil colony
+E046	PELLIN2019	functional_potential	not_verified	Baso 편향 state와 기능 실험
+E046	DRISSEN2019	functional_potential	not_verified	prospective progenitor의 Baso potential
+E047	WU2022	culture_output	culture_fig_not_verified	long-term culture에서 mast 형태·표현형·기능
+E050	KAWAMURA2017	culture_output	not_verified	cMoP의 strict monocytic clonal output
+E051	PATEL2017	native_kinetics	Fig1;Fig2	경구 deuterium-labelled glucose 집단 표지의 subset별 순차 출현
+E052	PATEL2017	native_kinetics	Fig1;Fig2	경구 deuterium-labelled glucose 집단 표지의 subset별 순차 출현
+E053	SAEED2014	culture_output	not_verified	monocyte→macrophage 배양 분화
+E053	BAJPAI2018	native_kinetics	Fig2	sex-mismatched 심장 이식 CCR2+ 순환 보충
+E060	BRETON2016	culture_output	not_verified	pre-cDC1 committed output
+E061	BRETON2016	culture_output	not_verified	pre-cDC2 committed output
+E061	CYTLAK2020	caveat_only	Fig5	DC2와 DC3 축 구별
+E070	VANZELM2005	state_order	not_verified	재배열 상태 순차
+E071	VANZELM2005	state_order	not_verified	재배열 상태 순차
+E072	SIMS2005	state_order	not_verified	혈중 T1-like transitional B 표현형
+E073	SIMS2005	state_order	not_verified	T2-like transitional B 및 mature B
+E074	VERSTEGEN2023	culture_output	Fig4	naive B CD40L/IL4/IL21 배양 활성화
+E075	VERSTEGEN2023	culture_output	Fig4	GC-like 상태 생성
+E075	HOLMES2020	state_order	not_verified	tonsil GC B state
+E076	HOLMES2020	state_order	not_verified	pre-memory 출구 state
+E076	VERSTEGEN2023	culture_output	Fig4	GC-like→memory-like 후보 (UMAP/PAGA 추론 포함)
+E077	HOLMES2020	state_order	not_verified	pre-plasma 출구 state
+E077	VERSTEGEN2023	culture_output	Fig4	GC-like→ASC 후보
+E078	VERSTEGEN2023	culture_output	Fig4	activated B→ASC 후보
+E079	JOURDAN2009	culture_output	not_verified	memory B→plasmablast 배양
+E080	JOURDAN2009	culture_output	not_verified	plasmablast→plasma cell 배양
+E090	PARK2020	state_order	Fig2	ETP→DN trajectory
+E091	PARK2020	state_order	Fig2	DN→DP trajectory
+E092	PARK2020	state_order	Fig2	DP→SP trajectory
+E093	PARK2020	state_order	Fig2	DP→SP trajectory
+E094	PARK2020	state_order	Fig3	gamma-delta DN-DP 사이 분기 추론
+E095	NUNESCABACO2011	culture_output	not_verified	FOXP3+ DP 관찰과 공배양
+E095	MOLEIRINHO2025	state_order	not_verified	DP Treg commitment trajectory
+E096	NUNESCABACO2011	culture_output	not_verified	FOXP3+ DP의 FOXP3+ SP 후손
+E097	PARK2020	state_order	Fig2	SP 성숙
+E098	PARK2020	state_order	Fig2	SP 성숙
+E100	BECATTINI2015	culture_output	Fig1	단일 naive clone의 여러 effector program
+E101	BECATTINI2015	clonal_sharing	Fig1	clonotype의 여러 memory subset 공유
+E102	AKONDY2017	native_kinetics	not_verified	YFV 후 CD8 확장
+E103	AKONDY2017	native_kinetics	not_verified	effector 시기 분열 이력 memory CD8
+E110	FREUD2006	state_order	not_verified	SLT NK 발달 중간체 순서와 potential
+E111	CHAN2007	culture_output	not_verified	synovial fibroblast 공배양 CD56bright→CD56dim (in vitro)
+E201	NOTTA2016	functional_potential	not_verified	CMP gate potential 정의
+E201	DRISSEN2019	functional_potential	not_verified	CMP gate 내부 제한 oligopotent potential
+E202	DOULATOV2010	functional_potential	not_verified	MLP clonal potential (CD34+CD38- 구획 내 제한 전구체) (in vitro clonal 부분)
+E202	GALY1995	functional_potential	not_verified	CD10+ gate는 Ery/My/Mk potential 없는 제한 전구체
+E203	LEE2015	culture_output	not_verified	hGMDP가 hMDP를 생성 (GMDP 단계 생략)
+E204	NOTTA2016	functional_potential	not_verified	multipotent→제한 gate 구도 (coarse model inference)
+E204	PSAILA2016	gate_definition	Fig4	MEP 부분 gate
+E205	NOTTA2016	functional_potential	not_verified	multipotent→제한 gate 구도 (coarse model inference)
+E206	MORI2009	culture_output	Fig4	hCMP 배양 hEoP
+E207	PSAILA2016	functional_potential	Fig6	MkMEP colony
+E208	PSAILA2016	functional_potential	Fig6	EMEP colony
+E209	NOTTA2016	caveat_only	not_verified	GMP gate granulocyte potential (eNeP 출력은 입증 안 됨)
+E209	DINH2020	caveat_only	Fig4	eNeP와 기존 gate 겹침
+E211	LEE2015	culture_output	not_verified	hMDP monocyte 출력
+E212	LEE2015	culture_output	not_verified	hMDP→hCDP 위계
+E213	LEE2015	culture_output	not_verified	hCDP cDC1 출력
+E214	LEE2015	culture_output	not_verified	hCDP cDC2 출력
+E215	LEE2015	culture_output	not_verified	hCDP pDC 출력
+E218	GALY1995	culture_output	not_verified	B 출력
+E218	DOULATOV2010	functional_potential	not_verified	MLP B potential (in vitro clonal 부분)
+E219	GALY1995	culture_output	not_verified	NK 출력
+E219	DOULATOV2010	functional_potential	not_verified	MLP NK potential (in vitro clonal 부분)
+E220	GALY1995	culture_output	not_verified	T 출력
+E220	DOULATOV2010	functional_potential	not_verified	MLP T potential (in vitro clonal 부분)
+E224	SALLUSTO1994	culture_output	not_verified	GM-CSF+IL-4 배양 DC
+E226	LIM2017	culture_output	Fig3A-E;FigS3	PB ILCP 배양/clone →ILC1
+E227	LIM2017	culture_output	Fig3A-E;FigS3	PB ILCP 배양/clone →ILC2
+E228	LIM2017	culture_output	Fig3A-E;FigS3	PB ILCP 배양/clone →ILC3
+E229	LIM2017	culture_output	Fig3A-E;FigS3	PB ILCP 배양/clone →NK
+E300	NOTTA2016	caveat_only	not_verified	성체 gate 대부분 unipotent
+E301	NOTTA2016	caveat_only	not_verified	성체 gate 대부분 unipotent
+E302	LEE2015	caveat_only	not_verified	hGMDP≠CMP gate
+E304	MORI2009	caveat_only	Fig3;Fig4	사람 EoP는 hCMP 유래
+E305	PARK2020	caveat_only	Fig3	NKT-like gd/ab 혼합
+E306	NUNESCABACO2011	caveat_only	not_verified	tTreg는 흉선 경로; 말초 유도 기원은 별도 미검증
+E307	MOLEIRINHO2025	caveat_only	not_verified	DP commitment 근거; SP4 경로 직접 확인 안 됨
+E003	EDIRIWICKREMA2025	state_order	Fig1;Fig4	CLL1-CD69- erythroid-primed MPP state
+E007	EDIRIWICKREMA2025	state_order	Fig1;Fig4	CLL1+ myeloid-biased MPP state
+E012	LEE2015	culture_output	not_verified	사람 hCDP 배양 pDC 출력 (CDP는 HSPC 하류 gate)
+E040	DINH2020	state_order	Fig4;Fig5E	사람 BM eNeP 표현형(CyTOF gate)과 형태
+E014	JAMIESON1999	state_order	not_verified	성인(최대 56세) 흉선에서 T 세포 생성이 계속됨 (BM->흉선 조상 관계의 성인 측 근거)
+E014	THOME2016	state_order	Fig1	성인 흉선에 DP/SP thymocyte가 존재하고 말초 RTE가 동반 관찰됨
+E070	JENSEN2013	state_order	not_verified	중년 성인 BM에 ProB/PreB 단계가 모두 존재하고 구성이 유지됨
+E070	ROSSI2003	state_order	not_verified	24-88세 성인 BM의 pro-B/pre-B 구성비
+E071	JENSEN2013	state_order	not_verified	중년 성인 BM에 PreB/immature B 단계가 존재
+E071	ROSSI2003	state_order	not_verified	24-88세 성인 BM의 pre-B/immature B 구성비
+E090	JAMIESON1999	state_order	not_verified	성인 흉선의 활성 TCR 재배열과 기능적 thymocyte
+E090	THOME2016	state_order	Fig1	성인 흉선의 DP/SP 빈도 측정
+E091	THOME2016	state_order	Fig1	성인 흉선의 DP/SP 빈도 측정 (40세 이후 DP 급감)
+E091	JAMIESON1999	state_order	not_verified	성인 흉선의 활성 재배열
+E092	THOME2016	state_order	Fig1	성인 흉선 CD4 SP 존재
+E093	THOME2016	state_order	Fig1	성인 흉선 CD8 SP 존재
+E097	THOME2016	state_order	Fig1;Fig3	성인 흉선 SP와 말초 naive CD4/RTE(TREC) 동반 측정
+E098	THOME2016	state_order	Fig1;Fig3	성인 흉선 SP와 말초 naive CD8/RTE(TREC) 동반 측정
+E218	ROSSI2003	culture_output	not_verified	성인 BM CD34+Lin-CD10+의 배양 B 분화 potential

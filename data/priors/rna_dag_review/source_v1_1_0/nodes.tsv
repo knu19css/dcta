@@ -1,0 +1,77 @@
+node_id	label	module	compartment	node_kind	layer	layout_x	layout_y	definition_ko	query_state	query_potential	query_fate
+HSPC_continuum	HSC/MPP continuum (HSPC)	HSPC	BM	stem_state	core	16	0.6	사람 성체 BM의 HSC와 MPP를 하나로 묶은 초기 연속체 요약 상자 (VELTEN2017 CLOUD-HSPC: native 전사 trajectory + index-culture 기능 potential). 내부 기능 이질성(EDIRIWICKREMA2025)이 있으며 HSC→MPP 직접 전환이나 모든 세포가 하나의 gate를 통과한다는 뜻이 아님	not_measured	not_measured	not_measured
+CMP_gate	CMP gate	gate	BM	assay_gate	optional	6.2	2.2	고전 FACS gate. 성체에서는 대부분 unipotent 세포가 섞인 assay-defined 범주 (NOTTA2016)	not_measured	not_measured	not_measured
+GMP_gate	GMP gate	gate	BM	assay_gate	optional	11	2.2	고전 FACS gate. cMoP 등 제한 전구체를 포함하는 혼합 범주	not_measured	not_measured	not_measured
+MEP_gate	MEP gate	gate	BM	assay_gate	optional	3	2.2	고전 FACS gate. PreMEP/EMEP/MkMEP 이질성 (PSAILA2016, mobilized PB)	not_measured	not_measured	not_measured
+CLP_gate	Lymphoid gates (CD10+ CLP; related MLP)	gate	BM	assay_gate	optional	26	2.2	고전 CD34+CD10+ lymphoid gate(GALY1995)와 관련된 CD34+CD38-CD45RA+ MLP gate(DOULATOV2010)를 묶은 요약. 두 gate는 같은 isolation gate가 아니며 MLP는 monocyte/macrophage/DC potential도 가짐. 원본 CLP mapping의 불확실성을 보존	not_measured	not_measured	not_measured
+MDP_gate	MDP gate	gate	BM	assay_gate	optional	15.5	2.2	고전 human MDP (mono+DC potential, LEE2015 배양). 필수 native gate 아님	not_measured	not_measured	not_measured
+CDP_gate	CDP gate	gate	BM	assay_gate	optional	18.5	2.2	고전 human CDP (DC-only potential, LEE2015 배양). DC3 taxonomy와 일대일 아님	not_measured	not_measured	not_measured
+MkP	Mk-primed / MkP	MK	BM	precursor_state	core	1	3.2	MK 방향으로 priming/제한된 전구체 상태	not_measured	not_measured	not_measured
+MK_immature	Immature MK	MK	BM	stage_state	core	1	4.4	배수화(endomitosis) 및 세포질 성숙이 진행 중인 MK 상태. 모든 immature MK가 diploid라고 가정하지 않음	not_measured	not_measured	not_measured
+MK_mature	Mature MK	MK	BM	mature_state	context	1	5.6	proplatelet을 형성할 수 있는 성숙 MK	not_measured	not_measured	not_measured
+Platelet	Platelet	MK	blood	product	context	1	6.8	성숙 MK가 세포질 일부를 방출하여 생성하는 무핵 산물(produces). MK 하나가 platelet 하나로 세포 정체성을 전환하는 관계와 구별	not_measured	not_measured	not_measured
+EryP	BFU-E / CFU-E (assay-defined)	Ery	BM	precursor_state	core	3	3.2	colony assay로 정의된 erythroid progenitor (LI2014 표현형 분리)	not_measured	not_measured	not_measured
+ProE	Proerythroblast	Ery	BM	stage_state	context	3	4.4	형태적으로 인지되는 첫 erythroblast 단계	not_measured	not_measured	not_measured
+BasoE	Basophilic EB	Ery	BM	stage_state	context	3	5.4	basophilic erythroblast (early/late 포함)	not_measured	not_measured	not_measured
+PolyE	Polychromatic EB	Ery	BM	stage_state	context	3	6.4	polychromatic erythroblast	not_measured	not_measured	not_measured
+OrthoE	Orthochromatic EB	Ery	BM	stage_state	context	3	7.4	탈핵 직전 orthochromatic erythroblast	not_measured	not_measured	not_measured
+Reticulocyte	Reticulocyte	Ery	BM;blood	stage_state	context	3	8.4	탈핵(enucleation) 후 무핵 미성숙 적혈구	not_measured	not_measured	not_measured
+Erythrocyte	Erythrocyte	Ery	blood	mature_state	context	3	9.4	성숙 적혈구	not_measured	not_measured	not_measured
+EoP	EoP (IL5RA+)	Eos	BM	precursor_state	core	5	3.2	IL5RA+ eosinophil-restricted progenitor (MORI2009)	not_measured	not_measured	not_measured
+Eosinophil	Eosinophil	Eos	BM;blood;tissue	mature_state	core	5	5.6	성숙 eosinophil	not_measured	not_measured	not_measured
+BaP	Baso-primed progenitor	BasoMast	BM	precursor_state	core	7	3.2	basophil 방향 priming 상태 (PELLIN2019/DRISSEN2019). 단일 gate 정의 아님	not_measured	not_measured	not_measured
+Basophil	Basophil	BasoMast	BM;blood	mature_state	core	7	5.6	성숙 basophil	not_measured	not_measured	not_measured
+MCp	MCp (circulating)	BasoMast	blood	precursor_state	core	9	3.2	혈중 Lin-CD34+cKit+ mast cell progenitor (WU2022)	not_measured	not_measured	not_measured
+Mast_tissue	Mast cell (tissue)	BasoMast	tissue	mature_state	core	9	5.6	조직에서 성숙하는 mast cell	not_measured	not_measured	not_measured
+eNeP	eNeP (CD66b+ CD117+ CD71+)	Neut	BM	precursor_state	core	11	3.2	CD66b+CD117+CD71+ 표현형의 초기 neutrophil-associated 전구 state (DINH2020 사람 BM). 사람 배양 출력은 granulocyte 포함 colony이며 neutrophil 단일 계통 전용 fate는 이번 채택 근거로 확정하지 않음; hNeP/preNeu/promyelocyte gate와 겹침	not_measured	not_measured	not_measured
+Neut_immature	Immature neutrophil (downstream of eNeP)	Neut	BM	stage_state	core	11	4.4	eNeP 이후 하류의 미성숙 neutrophil 상태(증식성 단계부터 postmitotic 단계까지)를 묶은 상자. promyelocyte/preNeu 등 기존 gate 전체와 disjoint한 직렬 상태라는 뜻이 아니며 eNeP 자체도 그 gate들과 겹침	not_measured	not_measured	not_measured
+Neut_mature	Mature neutrophil	Neut	blood	mature_state	context	11	5.6	혈중 성숙(분엽) neutrophil	not_measured	not_measured	not_measured
+cMoP	cMoP (monocyte-restricted)	MonoMac	BM	precursor_state	context	13	3.2	CLEC12Ahi CD64hi monocyte-restricted clonogenic progenitor (KAWAMURA2017)	not_measured	not_measured	not_measured
+Mono_classical	Classical mono CD14++CD16-	MonoMac	BM;blood	stage_state	core	13	4.4	classical monocyte. 상당수는 nonclassical로 가지 않고 혈중에서 이탈/소실	not_measured	not_measured	not_measured
+Mono_intermediate	Intermediate mono CD14++CD16+	MonoMac	blood	stage_state	context	13	5.6	intermediate monocyte	not_measured	not_measured	not_measured
+Mono_nonclassical	Nonclassical mono CD14lo CD16++	MonoMac	blood	mature_state	context	13	6.8	nonclassical monocyte	not_measured	not_measured	not_measured
+Mac_mono_derived	Mo-derived macrophage (tissue)	MonoMac	tissue	mature_state	core	11.6	7.2	조직으로 모집된 monocyte 유래 macrophage. embryo 유래 resident macrophage는 범위 밖	not_measured	not_measured	not_measured
+moDC	moDC (GM-CSF + IL-4)	MonoMac	culture;tissue	mature_state	optional	14.4	6.2	cytokine 유도 monocyte-derived DC. 정상 DC 발달 경로가 아님	not_measured	not_measured	not_measured
+pre_cDC1	pre-cDC1	DC	BM;blood	precursor_state	context	15.5	3.2	cDC1(CD141+) 출력으로 committed된 pre-cDC	not_measured	not_measured	not_measured
+cDC1	cDC1 (CD141+)	DC	blood;tissue	mature_state	optional	15.5	5.6	conventional DC type 1	not_measured	not_measured	not_measured
+pre_cDC2	pre-cDC2	DC	BM;blood	precursor_state	context	17	3.2	cDC2(CD1c+) 출력으로 committed된 pre-cDC	not_measured	not_measured	not_measured
+cDC2	cDC2 (CD1c+)	DC	blood;tissue	mature_state	optional	17	5.6	conventional DC type 2 (DC2)	not_measured	not_measured	not_measured
+DC3	DC3	DC	blood	mature_state	context	18.5	4.4	CD1c+ 중 monocyte-like DC3. monocyte와 별개 발달 arm (CYTLAK2020)	not_measured	not_measured	not_measured
+pDC	pDC	DC	BM;blood	mature_state	core	20	4.4	plasmacytoid DC. lymphoid vs DC-related 기원은 unresolved	not_measured	not_measured	not_measured
+ProB	Pro-B	B	BM	stage_state	core	22	3.2	pro-B (DH-JH 재배열 시작)	not_measured	not_measured	not_measured
+PreB	Pre-B	B	BM	stage_state	core	22	4.2	pre-B-I/II (VH-DJH, IGK/IGL 재배열)	not_measured	not_measured	not_measured
+ImmatureB	Immature B	B	BM	stage_state	core	22	5.2	surface BCR+ immature B	not_measured	not_measured	not_measured
+TransitionalB	Transitional B	B	blood	stage_state	core	22	6.2	혈중 T1/T2-like transitional B	not_measured	not_measured	not_measured
+NaiveB	Naive mature B	B	blood;SLO	stage_state	core	22	7.2	naive mature B	not_measured	not_measured	not_measured
+ActivatedB	Activated B	B	SLO	activation_state	context	22	8.2	항원/T 도움으로 활성화된 B (antigen-conditioned)	not_measured	not_measured	not_measured
+GC_B	GC B	B	SLO	activation_state	context	21.2	9.2	germinal center B (DZ/LZ cycling은 펼치지 않음)	not_measured	not_measured	not_measured
+MemoryB	Memory B	B	blood;SLO	mature_state	context	20.4	10.4	memory B	not_measured	not_measured	not_measured
+Plasmablast	Plasmablast	B	blood;SLO	stage_state	context	22.6	10.4	증식성 antibody-secreting plasmablast	not_measured	not_measured	not_measured
+PlasmaCell	Plasma cell	B	BM;tissue	mature_state	context	22.6	11.4	비증식성 plasma cell	not_measured	not_measured	not_measured
+ETP	ETP	T_thymic	thymus	precursor_state	core	26.5	3.2	early thymic progenitor (흉선 정착 후)	not_measured	not_measured	not_measured
+DN	DN thymocyte	T_thymic	thymus	stage_state	core	26.5	4.2	CD4-CD8- thymocyte	not_measured	not_measured	not_measured
+DP	DP thymocyte	T_thymic	thymus	stage_state	core	26.5	5.2	CD4+CD8+ thymocyte	not_measured	not_measured	not_measured
+gdT	gamma-delta T	T_thymic	thymus;blood	mature_state	context	24.8	5.2	gamma-delta T. DN-DP 사이 분기 추론, 일부 late DP 출처 가능 (PARK2020)	not_measured	not_measured	not_measured
+CD4SP	CD4 SP	T_thymic	thymus	stage_state	core	25.6	6.4	CD4 single-positive thymocyte	not_measured	not_measured	not_measured
+CD8SP	CD8 SP	T_thymic	thymus	stage_state	core	27.6	6.4	CD8 single-positive thymocyte	not_measured	not_measured	not_measured
+Treg_thymic_precursor	FOXP3+ Treg precursor (thymus)	T_thymic	thymus	precursor_state	context	24	6.4	FOXP3+ thymic Treg 전구 상태. DP 단계부터 시작 가능 (NUNESCABACO2011); 정확한 단계 생략	not_measured	not_measured	not_measured
+tTreg_CD4	tTreg (CD4)	T_thymic	thymus;blood	mature_state	context	24	7.6	thymus 유래 CD4 regulatory T	not_measured	not_measured	not_measured
+iNKT_candidate	iNKT candidate (held)	T_thymic	thymus;blood	held_candidate	held	28.8	6.4	invariant TCR/CD1d 정의가 필요한 후보. CD3+NK marker만으로 확정하지 않음	not_measured	not_measured	not_measured
+NaiveCD4	Naive CD4 T	T_periph	blood;SLO	stage_state	core	25.6	7.6	naive CD4 T	not_measured	not_measured	not_measured
+ActEffCD4	Activated / effector CD4	T_periph	SLO;tissue	activation_state	context	25.6	8.8	항원 활성화 CD4 (Th 프로그램을 독립 lineage로 나열하지 않음)	not_measured	not_measured	not_measured
+MemoryCD4	Memory CD4	T_periph	blood;SLO;tissue	mature_state	context	25.6	10	memory CD4 T	not_measured	not_measured	not_measured
+pTreg_phenotype	Peripheral Treg phenotype (held)	T_periph	blood;tissue	held_candidate	held	24	8.8	말초 유도/regulatory 표현형. 기원과 안정성 미검증으로 보류	not_measured	not_measured	not_measured
+NaiveCD8	Naive CD8 T	T_periph	blood;SLO	stage_state	core	27.6	7.6	naive CD8 T	not_measured	not_measured	not_measured
+EffectorCD8	Effector CD8	T_periph	blood;tissue	activation_state	core	27.6	8.8	항원 활성화 effector CD8	not_measured	not_measured	not_measured
+MemoryCD8	Memory CD8	T_periph	blood;SLO;tissue	mature_state	core	27.6	10	memory CD8 T	not_measured	not_measured	not_measured
+NKP	NK developmental precursors (SLT stages 1-3)	NK_ILC	SLO;BM	precursor_state	core	30.5	3.2	CD34+ 초기 NK progenitor부터 CD34- 후기 발달 중간체까지(SLT stage 1-3) 묶은 요약 상자 (FREUD2006). 단계별 정확한 마커 경계는 초록 수준 검토로 not_verified이며 특정 마커 positivity를 상자 전체에 강제하지 않음	not_measured	not_measured	not_measured
+NK_CD56bright	NK CD56bright	NK_ILC	SLO;blood	stage_state	optional	30.5	4.8	CD56bright NK (T의 자식이 아님)	not_measured	not_measured	not_measured
+NK_CD56dim	NK CD56dim	NK_ILC	blood	mature_state	context	30.5	6	CD56dim cytotoxic NK	not_measured	not_measured	not_measured
+ILCP	ILCP (CD117+, blood)	NK_ILC	blood	precursor_state	optional	32.5	3.2	혈중 CD117+ ILC precursor (LIM2017)	not_measured	not_measured	not_measured
+ILC1	ILC1	NK_ILC	tissue	mature_state	optional	31.8	4.8	group 1 ILC	not_measured	not_measured	not_measured
+ILC2	ILC2	NK_ILC	tissue;blood	mature_state	optional	32.8	5.6	group 2 ILC	not_measured	not_measured	not_measured
+ILC3	ILC3	NK_ILC	tissue	mature_state	optional	33.8	4.8	group 3 ILC	not_measured	not_measured	not_measured
+Monocyte_group	Monocyte (taxonomy)	MonoMac	blood	taxonomy_category	taxonomy	NA	NA	classical/intermediate/nonclassical를 묶는 분류 상위어. 분화 DAG traversal에서 제외	not_measured	not_measured	not_measured
+Macrophage_group	Macrophage (taxonomy)	MonoMac	tissue	taxonomy_category	taxonomy	NA	NA	monocyte 유래와 embryo 유래 resident macrophage를 묶는 분류 상위어	not_measured	not_measured	not_measured
+Erythroblast_group	Erythroblast (taxonomy)	Ery	BM	taxonomy_category	taxonomy	NA	NA	ProE~OrthoE를 묶는 분류 상위어 (원본 Erythroblast)	not_measured	not_measured	not_measured
+DC_group	DC (taxonomy)	DC	blood;tissue	taxonomy_category	taxonomy	NA	NA	cDC1/cDC2/DC3를 묶는 원본 DC 상위어. pDC는 원본에서 별도 노드	not_measured	not_measured	not_measured

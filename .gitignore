@@ -18,3 +18,7 @@ results/**/*.h5ad
 
 # Backup YAMLs from CSV rebuild
 data/priors/*.bak.csv-rebuild
+
+# Isolated atlas experiment: raw data already excluded; keep local large outputs and bridge logs out of Git.
+/results/claude_bridge/neutrophil_atlas_rna_2026-10-19/
+/results/neutrophil_atlas_rna_2026-10-19/

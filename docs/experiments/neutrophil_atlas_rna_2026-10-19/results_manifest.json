@@ -1,0 +1,19 @@
+{
+  "source_attempt": "results/neutrophil_atlas_rna_2026-10-19/attempt_02",
+  "full_manifest_sha256": "3296af42a68671a01f0f87bdabaf78281e7aa47b349e27f822b7c607df31e635",
+  "source_freeze_sha256": "cdb4874a40946e60b3183d0e0ee582a43d35e3373fa7350a487725bfcaec6a00",
+  "baseline_commit": "ee219c5",
+  "files": {
+    "atlas_adjacent_changes.csv": "e02c3f7cb4c5dfe931c4ad8d6ff6bd7520bf61e129a4fa619dee726851778d8d",
+    "baseline_vs_atlas.png": "4b3053f26ae1bda434cfd6faf5a457ea9fb63270ad0b338692ff7ffab7187ce8",
+    "baseline_vs_atlas.tsv": "31637c41e514cce9a576823a932454c09b6b76c69b149b800e49e585f88ba28e",
+    "atlas_stage_umap.png": "933bf3068dc7fe511e8c290daa3b07c9159aa0f9abb76da00b1ea2d4351b1684",
+    "posthoc_expression_summary.tsv": "032f20c5b93f364e191c2930a255e02d9234e3a105f9632f3e0661c4426169bf",
+    "atlas_stage_markers.csv": "e1157ba4a874288b4b9004b8f6c6a83b6487997a76db8e78f9e2794590c80268",
+    "atlas_parameters.csv": "4482e36bb00dd3c0d30af37c193be3139fe0d2f80ab7eb2a24e8ee83a192c836",
+    "atlas_ordered_connections.tsv": "bf63735c87d75f8178cd27ce9b13c37384c7ad6c9f88f79a17175b3983d6dbe0",
+    "atlas_detection_counts.tsv": "7abcb7f01e25d71b467d4ad544290d9fc9b3d138e3d5b83642d6461d2cc20bac",
+    "atlas_panel_status.csv": "2d3fcf91d47bbfa1d8f90cfafbbbb2fef16c1491ed652bfa49c318548428e9a4"
+  },
+  "description": "Exact byte copies of selected small outputs; raw data, cell-level data and large local results are excluded from Git."
+}

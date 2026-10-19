@@ -1,0 +1,132 @@
+{
+  "tests": {
+    "author": "Claude Desktop",
+    "executed_by": "Codex",
+    "tests": 38,
+    "expectations": 435,
+    "failures": 0,
+    "errors": 0,
+    "warnings": 0
+  },
+  "source_numeric_checks": {
+    "source_only": true,
+    "target_read": false,
+    "panel_rows": 60,
+    "transition_rows": 200,
+    "checked_rows": 260,
+    "all_passed": true,
+    "params": {
+      "min_codes": 3,
+      "min_tpm": 1,
+      "min_codes_tpm": 3,
+      "min_abs_median": 0.5,
+      "min_sign_agree": 0.75,
+      "top_transition": 20,
+      "top_panel": 10
+    },
+    "panel_sizes": {
+      "BN": 10,
+      "MM": 10,
+      "MY": 10,
+      "Myeloblast": 10,
+      "PM": 10,
+      "SN": 10
+    },
+    "claim": "Numerical agreement with prespecified exploratory rules; not independent-donor validation or annotation accuracy."
+  },
+  "target_numeric_checks": {
+    "panel_matches_source_audit": true,
+    "raw_cells": 263159,
+    "stages": [
+      "Myeloblast",
+      "PM",
+      "MY",
+      "MM",
+      "BN",
+      "SN"
+    ],
+    "raw_detected_marker_mismatches": 0,
+    "raw_library_mismatches": 0,
+    "detection_ge1": {
+      "Myeloblast": 145503,
+      "PM": 81926,
+      "MY": 19876,
+      "MM": 18872,
+      "BN": 165761,
+      "SN": 138811
+    },
+    "detection_ge2": {
+      "Myeloblast": 80556,
+      "PM": 28178,
+      "MY": 1165,
+      "MM": 1113,
+      "BN": 51751,
+      "SN": 40790
+    },
+    "independent_layered_BFS": {
+      "criterion": "ge2",
+      "graph": "same_block",
+      "reachable": {
+        "Myeloblast": 80556,
+        "PM": 20117,
+        "MY": 493,
+        "MM": 34,
+        "BN": 5544,
+        "SN": 2770
+      },
+      "all_match": true
+    },
+    "limitation": "Checks input/algorithm arithmetic and graph reachability, not biological stage accuracy."
+  },
+  "attempts_same_calculation": {
+    "attempt_01_vs_02_RDS_components_same_except_provenance": {
+      "contract": true,
+      "settings": true,
+      "reference": true,
+      "nso_reference": true,
+      "metadata": true,
+      "gene_map": true,
+      "gene_evidence": true,
+      "programs": true,
+      "connectivity": true,
+      "detection": true,
+      "baseline": true,
+      "comparison": true
+    },
+    "target_raw_audit_transfers_to_attempt02": true
+  },
+  "final_artifact_check": {
+    "manifest.json": {
+      "sha256": "3296af42a68671a01f0f87bdabaf78281e7aa47b349e27f822b7c607df31e635",
+      "files": 40,
+      "mismatches": []
+    },
+    "calc_manifest.json": {
+      "sha256": "0c374464b9c1d658729c6aad4b3d74db1c5edb629af63ea76ef7ae3c633b1730",
+      "files": 14,
+      "mismatches": []
+    },
+    "source_freeze.json": {
+      "sha256": "cdb4874a40946e60b3183d0e0ee582a43d35e3373fa7350a487725bfcaec6a00",
+      "files": 14,
+      "mismatches": []
+    },
+    "current_source_matches_snapshot": {
+      "63_atlas_rna_reference.R": "96291a270e2b3a58ea99cd6b785f13b2b7e0ebc30c9930ab334a9f6c0b1c1b25",
+      "64_run_atlas_rna.R": "6e5accf337b3736a629221e29db839ccc8fe1eebe3cf2d9e02e752dbf8af258d",
+      "65_atlas_rna_view.R": "e2db29ee18da356bbc2e494e3bf2d2de74480bfc6d8937539dd3a8fd85b1ee61"
+    }
+  },
+  "limitations": "Arithmetic, preservation and graph reachability verified. Biological stage accuracy and independent donor generalisation are unverified.",
+  "bounded_cross_review": {
+    "reviewer": "same designated Claude Desktop Code session",
+    "completed": true,
+    "result_changing_numeric_or_interpretive_issues": 0,
+    "addressed_notes": [
+      "Corrected the chronology of the R64 implementation relative to the R63 source-only numeric audit.",
+      "Report explicitly says graph connection does not establish maturation continuity.",
+      "Posthoc label examples specify the mean-logRNA metric."
+    ],
+    "no_new_experiment_or_criteria_change": true
+  }
+}

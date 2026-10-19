@@ -1,0 +1,25 @@
+criterion	graph	stage	n_cells	n_components	n_reachable_cells	n_reachable_components	n_reappearing_cells	reached	stage_status	first_break	break_kind
+ge1	all_edges	Myeloblast	145503	36	145503	36	0	TRUE	available		
+ge1	all_edges	PM	81926	602	81923	599	45207	TRUE	available		
+ge1	all_edges	MY	19876	1399	19792	1315	9410	TRUE	available		
+ge1	all_edges	MM	18872	1690	18030	959	2304	TRUE	available		
+ge1	all_edges	BN	165761	1	165761	1	13668	TRUE	available		
+ge1	all_edges	SN	138811	12	138811	12	94738	TRUE	available		
+ge1	same_block	Myeloblast	145503	31963	145503	31963	0	TRUE	available		
+ge1	same_block	PM	81926	22846	68290	9867	38878	TRUE	available		
+ge1	same_block	MY	19876	10000	14867	5308	7930	TRUE	available		
+ge1	same_block	MM	18872	11503	8118	2462	1582	TRUE	available		
+ge1	same_block	BN	165761	34275	105831	509	6514	TRUE	available		
+ge1	same_block	SN	138811	31903	95819	5180	64792	TRUE	available		
+ge2	all_edges	Myeloblast	80556	855	80556	855	0	TRUE	available		
+ge2	all_edges	PM	28178	791	28049	667	5692	TRUE	available		
+ge2	all_edges	MY	1165	463	1092	397	247	TRUE	available		
+ge2	all_edges	MM	1113	430	174	85	12	TRUE	available		
+ge2	all_edges	BN	51751	524	51138	3	91	TRUE	available		
+ge2	all_edges	SN	40790	846	40740	797	12387	TRUE	available		
+ge2	same_block	Myeloblast	80556	17754	80556	17754	0	TRUE	available		
+ge2	same_block	PM	28178	9450	20117	2680	4741	TRUE	available		
+ge2	same_block	MY	1165	916	493	293	190	TRUE	available		
+ge2	same_block	MM	1113	906	34	23	5	TRUE	available		
+ge2	same_block	BN	51751	20917	5544	13	25	TRUE	available		
+ge2	same_block	SN	40790	16204	2770	318	1309	TRUE	available		

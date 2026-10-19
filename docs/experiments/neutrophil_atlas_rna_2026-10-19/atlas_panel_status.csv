@@ -1,0 +1,7 @@
+"stage","neighbors","n_candidates","n_excluded_mapping","n_genes","status"
+"Myeloblast","PM",9945,1774,10,"panel_listed"
+"PM","Myeloblast|MY",191,41,10,"panel_listed"
+"MY","PM|MM",377,93,10,"panel_listed"
+"MM","MY|BN",261,84,10,"panel_listed"
+"BN","MM|SN",125,20,10,"panel_listed"
+"SN","BN",2119,496,10,"panel_listed"

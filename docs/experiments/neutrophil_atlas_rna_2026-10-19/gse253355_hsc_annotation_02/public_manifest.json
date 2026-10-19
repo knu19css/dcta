@@ -1,0 +1,31 @@
+{
+  "source_output": "/Users/edemhw/Honglab/CS/outputs/dcta_neutrophil_atlas_rna_2026-10-19/results/neutrophil_atlas_rna_2026-10-19/gse253355_hsc_annotation_02",
+  "inputs": {
+    "markers": "55d8f2056ffcdfb53f6dad9cf84af68d53e328ba8b82405d95b838524447f4c0",
+    "umap": "1f91bc928f06b736980bd56e18a595346ff1ddc430a96a021e7537149ab3001f",
+    "lossless": "c423ecfe33be76951acfc3e71ea0173e949c908d289839a19828e48b3d6bb215",
+    "object": "83fd17576c48e710e5a03a60be485beedbc088f82c6a97fa79d7b80d5367186a",
+    "calc_manifest": "5842fd04cf6e0fa943538ac671c11bbc778e4439db71662f38e4fd46871c6955",
+    "cluster_candidates": "73d92a6a4c18160eb46a49b5a6bef77b92511179b076f453affac73a44a46a95",
+    "baseline": "29496e6a3f877d1639e73e7ba25b541d351723780d18c53fefbec70b3a55cd01"
+  },
+  "files": {
+    "summary_ko.md": "47d035fbb03e2656c97ece0627cecd758b9b5f021c4f5930b7c6c09824199129",
+    "methods_ko.md": "c2bfad1c4657fbf6ad02e5673bdb303acba68bf31cd6dc3e5b69e1e6c5d38d04",
+    "cluster_provisional_annotation.csv": "984a950fff8f0344a5add62160656aeb7af57428f64644f844bd2874783179ee",
+    "cluster_type_scores.csv": "69b1f1468b6246707dffd9baa53b419d93c7129bea09efa4986615fa8fe860f4",
+    "posthoc_type_top_clusters.csv": "45a389f2351fee870ea0f2f489dd06ae40a4cc09eab874d0df9217a5c8fcdf33",
+    "panel_markers_used.csv": "436b49634ce1887133db7402b4329cf9bd1e649da4f0dea609caa486696cfafa",
+    "panel_markers_excluded.csv": "a686f028dacf504c47c8fcc467e96662c1cadbac164be57d57823221e482dd04",
+    "panel_markers_held_conflicts.csv": "d54e32b4ba6a7bee7232a782454403c8cfa6916a57b068e27b9e21f584358607",
+    "control_genes.csv": "c69944ab46a811952b3bc8dac6c2d7fce53c5f7ae1be14b8cf0723dc39ecff0b",
+    "gene_bins.csv": "294172493b6750f5d3100a8d64f4cc590cfe28a6b8e1ddf6ebaf13aba556799e",
+    "check_cell_level_recompute.csv": "ed3cc2184693aaad460f4b09dc8e1b01d5229b2a1b27edeb9dd85e09523719a4",
+    "checks.csv": "00fc16e0d81c5fed928fdb993306e8f5ecf183d3963ed346632cf7d76b3297d3",
+    "figure_text.csv": "8e39514ae34208f06093e29f2ff02262b0408752e4bcf62c5964403d76cccc5b",
+    "marker_input/node_markers_sign_review_2026-10-18.csv": "55d8f2056ffcdfb53f6dad9cf84af68d53e328ba8b82405d95b838524447f4c0",
+    "marker_input/source.csv": "381c1a441104354d56ff79f071cc37f9786b236b2bf4695b4e4614fb15953365",
+    "figures/fig1_umap_full_author_vs_provisional.png": "1a5ccc70c5110b3e1e8199bbb4adb7cc77062e52aa1a1c15dce3e662b5be0d14",
+    "figures/fig2_umap_lineage_author_vs_provisional.png": "8488ccb55ee4c4e1c32912486be17b1a3124b9e7a3c4b3ec1b7e7aef60fb4ee6"
+  }
+}

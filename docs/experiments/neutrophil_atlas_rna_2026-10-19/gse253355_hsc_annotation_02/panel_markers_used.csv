@@ -1,0 +1,489 @@
+"model","node_id","display_label","gene","sign","source_network","row_id","measured","bin","n_controls"
+"broad","HSC","HSC","HLF",1,"bm_dag_broad",1,TRUE,17,50
+"broad","HSC","HSC","CD33",1,"bm_dag_broad",2,TRUE,14,50
+"broad","HSC","HSC","GATA3",1,"bm_dag_broad",3,TRUE,14,50
+"broad","HSC","HSC","CD44",1,"bm_dag_broad",4,TRUE,24,50
+"broad","HSC","HSC","PTPRS",1,"bm_dag_broad",5,TRUE,22,50
+"broad","HSC","HSC","CD34",1,"bm_dag_broad",6,TRUE,19,50
+"broad","HSC","HSC","NOTCH1",1,"bm_dag_broad",7,TRUE,19,50
+"broad","HSC","HSC","NOTCH2",1,"bm_dag_broad",8,TRUE,23,50
+"broad","HSC","HSC","MEIS1",1,"bm_dag_broad",9,TRUE,20,50
+"broad","HSC","HSC","MLLT3",1,"bm_dag_broad",10,TRUE,22,50
+"broad","MPP","MPP","CD34",1,"bm_dag_broad",11,TRUE,19,50
+"broad","MPP","MPP","CD48",1,"bm_dag_broad",13,TRUE,22,50
+"broad","MPP","MPP","FLT3",1,"bm_dag_broad",14,TRUE,20,50
+"broad","CMP","CMP","SPI1",1,"bm_dag_broad",15,TRUE,22,50
+"broad","CMP","CMP","CEBPA",1,"bm_dag_broad",16,TRUE,18,50
+"broad","CMP","CMP","MYB",1,"bm_dag_broad",17,TRUE,21,50
+"broad","CMP","CMP","CD34",1,"bm_dag_broad",18,TRUE,19,50
+"broad","CMP","CMP","GATA1",1,"bm_dag_broad",19,TRUE,16,50
+"broad","CMP","CMP","CD38",1,"bm_dag_broad",21,TRUE,23,50
+"broad","CMP","CMP","CSF1R",1,"bm_dag_broad",22,TRUE,15,50
+"broad","CLP","CLP","IL7R",1,"bm_dag_broad",23,TRUE,19,50
+"broad","CLP","CLP","EBF1",1,"bm_dag_broad",24,TRUE,24,50
+"broad","CLP","CLP","PAX5",1,"bm_dag_broad",25,TRUE,18,50
+"broad","CLP","CLP","CD34",1,"bm_dag_broad",26,TRUE,19,50
+"broad","CLP","CLP","FLT3",1,"bm_dag_broad",27,TRUE,20,50
+"broad","CLP","CLP","TCF3",1,"bm_dag_broad",28,TRUE,21,50
+"broad","GMP","GMP","CEBPA",1,"bm_dag_broad",29,TRUE,18,50
+"broad","GMP","GMP","CEBPE",1,"bm_dag_broad",30,TRUE,13,50
+"broad","GMP","GMP","GFI1",1,"bm_dag_broad",31,TRUE,14,50
+"broad","GMP","GMP","SPI1",1,"bm_dag_broad",32,TRUE,22,50
+"broad","GMP","GMP","CTSG",1,"bm_dag_broad",33,TRUE,19,50
+"broad","GMP","GMP","MPO",1,"bm_dag_broad",34,TRUE,22,50
+"broad","GMP","GMP","ELANE",1,"bm_dag_broad",35,TRUE,20,50
+"broad","GMP","GMP","CD34",1,"bm_dag_broad",36,TRUE,19,50
+"broad","GMP","GMP","IL3RA",1,"bm_dag_broad",37,TRUE,20,50
+"broad","MEP","MEP","GATA1",1,"bm_dag_broad",38,TRUE,16,50
+"broad","MEP","MEP","KLF1",1,"bm_dag_broad",39,TRUE,17,50
+"broad","MEP","MEP","GYPA",1,"bm_dag_broad",40,TRUE,13,50
+"broad","MEP","MEP","ITGB3",1,"bm_dag_broad",41,TRUE,11,50
+"broad","MEP","MEP","ITGA2B",1,"bm_dag_broad",42,TRUE,16,50
+"broad","MDP","MDP","CSF1R",1,"bm_dag_broad",43,TRUE,15,50
+"broad","MDP","MDP","FLT3",1,"bm_dag_broad",44,TRUE,20,50
+"broad","MDP","MDP","CXCR1",1,"bm_dag_broad",45,TRUE,12,50
+"broad","MDP","MDP","IRF8",1,"bm_dag_broad",46,TRUE,17,50
+"broad","BMCP","BMCP","CEBPA",1,"bm_dag_broad",47,TRUE,18,50
+"broad","BMCP","BMCP","FCER1A",1,"bm_dag_broad",48,TRUE,16,50
+"broad","BMCP","BMCP","ITGB7",1,"bm_dag_broad",49,TRUE,15,50
+"broad","CDP","CDP","FLT3",1,"bm_dag_broad",51,TRUE,20,50
+"broad","CDP","CDP","ZBTB46",-1,"bm_dag_broad",52,TRUE,19,50
+"broad","CDP","CDP","ITGAX",-1,"bm_dag_broad",53,TRUE,19,50
+"broad","Neutrophil","Neutrophil","CXCR2",1,"bm_dag_broad",54,TRUE,14,50
+"broad","Neutrophil","Neutrophil","MPO",1,"bm_dag_broad",55,TRUE,22,50
+"broad","Neutrophil","Neutrophil","DEFA3",1,"bm_dag_broad",56,TRUE,19,50
+"broad","Neutrophil","Neutrophil","ELANE",1,"bm_dag_broad",57,TRUE,20,50
+"broad","Neutrophil","Neutrophil","CAMP",1,"bm_dag_broad",58,TRUE,19,50
+"broad","Neutrophil","Neutrophil","FCGR3B",1,"bm_dag_broad",59,TRUE,18,50
+"broad","Neutrophil","Neutrophil","CSF3R",1,"bm_dag_broad",60,TRUE,22,50
+"broad","Neutrophil","Neutrophil","G0S2",1,"bm_dag_broad",61,TRUE,22,50
+"broad","Neutrophil","Neutrophil","CD177",1,"bm_dag_broad",62,TRUE,14,50
+"broad","Eosinophil","Eosinophil","SIGLEC8",1,"bm_dag_broad",63,TRUE,2,50
+"broad","Eosinophil","Eosinophil","CXCR3",1,"bm_dag_broad",64,TRUE,12,50
+"broad","Eosinophil","Eosinophil","CD244",1,"bm_dag_broad",65,TRUE,14,50
+"broad","Eosinophil","Eosinophil","CCR3",1,"bm_dag_broad",66,TRUE,9,50
+"broad","Eosinophil","Eosinophil","GATA1",1,"bm_dag_broad",67,TRUE,16,50
+"broad","Eosinophil","Eosinophil","CEBPA",1,"bm_dag_broad",68,TRUE,18,50
+"broad","Eosinophil","Eosinophil","EPX",1,"bm_dag_broad",69,TRUE,9,50
+"broad","Basophil","Basophil","ENPP3",1,"bm_dag_broad",70,TRUE,13,50
+"broad","Basophil","Basophil","IL5RA",1,"bm_dag_broad",71,TRUE,16,50
+"broad","Basophil","Basophil","FCER1A",1,"bm_dag_broad",72,TRUE,16,50
+"broad","Mast_cell","Mast cell","ENPP3",1,"bm_dag_broad",83,TRUE,13,50
+"broad","Mast_cell","Mast cell","IL17A",1,"bm_dag_broad",85,TRUE,1,50
+"broad","Mast_cell","Mast cell","CPA3",1,"bm_dag_broad",86,TRUE,16,50
+"broad","Mast_cell","Mast cell","FCER1A",1,"bm_dag_broad",87,TRUE,16,50
+"broad","Megakaryocyte","Megakaryocyte","ITGA2B",1,"bm_dag_broad",88,TRUE,16,50
+"broad","Megakaryocyte","Megakaryocyte","ITGB3",1,"bm_dag_broad",89,TRUE,11,50
+"broad","Megakaryocyte","Megakaryocyte","CD36",1,"bm_dag_broad",90,TRUE,22,50
+"broad","Megakaryocyte","Megakaryocyte","GATA1",1,"bm_dag_broad",91,TRUE,16,50
+"broad","Megakaryocyte","Megakaryocyte","FLI1",1,"bm_dag_broad",92,TRUE,23,50
+"broad","Megakaryocyte","Megakaryocyte","RUNX1",1,"bm_dag_broad",93,TRUE,24,50
+"broad","Megakaryocyte","Megakaryocyte","PPBP",1,"bm_dag_broad",94,TRUE,13,50
+"broad","Megakaryocyte","Megakaryocyte","PF4",1,"bm_dag_broad",95,TRUE,13,50
+"broad","Erythroblast","Erythroblast","GATA1",1,"bm_dag_broad",96,TRUE,16,50
+"broad","Erythroblast","Erythroblast","KLF1",1,"bm_dag_broad",97,TRUE,17,50
+"broad","Erythroblast","Erythroblast","ALAS2",1,"bm_dag_broad",98,TRUE,14,50
+"broad","Erythroblast","Erythroblast","HBB",1,"bm_dag_broad",99,TRUE,23,50
+"broad","Erythroblast","Erythroblast","EPOR",1,"bm_dag_broad",100,TRUE,17,50
+"broad","DC","cDC","CD1C",1,"bm_dag_broad",101,TRUE,9,50
+"broad","DC","cDC","CD1B",1,"bm_dag_broad",102,TRUE,3,50
+"broad","DC","cDC","FCER1A",1,"bm_dag_broad",103,TRUE,16,50
+"broad","DC","cDC","ITGAX",1,"bm_dag_broad",104,TRUE,19,50
+"broad","DC","cDC","FLT3",1,"bm_dag_broad",105,TRUE,20,50
+"broad","DC","cDC","ZBTB46",1,"bm_dag_broad",106,TRUE,19,50
+"broad","DC","cDC","THBD",1,"bm_dag_broad",107,TRUE,18,50
+"broad","pDC","pDC","LILRA4",1,"bm_dag_broad",108,TRUE,12,50
+"broad","pDC","pDC","ITGAX",-1,"bm_dag_broad",109,TRUE,19,50
+"broad","pDC","pDC","NRP1",1,"bm_dag_broad",110,TRUE,23,50
+"broad","pDC","pDC","CLEC4C",1,"bm_dag_broad",111,TRUE,11,50
+"broad","pDC","pDC","CD4",1,"bm_dag_broad",112,TRUE,18,50
+"broad","pDC","pDC","TCF4",1,"bm_dag_broad",113,TRUE,24,50
+"broad","pDC","pDC","IL3RA",1,"bm_dag_broad",114,TRUE,20,50
+"broad","pDC","pDC","CCR9",1,"bm_dag_broad",115,TRUE,8,50
+"broad","Pro_B_cell","Pro B cell","CD19",1,"bm_dag_broad",116,TRUE,13,50
+"broad","Pro_B_cell","Pro B cell","RAG1",1,"bm_dag_broad",118,TRUE,16,50
+"broad","Pro_B_cell","Pro B cell","RAG2",1,"bm_dag_broad",119,TRUE,15,50
+"broad","Pro_B_cell","Pro B cell","CD79A",1,"bm_dag_broad",120,TRUE,21,50
+"broad","Pro_B_cell","Pro B cell","CD79B",1,"bm_dag_broad",121,TRUE,21,50
+"broad","Pro_B_cell","Pro B cell","IL7R",1,"bm_dag_broad",122,TRUE,19,50
+"broad","Pro_B_cell","Pro B cell","PAX5",1,"bm_dag_broad",123,TRUE,18,50
+"broad","Pro_B_cell","Pro B cell","CEBPA",1,"bm_dag_broad",124,TRUE,18,50
+"broad","Pro_B_cell","Pro B cell","IRX1",1,"bm_dag_broad",125,TRUE,11,50
+"broad","Pro_B_cell","Pro B cell","MME",1,"bm_dag_broad",126,TRUE,22,50
+"broad","Pre_B_cell","Pre B cell","VPREB1",1,"bm_dag_broad",127,TRUE,20,50
+"broad","Pre_B_cell","Pre B cell","CD19",1,"bm_dag_broad",128,TRUE,13,50
+"broad","Pre_B_cell","Pre B cell","MS4A1",1,"bm_dag_broad",129,TRUE,15,50
+"broad","Pre_B_cell","Pre B cell","TCF3",1,"bm_dag_broad",130,TRUE,21,50
+"broad","Pre_B_cell","Pre B cell","PAX5",1,"bm_dag_broad",131,TRUE,18,50
+"broad","Pre_B_cell","Pre B cell","EBF1",1,"bm_dag_broad",132,TRUE,24,50
+"broad","Pre_B_cell","Pre B cell","BLNK",1,"bm_dag_broad",133,TRUE,20,50
+"broad","Pre_B_cell","Pre B cell","IKZF3",1,"bm_dag_broad",134,TRUE,19,50
+"broad","Pre_B_cell","Pre B cell","MME",1,"bm_dag_broad",135,TRUE,22,50
+"broad","NK_cell","NK cell","KLRK1",1,"bm_dag_broad",136,TRUE,6,50
+"broad","NK_cell","NK cell","NCAM1",1,"bm_dag_broad",137,TRUE,22,50
+"broad","NK_cell","NK cell","NKG7",1,"bm_dag_broad",138,TRUE,19,50
+"broad","NK_cell","NK cell","GNLY",1,"bm_dag_broad",139,TRUE,15,50
+"broad","NK_cell","NK cell","KLRC1",1,"bm_dag_broad",140,TRUE,10,50
+"broad","NK_cell","NK cell","KLRG1",1,"bm_dag_broad",141,TRUE,15,50
+"broad","NK_cell","NK cell","NCR3",1,"bm_dag_broad",142,TRUE,12,50
+"broad","NK_cell","NK cell","ZBTB16",1,"bm_dag_broad",143,TRUE,23,50
+"broad","NK_cell","NK cell","CD244",1,"bm_dag_broad",144,TRUE,14,50
+"broad","NK_cell","NK cell","CD7",1,"bm_dag_broad",145,TRUE,16,50
+"broad","Macrophage","Macrophage","MMP12",1,"bm_dag_broad",154,TRUE,5,50
+"broad","Macrophage","Macrophage","CD163",1,"bm_dag_broad",155,TRUE,12,50
+"broad","Macrophage","Macrophage","MRC1",1,"bm_dag_broad",156,TRUE,15,50
+"broad","Macrophage","Macrophage","CCR5",1,"bm_dag_broad",157,TRUE,10,50
+"broad","Macrophage","Macrophage","VSIG4",1,"bm_dag_broad",158,TRUE,8,50
+"broad","Macrophage","Macrophage","GPR132",1,"bm_dag_broad",159,TRUE,21,50
+"broad","Macrophage","Macrophage","ADGRE1",1,"bm_dag_broad",160,TRUE,12,50
+"broad","Macrophage","Macrophage","CD68",1,"bm_dag_broad",161,TRUE,17,50
+"broad","Platelet","Platelet","CD46",1,"bm_dag_broad",162,TRUE,24,50
+"broad","Platelet","Platelet","CD109",1,"bm_dag_broad",163,TRUE,21,50
+"broad","Platelet","Platelet","PPBP",1,"bm_dag_broad",164,TRUE,13,50
+"broad","Platelet","Platelet","GP1BB",1,"bm_dag_broad",165,FALSE,NA,NA
+"broad","Erythrocyte","Erythrocyte","HBB",1,"bm_dag_broad",166,TRUE,23,50
+"broad","Erythrocyte","Erythrocyte","TFRC",1,"bm_dag_broad",167,TRUE,23,50
+"broad","Erythrocyte","Erythrocyte","UBE2O",1,"bm_dag_broad",168,TRUE,21,50
+"broad","Erythrocyte","Erythrocyte","SLC11A2",1,"bm_dag_broad",169,TRUE,19,50
+"broad","Classical_Monocyte","Classical Monocyte","CD163",1,"bm_dag_broad",170,TRUE,12,50
+"broad","Classical_Monocyte","Classical Monocyte","SELE",1,"bm_dag_broad",171,TRUE,16,50
+"broad","Classical_Monocyte","Classical Monocyte","FCGR2B",1,"bm_dag_broad",172,TRUE,15,50
+"broad","Classical_Monocyte","Classical Monocyte","IL1RN",1,"bm_dag_broad",173,TRUE,15,50
+"broad","Classical_Monocyte","Classical Monocyte","CEBPB",1,"bm_dag_broad",174,TRUE,24,50
+"broad","Classical_Monocyte","Classical Monocyte","CD14",1,"bm_dag_broad",175,TRUE,17,50
+"broad","Classical_Monocyte","Classical Monocyte","LYZ",1,"bm_dag_broad",176,TRUE,23,50
+"broad","Classical_Monocyte","Classical Monocyte","VCAN",1,"bm_dag_broad",177,TRUE,24,50
+"broad","Classical_Monocyte","Classical Monocyte","FCN1",1,"bm_dag_broad",178,TRUE,20,50
+"broad","Classical_Monocyte","Classical Monocyte","CD68",1,"bm_dag_broad",179,TRUE,17,50
+"broad","Classical_Monocyte","Classical Monocyte","SELL",1,"bm_dag_broad",180,TRUE,21,50
+"broad","Classical_Monocyte","Classical Monocyte","CCR2",1,"bm_dag_broad",181,TRUE,13,50
+"broad","Classical_Monocyte","Classical Monocyte","S100A8",1,"bm_dag_broad",182,TRUE,24,50
+"broad","Classical_Monocyte","Classical Monocyte","S100A9",1,"bm_dag_broad",183,TRUE,24,50
+"broad","Classical_Monocyte","Classical Monocyte","CD1C",-1,"bm_dag_broad",184,TRUE,9,50
+"broad","Classical_Monocyte","Classical Monocyte","NCAM1",-1,"bm_dag_broad",185,TRUE,22,50
+"broad","Nonclassical_Monocyte","Nonclassical Monocyte","CD163",1,"bm_dag_broad",187,TRUE,12,50
+"broad","Nonclassical_Monocyte","Nonclassical Monocyte","SELE",1,"bm_dag_broad",188,TRUE,16,50
+"broad","Nonclassical_Monocyte","Nonclassical Monocyte","FCGR2B",1,"bm_dag_broad",189,TRUE,15,50
+"broad","Nonclassical_Monocyte","Nonclassical Monocyte","IL1RN",1,"bm_dag_broad",190,TRUE,15,50
+"broad","Nonclassical_Monocyte","Nonclassical Monocyte","CEBPB",1,"bm_dag_broad",191,TRUE,24,50
+"broad","Nonclassical_Monocyte","Nonclassical Monocyte","CD14",1,"bm_dag_broad",192,TRUE,17,50
+"broad","Nonclassical_Monocyte","Nonclassical Monocyte","LYZ",1,"bm_dag_broad",193,TRUE,23,50
+"broad","Nonclassical_Monocyte","Nonclassical Monocyte","VCAN",1,"bm_dag_broad",194,TRUE,24,50
+"broad","Nonclassical_Monocyte","Nonclassical Monocyte","FCN1",1,"bm_dag_broad",195,TRUE,20,50
+"broad","Nonclassical_Monocyte","Nonclassical Monocyte","CD68",1,"bm_dag_broad",196,TRUE,17,50
+"broad","Nonclassical_Monocyte","Nonclassical Monocyte","FCGR3A",1,"bm_dag_broad",197,TRUE,13,50
+"broad","Nonclassical_Monocyte","Nonclassical Monocyte","LST1",1,"bm_dag_broad",198,TRUE,22,50
+"broad","Nonclassical_Monocyte","Nonclassical Monocyte","CX3CR1",1,"bm_dag_broad",199,TRUE,10,50
+"broad","Nonclassical_Monocyte","Nonclassical Monocyte","CD1C",-1,"bm_dag_broad",200,TRUE,9,50
+"broad","Nonclassical_Monocyte","Nonclassical Monocyte","NCAM1",-1,"bm_dag_broad",201,TRUE,22,50
+"broad","B_cell","B cell","MS4A1",1,"bm_dag_broad",203,TRUE,15,50
+"broad","B_cell","B cell","CD79A",1,"bm_dag_broad",204,TRUE,21,50
+"broad","B_cell","B cell","IGHM",1,"bm_dag_broad",205,TRUE,23,50
+"broad","B_cell","B cell","CD19",1,"bm_dag_broad",206,TRUE,13,50
+"broad","B_cell","B cell","FCER2",1,"bm_dag_broad",207,TRUE,13,50
+"broad","B_cell","B cell","PAX5",1,"bm_dag_broad",208,TRUE,18,50
+"broad","B_cell","B cell","CR2",1,"bm_dag_broad",209,TRUE,10,50
+"broad","B_cell","B cell","IGHD",1,"bm_dag_broad",210,TRUE,22,50
+"broad","B_cell","B cell","BCL2",1,"bm_dag_broad",211,TRUE,24,50
+"broad","Plasma_cell","Plasma cell","XBP1",1,"bm_dag_broad",212,TRUE,24,50
+"broad","Plasma_cell","Plasma cell","PRDM1",1,"bm_dag_broad",213,TRUE,21,50
+"broad","Plasma_cell","Plasma cell","JCHAIN",1,"bm_dag_broad",214,TRUE,24,50
+"broad","Plasma_cell","Plasma cell","CD9",1,"bm_dag_broad",215,TRUE,23,50
+"broad","Plasma_cell","Plasma cell","IGHG1",1,"bm_dag_broad",216,TRUE,24,50
+"broad","Plasma_cell","Plasma cell","IGHG2",1,"bm_dag_broad",217,TRUE,23,50
+"broad","Plasma_cell","Plasma cell","IGHG3",1,"bm_dag_broad",218,TRUE,24,50
+"broad","Plasma_cell","Plasma cell","IGHG4",1,"bm_dag_broad",219,TRUE,23,50
+"broad","CD4_T_cell","CD4 T cell","CD3D",1,"t_cell_broad_categories",515,TRUE,18,50
+"broad","CD4_T_cell","CD4 T cell","CD3E",1,"t_cell_broad_categories",516,TRUE,17,50
+"broad","CD4_T_cell","CD4 T cell","CD4",1,"t_cell_broad_categories",517,TRUE,18,50
+"broad","CD8_T_cell","CD8 T cell","CD3D",1,"t_cell_broad_categories",518,TRUE,18,50
+"broad","CD8_T_cell","CD8 T cell","CD3E",1,"t_cell_broad_categories",519,TRUE,17,50
+"broad","CD8_T_cell","CD8 T cell","CD8A",1,"t_cell_broad_categories",520,TRUE,15,50
+"broad","CD8_T_cell","CD8 T cell","CD8B",1,"t_cell_broad_categories",521,TRUE,14,50
+"broad","NKT_cell","NKT cell","CD3D",1,"t_cell_broad_categories",522,TRUE,18,50
+"broad","NKT_cell","NKT cell","KLRB1",1,"t_cell_broad_categories",523,TRUE,16,50
+"broad","NKT_cell","NKT cell","ZBTB16",1,"t_cell_broad_categories",524,TRUE,23,50
+"broad","NKT_cell","NKT cell","NCR1",1,"t_cell_broad_categories",525,TRUE,13,50
+"broad","NKT_cell","NKT cell","NCAM1",1,"t_cell_broad_categories",526,TRUE,22,50
+"broad","NKT_cell","NKT cell","TRAV10",1,"t_cell_broad_categories",527,TRUE,2,50
+"broad","NKT_cell","NKT cell","IL18R1",1,"t_cell_broad_categories",528,TRUE,18,50
+"broad","NKT_cell","NKT cell","IL12RB2",1,"t_cell_broad_categories",529,TRUE,17,50
+"slide2","HSC","HSC","HLF",1,"bm_dag_slide2",220,TRUE,17,50
+"slide2","HSC","HSC","CD33",1,"bm_dag_slide2",221,TRUE,14,50
+"slide2","HSC","HSC","GATA3",1,"bm_dag_slide2",222,TRUE,14,50
+"slide2","HSC","HSC","CD44",1,"bm_dag_slide2",223,TRUE,24,50
+"slide2","HSC","HSC","PTPRS",1,"bm_dag_slide2",224,TRUE,22,50
+"slide2","HSC","HSC","CD34",1,"bm_dag_slide2",225,TRUE,19,50
+"slide2","HSC","HSC","NOTCH1",1,"bm_dag_slide2",226,TRUE,19,50
+"slide2","HSC","HSC","NOTCH2",1,"bm_dag_slide2",227,TRUE,23,50
+"slide2","HSC","HSC","MEIS1",1,"bm_dag_slide2",228,TRUE,20,50
+"slide2","HSC","HSC","MLLT3",1,"bm_dag_slide2",229,TRUE,22,50
+"slide2","HSC","HSC","FLT3",-1,"bm_dag_slide2",230,TRUE,20,50
+"slide2","HSC","HSC","SOX4",-1,"bm_dag_slide2",231,TRUE,24,50
+"slide2","HSC","HSC","ELF1",-1,"bm_dag_slide2",232,TRUE,24,50
+"slide2","HSC","HSC","CDK6",-1,"bm_dag_slide2",233,TRUE,24,50
+"slide2","MPP","MPP","CD34",1,"bm_dag_slide2",234,TRUE,19,50
+"slide2","MPP","MPP","CD48",1,"bm_dag_slide2",236,TRUE,22,50
+"slide2","MPP","MPP","FLT3",1,"bm_dag_slide2",237,TRUE,20,50
+"slide2","MPP","MPP","PROCR",-1,"bm_dag_slide2",238,TRUE,18,50
+"slide2","MPP","MPP","HOXB4",-1,"bm_dag_slide2",239,TRUE,15,50
+"slide2","CMP","CMP","SPI1",1,"bm_dag_slide2",240,TRUE,22,50
+"slide2","CMP","CMP","CEBPA",1,"bm_dag_slide2",241,TRUE,18,50
+"slide2","CMP","CMP","MYB",1,"bm_dag_slide2",242,TRUE,21,50
+"slide2","CMP","CMP","CD34",1,"bm_dag_slide2",243,TRUE,19,50
+"slide2","CMP","CMP","GATA1",1,"bm_dag_slide2",244,TRUE,16,50
+"slide2","CMP","CMP","CD38",1,"bm_dag_slide2",246,TRUE,23,50
+"slide2","CMP","CMP","CSF1R",1,"bm_dag_slide2",247,TRUE,15,50
+"slide2","CMP","CMP","IL7R",-1,"bm_dag_slide2",248,TRUE,19,50
+"slide2","CMP","CMP","RAG1",-1,"bm_dag_slide2",249,TRUE,16,50
+"slide2","CLP","CLP","IL7R",1,"bm_dag_slide2",250,TRUE,19,50
+"slide2","CLP","CLP","EBF1",1,"bm_dag_slide2",251,TRUE,24,50
+"slide2","CLP","CLP","PAX5",1,"bm_dag_slide2",252,TRUE,18,50
+"slide2","CLP","CLP","CD34",1,"bm_dag_slide2",253,TRUE,19,50
+"slide2","CLP","CLP","FLT3",1,"bm_dag_slide2",254,TRUE,20,50
+"slide2","CLP","CLP","TCF3",1,"bm_dag_slide2",255,TRUE,21,50
+"slide2","CLP","CLP","GATA1",-1,"bm_dag_slide2",256,TRUE,16,50
+"slide2","CLP","CLP","KLF1",-1,"bm_dag_slide2",257,TRUE,17,50
+"slide2","CLP","CLP","SPI1",-1,"bm_dag_slide2",258,TRUE,22,50
+"slide2","GMP","GMP","CEBPA",1,"bm_dag_slide2",259,TRUE,18,50
+"slide2","GMP","GMP","CEBPE",1,"bm_dag_slide2",260,TRUE,13,50
+"slide2","GMP","GMP","GFI1",1,"bm_dag_slide2",261,TRUE,14,50
+"slide2","GMP","GMP","SPI1",1,"bm_dag_slide2",262,TRUE,22,50
+"slide2","GMP","GMP","CTSG",1,"bm_dag_slide2",263,TRUE,19,50
+"slide2","GMP","GMP","MPO",1,"bm_dag_slide2",264,TRUE,22,50
+"slide2","GMP","GMP","ELANE",1,"bm_dag_slide2",265,TRUE,20,50
+"slide2","GMP","GMP","CD34",1,"bm_dag_slide2",266,TRUE,19,50
+"slide2","GMP","GMP","IL3RA",1,"bm_dag_slide2",267,TRUE,20,50
+"slide2","GMP","GMP","GATA1",-1,"bm_dag_slide2",268,TRUE,16,50
+"slide2","GMP","GMP","KLF1",-1,"bm_dag_slide2",269,TRUE,17,50
+"slide2","GMP","GMP","IL7R",-1,"bm_dag_slide2",270,TRUE,19,50
+"slide2","GMP","GMP","TCF4",-1,"bm_dag_slide2",271,TRUE,24,50
+"slide2","MEP","MEP","GATA1",1,"bm_dag_slide2",272,TRUE,16,50
+"slide2","MEP","MEP","KLF1",1,"bm_dag_slide2",273,TRUE,17,50
+"slide2","MEP","MEP","GYPA",1,"bm_dag_slide2",274,TRUE,13,50
+"slide2","MEP","MEP","ITGB3",1,"bm_dag_slide2",275,TRUE,11,50
+"slide2","MEP","MEP","ITGA2B",1,"bm_dag_slide2",276,TRUE,16,50
+"slide2","MEP","MEP","MPO",-1,"bm_dag_slide2",277,TRUE,22,50
+"slide2","MEP","MEP","CD14",-1,"bm_dag_slide2",278,TRUE,17,50
+"slide2","MEP","MEP","CD3E",-1,"bm_dag_slide2",279,TRUE,17,50
+"slide2","MEP","MEP","IL15",-1,"bm_dag_slide2",280,TRUE,18,50
+"slide2","MDP","MDP","CSF1R",1,"bm_dag_slide2",281,TRUE,15,50
+"slide2","MDP","MDP","FLT3",1,"bm_dag_slide2",282,TRUE,20,50
+"slide2","MDP","MDP","CXCR1",1,"bm_dag_slide2",283,TRUE,12,50
+"slide2","MDP","MDP","IRF8",1,"bm_dag_slide2",284,TRUE,17,50
+"slide2","MDP","MDP","PAX5",-1,"bm_dag_slide2",285,TRUE,18,50
+"slide2","MDP","MDP","CD79A",-1,"bm_dag_slide2",286,TRUE,21,50
+"slide2","MDP","MDP","CD79B",-1,"bm_dag_slide2",287,TRUE,21,50
+"slide2","MDP","MDP","GZMB",-1,"bm_dag_slide2",288,TRUE,14,50
+"slide2","MDP","MDP","CD3E",-1,"bm_dag_slide2",289,TRUE,17,50
+"slide2","BMCP","BMCP","CEBPA",1,"bm_dag_slide2",290,TRUE,18,50
+"slide2","BMCP","BMCP","FCER1A",1,"bm_dag_slide2",291,TRUE,16,50
+"slide2","BMCP","BMCP","ITGB7",1,"bm_dag_slide2",292,TRUE,15,50
+"slide2","BMCP","BMCP","MITF",-1,"bm_dag_slide2",293,TRUE,18,50
+"slide2","BMCP","BMCP","CDH1",-1,"bm_dag_slide2",294,TRUE,15,50
+"slide2","CDP","CDP","FLT3",1,"bm_dag_slide2",296,TRUE,20,50
+"slide2","CDP","CDP","ZBTB46",-1,"bm_dag_slide2",297,TRUE,19,50
+"slide2","CDP","CDP","ITGAX",-1,"bm_dag_slide2",298,TRUE,19,50
+"slide2","Neutrophil","Neutrophil","CXCR2",1,"bm_dag_slide2",299,TRUE,14,50
+"slide2","Neutrophil","Neutrophil","MPO",1,"bm_dag_slide2",300,TRUE,22,50
+"slide2","Neutrophil","Neutrophil","DEFA3",1,"bm_dag_slide2",301,TRUE,19,50
+"slide2","Neutrophil","Neutrophil","ELANE",1,"bm_dag_slide2",302,TRUE,20,50
+"slide2","Neutrophil","Neutrophil","CAMP",1,"bm_dag_slide2",303,TRUE,19,50
+"slide2","Neutrophil","Neutrophil","FCGR3B",1,"bm_dag_slide2",304,TRUE,18,50
+"slide2","Neutrophil","Neutrophil","CSF3R",1,"bm_dag_slide2",305,TRUE,22,50
+"slide2","Neutrophil","Neutrophil","G0S2",1,"bm_dag_slide2",306,TRUE,22,50
+"slide2","Neutrophil","Neutrophil","CD177",1,"bm_dag_slide2",307,TRUE,14,50
+"slide2","Eosinophil","Eosinophil","SIGLEC8",1,"bm_dag_slide2",308,TRUE,2,50
+"slide2","Eosinophil","Eosinophil","CXCR3",1,"bm_dag_slide2",309,TRUE,12,50
+"slide2","Eosinophil","Eosinophil","CD244",1,"bm_dag_slide2",310,TRUE,14,50
+"slide2","Eosinophil","Eosinophil","CCR3",1,"bm_dag_slide2",311,TRUE,9,50
+"slide2","Eosinophil","Eosinophil","GATA1",1,"bm_dag_slide2",312,TRUE,16,50
+"slide2","Eosinophil","Eosinophil","CEBPA",1,"bm_dag_slide2",313,TRUE,18,50
+"slide2","Eosinophil","Eosinophil","EPX",1,"bm_dag_slide2",314,TRUE,9,50
+"slide2","Eosinophil","Eosinophil","MPO",-1,"bm_dag_slide2",315,TRUE,22,50
+"slide2","Eosinophil","Eosinophil","HLA-DRA",-1,"bm_dag_slide2",316,TRUE,24,50
+"slide2","Eosinophil","Eosinophil","HLA-DRB1",-1,"bm_dag_slide2",317,TRUE,24,50
+"slide2","Basophil","Basophil","ENPP3",1,"bm_dag_slide2",318,TRUE,13,50
+"slide2","Basophil","Basophil","IL5RA",1,"bm_dag_slide2",319,TRUE,16,50
+"slide2","Basophil","Basophil","FCER1A",1,"bm_dag_slide2",320,TRUE,16,50
+"slide2","Basophil","Basophil","LILRB4",1,"bm_dag_slide2",321,TRUE,13,50
+"slide2","Basophil","Basophil","HDC",1,"bm_dag_slide2",322,TRUE,14,50
+"slide2","Basophil","Basophil","HLA-DRA",-1,"bm_dag_slide2",323,TRUE,24,50
+"slide2","Basophil","Basophil","HLA-DRB1",-1,"bm_dag_slide2",324,TRUE,24,50
+"slide2","Basophil","Basophil","HLA-DRB3",-1,"bm_dag_slide2",325,FALSE,NA,NA
+"slide2","Basophil","Basophil","HLA-DRB4",-1,"bm_dag_slide2",326,FALSE,NA,NA
+"slide2","Basophil","Basophil","HLA-DRB5",-1,"bm_dag_slide2",327,TRUE,20,50
+"slide2","Mast_cell","Mast cell","ENPP3",1,"bm_dag_slide2",342,TRUE,13,50
+"slide2","Mast_cell","Mast cell","IL17A",1,"bm_dag_slide2",344,TRUE,1,50
+"slide2","Mast_cell","Mast cell","CPA3",1,"bm_dag_slide2",345,TRUE,16,50
+"slide2","Mast_cell","Mast cell","CD3E",-1,"bm_dag_slide2",346,TRUE,17,50
+"slide2","Mast_cell","Mast cell","CD19",-1,"bm_dag_slide2",347,TRUE,13,50
+"slide2","Mast_cell","Mast cell","CD14",-1,"bm_dag_slide2",348,TRUE,17,50
+"slide2","Mast_cell","Mast cell","FCGR3A",-1,"bm_dag_slide2",349,TRUE,13,50
+"slide2","Megakaryocyte","Megakaryocyte","ITGA2B",1,"bm_dag_slide2",350,TRUE,16,50
+"slide2","Megakaryocyte","Megakaryocyte","ITGB3",1,"bm_dag_slide2",351,TRUE,11,50
+"slide2","Megakaryocyte","Megakaryocyte","CD36",1,"bm_dag_slide2",352,TRUE,22,50
+"slide2","Megakaryocyte","Megakaryocyte","GATA1",1,"bm_dag_slide2",353,TRUE,16,50
+"slide2","Megakaryocyte","Megakaryocyte","FLI1",1,"bm_dag_slide2",354,TRUE,23,50
+"slide2","Megakaryocyte","Megakaryocyte","RUNX1",1,"bm_dag_slide2",355,TRUE,24,50
+"slide2","Megakaryocyte","Megakaryocyte","PPBP",1,"bm_dag_slide2",356,TRUE,13,50
+"slide2","Megakaryocyte","Megakaryocyte","PF4",1,"bm_dag_slide2",357,TRUE,13,50
+"slide2","Erythroblast","Erythroblast","GATA1",1,"bm_dag_slide2",358,TRUE,16,50
+"slide2","Erythroblast","Erythroblast","KLF1",1,"bm_dag_slide2",359,TRUE,17,50
+"slide2","Erythroblast","Erythroblast","ALAS2",1,"bm_dag_slide2",360,TRUE,14,50
+"slide2","Erythroblast","Erythroblast","HBB",1,"bm_dag_slide2",361,TRUE,23,50
+"slide2","Erythroblast","Erythroblast","EPOR",1,"bm_dag_slide2",362,TRUE,17,50
+"slide2","Erythroblast","Erythroblast","PTPRC",-1,"bm_dag_slide2",363,TRUE,24,50
+"slide2","Erythroblast","Erythroblast","SPI1",-1,"bm_dag_slide2",364,TRUE,22,50
+"slide2","DC","cDC","CD1C",1,"bm_dag_slide2",365,TRUE,9,50
+"slide2","DC","cDC","CD1B",1,"bm_dag_slide2",366,TRUE,3,50
+"slide2","DC","cDC","FCER1A",1,"bm_dag_slide2",367,TRUE,16,50
+"slide2","DC","cDC","ITGAX",1,"bm_dag_slide2",368,TRUE,19,50
+"slide2","DC","cDC","FLT3",1,"bm_dag_slide2",369,TRUE,20,50
+"slide2","DC","cDC","ZBTB46",1,"bm_dag_slide2",370,TRUE,19,50
+"slide2","DC","cDC","THBD",1,"bm_dag_slide2",371,TRUE,18,50
+"slide2","DC","cDC","CD3E",-1,"bm_dag_slide2",372,TRUE,17,50
+"slide2","DC","cDC","CD19",-1,"bm_dag_slide2",373,TRUE,13,50
+"slide2","DC","cDC","CD14",-1,"bm_dag_slide2",374,TRUE,17,50
+"slide2","DC","cDC","TCF4",-1,"bm_dag_slide2",375,TRUE,24,50
+"slide2","DC","cDC","IL3RA",-1,"bm_dag_slide2",376,TRUE,20,50
+"slide2","pDC","pDC","LILRA4",1,"bm_dag_slide2",377,TRUE,12,50
+"slide2","pDC","pDC","ITGAX",-1,"bm_dag_slide2",378,TRUE,19,50
+"slide2","pDC","pDC","NRP1",1,"bm_dag_slide2",379,TRUE,23,50
+"slide2","pDC","pDC","CLEC4C",1,"bm_dag_slide2",380,TRUE,11,50
+"slide2","pDC","pDC","CD4",1,"bm_dag_slide2",381,TRUE,18,50
+"slide2","pDC","pDC","TCF4",1,"bm_dag_slide2",382,TRUE,24,50
+"slide2","pDC","pDC","IL3RA",1,"bm_dag_slide2",383,TRUE,20,50
+"slide2","pDC","pDC","CCR9",1,"bm_dag_slide2",384,TRUE,8,50
+"slide2","pDC","pDC","CD3E",-1,"bm_dag_slide2",385,TRUE,17,50
+"slide2","pDC","pDC","CD19",-1,"bm_dag_slide2",386,TRUE,13,50
+"slide2","pDC","pDC","CD14",-1,"bm_dag_slide2",387,TRUE,17,50
+"slide2","pDC","pDC","FCGR3A",-1,"bm_dag_slide2",388,TRUE,13,50
+"slide2","pDC","pDC","CD1C",-1,"bm_dag_slide2",389,TRUE,9,50
+"slide2","Pro_B_cell","Pro B cell","CD19",1,"bm_dag_slide2",390,TRUE,13,50
+"slide2","Pro_B_cell","Pro B cell","RAG1",1,"bm_dag_slide2",392,TRUE,16,50
+"slide2","Pro_B_cell","Pro B cell","RAG2",1,"bm_dag_slide2",393,TRUE,15,50
+"slide2","Pro_B_cell","Pro B cell","CD79A",1,"bm_dag_slide2",394,TRUE,21,50
+"slide2","Pro_B_cell","Pro B cell","CD79B",1,"bm_dag_slide2",395,TRUE,21,50
+"slide2","Pro_B_cell","Pro B cell","IL7R",1,"bm_dag_slide2",396,TRUE,19,50
+"slide2","Pro_B_cell","Pro B cell","PAX5",1,"bm_dag_slide2",397,TRUE,18,50
+"slide2","Pro_B_cell","Pro B cell","CEBPA",1,"bm_dag_slide2",398,TRUE,18,50
+"slide2","Pro_B_cell","Pro B cell","IRX1",1,"bm_dag_slide2",399,TRUE,11,50
+"slide2","Pro_B_cell","Pro B cell","MME",1,"bm_dag_slide2",400,TRUE,22,50
+"slide2","Pro_B_cell","Pro B cell","CD3E",-1,"bm_dag_slide2",401,TRUE,17,50
+"slide2","Pro_B_cell","Pro B cell","TCF4",-1,"bm_dag_slide2",402,TRUE,24,50
+"slide2","Pre_B_cell","Pre B cell","VPREB1",1,"bm_dag_slide2",403,TRUE,20,50
+"slide2","Pre_B_cell","Pre B cell","CD19",1,"bm_dag_slide2",404,TRUE,13,50
+"slide2","Pre_B_cell","Pre B cell","MS4A1",1,"bm_dag_slide2",405,TRUE,15,50
+"slide2","Pre_B_cell","Pre B cell","TCF3",1,"bm_dag_slide2",406,TRUE,21,50
+"slide2","Pre_B_cell","Pre B cell","PAX5",1,"bm_dag_slide2",407,TRUE,18,50
+"slide2","Pre_B_cell","Pre B cell","EBF1",1,"bm_dag_slide2",408,TRUE,24,50
+"slide2","Pre_B_cell","Pre B cell","BLNK",1,"bm_dag_slide2",409,TRUE,20,50
+"slide2","Pre_B_cell","Pre B cell","IKZF3",1,"bm_dag_slide2",410,TRUE,19,50
+"slide2","Pre_B_cell","Pre B cell","MME",1,"bm_dag_slide2",411,TRUE,22,50
+"slide2","Pre_B_cell","Pre B cell","CD14",-1,"bm_dag_slide2",412,TRUE,17,50
+"slide2","Pre_B_cell","Pre B cell","CD3E",-1,"bm_dag_slide2",413,TRUE,17,50
+"slide2","NK_cell","NK cell","KLRK1",1,"bm_dag_slide2",414,TRUE,6,50
+"slide2","NK_cell","NK cell","NCAM1",1,"bm_dag_slide2",415,TRUE,22,50
+"slide2","NK_cell","NK cell","NKG7",1,"bm_dag_slide2",416,TRUE,19,50
+"slide2","NK_cell","NK cell","GNLY",1,"bm_dag_slide2",417,TRUE,15,50
+"slide2","NK_cell","NK cell","KLRC1",1,"bm_dag_slide2",418,TRUE,10,50
+"slide2","NK_cell","NK cell","KLRG1",1,"bm_dag_slide2",419,TRUE,15,50
+"slide2","NK_cell","NK cell","NCR3",1,"bm_dag_slide2",420,TRUE,12,50
+"slide2","NK_cell","NK cell","ZBTB16",1,"bm_dag_slide2",421,TRUE,23,50
+"slide2","NK_cell","NK cell","CD244",1,"bm_dag_slide2",422,TRUE,14,50
+"slide2","NK_cell","NK cell","CD7",1,"bm_dag_slide2",423,TRUE,16,50
+"slide2","NK_cell","NK cell","RAG1",-1,"bm_dag_slide2",424,TRUE,16,50
+"slide2","NK_cell","NK cell","RAG2",-1,"bm_dag_slide2",425,TRUE,15,50
+"slide2","NK_cell","NK cell","CD3E",-1,"bm_dag_slide2",426,TRUE,17,50
+"slide2","NK_cell","NK cell","CD19",-1,"bm_dag_slide2",427,TRUE,13,50
+"slide2","NK_cell","NK cell","CD4",-1,"bm_dag_slide2",428,TRUE,18,50
+"slide2","NK_cell","NK cell","PAX5",-1,"bm_dag_slide2",429,TRUE,18,50
+"slide2","Macrophage","Macrophage","MMP12",1,"bm_dag_slide2",439,TRUE,5,50
+"slide2","Macrophage","Macrophage","CD163",1,"bm_dag_slide2",440,TRUE,12,50
+"slide2","Macrophage","Macrophage","MRC1",1,"bm_dag_slide2",441,TRUE,15,50
+"slide2","Macrophage","Macrophage","CCR5",1,"bm_dag_slide2",442,TRUE,10,50
+"slide2","Macrophage","Macrophage","VSIG4",1,"bm_dag_slide2",443,TRUE,8,50
+"slide2","Macrophage","Macrophage","GPR132",1,"bm_dag_slide2",444,TRUE,21,50
+"slide2","Macrophage","Macrophage","ADGRE1",1,"bm_dag_slide2",445,TRUE,12,50
+"slide2","Macrophage","Macrophage","CD68",1,"bm_dag_slide2",446,TRUE,17,50
+"slide2","Macrophage","Macrophage","FCGR3B",-1,"bm_dag_slide2",448,TRUE,18,50
+"slide2","Platelet","Platelet","CD46",1,"bm_dag_slide2",449,TRUE,24,50
+"slide2","Platelet","Platelet","CD109",1,"bm_dag_slide2",450,TRUE,21,50
+"slide2","Platelet","Platelet","PPBP",1,"bm_dag_slide2",451,TRUE,13,50
+"slide2","Platelet","Platelet","GP1BB",1,"bm_dag_slide2",452,FALSE,NA,NA
+"slide2","Platelet","Platelet","NRGN",1,"bm_dag_slide2",453,TRUE,17,50
+"slide2","Platelet","Platelet","PF4",1,"bm_dag_slide2",454,TRUE,13,50
+"slide2","Erythrocyte","Erythrocyte","HBB",1,"bm_dag_slide2",455,TRUE,23,50
+"slide2","Erythrocyte","Erythrocyte","TFRC",1,"bm_dag_slide2",456,TRUE,23,50
+"slide2","Erythrocyte","Erythrocyte","UBE2O",1,"bm_dag_slide2",457,TRUE,21,50
+"slide2","Erythrocyte","Erythrocyte","SLC11A2",1,"bm_dag_slide2",458,TRUE,19,50
+"slide2","Erythrocyte","Erythrocyte","PTPRC",-1,"bm_dag_slide2",459,TRUE,24,50
+"slide2","Classical_Monocyte","Classical Monocyte","CD163",1,"bm_dag_slide2",460,TRUE,12,50
+"slide2","Classical_Monocyte","Classical Monocyte","SELE",1,"bm_dag_slide2",461,TRUE,16,50
+"slide2","Classical_Monocyte","Classical Monocyte","FCGR2B",1,"bm_dag_slide2",462,TRUE,15,50
+"slide2","Classical_Monocyte","Classical Monocyte","IL1RN",1,"bm_dag_slide2",463,TRUE,15,50
+"slide2","Classical_Monocyte","Classical Monocyte","CEBPB",1,"bm_dag_slide2",464,TRUE,24,50
+"slide2","Classical_Monocyte","Classical Monocyte","CD14",1,"bm_dag_slide2",465,TRUE,17,50
+"slide2","Classical_Monocyte","Classical Monocyte","LYZ",1,"bm_dag_slide2",466,TRUE,23,50
+"slide2","Classical_Monocyte","Classical Monocyte","VCAN",1,"bm_dag_slide2",467,TRUE,24,50
+"slide2","Classical_Monocyte","Classical Monocyte","FCN1",1,"bm_dag_slide2",468,TRUE,20,50
+"slide2","Classical_Monocyte","Classical Monocyte","CD68",1,"bm_dag_slide2",469,TRUE,17,50
+"slide2","Classical_Monocyte","Classical Monocyte","SELL",1,"bm_dag_slide2",470,TRUE,21,50
+"slide2","Classical_Monocyte","Classical Monocyte","CCR2",1,"bm_dag_slide2",471,TRUE,13,50
+"slide2","Classical_Monocyte","Classical Monocyte","S100A8",1,"bm_dag_slide2",472,TRUE,24,50
+"slide2","Classical_Monocyte","Classical Monocyte","S100A9",1,"bm_dag_slide2",473,TRUE,24,50
+"slide2","Classical_Monocyte","Classical Monocyte","CD1C",-1,"bm_dag_slide2",474,TRUE,9,50
+"slide2","Classical_Monocyte","Classical Monocyte","NCAM1",-1,"bm_dag_slide2",475,TRUE,22,50
+"slide2","Nonclassical_Monocyte","Nonclassical Monocyte","CD163",1,"bm_dag_slide2",477,TRUE,12,50
+"slide2","Nonclassical_Monocyte","Nonclassical Monocyte","SELE",1,"bm_dag_slide2",478,TRUE,16,50
+"slide2","Nonclassical_Monocyte","Nonclassical Monocyte","FCGR2B",1,"bm_dag_slide2",479,TRUE,15,50
+"slide2","Nonclassical_Monocyte","Nonclassical Monocyte","IL1RN",1,"bm_dag_slide2",480,TRUE,15,50
+"slide2","Nonclassical_Monocyte","Nonclassical Monocyte","CEBPB",1,"bm_dag_slide2",481,TRUE,24,50
+"slide2","Nonclassical_Monocyte","Nonclassical Monocyte","CD14",1,"bm_dag_slide2",482,TRUE,17,50
+"slide2","Nonclassical_Monocyte","Nonclassical Monocyte","LYZ",1,"bm_dag_slide2",483,TRUE,23,50
+"slide2","Nonclassical_Monocyte","Nonclassical Monocyte","VCAN",1,"bm_dag_slide2",484,TRUE,24,50
+"slide2","Nonclassical_Monocyte","Nonclassical Monocyte","FCN1",1,"bm_dag_slide2",485,TRUE,20,50
+"slide2","Nonclassical_Monocyte","Nonclassical Monocyte","CD68",1,"bm_dag_slide2",486,TRUE,17,50
+"slide2","Nonclassical_Monocyte","Nonclassical Monocyte","FCGR3A",1,"bm_dag_slide2",487,TRUE,13,50
+"slide2","Nonclassical_Monocyte","Nonclassical Monocyte","LST1",1,"bm_dag_slide2",488,TRUE,22,50
+"slide2","Nonclassical_Monocyte","Nonclassical Monocyte","CX3CR1",1,"bm_dag_slide2",489,TRUE,10,50
+"slide2","Nonclassical_Monocyte","Nonclassical Monocyte","CD1C",-1,"bm_dag_slide2",490,TRUE,9,50
+"slide2","Nonclassical_Monocyte","Nonclassical Monocyte","NCAM1",-1,"bm_dag_slide2",491,TRUE,22,50
+"slide2","B_cell","B cell","MS4A1",1,"bm_dag_slide2",493,TRUE,15,50
+"slide2","B_cell","B cell","CD79A",1,"bm_dag_slide2",494,TRUE,21,50
+"slide2","B_cell","B cell","IGHM",1,"bm_dag_slide2",495,TRUE,23,50
+"slide2","B_cell","B cell","CD19",1,"bm_dag_slide2",496,TRUE,13,50
+"slide2","B_cell","B cell","FCER2",1,"bm_dag_slide2",497,TRUE,13,50
+"slide2","B_cell","B cell","PAX5",1,"bm_dag_slide2",498,TRUE,18,50
+"slide2","B_cell","B cell","CR2",1,"bm_dag_slide2",499,TRUE,10,50
+"slide2","B_cell","B cell","IGHD",1,"bm_dag_slide2",500,TRUE,22,50
+"slide2","B_cell","B cell","BCL2",1,"bm_dag_slide2",501,TRUE,24,50
+"slide2","B_cell","B cell","CD3E",-1,"bm_dag_slide2",502,TRUE,17,50
+"slide2","B_cell","B cell","MPO",-1,"bm_dag_slide2",503,TRUE,22,50
+"slide2","B_cell","B cell","LEF1",-1,"bm_dag_slide2",504,TRUE,21,50
+"slide2","Plasma_cell","Plasma cell","XBP1",1,"bm_dag_slide2",505,TRUE,24,50
+"slide2","Plasma_cell","Plasma cell","PRDM1",1,"bm_dag_slide2",506,TRUE,21,50
+"slide2","Plasma_cell","Plasma cell","JCHAIN",1,"bm_dag_slide2",507,TRUE,24,50
+"slide2","Plasma_cell","Plasma cell","CD9",1,"bm_dag_slide2",508,TRUE,23,50
+"slide2","Plasma_cell","Plasma cell","IGHG1",1,"bm_dag_slide2",509,TRUE,24,50
+"slide2","Plasma_cell","Plasma cell","IGHG2",1,"bm_dag_slide2",510,TRUE,23,50
+"slide2","Plasma_cell","Plasma cell","IGHG3",1,"bm_dag_slide2",511,TRUE,24,50
+"slide2","Plasma_cell","Plasma cell","IGHG4",1,"bm_dag_slide2",512,TRUE,23,50
+"slide2","Plasma_cell","Plasma cell","PAX5",-1,"bm_dag_slide2",513,TRUE,18,50
+"slide2","Plasma_cell","Plasma cell","MS4A1",-1,"bm_dag_slide2",514,TRUE,15,50
+"slide2","CD4_T_cell","CD4 T cell","CD3D",1,"t_cell_broad_categories",515,TRUE,18,50
+"slide2","CD4_T_cell","CD4 T cell","CD3E",1,"t_cell_broad_categories",516,TRUE,17,50
+"slide2","CD4_T_cell","CD4 T cell","CD4",1,"t_cell_broad_categories",517,TRUE,18,50
+"slide2","CD8_T_cell","CD8 T cell","CD3D",1,"t_cell_broad_categories",518,TRUE,18,50
+"slide2","CD8_T_cell","CD8 T cell","CD3E",1,"t_cell_broad_categories",519,TRUE,17,50
+"slide2","CD8_T_cell","CD8 T cell","CD8A",1,"t_cell_broad_categories",520,TRUE,15,50
+"slide2","CD8_T_cell","CD8 T cell","CD8B",1,"t_cell_broad_categories",521,TRUE,14,50
+"slide2","NKT_cell","NKT cell","CD3D",1,"t_cell_broad_categories",522,TRUE,18,50
+"slide2","NKT_cell","NKT cell","KLRB1",1,"t_cell_broad_categories",523,TRUE,16,50
+"slide2","NKT_cell","NKT cell","ZBTB16",1,"t_cell_broad_categories",524,TRUE,23,50
+"slide2","NKT_cell","NKT cell","NCR1",1,"t_cell_broad_categories",525,TRUE,13,50
+"slide2","NKT_cell","NKT cell","NCAM1",1,"t_cell_broad_categories",526,TRUE,22,50
+"slide2","NKT_cell","NKT cell","TRAV10",1,"t_cell_broad_categories",527,TRUE,2,50
+"slide2","NKT_cell","NKT cell","IL18R1",1,"t_cell_broad_categories",528,TRUE,18,50
+"slide2","NKT_cell","NKT cell","IL12RB2",1,"t_cell_broad_categories",529,TRUE,17,50

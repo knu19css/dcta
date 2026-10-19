@@ -1,0 +1,9 @@
+{
+  "files": {
+    "review_ko.md": "79793a49ff274ea8843039d569b4d9b10dac263b0c24ef73bf7cf0a4aa53a4ae",
+    "verification.json": "d8603bfc8d90623d5f99c3451360a88ea3367f08555a46dc37cd27247b130ebe",
+    "environment.csv": "9e2509ae43906e8ca221d1a5ff34ddd464709aded4fca6183d83d4334c1d0f17",
+    "baseline_sources.json": "29496e6a3f877d1639e73e7ba25b541d351723780d18c53fefbec70b3a55cd01"
+  },
+  "biological_annotation_accepted": false
+}

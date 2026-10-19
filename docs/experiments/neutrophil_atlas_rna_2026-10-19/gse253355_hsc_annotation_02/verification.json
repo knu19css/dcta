@@ -1,0 +1,56 @@
+{
+  "passed": 21,
+  "total": 21,
+  "checks": {
+    "1560_type_cluster_scores": true,
+    "all_82742_cells_retained": true,
+    "cluster_sizes_raw_reference": true,
+    "source_488_model_marker_rows": true,
+    "inactive_and_parent_excluded": true,
+    "all_saved_gene_means_match_raw": true,
+    "all_saved_detection_match_raw": true,
+    "global_gene_means_match_raw": true,
+    "all_bins_match_independent_global_means": true,
+    "controls_same_bin_no_marker": true,
+    "50_unique_controls_per_marker": true,
+    "seed_reproduces_all_controls": true,
+    "1560_positive_components_reconstructed": true,
+    "negative_components_reconstructed": true,
+    "1560_final_scores_reconstructed": true,
+    "broad_all_top_candidates": true,
+    "slide2_all_top_candidates": true,
+    "consensus_requires_both_single_tops": true,
+    "maturity_unvalidated_only_neutrophil_candidates": true,
+    "author_labels_posthoc_match_prior": true,
+    "old_six_stage_winner_preserved": true
+  },
+  "max_abs_error": {
+    "gene_mean": 2.0872e-14,
+    "detection": 0,
+    "global_mean": 5.2403e-14,
+    "positive": 2.2204e-15,
+    "negative": 7.9936e-15,
+    "score": 7.5495e-15
+  },
+  "note": "Numerical verification only; does not establish biological annotation accuracy.",
+  "integrity": {
+    "baseline_files_unchanged": 38,
+    "public_files_hash_verified": 17,
+    "output_files_hash_verified": 24
+  },
+  "biological_result": "Not accepted as final automatic annotation: major mismatches remain; HSC/MPP not resolved.",
+  "verified_output": "gse253355_hsc_annotation_02",
+  "display_revision": {
+    "numerical_files_byte_identical_to_independently_verified_01": [
+      "cluster_type_scores.csv",
+      "control_genes.csv",
+      "cluster_provisional_annotation.csv",
+      "cluster_candidates_calc.csv",
+      "aggregates.rds",
+      "panel_markers_used.csv",
+      "check_cell_level_recompute.csv"
+    ],
+    "public_files_hash_verified": 17,
+    "output_files_hash_verified": 24
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "target_repository": {
+    "url": "https://github.com/knu19css/dcta",
+    "visibility": "PUBLIC",
+    "confirmed_with": "gh repo view --json visibility,url,nameWithOwner"
+  },
+  "reference_RNA": {
+    "accession": "GSE294330",
+    "public_GEO_URL": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE294330"
+  },
+  "application_dataset": {
+    "name": "A Balanced Bone Marrow Reference Map of Hematopoietic Development",
+    "collection_id": "f6c50495-3361-40ed-a819-fb9644396ed9",
+    "collection_visibility": "PUBLIC",
+    "dataset_id": "cd2f23c1-aef1-48ae-8eb4-0bcf124e567d",
+    "cell_count": 263159,
+    "doi": "10.1158/2643-3230.BCD-24-0342",
+    "official_metadata_URL": "https://api.cellxgene.cziscience.com/curation/v1/collections/f6c50495-3361-40ed-a819-fb9644396ed9",
+    "public_H5AD_URL": "https://datasets.cellxgene.cziscience.com/2cf4ad28-177f-4326-ab49-c4cb012c295d.h5ad",
+    "local_project_provenance": "Original project docs/specs/2026-05-21-dcta-phase1-design.md section12 and docs/partial_branch_annotation.md identify the legacy filename hay_hca_source.h5ad as Zeng BoneMarrowMap, not Hay.",
+    "local_file_not_claimed_byte_identical_to_current_public_asset": true
+  },
+  "intended_payload": {
+    "included": "R implementation/tests/documentation, public-atlas gene signatures, cohort/cell-type aggregate summaries and non-identifying UMAP/bar-chart PNGs",
+    "excluded": "No H5AD/raw expression matrix, cell_id/barcodes, donor/sample/person identifiers, credentials, relay logs or cell-level evidence tables."
+  },
+  "exported_table_headers": {
+    "atlas_adjacent_changes.csv": [
+      "pair",
+      "direction",
+      "rank",
+      "ensg",
+      "symbol",
+      "median_diff",
+      "n_pairs",
+      "sign_agree",
+      "n_codes_high_tpm"
+    ],
+    "baseline_vs_atlas.tsv": [
+      "stage",
+      "baseline_panel_size",
+      "baseline_panel_genes",
+      "atlas_panel_size",
+      "atlas_panel_status",
+      "atlas_panel_genes",
+      "atlas_panel_in_target",
+      "shared_panel_genes",
+      "baseline_n_ge1",
+      "atlas_n_ge1",
+      "overlap_ge1",
+      "baseline_only_ge1",
+      "atlas_only_ge1",
+      "atlas_status_ge1",
+      "baseline_n_ge2",
+      "atlas_n_ge2",
+      "overlap_ge2",
+      "baseline_only_ge2",
+      "atlas_only_ge2",
+      "atlas_status_ge2",
+      "baseline_reach_all_edges",
+      "atlas_reach_all_edges",
+      "baseline_reach_same_block",
+      "atlas_reach_same_block",
+      "note"
+    ],
+    "posthoc_expression_summary.tsv": [
+      "author_label",
+      "n_cells",
+      "marker_Myeloblast_mean_log",
+      "marker_Myeloblast_frac_detected",
+      "marker_PM_mean_log",
+      "marker_PM_frac_detected",
+      "marker_MY_mean_log",
+      "marker_MY_frac_detected",
+      "marker_MM_mean_log",
+      "marker_MM_frac_detected",
+      "marker_BN_mean_log",
+      "marker_BN_frac_detected",
+      "marker_SN_mean_log",
+      "marker_SN_frac_detected",
+      "note"
+    ],
+    "atlas_stage_markers.csv": [
+      "stage",
+      "rank",
+      "ensg",
+      "symbol",
+      "min_adjacent_effect",
+      "effect_vs_prev",
+      "effect_vs_next"
+    ],
+    "atlas_parameters.csv": [
+      "name",
+      "value"
+    ],
+    "atlas_ordered_connections.tsv": [
+      "criterion",
+      "graph",
+      "stage",
+      "n_cells",
+      "n_components",
+      "n_reachable_cells",
+      "n_reachable_components",
+      "n_reappearing_cells",
+      "reached",
+      "stage_status",
+      "first_break",
+      "break_kind"
+    ],
+    "atlas_detection_counts.tsv": [
+      "stage",
+      "n_panel_genes",
+      "n_observed_genes",
+      "observed_genes",
+      "status_ge1",
+      "n_cells_ge1",
+      "status_ge2",
+      "n_cells_ge2",
+      "missing_genes",
+      "panel_genes",
+      "panel_status"
+    ],
+    "atlas_panel_status.csv": [
+      "stage",
+      "neighbors",
+      "n_candidates",
+      "n_excluded_mapping",
+      "n_genes",
+      "status"
+    ]
+  }
+}

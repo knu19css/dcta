@@ -94,8 +94,8 @@ atlas_cl_draw_stage <- function(path, U, cluster, S, peaks, rp, cand, partition,
       ttl <- sprintf(if (ko) "%s 패널 · 군집 평균" else "%s panel · cluster mean", s)
       if (pk$peak_status %in% c("peak", "tied")) {
         pc <- strsplit(pk$peak_clusters, "|", fixed = TRUE)[[1]]; j <- match(pc, rp$cluster)
-        graphics::points(rp$x[j], rp$y[j], pch = 21, cex = 3.6, lwd = 3.6, col = "black", bg = colv(S[pc, s]))
-        lab <- sprintf(if (ko) "군집 %s · n %s" else "cluster %s · n %s", pc, .nso_fmt_n(rp$n_cells[j])); cx <- 1.05
+        graphics::points(rp$x[j], rp$y[j], pch = 21, cex = 4.4, lwd = 4, col = "black", bg = colv(S[pc, s]))
+        lab <- sprintf(if (ko) "군집 %s · n %s" else "cluster %s · n %s", pc, .nso_fmt_n(rp$n_cells[j])); cx <- 1.5                         # attempt cluster_view_01 그림 검토: 1.05 는 작았다
         w <- graphics::strwidth(lab, cex = cx) * 1.15 + 0.01 * diff(b$xlim); h <- graphics::strheight(lab, cex = cx) * 1.8
         right <- rp$x[j] + 0.03 * diff(b$xlim) + w <= b$xlim[2]; lx <- ifelse(right, rp$x[j] + 0.03 * diff(b$xlim) + w / 2, rp$x[j] - 0.03 * diff(b$xlim) - w / 2)
         ly <- rp$y[j] + (seq_along(j) - 1) * 1.3 * h
@@ -110,15 +110,15 @@ atlas_cl_draw_stage <- function(path, U, cluster, S, peaks, rp, cand, partition,
         sub1 <- if (pk$peak_status == "all_zero") (if (ko) "모든 군집 점수 0 (미검출)" else "all cluster scores are 0 (not detected)") else (if (ko) "판정불가 (패널 없음)" else "unavailable (no panel)")
         sub2 <- sprintf(if (ko) "이 단계가 1 위 후보인 군집 %d 개" else "clusters with this stage as top: %d", pk$n_clusters_with_stage_top)
       }
-      graphics::box(col = "grey60"); graphics::title(main = ttl, cex.main = 1.95, line = 4.1); graphics::mtext(sub1, side = 3, line = 2.2, cex = 1.05); graphics::mtext(sub2, side = 3, line = 0.7, cex = 1.0)
+      graphics::box(col = "grey60"); graphics::title(main = ttl, cex.main = 1.95, line = 4.4); graphics::mtext(sub1, side = 3, line = 2.35, cex = 1.15); graphics::mtext(sub2, side = 3, line = 0.75, cex = 1.1)
       note(s, "title", ttl); note(s, "sub1", sub1); note(s, "sub2", sub2) }
     graphics::par(mar = c(1.6, 22, 1.2, 22)); graphics::plot.new(); graphics::plot.window(c(0, 1), c(0, 1))
     xs <- seq(0, 1, length.out = 101); graphics::rect(xs[-101], 0.25, xs[-1], 0.95, col = NSO_SEQ_COLS, border = NA); graphics::rect(0, 0.25, 1, 0.95, border = "grey40")
-    graphics::rect(-0.09, 0.25, -0.03, 0.95, col = NSO_ZERO_COL, border = "grey40", xpd = NA); graphics::text(-0.06, 0.6, if (ko) "0" else "0", pos = 2, xpd = NA, cex = 1.1)
-    graphics::text(c(0, 0.5, 1), 0.05, .nso_fmt(c(0, vmax / 2, vmax), ko, 3), xpd = NA, cex = 1.1)
+    graphics::rect(-0.09, 0.25, -0.03, 0.95, col = NSO_ZERO_COL, border = "grey40", xpd = NA); graphics::text(-0.06, 0.6, "0", xpd = NA, cex = 1.5)
+    graphics::text(c(0, 0.5, 1), 0.05, .nso_fmt(c(0, vmax / 2, vmax), ko, 3), xpd = NA, cex = 1.5)
     cb <- if (ko) sprintf("색 = 군집 평균 점수 (군집 안 모든 세포에 같은 색), 6 패널 같은 척도 0 – %s (최댓값)", .nso_fmt(vmax, ko, 3))
           else sprintf("colour = cluster-mean score (same colour for every cell of a cluster), one scale for all 6 panels 0 - %s (maximum)", .nso_fmt(vmax, ko, 3))
-    graphics::mtext(cb, side = 3, line = 0.1, cex = 1.08); note("colorbar", "scale", cb)
+    graphics::mtext(cb, side = 3, line = 0.1, cex = 1.2); note("colorbar", "scale", cb)
     main <- if (ko) sprintf("atlas 6 단계 패널의 군집 평균 점수 (%s) — 단계별 최고 군집 표시, 같은 원 UMAP", partition)
             else sprintf("Cluster-mean scores of the 6 atlas stage panels (%s) - stage peak clusters marked, same original UMAP", partition)
     graphics::mtext(main, side = 3, outer = TRUE, line = 1.3, cex = 2.0, font = 2); note("figure", "title", main)

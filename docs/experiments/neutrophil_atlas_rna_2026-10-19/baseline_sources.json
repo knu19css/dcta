@@ -1,0 +1,112 @@
+{
+  "old_worktree": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16",
+  "base_git_commit": "a88524e7826486cce6702a1ea5c525284482d1c4",
+  "reason": "Old NSO sources were untracked; exact byte copies preserve pre-atlas baseline on the new branch only.",
+  "files": [
+    {
+      "path": "R/branch_biology/05_cell_trajectory_io.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/R/branch_biology/05_cell_trajectory_io.R",
+      "sha256": "7fc1047336cfeaad56ad51aec05ea65e6878328980ccc53195be4010c0ff8f7b"
+    },
+    {
+      "path": "R/branch_biology/17_marker_donor_uncertainty.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/R/branch_biology/17_marker_donor_uncertainty.R",
+      "sha256": "c8533aed39ae7eda35547a8e124c0e7bc93dc38babcfd61ddc2d268475bb0381"
+    },
+    {
+      "path": "R/branch_biology/18_run_marker_donor_uncertainty.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/R/branch_biology/18_run_marker_donor_uncertainty.R",
+      "sha256": "2cbdf2fff2619b7e95413abb9b130a31eb20e16e87cdc24a36bf5fefd91b8729"
+    },
+    {
+      "path": "R/branch_biology/23_nrv_reference.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/R/branch_biology/23_nrv_reference.R",
+      "sha256": "7f88db6ca5f37e06b5c51682805ba635e7d41bf81ac30cb8eb4a9acc7438cd27"
+    },
+    {
+      "path": "R/branch_biology/24_nrv_structure.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/R/branch_biology/24_nrv_structure.R",
+      "sha256": "c7425be4c871e9b23260fbef84ad633be280cc3fd3318d3c1b936ecbd94552fa"
+    },
+    {
+      "path": "R/branch_biology/25_nrv_expression.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/R/branch_biology/25_nrv_expression.R",
+      "sha256": "fa15caf97b540130f237357dff097b45efed803bf2329c1eb982ecf04a367481"
+    },
+    {
+      "path": "R/branch_biology/26_nrv_evaluate.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/R/branch_biology/26_nrv_evaluate.R",
+      "sha256": "3faa6b921ab5b353a0a292256e7bfc51ec479453cb5169a66238fea744add9c9"
+    },
+    {
+      "path": "R/branch_biology/27_run_nrv.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/R/branch_biology/27_run_nrv.R",
+      "sha256": "82fd3a20ef77d826cbba245844760bf3111e4ec6bc5de90d1b26d1b50d3e4edb"
+    },
+    {
+      "path": "R/branch_biology/34_mbv_umap_overlay.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/R/branch_biology/34_mbv_umap_overlay.R",
+      "sha256": "7b94f93c8f5dd34595db39b9d5d66fa1d9a1f16123184fe8b9107eb9736c1c29"
+    },
+    {
+      "path": "R/branch_biology/36_mbv_readable_stage_zoom.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/R/branch_biology/36_mbv_readable_stage_zoom.R",
+      "sha256": "882f2a906e481c1fae477be43855453052d632a82bb8feb49955f9dd67905d63"
+    },
+    {
+      "path": "R/branch_biology/37_mbv_two_panel_compare.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/R/branch_biology/37_mbv_two_panel_compare.R",
+      "sha256": "1a9e1db9233e0e3b3d0fc0fa58e83033910bd92b6c0403293162637c6ef178dc"
+    },
+    {
+      "path": "R/branch_biology/46_run_mbv_mono_quant.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/R/branch_biology/46_run_mbv_mono_quant.R",
+      "sha256": "e96fe03170742ff6f2aee73f94ce715ba6aa18efe07033699797edfa8f53183a"
+    },
+    {
+      "path": "R/branch_biology/50_mbv_mono_phase_view.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/R/branch_biology/50_mbv_mono_phase_view.R",
+      "sha256": "e83b4c5dc99a2c0fb11a9c531b1ff1a9b5d988e971ad8e21930db55d6be1bf15"
+    },
+    {
+      "path": "R/branch_biology/58_nso_inputs.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/R/branch_biology/58_nso_inputs.R",
+      "sha256": "52aa3aa1eaddf23e8647c8bbecd8bbbc0e9b2c562617527671562d0fbe9bc299"
+    },
+    {
+      "path": "R/branch_biology/59_nso_evidence.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/R/branch_biology/59_nso_evidence.R",
+      "sha256": "8de3b3e7658fe30e13906575eb867bc649eb2e4138c40b558747e2d4ca746aaf"
+    },
+    {
+      "path": "R/branch_biology/60_run_nso.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/R/branch_biology/60_run_nso.R",
+      "sha256": "83401591df0aef856143826edd5d5428bf5dec66039b1fdbe8ac5b22964a5aa6"
+    },
+    {
+      "path": "R/branch_biology/61_nso_view.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/R/branch_biology/61_nso_view.R",
+      "sha256": "9b4171e5145039d8aeeb2b2dc8827d2f795a3a2ba51865edf5ad911d42b2b985"
+    },
+    {
+      "path": "R/branch_biology/62_nso_connectivity_audit.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/R/branch_biology/62_nso_connectivity_audit.R",
+      "sha256": "d5e1259b039d1d9a7fe18fb72a7ec18d0e7e97884f99b7376a599b26d2e945ec"
+    },
+    {
+      "path": "tests/R/test_neut_stage_observation.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/tests/R/test_neut_stage_observation.R",
+      "sha256": "6219c74de0343e55d479af92824556bac40ea548d3adadf099a03514ca7353ca"
+    },
+    {
+      "path": "tests/R/test_nso_connectivity_audit.R",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/tests/R/test_nso_connectivity_audit.R",
+      "sha256": "27a19cc8fbeca9d93af957d67acc486b1f22a0c41f52de679fe83b47c119033b"
+    },
+    {
+      "path": "README_neut_stage_observation_ko.md",
+      "source": "/Users/edemhw/Honglab/CS/outputs/dcta_neighbor_state_route_2026-10-16/README_neut_stage_observation_ko.md",
+      "sha256": "4c7e1a1002ec906c8bfe536b0f658c46b52623b1bf224ec5397fc01efae92fa9"
+    }
+  ]
+}

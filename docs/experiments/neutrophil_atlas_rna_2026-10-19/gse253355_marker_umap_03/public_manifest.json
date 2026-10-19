@@ -1,0 +1,25 @@
+{
+  "source_output": "/Users/edemhw/Honglab/CS/outputs/dcta_neutrophil_atlas_rna_2026-10-19/results/neutrophil_atlas_rna_2026-10-19/gse253355_marker_umap_03",
+  "inputs": {
+    "umap": "1f91bc928f06b736980bd56e18a595346ff1ddc430a96a021e7537149ab3001f",
+    "lossless": "c423ecfe33be76951acfc3e71ea0173e949c908d289839a19828e48b3d6bb215",
+    "object": "83fd17576c48e710e5a03a60be485beedbc088f82c6a97fa79d7b80d5367186a",
+    "calc_manifest": "5842fd04cf6e0fa943538ac671c11bbc778e4439db71662f38e4fd46871c6955",
+    "panels": "e1157ba4a874288b4b9004b8f6c6a83b6487997a76db8e78f9e2794590c80268",
+    "hgnc": "12363916be36f8f6f91879b0faade4eeaac973722de7136ec61329b77f2c2f91"
+  },
+  "files": {
+    "summary_ko.md": "36b5ab860016019b7ec8cc11865664b5585f7af859900a2517b38f0d6c3bfe84",
+    "cluster_marker_summary.csv": "bf11b9d7b4e2c4222174ce227fba71d99f6a3491efa60ccd8d36a9d2833c607a",
+    "cluster_stage_gene_contributions.csv": "ce3e1a8873444954b6079c2c7e2eafce027dc161bcbcb798590d2bdb1a6c804d",
+    "focus_cluster_top_genes.csv": "27c3f061aa135d4da1ef9bdce5640bb1193822bbbf3831ae8428a71cda4472c8",
+    "panel_gene_diagnostics.csv": "352ee59bf6c19ac7b7ce6b105fb89d9415a7d4c3b1a231a58f5593bb816a62ac",
+    "contribution_check.csv": "76abdb7f34b3335ff8af3b23e8efac778c2ee2860d199e59686b67e4e67afa84",
+    "posthoc_author_composition.csv": "9a1145b8d3d7518712bf01c99f13612a88967b659871ca0a865d99dcce07248a",
+    "checks.csv": "7c1d9ed827d586e596a9331138c2f33d3112437cbb68cd407127df34c8f62110",
+    "figure_text.csv": "10e7c9e01bc2589966d3f27de60c36c4d7453c717e3f46e5f3f73b02c9fa16b3",
+    "figures/fig1_umap_full_author_vs_marker.png": "e85965c12e4de754ab79b9b4b337d7306a8bf663e6c2c8f452545c4732b604ef",
+    "figures/fig2_umap_lineage_author_vs_marker.png": "02517bff274d06043ed4c495f5fbbdf02e3c13ee840c9281b1e6f5a16f7750d5",
+    "figures/fig3_cluster_stage_heatmap.png": "561528919d6395733a7a69ce82d8d42906ca0c75bb893de96ae07efaee094420"
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "output": "results/neutrophil_atlas_rna_2026-10-19/gse253355_marker_umap_03",
+  "checks": [
+    {
+      "check": "all_gene_rows_exact_keys",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "independent_raw_gene_values",
+      "pass": true,
+      "detail": "mean 4.440892098500626e-16; detection 1.110223024625157e-16; contribution 2.775557561562891e-17"
+    },
+    {
+      "check": "missing_gene_distinguished",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "all_clusters_same",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "winners_same",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "full_and_subset_counts",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_0_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_1_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_2_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_3_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_4_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_5_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_6_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_7_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_8_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_9_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_10_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_11_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_12_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_13_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_14_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_15_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_16_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_17_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_18_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_19_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_20_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_21_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_22_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_23_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_24_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "cluster_25_author_and_subset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "producer_checks_pass",
+      "pass": true,
+      "detail": "13 / 13"
+    }
+  ],
+  "independent_reference": "R raw-count reconstruction; no production score code used",
+  "score_reconstruction_max_error": 1.3322676295501878e-15
+}

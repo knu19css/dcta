@@ -1,0 +1,46 @@
+{
+  "checked_by": "Codex",
+  "scope": "gse253355_umap_03 full and subset display",
+  "output_checks": {
+    "checks": {
+      "all_82742_cells": true,
+      "cell_ids_unique": true,
+      "umap_dims_finite": true,
+      "coordinate_ids": true,
+      "original_cluster_ids": true,
+      "author_annotation_exact": true,
+      "subset_labels_exact": true,
+      "subset_mask_exact": true,
+      "subset_counts_exact": true,
+      "uwot_version": true,
+      "umap_seed": true,
+      "umap_parameters": true,
+      "not_drl_coordinates": true,
+      "csv_ids": true,
+      "csv_coordinates": true,
+      "csv_subset_coordinates": true,
+      "full_label_counts": true,
+      "palette_defined": true,
+      "output_hashes": true,
+      "public_copy_fig_umap_full_author.png": true,
+      "public_copy_fig_umap_hsc_neutrophil_monocyte.png": true,
+      "preexisting_sources_and_tables_unchanged": true,
+      "old_lossless_unchanged": true,
+      "old_calc_manifest_unchanged": true,
+      "raw_source_unchanged": true,
+      "source_snapshot_matches": true,
+      "display_revision_coordinates_identical": true
+    },
+    "passed": 27,
+    "total": 27,
+    "n_full": 82742,
+    "n_subset": 18892
+  },
+  "source_sha256": {
+    "R/branch_biology/73_gse253355_umap.R": "2734738a1d26a247bbbcaf34a8fd6cebbddd2196ad455c965088ffb3fe6a85fe",
+    "tests/R/test_gse253355_umap.R": "05e9e4e47526143e04eb35d316a02de237439a14c351dd5bde51d9d3d38b9c7c"
+  },
+  "visual_review": "Both final PNGs reviewed; full image unchanged from reviewed 02. Same palette; all points preserved; labels readable.",
+  "environment_change": "User approved uwot and required new dependencies only. Ten new packages added, all old versions preserved; renv consistent.",
+  "figure_meaning": "New UMAP from stored transcriptome PCA. Author annotations are display-only. Subset retains full coordinates; no fate or differentiation claim."
+}

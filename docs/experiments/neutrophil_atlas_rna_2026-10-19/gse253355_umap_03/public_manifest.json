@@ -1,0 +1,11 @@
+{
+  "source_output": "/Users/edemhw/Honglab/CS/outputs/dcta_neutrophil_atlas_rna_2026-10-19/results/neutrophil_atlas_rna_2026-10-19/gse253355_umap_03",
+  "files": {
+    "fig_umap_full_author.png": "b00f841444987f7340c88885e4fca9728b027461a5d40398f7ad9b587fc76b29",
+    "fig_umap_hsc_neutrophil_monocyte.png": "2767961bc04ddbc33552dd6dd4a490138be3c83e2398666dbdeba3a8f4193984",
+    "summary_ko.md": "9ac1072c748e711c2f6d6a747a2cf784347ea87e4b2a70ba973cec2dea176f1a",
+    "annotation_counts.csv": "53a0883a2bf847b772c4daea4f36219c1f05066e9f23e6fbef7771aba2afca65",
+    "verification.json": "b25c8a0a64d3837daf538e256859434bbd947a3be355139102a32930571f4673",
+    "environment.csv": "be931333a392961a744226f512f8aea5b125554e5d330091ff3478407c4ce92e"
+  }
+}

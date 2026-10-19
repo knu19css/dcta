@@ -1,0 +1,49 @@
+{
+  "dataset": "GSE253355",
+  "run": "gse253355_02",
+  "input_sha256": "83fd17576c48e710e5a03a60be485beedbc088f82c6a97fa79d7b80d5367186a",
+  "input_provenance": "Local derived author Seurat object; byte identity to the GEO original was not verified.",
+  "independent_checks": 127,
+  "unit_tests": {
+    "tests": 34,
+    "expectations": 357,
+    "failed": 0
+  },
+  "omitted_from_git": [
+    "raw and derived cell-level data",
+    "large vector PDFs (local only)",
+    "initial run gse253355_01 (local only)",
+    "bridge logs"
+  ],
+  "files": {
+    "R/branch_biology/68_gse253355_object.R": "460dd1f1ecab6988e2a3e727f99e1add63a2766a1f264b97daa30b1ba2a2702c",
+    "R/branch_biology/69_gse253355_scores.R": "0132e942ee8688f6edde8e2cad0472ec42afa311fca39e955418f2cd44d6d640",
+    "R/branch_biology/70_gse253355_graph.R": "13bbe6662f59b1ab3c07508fdf61f73b469a0748fccc7c685ce85c5e454e9173",
+    "R/branch_biology/71_gse253355_view.R": "ccd97958be3dd2e07721ddf97bfbd2bf1d5bd821b4095d0f19562368b7330585",
+    "R/branch_biology/72_run_gse253355.R": "ec7a87d3969ffc83373b420ed36ac6445120759e7d8da92d24ac155a9a4bb767",
+    "tests/R/test_gse253355_application.R": "8143f1816d03e77392f5f7d2db474001c08366aa99c78bf3afe117b61016e45e",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/cluster_candidates.csv": "73d92a6a4c18160eb46a49b5a6bef77b92511179b076f453affac73a44a46a95",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/cluster_edges.csv": "adb6475d7ea960f448398395b69a1b9269863094a7ff4bff24888c993684e450",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/cluster_scores.csv": "d7bc1b47949f0af8a448841d2c4114ecf828b1cf0fcb4f0ec4f795e1f8bdc922",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/environment.csv": "9ae93b74ae49e496ba01e95c3eba817101fb564553e8d735e747b85843da8fcc",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/figure_text.csv": "18a0c7eeff5951cb044f26b8394a5a304c09831d623cad3a1f34506e7efe57e5",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/figures/fig1_umap_author_vs_candidate.png": "02274e4943fdabd35cfb164bea9283ac4e0997bfe85b1906e9c722bc7d1423fc",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/figures/fig2_granulocyte_zoom_heatmap.png": "837d36b50594fdabf6ae198c859bc998afdaafd41e43ad7bf218fd8fef4423c9",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/graph_checks.csv": "2329d01ad5eb575b8d45c343674b838e955c3cea746a88508f17ab55b0acffd1",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/new_graph_parameters.csv": "a46d11092ae04e656f602f4d22ce9f1bf70d0c8c474ffca73a618bb21de3a766",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/object_inspection.json": "9baa23af7e7208fc5768540397b2087c8587f2e96f9f13c671e8f93fb44bb6a8",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/object_metadata_columns.csv": "14d3ced090f500002ef0621f04f598348b815c1accf07304a8d66adc09738608",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/panel_gene_detection.csv": "57a478d992e33fbcaeee22f10a66f39fe4d034d43cc50530c233389cbbb9343f",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/panel_gene_map.csv": "584eee1370e4489063f24874781a79271e223f54106727aebce37c5f1d760e15",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/peak_paths.csv": "1e4a702823e9f0470079d8f87170398f94073f5a2480c7cc144470175484c948",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/posthoc_author_composition.csv": "49cf578a25e6a80086447808be6b493683e521b590b6b9ac3b9dcddf2e0deebd",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/posthoc_donor_composition.csv": "08a8e92a058669452691245fdb966ad368ffd9e709bb13b7aab085d5db06cd35",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/posthoc_mature_neutrophil.csv": "929b15e3a8d132f8ac73380b66c1eac580b06ecf5ca0f6e83285c6d850aa0de7",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/posthoc_peak_path_identities.csv": "a67efde18c5482bb4d6e224255c8cfabba68fe9d6be45a88e07a9c40a287a8f9",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/posthoc_peak_paths_granulocyte.csv": "3ee57a61932c93754166052f21f65ef9ad9e71743e49fc3495bfb7ea40bfee1b",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/stage_peak_clusters.csv": "c2c2b55b75426cf05c15e1437887f3825c1d95b7ead7f0280c5f79f8a0906084",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_02/summary_ko.md": "5c153cbadfa4edcf90484cda72fe9f8d57adb40ad8d83d2df1fe3782d7fc40f4",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/mature_dataset_selection_ko.md": "4c004813c23fd3f61e71fc62de7da36625544045a988c8daa0ecfdba2e9d97b4",
+    "docs/experiments/neutrophil_atlas_rna_2026-10-19/gse253355_verification.csv": "9a106a12d20c9998aeda48adae9f3a0cfcef09ba756ccd5288bf42ca32020cb1"
+  }
+}

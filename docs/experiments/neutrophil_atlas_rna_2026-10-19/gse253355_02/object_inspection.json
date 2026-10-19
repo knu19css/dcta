@@ -1,0 +1,37 @@
+{
+  "input": "S2_steady_GSE253355.local_copy.rds",
+  "sha256": "83fd17576c48e710e5a03a60be485beedbc088f82c6a97fa79d7b80d5367186a",
+  "read_format": "gzip",
+  "object_class": "Seurat (SeuratObject)",
+  "object_slots": ["assays", "meta.data", "active.assay", "active.ident", "graphs", "neighbors", "reductions", "images", "project.name", "misc", "version", "commands", "tools"],
+  "version": "5.4.0",
+  "project_name": "SB62_NBM",
+  "active_assay": "RNA",
+  "n_cells": 82742,
+  "assays": [
+    {
+      "name": "RNA",
+      "class": "Assay (SeuratObject)",
+      "slots": ["counts", "data", "scale.data", "assay.orig", "var.features", "meta.features", "misc", "key"],
+      "layers": [
+        {
+          "name": "counts",
+          "class": "dgCMatrix (Matrix)",
+          "dim": [29452, 82742]
+        },
+        {
+          "name": "data",
+          "class": "dgCMatrix (Matrix)",
+          "dim": [29452, 82742]
+        },
+        {
+          "name": "scale.data",
+          "class": "matrix",
+          "dim": [0, 0]
+        }
+      ]
+    }
+  ],
+  "reductions": [],
+  "graphs": []
+}

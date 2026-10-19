@@ -1,0 +1,105 @@
+{
+  "result": "cluster_view_01",
+  "clusters": 143,
+  "cluster_stage_rows": 858,
+  "max_numeric_errors": {
+    "score": 4.66293670342566e-15,
+    "equal_block_score": 4.88498130835069e-15,
+    "frac_ge1": 6.66133814775094e-16,
+    "frac_ge2": 4.9960036108132e-16,
+    "n_cells": 0,
+    "n_blocks": 0,
+    "n_eligible_blocks": 0
+  },
+  "candidate_top_second_margin_all_match": true,
+  "stage_peaks_all_match": true,
+  "new_manifest_files_verified": 15,
+  "old_attempt_manifest_files_preserved": 40,
+  "checks_all_pass": true,
+  "output_manifest_sha256": "4090c3550c5a205cd429861d790c5f4448cd99e15aed032815bb75e276d037b1",
+  "winner_counts": [
+    {
+      "Var1": "p51",
+      "Var2": "BN",
+      "Freq": 21
+    },
+    {
+      "Var1": "p92",
+      "Var2": "BN",
+      "Freq": 35
+    },
+    {
+      "Var1": "p51",
+      "Var2": "Myeloblast",
+      "Freq": 21
+    },
+    {
+      "Var1": "p92",
+      "Var2": "Myeloblast",
+      "Freq": 34
+    },
+    {
+      "Var1": "p51",
+      "Var2": "PM",
+      "Freq": 4
+    },
+    {
+      "Var1": "p92",
+      "Var2": "PM",
+      "Freq": 8
+    },
+    {
+      "Var1": "p51",
+      "Var2": "SN",
+      "Freq": 5
+    },
+    {
+      "Var1": "p92",
+      "Var2": "SN",
+      "Freq": 15
+    }
+  ],
+  "equal_block_agreement": [
+    {
+      "Var1": "p51",
+      "Var2": "different_top",
+      "Freq": 5
+    },
+    {
+      "Var1": "p92",
+      "Var2": "different_top",
+      "Freq": 4
+    },
+    {
+      "Var1": "p51",
+      "Var2": "equal_block_unavailable",
+      "Freq": 0
+    },
+    {
+      "Var1": "p92",
+      "Var2": "equal_block_unavailable",
+      "Freq": 1
+    },
+    {
+      "Var1": "p51",
+      "Var2": "same_top",
+      "Freq": 46
+    },
+    {
+      "Var1": "p92",
+      "Var2": "same_top",
+      "Freq": 87
+    }
+  ],
+  "tests": {
+    "suites": 3,
+    "tests": 21,
+    "expectations": 221,
+    "failures": 0,
+    "errors": 0,
+    "warnings": 0,
+    "skipped": 0
+  },
+  "plots_visually_inspected": 3,
+  "no_new_umap_clustering_or_graph": true
+}

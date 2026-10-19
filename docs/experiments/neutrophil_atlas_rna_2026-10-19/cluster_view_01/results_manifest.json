@@ -1,0 +1,50 @@
+{
+  "result_manifest_sha256": "4090c3550c5a205cd429861d790c5f4448cd99e15aed032815bb75e276d037b1",
+  "source_attempt_manifest_sha256": "3296af42a68671a01f0f87bdabaf78281e7aa47b349e27f822b7c607df31e635",
+  "files": [
+    {
+      "file": "cluster_scores.csv",
+      "source": "results/neutrophil_atlas_rna_2026-10-19/cluster_view_01/cluster_scores.csv",
+      "sha256": "e1870f00698f7c3e6c8a9c4422c58b9d16b3fc2c66f1a3ec8e7dd0b4f5f3f5b1",
+      "bytes": 120671
+    },
+    {
+      "file": "cluster_candidates.csv",
+      "source": "results/neutrophil_atlas_rna_2026-10-19/cluster_view_01/cluster_candidates.csv",
+      "sha256": "93329f0d32e97c10e26bb6e25f35dcb8cb27ea2c16d61fa14604445d48072858",
+      "bytes": 96111
+    },
+    {
+      "file": "stage_peak_clusters.csv",
+      "source": "results/neutrophil_atlas_rna_2026-10-19/cluster_view_01/stage_peak_clusters.csv",
+      "sha256": "dc0c2c8f7dad708269bb13fda8e1869b68fb024178f24d4db9f591f3f6b22b81",
+      "bytes": 3544
+    },
+    {
+      "file": "posthoc_cluster_author_context.csv",
+      "source": "results/neutrophil_atlas_rna_2026-10-19/cluster_view_01/posthoc_cluster_author_context.csv",
+      "sha256": "711c7e808d0b5e3e33e4bbaaaef76e0c68e75ea7defa979796a40eef0722d832",
+      "bytes": 37499
+    },
+    {
+      "file": "figA_cluster_top_candidate_umap.png",
+      "source": "results/neutrophil_atlas_rna_2026-10-19/cluster_view_01/figures/figA_cluster_top_candidate_umap.png",
+      "sha256": "cafe73936dad3339b649bc6c43b541b341a9d18f35c87609c818db9445ac6571",
+      "bytes": 1638313
+    },
+    {
+      "file": "figB_stage_cluster_scores_p92.png",
+      "source": "results/neutrophil_atlas_rna_2026-10-19/cluster_view_01/figures/figB_stage_cluster_scores_p92.png",
+      "sha256": "cec5b0fa526ea6908484f0173a1b72c160a1856e22b6becdeaa3b3a4a30c5d43",
+      "bytes": 2779197
+    },
+    {
+      "file": "figB_stage_cluster_scores_p51.png",
+      "source": "results/neutrophil_atlas_rna_2026-10-19/cluster_view_01/figures/figB_stage_cluster_scores_p51.png",
+      "sha256": "07a030b2ce1ed3b4de4b1275bcc0eba749bcc164d29d687bbe7d20fa030c0c12",
+      "bytes": 2821655
+    }
+  ],
+  "public_source_record": "../public_data_provenance.json",
+  "export_scope": "Only cluster-level aggregates and non-identifying UMAP PNGs from the documented public BoneMarrowMap data; no cell/donor/sample identifiers or raw matrices."
+}

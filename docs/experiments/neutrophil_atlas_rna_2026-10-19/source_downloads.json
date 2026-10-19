@@ -1,0 +1,42 @@
+{
+  "retrieved": "2026-10-19",
+  "paper_doi": "10.21203/rs.3.rs-6184761/v1",
+  "files": [
+    {
+      "name": "GSE294330_exp_mrn_tpm.csv.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE294nnn/GSE294330/suppl/GSE294330_exp_mrn_tpm.csv.gz",
+      "bytes": 8977075,
+      "sha256": "512ad89a2b60a6a535da9d830cb4741a73bc2d425c66d1ef659cd25c4e65631d"
+    },
+    {
+      "name": "GSE294330_exp_mrn_counts.csv.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE294nnn/GSE294330/suppl/GSE294330_exp_mrn_counts.csv.gz",
+      "bytes": 1793853,
+      "sha256": "5a48bc2219e18d2ce1e640842b61ccc9154edb5afd84d1498f405709410cff8f"
+    },
+    {
+      "name": "GSE294330_full.soft",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE294330&targ=all&form=text&view=full",
+      "bytes": 41152673,
+      "sha256": "1ab75c576c6f6baebccc64272291f512e4ef6472621f1bcb48e1050ee55d5e86"
+    },
+    {
+      "name": "MRN_PREP.html",
+      "url": "https://www.granulopoiesis.com/scripts/reports/data_prep/MRN_PREP.html",
+      "bytes": 3762170,
+      "sha256": "846caff814c12c9dc7d07dd0c9aaadcb0fc28c549c44316adf692d21f2090754"
+    },
+    {
+      "name": "atlas2025.pdf",
+      "url": "https://assets-eu.researchsquare.com/files/rs-6184761/v1/4e5156bd-1807-48be-a617-0d61eaa44dca.pdf",
+      "bytes": 16419847,
+      "sha256": "7c855492d4a90983ffe5a324fa6459f70f6ed2a6d2c815f4c688f36fbc8a21f6"
+    },
+    {
+      "name": "hgnc_complete_set.txt",
+      "url": "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt",
+      "bytes": 16982321,
+      "sha256": "12363916be36f8f6f91879b0faade4eeaac973722de7136ec61329b77f2c2f91"
+    }
+  ]
+}

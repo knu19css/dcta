@@ -1,0 +1,124 @@
+{
+  "result": "cluster_view_03",
+  "clusters": 143,
+  "cluster_stage_rows": 858,
+  "max_numeric_errors": {
+    "score": 4.66293670342566e-15,
+    "equal_block_score": 4.88498130835069e-15,
+    "frac_ge1": 6.66133814775094e-16,
+    "frac_ge2": 4.9960036108132e-16,
+    "n_cells": 0,
+    "n_blocks": 0,
+    "n_eligible_blocks": 0
+  },
+  "candidate_top_second_margin_all_match": true,
+  "stage_peaks_all_match": true,
+  "new_manifest_files_verified": 15,
+  "old_attempt_manifest_files_preserved": 40,
+  "checks_all_pass": true,
+  "output_manifest_sha256": "113bc11d3bd125c7e0d7bd6da521a13991943b6df3ebc89f6a285272e38183ab",
+  "winner_counts": [
+    {
+      "Var1": "p51",
+      "Var2": "BN",
+      "Freq": 21
+    },
+    {
+      "Var1": "p92",
+      "Var2": "BN",
+      "Freq": 35
+    },
+    {
+      "Var1": "p51",
+      "Var2": "Myeloblast",
+      "Freq": 21
+    },
+    {
+      "Var1": "p92",
+      "Var2": "Myeloblast",
+      "Freq": 34
+    },
+    {
+      "Var1": "p51",
+      "Var2": "PM",
+      "Freq": 4
+    },
+    {
+      "Var1": "p92",
+      "Var2": "PM",
+      "Freq": 8
+    },
+    {
+      "Var1": "p51",
+      "Var2": "SN",
+      "Freq": 5
+    },
+    {
+      "Var1": "p92",
+      "Var2": "SN",
+      "Freq": 15
+    }
+  ],
+  "equal_block_agreement": [
+    {
+      "Var1": "p51",
+      "Var2": "different_top",
+      "Freq": 5
+    },
+    {
+      "Var1": "p92",
+      "Var2": "different_top",
+      "Freq": 4
+    },
+    {
+      "Var1": "p51",
+      "Var2": "equal_block_unavailable",
+      "Freq": 0
+    },
+    {
+      "Var1": "p92",
+      "Var2": "equal_block_unavailable",
+      "Freq": 1
+    },
+    {
+      "Var1": "p51",
+      "Var2": "same_top",
+      "Freq": 46
+    },
+    {
+      "Var1": "p92",
+      "Var2": "same_top",
+      "Freq": 87
+    }
+  ],
+  "tests": {
+    "suites": 3,
+    "tests": 21,
+    "expectations": 222,
+    "failures": 0,
+    "errors": 0,
+    "warnings": 0,
+    "skipped": 0,
+    "cluster_suite_rechecked_after_plot_change": true,
+    "latest_metadata_title_assertion": "Claude execution confirmed in claude_cluster_tests.log; prior 221 expectations independently run by Codex."
+  },
+  "plots_visually_inspected": 3,
+  "no_new_umap_clustering_or_graph": true,
+  "calculation_files_byte_identical_to_view_01": [
+    "cluster_scores.csv",
+    "cluster_candidates.csv",
+    "stage_peak_clusters.csv",
+    "lossless.rds"
+  ],
+  "files_byte_identical_to_view_02": [
+    "cluster_candidates.csv",
+    "cluster_scores.csv",
+    "figures/figA_cluster_top_candidate_umap.png",
+    "figures/figB_stage_cluster_scores_p51.png",
+    "figures/figB_stage_cluster_scores_p92.png",
+    "lossless.rds",
+    "posthoc_cluster_author_context.csv",
+    "stage_peak_clusters.csv"
+  ],
+  "title_only_followup_verified": true
+}

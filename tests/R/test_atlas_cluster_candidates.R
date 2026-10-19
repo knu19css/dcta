@@ -68,7 +68,7 @@ test_that("세포 대표 위치: 군집 세포 중 UMAP 중앙값에 가장 가�
 
 # ── 소형 합성 attempt (R59 를 그대로 거친 lossless · cluster_programs) ────────────
 acl_world <- function(shuffle_ids = FALSE) {
-  w <- tempfile("acl_world"); dir.create(w); att <- file.path(w, "attempt"); dir.create(att); out <- file.path(w, "out", "cluster_view_01")
+  w <- tempfile("acl_world"); dir.create(w); att <- file.path(w, "attempt"); dir.create(att); out <- file.path(w, "out", "cluster_view_test")
   sha <- function(p) digest::digest(p, algo = "sha256", file = TRUE)
   # 군집: A 40 (block b1 30 = S1 5 count, b2 10 = S2 7 count), B 3 (S1, 작은 군집), C 6 (패널 0), D 6 (S3 3 개 · S4 3 개, 동률), E 6 (S5 5 · 둘째 세포만 S2 1 · 첫 세포만 S6 1)
   cl <- c(rep("A", 40), rep("B", 3), rep("C", 6), rep("D", 6), rep("E", 6)); n <- length(cl)
@@ -134,7 +134,7 @@ test_that("실행기 (소형 합성): 손계산 가중 차이 · 작은 군집 �
   cmf <- names(jsonlite::fromJSON(file.path(out, "calc_manifest.json"))$files); expect_false(any(grepl("posthoc|figure", cmf)))
   man <- jsonlite::fromJSON(file.path(out, "manifest.json"))$files
   expect_true(all(vapply(names(man), function(f) identical(digest::digest(file.path(out, f), algo = "sha256", file = TRUE), man[[f]]), TRUE)))
-  ft <- acl_rd(out, "figure_text.csv"); expect_false(any(ft$text %in% c("NA", "NaN", "Inf"))); expect_lte(length(readLines(file.path(out, "README_ko.md"))), 20L)
+  ft <- acl_rd(out, "figure_text.csv"); expect_false(any(ft$text %in% c("NA", "NaN", "Inf"))); expect_lte(length(readLines(file.path(out, "README_ko.md"))), 20L); expect_true(grepl("cluster_view_test", readLines(file.path(out, "README_ko.md"))[1], fixed = TRUE))
   px <- acl_rd(out, "posthoc_cluster_author_context.csv"); expect_equal(px$top_author_label[px$partition == "p92" & px$cluster == "A"], "GMP-Neut")
 })
 

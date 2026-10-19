@@ -264,7 +264,7 @@ atlas_cl_build <- function(a, out, snap, log, argv, reader, pins) {
             sum(z$score_top_status == "tied"), sum(z$score_top_status == "unassigned_zero"), sum(z$score_top_status == "unavailable"), sum(z$small_cluster),
             sum(z$equal_block_agreement == "different_top")) }
   pkt <- function(p) { z <- peaks[peaks$partition == p, ]; paste(sprintf("%s %s", z$stage, ifelse(nzchar(z$peak_clusters), z$peak_clusters, z$peak_status)), collapse = " · ") }
-  rd <- c("# atlas 단계 패널 — 군집 단위 1 위 후보 (cluster_view_01)", "",
+  rd <- c(sprintf("# atlas 단계 패널 — 군집 단위 1 위 후보 (%s)", basename(out)), "",
           "- 계약: results/claude_bridge/neutrophil_atlas_rna_2026-10-19/codex_cluster_instruction.md. 입력: attempt_02 (manifest 고정), raw 재계산 없음.",
           "- 점수 = 군집 안 모든 세포의 패널 유전자 logRNA 평균(mean_log_pooled). 보조 = 동일 block 평균(가용 block 없으면 결측).",
           sprintf("- %s.", smry("p92")), sprintf("- %s.", smry("p51")),

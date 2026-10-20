@@ -1,0 +1,26 @@
+{
+  "passed": 13,
+  "total": 13,
+  "checks": {
+    "1690_unique_scores": true,
+    "all_scores_from_separate_raw_reference": true,
+    "measured_marker_denominators": true,
+    "cluster_cell_counts": true,
+    "exact_new_76_and_retained_25_panels": true,
+    "baseline_panel_unchanged": true,
+    "controls_independently_reproduced": true,
+    "controls_exclude_all_active_markers": true,
+    "baseline_current_ranks_and_gaps": true,
+    "meta_stage_ranks_and_gaps": true,
+    "conditional_stage_ranks_and_gaps": true,
+    "donor_equal_scores_from_group_aggregates": true,
+    "missing_genes_reported_without_alias_substitution": true
+  },
+  "max_abs_component_errors": {
+    "pos": 1.9984e-15,
+    "neg": 8.4377e-15,
+    "score": 8.4377e-15
+  },
+  "donor_max_abs_error": 2.2204e-16,
+  "note": "Numerical verification, not biological accuracy; primary independent aggregation cache, donor check uses current group aggregates."
+}

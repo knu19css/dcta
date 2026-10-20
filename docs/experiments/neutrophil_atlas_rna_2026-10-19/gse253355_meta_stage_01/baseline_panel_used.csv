@@ -1,0 +1,280 @@
+"node_id","display_label","gene","sign"
+"HSC","HSC","HLF",1
+"HSC","HSC","CD33",1
+"HSC","HSC","GATA3",1
+"HSC","HSC","CD44",1
+"HSC","HSC","PTPRS",1
+"HSC","HSC","CD34",1
+"HSC","HSC","NOTCH1",1
+"HSC","HSC","NOTCH2",1
+"HSC","HSC","MEIS1",1
+"HSC","HSC","MLLT3",1
+"HSC","HSC","FLT3",-1
+"HSC","HSC","SOX4",-1
+"HSC","HSC","ELF1",-1
+"HSC","HSC","CDK6",-1
+"MPP","MPP","CD34",1
+"MPP","MPP","CD48",1
+"MPP","MPP","FLT3",1
+"MPP","MPP","PROCR",-1
+"MPP","MPP","HOXB4",-1
+"CMP","CMP","SPI1",1
+"CMP","CMP","CEBPA",1
+"CMP","CMP","MYB",1
+"CMP","CMP","CD34",1
+"CMP","CMP","GATA1",1
+"CMP","CMP","CD38",1
+"CMP","CMP","CSF1R",1
+"CMP","CMP","IL7R",-1
+"CMP","CMP","RAG1",-1
+"CLP","CLP","IL7R",1
+"CLP","CLP","EBF1",1
+"CLP","CLP","PAX5",1
+"CLP","CLP","CD34",1
+"CLP","CLP","FLT3",1
+"CLP","CLP","TCF3",1
+"CLP","CLP","GATA1",-1
+"CLP","CLP","KLF1",-1
+"CLP","CLP","SPI1",-1
+"GMP","GMP","CEBPA",1
+"GMP","GMP","CEBPE",1
+"GMP","GMP","GFI1",1
+"GMP","GMP","SPI1",1
+"GMP","GMP","CTSG",1
+"GMP","GMP","MPO",1
+"GMP","GMP","ELANE",1
+"GMP","GMP","CD34",1
+"GMP","GMP","IL3RA",1
+"GMP","GMP","GATA1",-1
+"GMP","GMP","KLF1",-1
+"GMP","GMP","IL7R",-1
+"GMP","GMP","TCF4",-1
+"MEP","MEP","GATA1",1
+"MEP","MEP","KLF1",1
+"MEP","MEP","GYPA",1
+"MEP","MEP","ITGB3",1
+"MEP","MEP","ITGA2B",1
+"MEP","MEP","MPO",-1
+"MEP","MEP","CD14",-1
+"MEP","MEP","CD3E",-1
+"MEP","MEP","IL15",-1
+"MDP","MDP","CSF1R",1
+"MDP","MDP","FLT3",1
+"MDP","MDP","CXCR1",1
+"MDP","MDP","IRF8",1
+"MDP","MDP","PAX5",-1
+"MDP","MDP","CD79A",-1
+"MDP","MDP","CD79B",-1
+"MDP","MDP","GZMB",-1
+"MDP","MDP","CD3E",-1
+"BMCP","BMCP","CEBPA",1
+"BMCP","BMCP","FCER1A",1
+"BMCP","BMCP","ITGB7",1
+"BMCP","BMCP","MITF",-1
+"BMCP","BMCP","CDH1",-1
+"CDP","CDP","FLT3",1
+"CDP","CDP","ZBTB46",-1
+"CDP","CDP","ITGAX",-1
+"Neutrophil","Neutrophil","CXCR2",1
+"Neutrophil","Neutrophil","MPO",1
+"Neutrophil","Neutrophil","DEFA3",1
+"Neutrophil","Neutrophil","ELANE",1
+"Neutrophil","Neutrophil","CAMP",1
+"Neutrophil","Neutrophil","FCGR3B",1
+"Neutrophil","Neutrophil","CSF3R",1
+"Neutrophil","Neutrophil","G0S2",1
+"Neutrophil","Neutrophil","CD177",1
+"Eosinophil","Eosinophil","SIGLEC8",1
+"Eosinophil","Eosinophil","CXCR3",1
+"Eosinophil","Eosinophil","CD244",1
+"Eosinophil","Eosinophil","CCR3",1
+"Eosinophil","Eosinophil","GATA1",1
+"Eosinophil","Eosinophil","CEBPA",1
+"Eosinophil","Eosinophil","EPX",1
+"Eosinophil","Eosinophil","MPO",-1
+"Eosinophil","Eosinophil","HLA-DRA",-1
+"Eosinophil","Eosinophil","HLA-DRB1",-1
+"Basophil","Basophil","ENPP3",1
+"Basophil","Basophil","IL5RA",1
+"Basophil","Basophil","FCER1A",1
+"Basophil","Basophil","LILRB4",1
+"Basophil","Basophil","HDC",1
+"Basophil","Basophil","HLA-DRA",-1
+"Basophil","Basophil","HLA-DRB1",-1
+"Basophil","Basophil","HLA-DRB3",-1
+"Basophil","Basophil","HLA-DRB4",-1
+"Basophil","Basophil","HLA-DRB5",-1
+"Mast_cell","Mast cell","ENPP3",1
+"Mast_cell","Mast cell","IL17A",1
+"Mast_cell","Mast cell","CPA3",1
+"Mast_cell","Mast cell","CD3E",-1
+"Mast_cell","Mast cell","CD19",-1
+"Mast_cell","Mast cell","CD14",-1
+"Mast_cell","Mast cell","FCGR3A",-1
+"Megakaryocyte","Megakaryocyte","ITGA2B",1
+"Megakaryocyte","Megakaryocyte","ITGB3",1
+"Megakaryocyte","Megakaryocyte","CD36",1
+"Megakaryocyte","Megakaryocyte","GATA1",1
+"Megakaryocyte","Megakaryocyte","FLI1",1
+"Megakaryocyte","Megakaryocyte","RUNX1",1
+"Megakaryocyte","Megakaryocyte","PPBP",1
+"Megakaryocyte","Megakaryocyte","PF4",1
+"Erythroblast","Erythroblast","GATA1",1
+"Erythroblast","Erythroblast","KLF1",1
+"Erythroblast","Erythroblast","ALAS2",1
+"Erythroblast","Erythroblast","HBB",1
+"Erythroblast","Erythroblast","EPOR",1
+"Erythroblast","Erythroblast","PTPRC",-1
+"Erythroblast","Erythroblast","SPI1",-1
+"DC","cDC","CD1C",1
+"DC","cDC","CD1B",1
+"DC","cDC","FCER1A",1
+"DC","cDC","ITGAX",1
+"DC","cDC","FLT3",1
+"DC","cDC","ZBTB46",1
+"DC","cDC","THBD",1
+"DC","cDC","CD3E",-1
+"DC","cDC","CD19",-1
+"DC","cDC","CD14",-1
+"DC","cDC","TCF4",-1
+"DC","cDC","IL3RA",-1
+"pDC","pDC","LILRA4",1
+"pDC","pDC","ITGAX",-1
+"pDC","pDC","NRP1",1
+"pDC","pDC","CLEC4C",1
+"pDC","pDC","CD4",1
+"pDC","pDC","TCF4",1
+"pDC","pDC","IL3RA",1
+"pDC","pDC","CCR9",1
+"pDC","pDC","CD3E",-1
+"pDC","pDC","CD19",-1
+"pDC","pDC","CD14",-1
+"pDC","pDC","FCGR3A",-1
+"pDC","pDC","CD1C",-1
+"Pro_B_cell","Pro B cell","CD19",1
+"Pro_B_cell","Pro B cell","RAG1",1
+"Pro_B_cell","Pro B cell","RAG2",1
+"Pro_B_cell","Pro B cell","CD79A",1
+"Pro_B_cell","Pro B cell","CD79B",1
+"Pro_B_cell","Pro B cell","IL7R",1
+"Pro_B_cell","Pro B cell","PAX5",1
+"Pro_B_cell","Pro B cell","CEBPA",1
+"Pro_B_cell","Pro B cell","IRX1",1
+"Pro_B_cell","Pro B cell","MME",1
+"Pro_B_cell","Pro B cell","CD3E",-1
+"Pro_B_cell","Pro B cell","TCF4",-1
+"Pre_B_cell","Pre B cell","VPREB1",1
+"Pre_B_cell","Pre B cell","CD19",1
+"Pre_B_cell","Pre B cell","MS4A1",1
+"Pre_B_cell","Pre B cell","TCF3",1
+"Pre_B_cell","Pre B cell","PAX5",1
+"Pre_B_cell","Pre B cell","EBF1",1
+"Pre_B_cell","Pre B cell","BLNK",1
+"Pre_B_cell","Pre B cell","IKZF3",1
+"Pre_B_cell","Pre B cell","MME",1
+"Pre_B_cell","Pre B cell","CD14",-1
+"Pre_B_cell","Pre B cell","CD3E",-1
+"NK_cell","NK cell","KLRK1",1
+"NK_cell","NK cell","NCAM1",1
+"NK_cell","NK cell","NKG7",1
+"NK_cell","NK cell","GNLY",1
+"NK_cell","NK cell","KLRC1",1
+"NK_cell","NK cell","KLRG1",1
+"NK_cell","NK cell","NCR3",1
+"NK_cell","NK cell","ZBTB16",1
+"NK_cell","NK cell","CD244",1
+"NK_cell","NK cell","CD7",1
+"NK_cell","NK cell","RAG1",-1
+"NK_cell","NK cell","RAG2",-1
+"NK_cell","NK cell","CD3E",-1
+"NK_cell","NK cell","CD19",-1
+"NK_cell","NK cell","CD4",-1
+"NK_cell","NK cell","PAX5",-1
+"Macrophage","Macrophage","MMP12",1
+"Macrophage","Macrophage","CD163",1
+"Macrophage","Macrophage","MRC1",1
+"Macrophage","Macrophage","CCR5",1
+"Macrophage","Macrophage","VSIG4",1
+"Macrophage","Macrophage","GPR132",1
+"Macrophage","Macrophage","ADGRE1",1
+"Macrophage","Macrophage","CD68",1
+"Macrophage","Macrophage","FCGR3B",-1
+"Platelet","Platelet","CD46",1
+"Platelet","Platelet","CD109",1
+"Platelet","Platelet","PPBP",1
+"Platelet","Platelet","GP1BB",1
+"Platelet","Platelet","NRGN",1
+"Platelet","Platelet","PF4",1
+"Erythrocyte","Erythrocyte","HBB",1
+"Erythrocyte","Erythrocyte","TFRC",1
+"Erythrocyte","Erythrocyte","UBE2O",1
+"Erythrocyte","Erythrocyte","SLC11A2",1
+"Erythrocyte","Erythrocyte","PTPRC",-1
+"Classical_Monocyte","Classical Monocyte","CD163",1
+"Classical_Monocyte","Classical Monocyte","SELE",1
+"Classical_Monocyte","Classical Monocyte","FCGR2B",1
+"Classical_Monocyte","Classical Monocyte","IL1RN",1
+"Classical_Monocyte","Classical Monocyte","CEBPB",1
+"Classical_Monocyte","Classical Monocyte","CD14",1
+"Classical_Monocyte","Classical Monocyte","LYZ",1
+"Classical_Monocyte","Classical Monocyte","VCAN",1
+"Classical_Monocyte","Classical Monocyte","FCN1",1
+"Classical_Monocyte","Classical Monocyte","CD68",1
+"Classical_Monocyte","Classical Monocyte","SELL",1
+"Classical_Monocyte","Classical Monocyte","CCR2",1
+"Classical_Monocyte","Classical Monocyte","S100A8",1
+"Classical_Monocyte","Classical Monocyte","S100A9",1
+"Classical_Monocyte","Classical Monocyte","CD1C",-1
+"Classical_Monocyte","Classical Monocyte","NCAM1",-1
+"Nonclassical_Monocyte","Nonclassical Monocyte","CD163",1
+"Nonclassical_Monocyte","Nonclassical Monocyte","SELE",1
+"Nonclassical_Monocyte","Nonclassical Monocyte","FCGR2B",1
+"Nonclassical_Monocyte","Nonclassical Monocyte","IL1RN",1
+"Nonclassical_Monocyte","Nonclassical Monocyte","CEBPB",1
+"Nonclassical_Monocyte","Nonclassical Monocyte","CD14",1
+"Nonclassical_Monocyte","Nonclassical Monocyte","LYZ",1
+"Nonclassical_Monocyte","Nonclassical Monocyte","VCAN",1
+"Nonclassical_Monocyte","Nonclassical Monocyte","FCN1",1
+"Nonclassical_Monocyte","Nonclassical Monocyte","CD68",1
+"Nonclassical_Monocyte","Nonclassical Monocyte","FCGR3A",1
+"Nonclassical_Monocyte","Nonclassical Monocyte","LST1",1
+"Nonclassical_Monocyte","Nonclassical Monocyte","CX3CR1",1
+"Nonclassical_Monocyte","Nonclassical Monocyte","CD1C",-1
+"Nonclassical_Monocyte","Nonclassical Monocyte","NCAM1",-1
+"B_cell","B cell","MS4A1",1
+"B_cell","B cell","CD79A",1
+"B_cell","B cell","IGHM",1
+"B_cell","B cell","CD19",1
+"B_cell","B cell","FCER2",1
+"B_cell","B cell","PAX5",1
+"B_cell","B cell","CR2",1
+"B_cell","B cell","IGHD",1
+"B_cell","B cell","BCL2",1
+"B_cell","B cell","CD3E",-1
+"B_cell","B cell","MPO",-1
+"B_cell","B cell","LEF1",-1
+"Plasma_cell","Plasma cell","XBP1",1
+"Plasma_cell","Plasma cell","PRDM1",1
+"Plasma_cell","Plasma cell","JCHAIN",1
+"Plasma_cell","Plasma cell","CD9",1
+"Plasma_cell","Plasma cell","IGHG1",1
+"Plasma_cell","Plasma cell","IGHG2",1
+"Plasma_cell","Plasma cell","IGHG3",1
+"Plasma_cell","Plasma cell","IGHG4",1
+"Plasma_cell","Plasma cell","PAX5",-1
+"Plasma_cell","Plasma cell","MS4A1",-1
+"CD4_T_cell","CD4 T cell","CD3D",1
+"CD4_T_cell","CD4 T cell","CD3E",1
+"CD4_T_cell","CD4 T cell","CD4",1
+"CD8_T_cell","CD8 T cell","CD3D",1
+"CD8_T_cell","CD8 T cell","CD3E",1
+"CD8_T_cell","CD8 T cell","CD8A",1
+"CD8_T_cell","CD8 T cell","CD8B",1
+"NKT_cell","NKT cell","CD3D",1
+"NKT_cell","NKT cell","KLRB1",1
+"NKT_cell","NKT cell","ZBTB16",1
+"NKT_cell","NKT cell","NCR1",1
+"NKT_cell","NKT cell","NCAM1",1
+"NKT_cell","NKT cell","TRAV10",1
+"NKT_cell","NKT cell","IL18R1",1
+"NKT_cell","NKT cell","IL12RB2",1

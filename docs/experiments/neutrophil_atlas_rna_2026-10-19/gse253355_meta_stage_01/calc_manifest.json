@@ -1,0 +1,27 @@
+{
+  "written_at": "2026-10-20T12:34:40+0900",
+  "phase": "Scores and ranks fixed before author-label comparison",
+  "files": {
+    "reference_input/05_neutrophil_stage_mrna_panel_report.md": "90b48eabe622d7c9a24d6000b5abe2ad2029515cff039486e8df5c8eff0b1d98",
+    "reference_input/10_stage_peak_markers.tsv": "64a5624f404f38883561791b4b7249148ce1998414f7158b10190e3b2f57be6d",
+    "reference_input/10_stage_transition_panel.tsv": "70d1c921bbd029ae2273cdc2f2e8b405c77c98c68e9639ee806aa0eb196becba",
+    "reference_input/10_curated_panel_grades.tsv": "302d2902a5d0479322e73ab37c12cacdda05940c2206f1ccf929614276b3116e",
+    "reference_input/10_dataset_stage_counts.tsv": "bb0bcefccd7549df615e38b81689a2d29f94d96de45e5d90ec63dd073ed3235d",
+    "reference_input/current_markers.csv": "55d8f2056ffcdfb53f6dad9cf84af68d53e328ba8b82405d95b838524447f4c0",
+    "reference_peak_relative_levels.csv": "e47900cf5fb1b3b7c91ead5abb9eb02fd2bdffa584628ef58db8b0a4790f7908",
+    "stage_marker_panel.csv": "97d13e96aab095106fd397507f0239c278b6d691f0063c483af59eee17d3bb4b",
+    "baseline_panel_used.csv": "90178dca619b495bceeb42779ddcb1434ce56aef70a478ff96a34b337330b0f8",
+    "meta_panel_used.csv": "e19bd58b65b1a25120c89045f3d99fbc54ca6142a158e02e315fa78e5c00df8f",
+    "old_panel_rows_removed.csv": "78b0bc231e7c8b440987d43f172ddeaed799cadafeb487832e3ddb8eacc0a477",
+    "cluster_type_scores.csv": "128cdfbe80856923001e6bd10e5fd635505edcdcb750743199a3e5170c902d24",
+    "control_genes.csv": "1f3818c06b2f5cc16f0c3ec194c48d6889f4bcdcbd1faab3819374f3e6edb396",
+    "type_top_clusters.csv": "6349337c4f2091a643925c194088ea861699e4207352b9013bfa001fad4b2dd3",
+    "baseline_current_ranks.csv": "5577c49ac07d57debcf58e64c412354774e6900175ce86e5fc12b0d9c93280a6",
+    "baseline_current_donor_equal_ranks.csv": "0af1a0e46ec8cc8a7e05326b7fff51b1155e573c624aa043c5dd255fa98eb2ae",
+    "meta_stage_ranks.csv": "1b085034a06ca092263f8dcbda63a2a74dbe65c8a037fa1172ed87a30170428c",
+    "meta_stage_donor_equal_ranks.csv": "df7f61fa82b0dbb146c3995e7ce70644646e520db5875962b9655a6f5ee30c41",
+    "conditional_stage_ranks.csv": "2de84c88f07a94d107edc4183ca1e46cd24933c2cdb69b08d116b2d447b41af0",
+    "stage_marker_cluster_expression.csv": "c2fb52911afddea17c68fbdbecaf58155d78762497a2cdb3d4c005570a2d4bcf",
+    "check_cell_level_recompute.csv": "cd4ddbb3b2926c86a1fbeab1a70d85a344e64d70bfdd441d2df7a0c0ceab1a4c"
+  }
+}

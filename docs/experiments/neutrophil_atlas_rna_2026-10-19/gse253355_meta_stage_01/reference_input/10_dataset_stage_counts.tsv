@@ -1,0 +1,58 @@
+dataset	stage	n	study	platform
+GSE42519	HSC	4	Rapin 2014 / Bagger 2016	GPL570 (justRMA)
+GSE42519	MPP	2	Rapin 2014 / Bagger 2016	GPL570 (justRMA)
+GSE42519	CMP	3	Rapin 2014 / Bagger 2016	GPL570 (justRMA)
+GSE42519	GMP	5	Rapin 2014 / Bagger 2016	GPL570 (justRMA)
+GSE42519	PM	6	Rapin 2014 / Bagger 2016	GPL570 (justRMA)
+GSE42519	MY	2	Rapin 2014 / Bagger 2016	GPL570 (justRMA)
+GSE42519	MM	3	Rapin 2014 / Bagger 2016	GPL570 (justRMA)
+GSE42519	BN	4	Rapin 2014 / Bagger 2016	GPL570 (justRMA)
+GSE42519	SN	3	Rapin 2014 / Bagger 2016	GPL570 (justRMA)
+GSE274002	MB	24	Signoretto 2025 + Calzetti 2022 (GSE175880)	RNA-seq FPKM
+GSE274002	MB_late	6	Signoretto 2025 + Calzetti 2022 (GSE175880)	RNA-seq FPKM
+GSE274002	PM	4	Signoretto 2025 + Calzetti 2022 (GSE175880)	RNA-seq FPKM
+GSE274002	MY	5	Signoretto 2025 + Calzetti 2022 (GSE175880)	RNA-seq FPKM
+GSE274002	MM	5	Signoretto 2025 + Calzetti 2022 (GSE175880)	RNA-seq FPKM
+GSE274002	BN	5	Signoretto 2025 + Calzetti 2022 (GSE175880)	RNA-seq FPKM
+GSE274002	SN	5	Signoretto 2025 + Calzetti 2022 (GSE175880)	RNA-seq FPKM
+GSE74246	HSC	4	Corces 2016	RNA-seq counts
+GSE74246	MPP	4	Corces 2016	RNA-seq counts
+GSE74246	CMP	4	Corces 2016	RNA-seq counts
+GSE74246	GMP	4	Corces 2016	RNA-seq counts
+GSE294330	MB	4	Hesse/Klein 2026 (molecular atlas of human granulopoiesis; unpublished in PubMed)	RNA-seq counts
+GSE294330	PM	4	Hesse/Klein 2026 (molecular atlas of human granulopoiesis; unpublished in PubMed)	RNA-seq counts
+GSE294330	MY	5	Hesse/Klein 2026 (molecular atlas of human granulopoiesis; unpublished in PubMed)	RNA-seq counts
+GSE294330	MM	4	Hesse/Klein 2026 (molecular atlas of human granulopoiesis; unpublished in PubMed)	RNA-seq counts
+GSE294330	BN	5	Hesse/Klein 2026 (molecular atlas of human granulopoiesis; unpublished in PubMed)	RNA-seq counts
+GSE294330	SN	3	Hesse/Klein 2026 (molecular atlas of human granulopoiesis; unpublished in PubMed)	RNA-seq counts
+GSE294330	PMN	4	Hesse/Klein 2026 (molecular atlas of human granulopoiesis; unpublished in PubMed)	RNA-seq counts
+GSE12662	CD34	5	Payton 2009	GPL570 (MAS5)
+GSE12662	PM	5	Payton 2009	GPL570 (MAS5)
+GSE12662	BN_SN	5	Payton 2009	GPL570 (MAS5)
+GSE19599	CMP	2	Andersson 2010	GPL570 (log2, author-normalized)
+GSE19599	GMP	2	Andersson 2010	GPL570 (log2, author-normalized)
+GSE19599	PM	2	Andersson 2010	GPL570 (log2, author-normalized)
+GSE19599	MY	2	Andersson 2010	GPL570 (log2, author-normalized)
+GSE49883	CMP	5	Rönnerblad 2014	GPL10904 (Illumina, quantile)
+GSE49883	GMP	5	Rönnerblad 2014	GPL10904 (Illumina, quantile)
+GSE49883	PM	5	Rönnerblad 2014	GPL10904 (Illumina, quantile)
+GSE49883	BN_SN	5	Rönnerblad 2014	GPL10904 (Illumina, quantile)
+GSE63270	HSC	7	Jung 2015	GPL17810 (U133Plus2, Brainarray ENTREZG)
+GSE63270	MPP	7	Jung 2015	GPL17810 (U133Plus2, Brainarray ENTREZG)
+GSE63270	CMP	7	Jung 2015	GPL17810 (U133Plus2, Brainarray ENTREZG)
+GSE63270	GMP	7	Jung 2015	GPL17810 (U133Plus2, Brainarray ENTREZG)
+GSE77439	HSC	4	Miyawaki 2017	GPL17077 (Agilent)
+GSE77439	CMP	4	Miyawaki 2017	GPL17077 (Agilent)
+GSE77439	GMP	4	Miyawaki 2017	GPL17077 (Agilent)
+GSE98946	MB_PM	4	Schwarzer 2017	RNA-seq counts (HTSeq)
+GSE98946	MM	3	Schwarzer 2017	RNA-seq counts (HTSeq)
+GSE98946	SN	2	Schwarzer 2017	RNA-seq counts (HTSeq)
+GSE153263	PM_early	3	Dinh 2020	RNA-seq counts
+GSE153263	PM	3	Dinh 2020	RNA-seq counts
+GSE153263	MY_MM	3	Dinh 2020	RNA-seq counts
+GSE153263	BN_SN	3	Dinh 2020	RNA-seq counts
+BLUEPRINT	PM	3	Hoogendijk 2019 / Grassi 2018 (EGA; Hoogendijk mmc2 FPKM)	RNA-seq FPKM (3,471 protein-detected genes)
+BLUEPRINT	MY	3	Hoogendijk 2019 / Grassi 2018 (EGA; Hoogendijk mmc2 FPKM)	RNA-seq FPKM (3,471 protein-detected genes)
+BLUEPRINT	MM	3	Hoogendijk 2019 / Grassi 2018 (EGA; Hoogendijk mmc2 FPKM)	RNA-seq FPKM (3,471 protein-detected genes)
+BLUEPRINT	BN_SN	3	Hoogendijk 2019 / Grassi 2018 (EGA; Hoogendijk mmc2 FPKM)	RNA-seq FPKM (3,471 protein-detected genes)
+BLUEPRINT	PMN	3	Hoogendijk 2019 / Grassi 2018 (EGA; Hoogendijk mmc2 FPKM)	RNA-seq FPKM (3,471 protein-detected genes)

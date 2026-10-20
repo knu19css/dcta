@@ -1,0 +1,14 @@
+{
+  "score_rows_checked": 260,
+  "original_clusters": 26,
+  "displayed_cells": 17546,
+  "displayed_clusters": 19,
+  "nonlineage_candidates_removed": true,
+  "frozen_R77_scores_unchanged": true,
+  "ranks_equal_prior_conditional": true,
+  "independent_maxima_and_gaps_checked": true,
+  "coordinates_identical": true,
+  "monocytes_displayed": 0,
+  "protected_hashes_unchanged": 142,
+  "selection_note": "Author labels select displayed cells only. Entire original clusters still contribute to scores; no lineage-only expression refit."
+}

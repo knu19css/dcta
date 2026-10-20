@@ -1,0 +1,8 @@
+"item","value"
+"R","R version 4.5.2 (2025-10-31)"
+"R_executable","/Library/Frameworks/R.framework/Resources/bin/R"
+"libPaths","/Users/edemhw/Documents/Codex/2026-10-07/x20/outputs/agent-workflow/environments/dcta/renv/library/macos/R-4.5/aarch64-apple-darwin20;/Users/edemhw/Documents/Codex/2026-10-07/x20/outputs/agent-workflow/local/renv-state/sandbox/macos/R-4.5/aarch64-apple-darwin20/4cd76b74"
+"packages","jsonlite=2.0.0;digest=0.6.39"
+"score_source","128cdfbe80856923001e6bd10e5fd635505edcdcb750743199a3e5170c902d24"
+"umap_sha256","1f91bc928f06b736980bd56e18a595346ff1ddc430a96a021e7537149ab3001f"
+"command","run-r dcta R/branch_biology/78_gse253355_lineage_only.R"

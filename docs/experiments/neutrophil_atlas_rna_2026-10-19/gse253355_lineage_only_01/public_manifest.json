@@ -1,0 +1,14 @@
+{
+  "files": {
+    "cluster_lineage_candidates.csv": "0cf3398782981321e964c77b5c1589780af3acf88673054eb3d94bf8f7f49f3f",
+    "display_cell_counts.csv": "f7f32d2a328196d5bd4c06f3138e01a0aaeebd15921828fc4c692e24b0ff345e",
+    "environment.csv": "9ce84072986a66305a5e2f9e2e28bb909c778785eea1dacc655303528362cb1f",
+    "fig1_hsc_neutrophil_only.png": "1d8308126d5e71ee4eb7f8ddc33ef39b25d8da68c6260aae1365471e86ffbd7f",
+    "lineage_cluster_stage_scores.csv": "962aba8a20d7e725ece47d6c5d99913e57a9b942f4347025023b4f1121349f30",
+    "stage_assignments_summary.csv": "daf7882edcae8dd69ab48b02abb82b072735d6d56a4899b2a8916a9db957ec2a",
+    "stage_colours.csv": "3618cd7110964a82294d303926e72c07f88db15a7ddc9e7d4b0f15e665ec2062",
+    "stage_marker_panel.csv": "97d13e96aab095106fd397507f0239c278b6d691f0063c483af59eee17d3bb4b",
+    "summary_ko.md": "72753bc5525b9e25787f225cc996ee0879a2ea8d495ebf007cc80bdf93551920",
+    "verification.json": "26bec7d3856174709b51f29d0b22022dd7fbabbfd3a911031ab0749839764689"
+  }
+}

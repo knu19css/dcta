@@ -1,0 +1,26 @@
+{
+  "passed": 14,
+  "total": 14,
+  "checks": {
+    "1690_unique_scores_same_type_cluster_universe": true,
+    "all_positive_components_independently_reproduced": true,
+    "all_negative_components_independently_reproduced": true,
+    "all_final_scores_independently_reproduced": true,
+    "measured_marker_denominators": true,
+    "cluster_sizes_from_independent_raw_counts": true,
+    "all_original_and_current_gene_signs_preserved": true,
+    "original_35_types_381_unique_entries": true,
+    "original_five_cross_sign_conflicts_retained": true,
+    "all_204_shared_control_sets_reproduced": true,
+    "controls_exclude_both_panels": true,
+    "controls_same_expression_bin": true,
+    "controls_fifty_distinct_genes": true,
+    "same_hsc_gmp_neutrophil_panels_give_same_scores": true
+  },
+  "max_abs_score_error": {
+    "positive": 1.9984e-15,
+    "negative": 8.8818e-15,
+    "score": 8.8818e-15
+  },
+  "note": "Independent numerical validation on previously raw-count-verified aggregation; does not establish biological correctness."
+}

@@ -1,0 +1,382 @@
+"node_id","display_label","gene","sign","sheet","excel_cell","symbol_raw","correction","measured"
+"HSC","HSC","HLF",1,"final_unique_gene","A2","HLF","kept_not_in_table",TRUE
+"HSC","HSC","CD33",1,"final_unique_gene","A3","CD33","kept_not_in_table",TRUE
+"HSC","HSC","GATA3",1,"final_unique_gene","A4","GATA3","kept_not_in_table",TRUE
+"HSC","HSC","CD44",1,"final_unique_gene","A5","CD44","kept_not_in_table",TRUE
+"HSC","HSC","PTPRS",1,"final_unique_gene","A6","PTPRS","kept_not_in_table",TRUE
+"HSC","HSC","CD34",1,"final_unique_gene","A7","CD34","kept_not_in_table",TRUE
+"HSC","HSC","NOTCH1",1,"final_unique_gene","A8","NOTCH1","kept_not_in_table",TRUE
+"HSC","HSC","NOTCH2",1,"final_unique_gene","A9","NOTCH2","kept_not_in_table",TRUE
+"HSC","HSC","MEIS1",1,"final_unique_gene","A10","MEIS1","kept_not_in_table",TRUE
+"HSC","HSC","MLLT3",1,"final_unique_gene","A11","MLLT3","kept_not_in_table",TRUE
+"MPP","MPP","CD34",1,"final_unique_gene","B2","CD34","kept_not_in_table",TRUE
+"MPP","MPP","SLAMF1",1,"final_unique_gene","B3","CD150","corrected_alias",TRUE
+"MPP","MPP","CD48",1,"final_unique_gene","B4","CD48","kept_not_in_table",TRUE
+"MPP","MPP","FLT3",1,"final_unique_gene","B5","FLT3","kept_not_in_table",TRUE
+"CMP","CMP","SPI1",1,"final_unique_gene","C2","SPI1","kept_not_in_table",TRUE
+"CMP","CMP","CEBPA",1,"final_unique_gene","C3","CEBPA","kept_not_in_table",TRUE
+"CMP","CMP","MYB",1,"final_unique_gene","C4","CMYB","corrected_typo",TRUE
+"CMP","CMP","CD34",1,"final_unique_gene","C5","CD34","kept_not_in_table",TRUE
+"CMP","CMP","GATA1",1,"final_unique_gene","C6","GATA1","kept_not_in_table",TRUE
+"CMP","CMP","KLF1",1,"final_unique_gene","C7","KLF1","kept_not_in_table",TRUE
+"CMP","CMP","CD38",1,"final_unique_gene","C8","CD38","kept_not_in_table",TRUE
+"CMP","CMP","CSF1R",1,"final_unique_gene","C9","CSF1R","kept_not_in_table",TRUE
+"CLP","CLP","IL7R",1,"final_unique_gene","D2","IL7RA","corrected_alias",TRUE
+"CLP","CLP","EBF1",1,"final_unique_gene","D3","EBF1","kept_not_in_table",TRUE
+"CLP","CLP","PAX5",1,"final_unique_gene","D4","PAX5","kept_not_in_table",TRUE
+"CLP","CLP","CD34",1,"final_unique_gene","D5","CD34","kept_not_in_table",TRUE
+"CLP","CLP","FLT3",1,"final_unique_gene","D6","FLT3","kept_not_in_table",TRUE
+"CLP","CLP","TCF3",1,"final_unique_gene","D7","TCF3","kept_not_in_table",TRUE
+"GMP","GMP","CEBPA",1,"final_unique_gene","E2","CEBPA","kept_not_in_table",TRUE
+"GMP","GMP","CEBPE",1,"final_unique_gene","E3","CEBPE","kept_not_in_table",TRUE
+"GMP","GMP","GFI1",1,"final_unique_gene","E4","GFI1","kept_not_in_table",TRUE
+"GMP","GMP","SPI1",1,"final_unique_gene","E5","SPI1","kept_not_in_table",TRUE
+"GMP","GMP","CTSG",1,"final_unique_gene","E6","CTGS","corrected_typo",TRUE
+"GMP","GMP","MPO",1,"final_unique_gene","E7","MPO","kept_not_in_table",TRUE
+"GMP","GMP","ELANE",1,"final_unique_gene","E8","ELANE","kept_not_in_table",TRUE
+"GMP","GMP","CD34",1,"final_unique_gene","E9","CD34","kept_not_in_table",TRUE
+"GMP","GMP","IL3RA",1,"final_unique_gene","E10","IL3RA","kept_not_in_table",TRUE
+"MEP","MEP","GATA1",1,"final_unique_gene","F2","GATA1","kept_not_in_table",TRUE
+"MEP","MEP","KLF1",1,"final_unique_gene","F3","KLF1","kept_not_in_table",TRUE
+"MEP","MEP","HBBA",1,"final_unique_gene","F4","HBBA","kept_unresolved",FALSE
+"MEP","MEP","HBA",1,"final_unique_gene","F5","HBA","kept_unresolved",FALSE
+"MEP","MEP","GYPA",1,"final_unique_gene","F6","GYPA","kept_not_in_table",TRUE
+"MEP","MEP","ITGB3",1,"final_unique_gene","F7","ITGB3","kept_not_in_table",TRUE
+"MEP","MEP","ITGA2B",1,"final_unique_gene","F8","ITGA2B","kept_not_in_table",TRUE
+"MDP","MDP","CSF1R",1,"final_unique_gene","G2","CD115","corrected_alias",TRUE
+"MDP","MDP","FLT3",1,"final_unique_gene","G3","FLT3","kept_not_in_table",TRUE
+"MDP","MDP","CXCR1",1,"final_unique_gene","G4","CXCR1","kept_not_in_table",TRUE
+"MDP","MDP","IRF8",1,"final_unique_gene","G5","IRF8","kept_not_in_table",TRUE
+"BMCP","BMCP","CEBPA",1,"final_unique_gene","H2","CEBPA","kept_not_in_table",TRUE
+"BMCP","BMCP","FCER1A",1,"final_unique_gene","H3","FCERIA","corrected_alias",TRUE
+"BMCP","BMCP","ITGB7",1,"final_unique_gene","H4","ITGB7","kept_not_in_table",TRUE
+"Erythroblast","Erythroblast","GATA1",1,"final_unique_gene","I2","GATA1","kept_not_in_table",TRUE
+"Erythroblast","Erythroblast","KLF1",1,"final_unique_gene","I3","KLF1","kept_not_in_table",TRUE
+"Erythroblast","Erythroblast","ALAS2",1,"final_unique_gene","I4","ALAS2","kept_not_in_table",TRUE
+"Erythroblast","Erythroblast","HBA",1,"final_unique_gene","I5","HBA","kept_unresolved",FALSE
+"Erythroblast","Erythroblast","HBB",1,"final_unique_gene","I6","HBB","kept_not_in_table",TRUE
+"Erythroblast","Erythroblast","EPOR",1,"final_unique_gene","I7","EPOR","kept_not_in_table",TRUE
+"Macrophages","Macrophages","MMP12",1,"final_unique_gene","J2","MMP12","kept_not_in_table",TRUE
+"Macrophages","Macrophages","CD163",1,"final_unique_gene","J3","CD163","kept_not_in_table",TRUE
+"Macrophages","Macrophages","MRC1",1,"final_unique_gene","J4","MRC1","kept_not_in_table",TRUE
+"Macrophages","Macrophages","CCR5",1,"final_unique_gene","J5","CCR5","kept_not_in_table",TRUE
+"Macrophages","Macrophages","VSIG4",1,"final_unique_gene","J6","VSIG4","kept_not_in_table",TRUE
+"Macrophages","Macrophages","GPR132",1,"final_unique_gene","J7","GPR132","kept_not_in_table",TRUE
+"Macrophages","Macrophages","ADGRE1",1,"final_unique_gene","J8","ADGRE1","kept_not_in_table",TRUE
+"Macrophages","Macrophages","CD68",1,"final_unique_gene","J9","CD68","kept_not_in_table",TRUE
+"Mono","Mono","CD163",1,"final_unique_gene","K2","CD163","kept_not_in_table",TRUE
+"Mono","Mono","SELE",1,"final_unique_gene","K3","SELE","kept_not_in_table",TRUE
+"Mono","Mono","FCGR2B",1,"final_unique_gene","K4","FCGR2B","kept_not_in_table",TRUE
+"Mono","Mono","IL1RN",1,"final_unique_gene","K5","IL1RN","kept_not_in_table",TRUE
+"Mono","Mono","CEBPB",1,"final_unique_gene","K6","CEBPB","kept_not_in_table",TRUE
+"Mono","Mono","CD14",1,"final_unique_gene","K7","CD14","kept_not_in_table",TRUE
+"Mono","Mono","LYZ",1,"final_unique_gene","K8","LYZ","kept_not_in_table",TRUE
+"Mono","Mono","VCAN",1,"final_unique_gene","K9","VCAN","kept_not_in_table",TRUE
+"Mono","Mono","FCN1",1,"final_unique_gene","K10","FCN1","kept_not_in_table",TRUE
+"Mono","Mono","CD68",1,"final_unique_gene","K11","CD68","kept_not_in_table",TRUE
+"Mono","Mono","CTSB",1,"final_unique_gene","K12","CTSB","kept_not_in_table",TRUE
+"CD14 Mono","CD14 Mono","CD163",1,"final_unique_gene","L2","CD163","kept_not_in_table",TRUE
+"CD14 Mono","CD14 Mono","SELE",1,"final_unique_gene","L3","SELE","kept_not_in_table",TRUE
+"CD14 Mono","CD14 Mono","FCGR2B",1,"final_unique_gene","L4","FCGR2B","kept_not_in_table",TRUE
+"CD14 Mono","CD14 Mono","IL1RN",1,"final_unique_gene","L5","IL1RN","kept_not_in_table",TRUE
+"CD14 Mono","CD14 Mono","CEBPB",1,"final_unique_gene","L6","CEBPB","kept_not_in_table",TRUE
+"CD14 Mono","CD14 Mono","CD14",1,"final_unique_gene","L7","CD14","kept_not_in_table",TRUE
+"CD14 Mono","CD14 Mono","LYZ",1,"final_unique_gene","L8","LYZ","kept_not_in_table",TRUE
+"CD14 Mono","CD14 Mono","VCAN",1,"final_unique_gene","L9","VCAN","kept_not_in_table",TRUE
+"CD14 Mono","CD14 Mono","FCN1",1,"final_unique_gene","L10","FCN1","kept_not_in_table",TRUE
+"CD14 Mono","CD14 Mono","CD68",1,"final_unique_gene","L11","CD68","kept_not_in_table",TRUE
+"CD14 Mono","CD14 Mono","SELL",1,"final_unique_gene","L12","SELL","kept_not_in_table",TRUE
+"CD14 Mono","CD14 Mono","CCR2",1,"final_unique_gene","L13","CCR2","kept_not_in_table",TRUE
+"CD14 Mono","CD14 Mono","S100A8",1,"final_unique_gene","L14","S100A8","kept_not_in_table",TRUE
+"CD14 Mono","CD14 Mono","S100A9",1,"final_unique_gene","L15","S100A9","kept_not_in_table",TRUE
+"CD16 Mono","CD16 Mono","CD163",1,"final_unique_gene","M2","CD163","kept_not_in_table",TRUE
+"CD16 Mono","CD16 Mono","SELE",1,"final_unique_gene","M3","SELE","kept_not_in_table",TRUE
+"CD16 Mono","CD16 Mono","FCGR2B",1,"final_unique_gene","M4","FCGR2B","kept_not_in_table",TRUE
+"CD16 Mono","CD16 Mono","IL1RN",1,"final_unique_gene","M5","IL1RN","kept_not_in_table",TRUE
+"CD16 Mono","CD16 Mono","CEBPB",1,"final_unique_gene","M6","CEBPB","kept_not_in_table",TRUE
+"CD16 Mono","CD16 Mono","CD14",1,"final_unique_gene","M7","CD14","kept_not_in_table",TRUE
+"CD16 Mono","CD16 Mono","LYZ",1,"final_unique_gene","M8","LYZ","kept_not_in_table",TRUE
+"CD16 Mono","CD16 Mono","VCAN",1,"final_unique_gene","M9","VCAN","kept_not_in_table",TRUE
+"CD16 Mono","CD16 Mono","FCN1",1,"final_unique_gene","M10","FCN1","kept_not_in_table",TRUE
+"CD16 Mono","CD16 Mono","CD68",1,"final_unique_gene","M11","CD68","kept_not_in_table",TRUE
+"CD16 Mono","CD16 Mono","FCGR3A",1,"final_unique_gene","M12","FCGR3A","kept_not_in_table",TRUE
+"CD16 Mono","CD16 Mono","LST1",1,"final_unique_gene","M13","LST1","kept_not_in_table",TRUE
+"CD16 Mono","CD16 Mono","CX3CR1",1,"final_unique_gene","M14","CX3CR1","kept_not_in_table",TRUE
+"Neutrophils","Neutrophils","CXCR2",1,"final_unique_gene","N2","CXCR2","kept_not_in_table",TRUE
+"Neutrophils","Neutrophils","MPO",1,"final_unique_gene","N3","MPO","kept_not_in_table",TRUE
+"Neutrophils","Neutrophils","DEFA3",1,"final_unique_gene","N4","DEFA3","kept_not_in_table",TRUE
+"Neutrophils","Neutrophils","ELANE",1,"final_unique_gene","N5","ELANE","kept_not_in_table",TRUE
+"Neutrophils","Neutrophils","CAMP",1,"final_unique_gene","N6","CAMP","kept_not_in_table",TRUE
+"Neutrophils","Neutrophils","FCGR3B",1,"final_unique_gene","N7","FCGR3B","kept_not_in_table",TRUE
+"Neutrophils","Neutrophils","CSF3R",1,"final_unique_gene","N8","CSF3R","kept_not_in_table",TRUE
+"Neutrophils","Neutrophils","G0S2",1,"final_unique_gene","N9","G0S2","kept_not_in_table",TRUE
+"Neutrophils","Neutrophils","CD177",1,"final_unique_gene","N10","CD177","kept_not_in_table",TRUE
+"CDP","CDP","CSF1R",1,"final_unique_gene","O2","CSF1R","kept_not_in_table",TRUE
+"CDP","CDP","FLT3",1,"final_unique_gene","O3","FLT3","kept_not_in_table",TRUE
+"DC","DC","CD1C",1,"final_unique_gene","P2","CD1C","kept_not_in_table",TRUE
+"DC","DC","CD1B",1,"final_unique_gene","P3","CD1B","kept_not_in_table",TRUE
+"DC","DC","FCER1A",1,"final_unique_gene","P4","FCER1A","kept_not_in_table",TRUE
+"DC","DC","ITGAX",1,"final_unique_gene","P5","ITGAX","kept_not_in_table",TRUE
+"DC","DC","FLT3",1,"final_unique_gene","P6","FLT3","kept_not_in_table",TRUE
+"DC","DC","ZBTB46",1,"final_unique_gene","P8","ZBTB46","kept_not_in_table",TRUE
+"DC","DC","THBD",1,"final_unique_gene","P9","CD141","corrected_alias",TRUE
+"pDC","pDC","LILRA4",1,"final_unique_gene","Q2","LILRA4","kept_not_in_table",TRUE
+"pDC","pDC","ITGAX",1,"final_unique_gene","Q3","CD11C","corrected_alias",TRUE
+"pDC","pDC","NRP1",1,"final_unique_gene","Q4","NRP1","kept_not_in_table",TRUE
+"pDC","pDC","CLEC4C",1,"final_unique_gene","Q5","CLEC4C","kept_not_in_table",TRUE
+"pDC","pDC","CD4",1,"final_unique_gene","Q6","CD4","kept_not_in_table",TRUE
+"pDC","pDC","TCF4",1,"final_unique_gene","Q7","TCF4","kept_not_in_table",TRUE
+"pDC","pDC","IL3RA",1,"final_unique_gene","Q10","CD123","corrected_alias",TRUE
+"pDC","pDC","CCR9",1,"final_unique_gene","Q11","CCR9","kept_not_in_table",TRUE
+"Erythroid-like and erythroid precursor cells","Erythroid-like and erythroid precursor cells","HBB",1,"final_unique_gene","R2","HBB","kept_not_in_table",TRUE
+"Erythroid-like and erythroid precursor cells","Erythroid-like and erythroid precursor cells","HBA1",1,"final_unique_gene","R3","HBA1","kept_not_in_table",TRUE
+"Erythroid-like and erythroid precursor cells","Erythroid-like and erythroid precursor cells","HBA2",1,"final_unique_gene","R4","HBA2","kept_not_in_table",TRUE
+"Erythroid-like and erythroid precursor cells","Erythroid-like and erythroid precursor cells","HBG1",1,"final_unique_gene","R5","HBG1","kept_not_in_table",TRUE
+"Erythroid-like and erythroid precursor cells","Erythroid-like and erythroid precursor cells","HBG2",1,"final_unique_gene","R6","HBG2","kept_not_in_table",TRUE
+"Erythroid-like and erythroid precursor cells","Erythroid-like and erythroid precursor cells","HEXA",1,"final_unique_gene","R7","HEXA","kept_not_in_table",TRUE
+"Erythroid-like and erythroid precursor cells","Erythroid-like and erythroid precursor cells","GYPA",1,"final_unique_gene","R8","GYPA","kept_not_in_table",TRUE
+"Erythroid-like and erythroid precursor cells","Erythroid-like and erythroid precursor cells","GYPB",1,"final_unique_gene","R9","GYPB","kept_not_in_table",TRUE
+"Erythroid-like and erythroid precursor cells","Erythroid-like and erythroid precursor cells","EPOR",1,"final_unique_gene","R10","EPOR","kept_not_in_table",TRUE
+"Erythroid-like and erythroid precursor cells","Erythroid-like and erythroid precursor cells","GATA1",1,"final_unique_gene","R11","GATA1","kept_not_in_table",TRUE
+"Erythroid-like and erythroid precursor cells","Erythroid-like and erythroid precursor cells","KLF1",1,"final_unique_gene","R12","KLF1","kept_not_in_table",TRUE
+"Memory B","Memory B","IGHD",1,"final_unique_gene","S2","IGHD","kept_not_in_table",TRUE
+"Memory B","Memory B","IGHM",1,"final_unique_gene","S3","IGHM","kept_not_in_table",TRUE
+"Memory B","Memory B","NT5E",1,"final_unique_gene","S4","NT5E","kept_not_in_table",TRUE
+"Memory B","Memory B","TNFRSF17",1,"final_unique_gene","S5","TNFRSF17","kept_not_in_table",TRUE
+"Memory B","Memory B","MS4A1",1,"final_unique_gene","S6","MS4A1","kept_not_in_table",TRUE
+"Memory B","Memory B","CD19",1,"final_unique_gene","S7","CD19","kept_not_in_table",TRUE
+"Memory B","Memory B","CD27",1,"final_unique_gene","S8","CD27","kept_not_in_table",TRUE
+"Memory B","Memory B","AIM2",1,"final_unique_gene","S9","AIM2","kept_not_in_table",TRUE
+"Memory B","Memory B","IGHG1",1,"final_unique_gene","S10","IGHG1","kept_not_in_table",TRUE
+"Memory B","Memory B","IGHG2",1,"final_unique_gene","S11","IGHG2","kept_not_in_table",TRUE
+"Memory B","Memory B","IGHG3",1,"final_unique_gene","S12","IGHG3","kept_not_in_table",TRUE
+"Memory B","Memory B","IGHG4",1,"final_unique_gene","S13","IGHG4","kept_not_in_table",TRUE
+"Plasma B","Plasma B","XBP1",1,"final_unique_gene","T2","XBP1","kept_not_in_table",TRUE
+"Plasma B","Plasma B","PRDM1",1,"final_unique_gene","T3","PRDM1","kept_not_in_table",TRUE
+"Plasma B","Plasma B","JCHAIN",1,"final_unique_gene","T4","JCHAIN","kept_not_in_table",TRUE
+"Plasma B","Plasma B","CD9",1,"final_unique_gene","T5","CD9","kept_not_in_table",TRUE
+"Plasma B","Plasma B","IGHG1",1,"final_unique_gene","T6","IGHG1","kept_not_in_table",TRUE
+"Plasma B","Plasma B","IGHG2",1,"final_unique_gene","T7","IGHG2","kept_not_in_table",TRUE
+"Plasma B","Plasma B","IGHG3",1,"final_unique_gene","T8","IGHG3","kept_not_in_table",TRUE
+"Plasma B","Plasma B","IGHG4",1,"final_unique_gene","T9","IGHG4","kept_not_in_table",TRUE
+"Naïve B cell","Naive B cell","MS4A1",1,"final_unique_gene","U2","MS4A1","kept_not_in_table",TRUE
+"Naïve B cell","Naive B cell","CD79A",1,"final_unique_gene","U3","CD79A","kept_not_in_table",TRUE
+"Naïve B cell","Naive B cell","IGHM",1,"final_unique_gene","U4","IGHM","kept_not_in_table",TRUE
+"Naïve B cell","Naive B cell","CD19",1,"final_unique_gene","U5","CD19","kept_not_in_table",TRUE
+"Naïve B cell","Naive B cell","FCER2",1,"final_unique_gene","U6","FCER2","kept_not_in_table",TRUE
+"Naïve B cell","Naive B cell","PAX5",1,"final_unique_gene","U7","PAX5","kept_not_in_table",TRUE
+"Naïve B cell","Naive B cell","CR2",1,"final_unique_gene","U8","CD21","corrected_alias",TRUE
+"Naïve B cell","Naive B cell","IGHD",1,"final_unique_gene","U10","IGHD","kept_not_in_table",TRUE
+"Naïve B cell","Naive B cell","BCL2",1,"final_unique_gene","U11","BCL2","kept_not_in_table",TRUE
+"Pre B cell","Pre B cell","VPREB1",1,"final_unique_gene","V2","VREB1","corrected_typo",TRUE
+"Pre B cell","Pre B cell","VREB2",1,"final_unique_gene","V3","VREB2","kept_unresolved",FALSE
+"Pre B cell","Pre B cell","CD19",1,"final_unique_gene","V4","CD19","kept_not_in_table",TRUE
+"Pre B cell","Pre B cell","MS4A1",1,"final_unique_gene","V5","CD20","corrected_alias",TRUE
+"Pre B cell","Pre B cell","TCF3",1,"final_unique_gene","V6","TCF3","kept_not_in_table",TRUE
+"Pre B cell","Pre B cell","PAX5",1,"final_unique_gene","V7","PAX5","kept_not_in_table",TRUE
+"Pre B cell","Pre B cell","EBF1",1,"final_unique_gene","V8","EBF1","kept_not_in_table",TRUE
+"Pre B cell","Pre B cell","BLNK",1,"final_unique_gene","V9","BLNK","kept_not_in_table",TRUE
+"Pre B cell","Pre B cell","IKZF3",1,"final_unique_gene","V10","IKZF3","kept_not_in_table",TRUE
+"Pre B cell","Pre B cell","MME",1,"final_unique_gene","V11","CD10","corrected_alias",TRUE
+"Pro B cell","Pro B cell","CD19",1,"final_unique_gene","W2","CD19","kept_not_in_table",TRUE
+"Pro B cell","Pro B cell","MS4A1",1,"final_unique_gene","W3","CD20","corrected_alias",TRUE
+"Pro B cell","Pro B cell","RAG1",1,"final_unique_gene","W4","RAG1","kept_not_in_table",TRUE
+"Pro B cell","Pro B cell","RAG2",1,"final_unique_gene","W5","RAG2","kept_not_in_table",TRUE
+"Pro B cell","Pro B cell","CD79A",1,"final_unique_gene","W6","CD79A","kept_not_in_table",TRUE
+"Pro B cell","Pro B cell","CD79B",1,"final_unique_gene","W7","CD79B","kept_not_in_table",TRUE
+"Pro B cell","Pro B cell","IL7R",1,"final_unique_gene","W8","IL7RA","corrected_alias",TRUE
+"Pro B cell","Pro B cell","PAX5",1,"final_unique_gene","W9","PAX5","kept_not_in_table",TRUE
+"Pro B cell","Pro B cell","CEBPA",1,"final_unique_gene","W10","CEBPA","kept_not_in_table",TRUE
+"Pro B cell","Pro B cell","IRX1",1,"final_unique_gene","W11","IRX1","kept_not_in_table",TRUE
+"Pro B cell","Pro B cell","MME",1,"final_unique_gene","W12","CD10","corrected_alias",TRUE
+"Basophils","Basophils","ENPP3",1,"final_unique_gene","X2","ENPP3","kept_not_in_table",TRUE
+"Basophils","Basophils","IL5RA",1,"final_unique_gene","X3","IL5RA","kept_not_in_table",TRUE
+"Basophils","Basophils","FCER1A",1,"final_unique_gene","X4","FCERIA","corrected_alias",TRUE
+"Basophils","Basophils","LILRB4",1,"final_unique_gene","X5","LILRB4","kept_not_in_table",TRUE
+"Basophils","Basophils","HDC",1,"final_unique_gene","X6","HDC","kept_not_in_table",TRUE
+"Eosinophil","Eosinophil","SIGLEC8",1,"final_unique_gene","Y2","SIGLEC8","kept_not_in_table",TRUE
+"Eosinophil","Eosinophil","CXCR3",1,"final_unique_gene","Y3","CXCR3","kept_not_in_table",TRUE
+"Eosinophil","Eosinophil","CD244",1,"final_unique_gene","Y4","CD244","kept_not_in_table",TRUE
+"Eosinophil","Eosinophil","CCR3",1,"final_unique_gene","Y5","CCR3","kept_not_in_table",TRUE
+"Eosinophil","Eosinophil","GATA1",1,"final_unique_gene","Y6","GATA1","kept_not_in_table",TRUE
+"Eosinophil","Eosinophil","CEBPA",1,"final_unique_gene","Y7","CEBPA","kept_not_in_table",TRUE
+"Eosinophil","Eosinophil","EPX",1,"final_unique_gene","Y8","EPX","kept_not_in_table",TRUE
+"NK","NK","KLRK1",1,"final_unique_gene","Z2","KLRK1","kept_not_in_table",TRUE
+"NK","NK","NCAM1",1,"final_unique_gene","Z3","NCAM1","kept_not_in_table",TRUE
+"NK","NK","NKG7",1,"final_unique_gene","Z4","NKG7","kept_not_in_table",TRUE
+"NK","NK","GNLY",1,"final_unique_gene","Z5","GNLY","kept_not_in_table",TRUE
+"NK","NK","KLRC1",1,"final_unique_gene","Z6","KLRC1","kept_not_in_table",TRUE
+"NK","NK","KLRG1",1,"final_unique_gene","Z7","KLRG1","kept_not_in_table",TRUE
+"NK","NK","NCR3",1,"final_unique_gene","Z8","NCR3","kept_not_in_table",TRUE
+"NK","NK","ZBTB16",1,"final_unique_gene","Z9","ZBTB16","kept_not_in_table",TRUE
+"NK","NK","CD244",1,"final_unique_gene","Z10","CD244","kept_not_in_table",TRUE
+"NK","NK","CD7",1,"final_unique_gene","Z11","CD7","kept_not_in_table",TRUE
+"NK_T","NK_T","IL12RB2",1,"final_unique_gene","AA2","IL12RB2","kept_not_in_table",TRUE
+"NK_T","NK_T","IL17RA",1,"final_unique_gene","AA3","IL17RA","kept_not_in_table",TRUE
+"NK_T","NK_T","IL12RB1",1,"final_unique_gene","AA4","IL12RB1","kept_not_in_table",TRUE
+"NK_T","NK_T","KLRB1",1,"final_unique_gene","AA5","KLRB1","kept_not_in_table",TRUE
+"NK_T","NK_T","NCAM1",1,"final_unique_gene","AA6","NCAM1","kept_not_in_table",TRUE
+"NK_T","NK_T","ZBTB16",1,"final_unique_gene","AA7","ZBTB16","kept_not_in_table",TRUE
+"NK_T","NK_T","PLZF",1,"final_unique_gene","AA8","PLZF","kept_not_in_table",FALSE
+"NK_T","NK_T","EOMES",1,"final_unique_gene","AA9","EOMES","kept_not_in_table",TRUE
+"Mast","Mast","ENPP3",1,"final_unique_gene","AB2","ENPP3","kept_not_in_table",TRUE
+"Mast","Mast","IL2RA",1,"final_unique_gene","AB3","IL2RA","kept_not_in_table",TRUE
+"Mast","Mast","IL17A",1,"final_unique_gene","AB4","IL17A","kept_not_in_table",TRUE
+"Mast","Mast","CPA3",1,"final_unique_gene","AB5","CPA3","kept_not_in_table",TRUE
+"Mast","Mast","TSAB1",1,"final_unique_gene","AB6","TSAB1","kept_unresolved",FALSE
+" Naïve T cells","Naive T cells","ILR7",1,"final_unique_gene","AC2","ILR7","kept_not_in_table",FALSE
+" Naïve T cells","Naive T cells","CCR7",1,"final_unique_gene","AC3","CCR7","kept_not_in_table",TRUE
+" Naïve T cells","Naive T cells","CD3D",1,"final_unique_gene","AC4","CD3D","kept_not_in_table",TRUE
+" Naïve T cells","Naive T cells","CD3G",1,"final_unique_gene","AC5","CD3G","kept_not_in_table",TRUE
+" Naïve T cells","Naive T cells","CD3E",1,"final_unique_gene","AC6","CD3E","kept_not_in_table",TRUE
+" Naïve T cells","Naive T cells","LEF1",1,"final_unique_gene","AC7","LEF1","kept_not_in_table",TRUE
+" Naïve T cells","Naive T cells","TCF7",1,"final_unique_gene","AC8","TCF7","kept_not_in_table",TRUE
+" Naïve T cells","Naive T cells","PECAM1",1,"final_unique_gene","AC9","PECAM1","kept_not_in_table",TRUE
+"CD4 T","CD4 T","CD3D",1,"final_unique_gene","AD2","CD3D","kept_not_in_table",TRUE
+"CD4 T","CD4 T","CD3G",1,"final_unique_gene","AD3","CD3G","kept_not_in_table",TRUE
+"CD4 T","CD4 T","CD3E",1,"final_unique_gene","AD4","CD3E","kept_not_in_table",TRUE
+"CD4 T","CD4 T","CD4",1,"final_unique_gene","AD5","CD4","kept_not_in_table",TRUE
+"CD4 T","CD4 T","TBX21",1,"final_unique_gene","AD6","TBX21","kept_not_in_table",TRUE
+"CD4 T","CD4 T","GATA3",1,"final_unique_gene","AD7","GATA3","kept_not_in_table",TRUE
+"CD4 T","CD4 T","IFNG",1,"final_unique_gene","AD8","IFNG","kept_not_in_table",TRUE
+"CD4 T","CD4 T","IL4",1,"final_unique_gene","AD9","IL4","kept_not_in_table",TRUE
+"CD4 T","CD4 T","IL2",1,"final_unique_gene","AD10","IL2","kept_not_in_table",TRUE
+"CD4 T","CD4 T","ILR7",1,"final_unique_gene","AD11","ILR7","kept_not_in_table",FALSE
+"CD4 T","CD4 T","CCR7",1,"final_unique_gene","AD12","CCR7","kept_not_in_table",TRUE
+"Cytotoxic CD8","Cytotoxic CD8","CD3D",1,"final_unique_gene","AE2","CD3D","kept_not_in_table",TRUE
+"Cytotoxic CD8","Cytotoxic CD8","CD3G",1,"final_unique_gene","AE3","CD3G","kept_not_in_table",TRUE
+"Cytotoxic CD8","Cytotoxic CD8","CD3E",1,"final_unique_gene","AE4","CD3E","kept_not_in_table",TRUE
+"Cytotoxic CD8","Cytotoxic CD8","CD8A",1,"final_unique_gene","AE5","CD8A","kept_not_in_table",TRUE
+"Cytotoxic CD8","Cytotoxic CD8","GZMK",1,"final_unique_gene","AE6","GZMK","kept_not_in_table",TRUE
+"Cytotoxic CD8","Cytotoxic CD8","GZMB",1,"final_unique_gene","AE7","GZMB","kept_not_in_table",TRUE
+"Cytotoxic CD8","Cytotoxic CD8","GZMA",1,"final_unique_gene","AE9","GZMA","kept_not_in_table",TRUE
+"Cytotoxic CD8","Cytotoxic CD8","CD27",1,"final_unique_gene","AE10","CD27","kept_not_in_table",TRUE
+"Cytotoxic CD8","Cytotoxic CD8","CD28",1,"final_unique_gene","AE11","CD28","kept_not_in_table",TRUE
+"Cytotoxic CD8","Cytotoxic CD8","PRF1",1,"final_unique_gene","AE12","PRF1","kept_not_in_table",TRUE
+"Cytotoxic CD8","Cytotoxic CD8","EOMES",1,"final_unique_gene","AE13","EOMES","kept_not_in_table",TRUE
+"Cytotoxic CD8","Cytotoxic CD8","PLZF",1,"final_unique_gene","AE14","PLZF","kept_not_in_table",FALSE
+"T reg","T reg","FOXP3",1,"final_unique_gene","AF2","FOXP3","kept_not_in_table",TRUE
+"T reg","T reg","IKZF2",1,"final_unique_gene","AF3","IKZF2","kept_not_in_table",TRUE
+"T reg","T reg","CD4",1,"final_unique_gene","AF4","CD4","kept_not_in_table",TRUE
+"T reg","T reg","ICOS",1,"final_unique_gene","AF5","ICOS","kept_not_in_table",TRUE
+"T reg","T reg","CTLA4",1,"final_unique_gene","AF6","CTLA4","kept_not_in_table",TRUE
+"T reg","T reg","LAG3",1,"final_unique_gene","AF7","LAG3","kept_not_in_table",TRUE
+"T reg","T reg","IZUMO1R",1,"final_unique_gene","AF8","IZUMO1R","kept_not_in_table",TRUE
+"Platelates","Platelates","CD46",1,"final_unique_gene","AG2","CD46","kept_not_in_table",TRUE
+"Platelates","Platelates","CD109",1,"final_unique_gene","AG3","CD109","kept_not_in_table",TRUE
+"Platelates","Platelates","PPBP",1,"final_unique_gene","AG4","PPBP","kept_not_in_table",TRUE
+"Platelates","Platelates","GP1BB",1,"final_unique_gene","AG5","GP1BB","kept_not_in_table",FALSE
+"Platelates","Platelates","NRGN",1,"final_unique_gene","AG6","NRGN","kept_not_in_table",TRUE
+"Platelates","Platelates","PF4",1,"final_unique_gene","AG7","PF4","kept_not_in_table",TRUE
+"Reticulocytes","Reticulocytes","HBB",1,"final_unique_gene","AH2","HBB","kept_not_in_table",TRUE
+"Reticulocytes","Reticulocytes","TFRC",1,"final_unique_gene","AH3","TFRC","kept_not_in_table",TRUE
+"Reticulocytes","Reticulocytes","UBE2O",1,"final_unique_gene","AH4","UBE2O","kept_not_in_table",TRUE
+"Reticulocytes","Reticulocytes","SLC11A2",1,"final_unique_gene","AH5","SLC11A2","kept_not_in_table",TRUE
+"Reticulocytes","Reticulocytes","HBA",1,"final_unique_gene","AH6","HBA","kept_unresolved",FALSE
+"Thymocytes","Thymocytes","NOTCH1",1,"final_unique_gene","AI2","NOTCH1","kept_not_in_table",TRUE
+"Thymocytes","Thymocytes","CD99",1,"final_unique_gene","AI3","CD99","kept_not_in_table",TRUE
+"Thymocytes","Thymocytes","TSHR",1,"final_unique_gene","AI4","TSHR","kept_not_in_table",TRUE
+"Thymocytes","Thymocytes","BCL6",1,"final_unique_gene","AI5","BCL6","kept_not_in_table",TRUE
+"Thymocytes","Thymocytes","EZR",1,"final_unique_gene","AI7","EZR","kept_not_in_table",TRUE
+"Thymocytes","Thymocytes","TOX",1,"final_unique_gene","AI8","TOX","kept_not_in_table",TRUE
+"Thymocytes","Thymocytes","AIRE",1,"final_unique_gene","AI9","AIRE","kept_not_in_table",TRUE
+"HSC","HSC","FLT3",-1,"Negative markers","A2","FLT3","kept_not_in_table",TRUE
+"HSC","HSC","SOX4",-1,"Negative markers","A3","SOX4","kept_not_in_table",TRUE
+"HSC","HSC","ELF1",-1,"Negative markers","A4","ELF1","kept_not_in_table",TRUE
+"HSC","HSC","CDK6",-1,"Negative markers","A5","CDK6","kept_not_in_table",TRUE
+"MPP","MPP","PROCR",-1,"Negative markers","B2","EPCR","corrected_alias",TRUE
+"MPP","MPP","HOXB4",-1,"Negative markers","B3","HOXB4","kept_not_in_table",TRUE
+"MPP","MPP","SLAMF1",-1,"Negative markers","B4","SLAMF1","kept_not_in_table",TRUE
+"CMP","CMP","IL7R",-1,"Negative markers","C2","IL7R","kept_not_in_table",TRUE
+"CMP","CMP","RAG1",-1,"Negative markers","C3","RAG1","kept_not_in_table",TRUE
+"CMP","CMP","KLF1",-1,"Negative markers","C4","KLF1","kept_not_in_table",TRUE
+"CLP","CLP","GATA1",-1,"Negative markers","D2","GATA1","kept_not_in_table",TRUE
+"CLP","CLP","KLF1",-1,"Negative markers","D3","KLF1","kept_not_in_table",TRUE
+"CLP","CLP","SPI1",-1,"Negative markers","D4","SPI1","kept_not_in_table",TRUE
+"GMP","GMP","GATA1",-1,"Negative markers","E2","GATA1","kept_not_in_table",TRUE
+"GMP","GMP","KLF1",-1,"Negative markers","E3","KLF1","kept_not_in_table",TRUE
+"GMP","GMP","IL7R",-1,"Negative markers","E4","IL7R","kept_not_in_table",TRUE
+"GMP","GMP","TCF4",-1,"Negative markers","E5","TCF4","kept_not_in_table",TRUE
+"MEP","MEP","MPO",-1,"Negative markers","F2","MPO","kept_not_in_table",TRUE
+"MEP","MEP","CD14",-1,"Negative markers","F3","CD14","kept_not_in_table",TRUE
+"MEP","MEP","CD3E",-1,"Negative markers","F4","CD3E","kept_not_in_table",TRUE
+"MEP","MEP","IL15",-1,"Negative markers","F5","IL15","kept_not_in_table",TRUE
+"MDP","MDP","PAX5",-1,"Negative markers","G2","PAX5","kept_not_in_table",TRUE
+"MDP","MDP","CD79A",-1,"Negative markers","G3","CD79A","kept_not_in_table",TRUE
+"MDP","MDP","CD79B",-1,"Negative markers","G4","CD79B","kept_not_in_table",TRUE
+"MDP","MDP","GZMB",-1,"Negative markers","G5","GZMB","kept_not_in_table",TRUE
+"MDP","MDP","CD3E",-1,"Negative markers","G6","CD3E","kept_not_in_table",TRUE
+"BMCP","BMCP","MITF",-1,"Negative markers","H2","MITF","kept_not_in_table",TRUE
+"BMCP","BMCP","CDH1",-1,"Negative markers","H3","CDH1","kept_not_in_table",TRUE
+"Erythroblast","Erythroblast","PTPRC",-1,"Negative markers","I2","PTPRC","kept_not_in_table",TRUE
+"Erythroblast","Erythroblast","SPI1",-1,"Negative markers","I3","SPI1","kept_not_in_table",TRUE
+"Macrophages","Macrophages","FCGR3A",-1,"Negative markers","J2","FCGR3A","kept_not_in_table",TRUE
+"Macrophages","Macrophages","FCGR3B",-1,"Negative markers","J3","FCGR3B","kept_not_in_table",TRUE
+"Mono","Mono","CD1C",-1,"Negative markers","K2","CD1C","kept_not_in_table",TRUE
+"Mono","Mono","NCAM1",-1,"Negative markers","K3","NCAM1","kept_not_in_table",TRUE
+"Mono","Mono","SIRPA",-1,"Negative markers","K4","SIRPA","kept_not_in_table",TRUE
+"CD14 Mono","CD14 Mono","CD1C",-1,"Negative markers","L2","CD1C","kept_not_in_table",TRUE
+"CD14 Mono","CD14 Mono","NCAM1",-1,"Negative markers","L3","NCAM1","kept_not_in_table",TRUE
+"CD14 Mono","CD14 Mono","SIRPA",-1,"Negative markers","L4","SIRPA","kept_not_in_table",TRUE
+"CD16 Mono","CD16 Mono","CD1C",-1,"Negative markers","M2","CD1C","kept_not_in_table",TRUE
+"CD16 Mono","CD16 Mono","NCAM1",-1,"Negative markers","M3","NCAM1","kept_not_in_table",TRUE
+"CD16 Mono","CD16 Mono","SIRPA",-1,"Negative markers","M4","SIRPA","kept_not_in_table",TRUE
+"CDP","CDP","ZBTB46",-1,"Negative markers","O2","ZBTB46","kept_not_in_table",TRUE
+"CDP","CDP","ITGAX",-1,"Negative markers","O3","CD11C","corrected_alias",TRUE
+"DC","DC","CD3E",-1,"Negative markers","P2","CD3E","kept_not_in_table",TRUE
+"DC","DC","CD19",-1,"Negative markers","P3","CD19","kept_not_in_table",TRUE
+"DC","DC","CD14",-1,"Negative markers","P4","CD14","kept_not_in_table",TRUE
+"DC","DC","TCF4",-1,"Negative markers","P5","TCF4","kept_not_in_table",TRUE
+"DC","DC","IL3RA",-1,"Negative markers","P6","IL3RA","kept_not_in_table",TRUE
+"pDC","pDC","CD3E",-1,"Negative markers","Q2","CD3E","kept_not_in_table",TRUE
+"pDC","pDC","CD19",-1,"Negative markers","Q3","CD19","kept_not_in_table",TRUE
+"pDC","pDC","CD14",-1,"Negative markers","Q4","CD14","kept_not_in_table",TRUE
+"pDC","pDC","FCGR3A",-1,"Negative markers","Q5","FCGR3A","kept_not_in_table",TRUE
+"pDC","pDC","ITGAX",-1,"Negative markers","Q6","CD11C","corrected_alias",TRUE
+"pDC","pDC","CD1C",-1,"Negative markers","Q7","CD1C","kept_not_in_table",TRUE
+"Erythroid-like and erythroid precursor cells","Erythroid-like and erythroid precursor cells","SIP1",-1,"Negative markers","R2","SIP1","kept_not_in_table",FALSE
+"Erythroid-like and erythroid precursor cells","Erythroid-like and erythroid precursor cells","GATA2",-1,"Negative markers","R3","GATA2","kept_not_in_table",TRUE
+"Erythroid-like and erythroid precursor cells","Erythroid-like and erythroid precursor cells","IKZF1",-1,"Negative markers","R4","IKZF1","kept_not_in_table",TRUE
+"Memory B","Memory B","PRDM1",-1,"Negative markers","S2","PRDM1","kept_not_in_table",TRUE
+"Plasma B","Plasma B","PAX5",-1,"Negative markers","T2","PAX5","kept_not_in_table",TRUE
+"Plasma B","Plasma B","MS4A1",-1,"Negative markers","T3","MS4A1","kept_not_in_table",TRUE
+"Naïve B cell","Naive B cell","CD3E",-1,"Negative markers","U2","CD3E","kept_not_in_table",TRUE
+"Naïve B cell","Naive B cell","MPO",-1,"Negative markers","U3","MPO","kept_not_in_table",TRUE
+"Naïve B cell","Naive B cell","LEF1",-1,"Negative markers","U4","LEF1","kept_not_in_table",TRUE
+"Pre B cell","Pre B cell","CD14",-1,"Negative markers","V2","CD14","kept_not_in_table",TRUE
+"Pre B cell","Pre B cell","CD3E",-1,"Negative markers","V3","CD3E","kept_not_in_table",TRUE
+"Pro B cell","Pro B cell","MS4A1",-1,"Negative markers","W2","MS4A1","kept_not_in_table",TRUE
+"Pro B cell","Pro B cell","CD3E",-1,"Negative markers","W3","CD3E","kept_not_in_table",TRUE
+"Pro B cell","Pro B cell","TCF4",-1,"Negative markers","W4","TCF4","kept_not_in_table",TRUE
+"Basophils","Basophils","HLA-DRA",-1,"Negative markers","X2","HLA-DRA","kept_not_in_table",TRUE
+"Basophils","Basophils","HLA-DRB1",-1,"Negative markers","X3","HLA-DRB1","kept_not_in_table",TRUE
+"Basophils","Basophils","HLA-DRB3",-1,"Negative markers","X4","HLA-DRB3","kept_not_in_table",FALSE
+"Basophils","Basophils","HLA-DRB4",-1,"Negative markers","X5","HLA-DRB4","kept_not_in_table",FALSE
+"Basophils","Basophils","HLA-DRB5",-1,"Negative markers","X6","HLA-DRB5","kept_not_in_table",TRUE
+"Eosinophil","Eosinophil","MPO",-1,"Negative markers","Y2","MPO","kept_not_in_table",TRUE
+"Eosinophil","Eosinophil","HLA-DRA",-1,"Negative markers","Y3","HLA-DRA","kept_not_in_table",TRUE
+"Eosinophil","Eosinophil","HLA-DRB1",-1,"Negative markers","Y4","HLA-DRB1","kept_not_in_table",TRUE
+"NK","NK","RAG1",-1,"Negative markers","Z2","RAG1","kept_not_in_table",TRUE
+"NK","NK","RAG2",-1,"Negative markers","Z3","RAG2","kept_not_in_table",TRUE
+"NK","NK","CD3E",-1,"Negative markers","Z4","CD3E","kept_not_in_table",TRUE
+"NK","NK","CD19",-1,"Negative markers","Z5","CD19","kept_not_in_table",TRUE
+"NK","NK","CD4",-1,"Negative markers","Z6","CD4","kept_not_in_table",TRUE
+"NK","NK","PAX5",-1,"Negative markers","Z7","PAX5","kept_not_in_table",TRUE
+"NK","NK","TCF7",-1,"Negative markers","Z8","TCF7","kept_not_in_table",TRUE
+"NK_T","NK_T","CD3E",-1,"Negative markers","AA2","CD3E","kept_not_in_table",TRUE
+"Mast","Mast","CD3E",-1,"Negative markers","AB2","CD3E","kept_not_in_table",TRUE
+"Mast","Mast","CD19",-1,"Negative markers","AB3","CD19","kept_not_in_table",TRUE
+"Mast","Mast","CD14",-1,"Negative markers","AB4","CD14","kept_not_in_table",TRUE
+"Mast","Mast","FCGR3A",-1,"Negative markers","AB5","FCGR3A","kept_not_in_table",TRUE
+" Naïve T cells","Naive T cells","IL2RA",-1,"Negative markers","AC2","IL2RA","kept_not_in_table",TRUE
+" Naïve T cells","Naive T cells","CD274",-1,"Negative markers","AC3","PD-L1","corrected_alias",TRUE
+"CD4 T","CD4 T","ITGAM",-1,"Negative markers","AD2","ITGAM","kept_not_in_table",TRUE
+"CD4 T","CD4 T","LYZ",-1,"Negative markers","AD3","LYZ","kept_not_in_table",TRUE
+"CD4 T","CD4 T","FCGR3A",-1,"Negative markers","AD4","FCGR3A","kept_not_in_table",TRUE
+"CD4 T","CD4 T","CD19",-1,"Negative markers","AD5","CD19","kept_not_in_table",TRUE
+"Cytotoxic CD8","Cytotoxic CD8","CD4",-1,"Negative markers","AE2","CD4","kept_not_in_table",TRUE
+"Cytotoxic CD8","Cytotoxic CD8","CD28",-1,"Negative markers","AE3","CD28","kept_not_in_table",TRUE
+"T reg","T reg","IL7R",-1,"Negative markers","AF2","IL7R","kept_not_in_table",TRUE
+"T reg","T reg","IFNG",-1,"Negative markers","AF3","IFNG","kept_not_in_table",TRUE
+"Reticulocytes","Reticulocytes","PTPRC",-1,"Negative markers","AH2","PTPRC","kept_not_in_table",TRUE
+"Thymocytes","Thymocytes","THEMIS2",-1,"Negative markers","AI2","THEMIS2","kept_not_in_table",TRUE

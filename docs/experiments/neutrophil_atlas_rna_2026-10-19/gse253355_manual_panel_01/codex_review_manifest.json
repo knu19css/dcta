@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-10-20T00:55:03.850080+00:00",
+  "files": {
+    "review_ko.md": "f2575c868f3caca72fd44bebaddd8429262b9566ca862f38ab4bff677fe9e0ce",
+    "verification.json": "773139bc5c66c48cdf381bd5aeda50582f1c76af024fedbf3bc6035ef09739e7",
+    "baseline_sources.json": "a8f60dbd0ca7c84c643b01ac614a50dbf7ac6ff9719441dea9c2bb2d17ec072c"
+  },
+  "implementation_sources": {
+    "R/branch_biology/76_gse253355_manual_panel.R": "17ab08b7e33090a8ae329e79e87d8e10a14ff934fde58708e6acb4b588eb3184",
+    "scripts/r76_extract_manual_panel_xls.py": "82915d0b01babc9fa8ab75c3b6378550385dc8d029e4a728ada293dc43fb32c5"
+  },
+  "app_public_manifest_sha256": "1c7171b27aa05763f11ec0f47fe2e5cd73387b32242a1187be179cbfdc26666c",
+  "baseline_files_unchanged": 65,
+  "original_xls_entries_verified": 389,
+  "numerical_validation": "14/14, 1690 scores; not biological accuracy validation",
+  "reviewed_figures": [
+    "figures/fig1_umap_full_author_current_manual.png",
+    "figures/fig2_umap_lineage_author_current_manual.png"
+  ]
+}

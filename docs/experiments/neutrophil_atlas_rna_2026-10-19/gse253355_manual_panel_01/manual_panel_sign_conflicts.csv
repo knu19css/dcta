@@ -1,0 +1,6 @@
+"header_raw","gene","positive_cells","negative_cells","handling"
+"MPP","SLAMF1","B3:CD150","B4:SLAMF1","kept in both positive and negative panels (original)"
+"CMP","KLF1","C7:KLF1","C4:KLF1","kept in both positive and negative panels (original)"
+"pDC","ITGAX","Q3:CD11C","Q6:CD11C","kept in both positive and negative panels (original)"
+"Pro B cell","MS4A1","W3:CD20","W2:MS4A1","kept in both positive and negative panels (original)"
+"Cytotoxic CD8","CD28","AE11:CD28","AE3:CD28","kept in both positive and negative panels (original)"
